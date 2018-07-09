@@ -12,6 +12,10 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let now = Date.init()
+        print("now:\(now)")
+
     }
 
     override func didReceiveMemoryWarning() {
