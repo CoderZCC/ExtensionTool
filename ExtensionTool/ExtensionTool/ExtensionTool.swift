@@ -180,6 +180,16 @@ extension String {
 //MARK: 日期相关
 extension Date {
     
+    //MARK: 指定日期 多加x小时
+    /// 指定日期 多加x小时
+    ///
+    /// - Parameter num: 添加的小时数
+    /// - Returns: 新时间
+    func k_addingHours(_ num: Int) -> Date {
+        
+        return self.addingTimeInterval(TimeInterval(60.0 * 60.0 * CGFloat(num)))
+    }
+    
     //MARK: 指定日期的 年月日时分秒
     /// 指定日期的 年月日时分秒
     ///
