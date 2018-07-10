@@ -1,8 +1,8 @@
 //
-//  ExtensionTool.swift
-//  各种扩展
+//  String+Ext.swift
+//  ExtensionTool
 //
-//  Created by 张崇超 on 2018/7/6.
+//  Created by 张崇超 on 2018/7/10.
 //  Copyright © 2018年 ZCC. All rights reserved.
 //
 
@@ -55,7 +55,7 @@ extension String {
         
         return self.k_subText(from: from, to: to)
     }
-
+    
     //MARK: 替换指定区域的文字
     /// 替换指定区域的文字
     ///
@@ -91,7 +91,7 @@ extension String {
         var date = fat.date(from: dateStr)
         // 会少8个小时
         date != nil ? (date!.addTimeInterval(60.0 * 60.0 * 8.0)) : (print("时间格式不对应:k_toDate"))
-
+        
         return date ?? Date()
     }
     
@@ -124,7 +124,7 @@ extension String {
         let t1 = self.k_toDate(dateStr: self, formatter: formatter)
         let t2 = self.k_toDate(dateStr: otherTime, formatter: formatter)
         let result: ComparisonResult = t1.compare(t2)
-       
+        
         return resultDic[result]!
     }
     
@@ -146,7 +146,7 @@ extension String {
         }
         let selfCom = selfDate.k_YMDHMS()
         let nowCom = nowDate.k_YMDHMS()
-
+        
         if selfCom.year != nowCom.year {
             
             // 年不相等
@@ -174,115 +174,4 @@ extension String {
         }
         return "刚刚"
     }
-    
-}
-
-//MARK: 日期相关
-extension Date {
-    
-    //MARK: 指定日期 多加x小时
-    /// 指定日期 多加x小时
-    ///
-    /// - Parameter num: 添加的小时数
-    /// - Returns: 新时间
-    func k_addingHours(_ num: Int) -> Date {
-        
-        return self.addingTimeInterval(TimeInterval(60.0 * 60.0 * CGFloat(num)))
-    }
-    
-    //MARK: 指定日期的 年月日时分秒
-    /// 指定日期的 年月日时分秒
-    ///
-    /// - Returns: DateComponents.year...
-    func k_YMDHMS() -> DateComponents {
-        var calendar = Calendar.current
-        calendar.timeZone = TimeZone.current
-        let compent = calendar.dateComponents([.year, .day, .month, .hour, .minute, .second], from: self)
-        
-        return compent
-    }
-    
-    //MARK: 指定日期是 星期几
-    /// 指定日期是 星期几
-    ///
-    /// - Returns: 星期一..日
-    func k_weekDay() -> String {
-        let dataDic: [Int: String] = [1: "星期天", 2: "星期一", 3: "星期二", 4: "星期三", 5: "星期四", 6: "星期五", 7: "星期六"]
-        var calendar = Calendar.current
-        calendar.timeZone = TimeZone.current
-        let compent = calendar.dateComponents([.weekday], from: self)
-        
-        return dataDic[compent.weekday!]!
-    }
-    
-    //MARK: 指定日期转为字符串(不用在Date + 8小时)
-    /// 指定日期转为字符串(不用在Date + 8小时)
-    ///
-    /// - Parameter formatter: 格式 默认 yyyy-MM-dd HH:mm:ss
-    /// - Returns: 时间字符串
-    func k_toDateStr(_ formatter: String = "yyyy-MM-dd HH:mm:ss") -> String {
-        let fat = DateFormatter.init()
-        fat.timeZone = TimeZone.current
-        
-        fat.dateFormat = formatter
-        let str = fat.string(from: self)
-        
-        return str
-    }
-    
-    //MARK: 日期比较大小
-    /// 日期比较大小
-    ///
-    /// - Parameter otherDate: 其他日期
-    /// - Returns: 结果 0: 相等; 1: otherTime大; 2: otherTime小
-    func k_compareToDate(_ otherDate: Date) -> Int {
-        let resultDic: [ComparisonResult: Int] = [.orderedSame: 0, .orderedAscending: 1, .orderedDescending: 2]
-        let result: ComparisonResult = self.compare(otherDate)
-
-        return resultDic[result]!
-    }
-}
-
-extension UILabel {
-    
-    //MARK: 指定区域文字颜色变化
-    /// 指定区域文字颜色变化
-    ///
-    /// - Parameters:
-    ///   - text: 文字内容
-    ///   - range: 范围
-    ///   - color: 字体颜色
-    func k_setTextColor(text: String, range: NSRange, color: UIColor) {
-        let attStr = NSMutableAttributedString.init(string: text)
-        attStr.addAttributes([NSAttributedStringKey.foregroundColor : color], range: range)
-        
-        self.attributedText = attStr
-    }
-}
-
-extension UIColor {
-    
-    /// 随机色
-    class var k_randomColor: UIColor {
-        get {
-            let red = CGFloat(arc4random()%256)/255.0
-            let green = CGFloat(arc4random()%256)/255.0
-            let blue = CGFloat(arc4random()%256)/255.0
-            
-            return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
-        }
-    }
-    
-    /// rbg颜色
-    ///
-    /// - Parameters:
-    ///   - r: 一个大于1的数
-    ///   - g: 一个大于1的数
-    ///   - b: 一个大于1的数
-    /// - Returns: 新颜色
-    func k_colorWith(r: CGFloat, g: CGFloat, b: CGFloat, alpha: CGFloat = 1.0) -> UIColor {
-        
-        return UIColor.init(red: r / 255.0, green: g / 255.0, blue: b / 255.0, alpha: alpha)
-    }
-    
 }
