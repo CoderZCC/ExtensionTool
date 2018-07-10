@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F04930FB20F4A74500787CC8 /* kSaveDataTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F04930FA20F4A74500787CC8 /* kSaveDataTool.swift */; };
 		F077773520F2FC39003D7BD8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F077773420F2FC39003D7BD8 /* AppDelegate.swift */; };
 		F077773720F2FC39003D7BD8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F077773620F2FC39003D7BD8 /* ViewController.swift */; };
 		F077773A20F2FC39003D7BD8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F077773820F2FC39003D7BD8 /* Main.storyboard */; };
@@ -22,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F04930F920F4A08700787CC8 /* ExtensionTool.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ExtensionTool.entitlements; sourceTree = "<group>"; };
+		F04930FA20F4A74500787CC8 /* kSaveDataTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kSaveDataTool.swift; sourceTree = "<group>"; };
 		F077773120F2FC39003D7BD8 /* ExtensionTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExtensionTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F077773420F2FC39003D7BD8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F077773620F2FC39003D7BD8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +71,7 @@
 		F077773320F2FC39003D7BD8 /* ExtensionTool */ = {
 			isa = PBXGroup;
 			children = (
+				F04930F920F4A08700787CC8 /* ExtensionTool.entitlements */,
 				F077773420F2FC39003D7BD8 /* AppDelegate.swift */,
 				F077773620F2FC39003D7BD8 /* ViewController.swift */,
 				F077773820F2FC39003D7BD8 /* Main.storyboard */,
@@ -97,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				F0DAA5C420F44F05008E3B66 /* CircleImageView.swift */,
+				F04930FA20F4A74500787CC8 /* kSaveDataTool.swift */,
 			);
 			path = BaseViewTool;
 			sourceTree = "<group>";
@@ -133,6 +138,11 @@
 				TargetAttributes = {
 					F077773020F2FC39003D7BD8 = {
 						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -172,6 +182,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F04930FB20F4A74500787CC8 /* kSaveDataTool.swift in Sources */,
 				F077773720F2FC39003D7BD8 /* ViewController.swift in Sources */,
 				F0DAA5C720F4500B008E3B66 /* UITextView+Ext.swift in Sources */,
 				F0DAA5BC20F44118008E3B66 /* ExtensionTool.swift in Sources */,
@@ -324,8 +335,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ExtensionTool/ExtensionTool.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = Z3J38YFUTH;
 				INFOPLIST_FILE = ExtensionTool/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -343,8 +355,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ExtensionTool/ExtensionTool.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = Z3J38YFUTH;
 				INFOPLIST_FILE = ExtensionTool/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (

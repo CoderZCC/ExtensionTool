@@ -8,6 +8,12 @@
 
 import UIKit
 
+extension NSObject {
+    
+    
+    
+}
+
 extension UILabel {
     
     //MARK: 指定区域文字颜色变化
