@@ -8,7 +8,7 @@
 
 import UIKit
 
-var k_ImageViewClickActionKey: Int = 1
+var k_ImageViewClickActionKey: Int = 0
 typealias k_noArgumentCallBack = (()->Void)?
 
 extension UIImageView {
