@@ -8,6 +8,9 @@
 
 import UIKit
 
+var kImageViewClickActionKey: Int = 1
+typealias noArgumentCallBack = (()->Void)?
+
 extension UIImageView {
     
     //MARK: 设置为圆形控件
@@ -30,6 +33,22 @@ extension UIImageView {
         self.isUserInteractionEnabled = true
         let tap = UITapGestureRecognizer.init(target: target, action: action)
         self.addGestureRecognizer(tap)
+    }
+    /// 添加点击事件
+    ///
+    /// - Parameter clickAction: 点击回调
+    func k_addTarget(_ clickAction: noArgumentCallBack) {
+        
+        objc_setAssociatedObject(self, &kImageViewClickActionKey, clickAction, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        
+        self.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer.init(target: self, action: #selector(k_tapAction))
+        self.addGestureRecognizer(tap)
+    }
+    /// 点击事件
+    @objc func k_tapAction() {
+        
+        (objc_getAssociatedObject(self, &kImageViewClickActionKey) as! noArgumentCallBack)?()
     }
 }
 
