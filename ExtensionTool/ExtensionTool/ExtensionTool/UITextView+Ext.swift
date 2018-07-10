@@ -8,9 +8,9 @@
 
 import UIKit
 
-var kTextViewPlaceholderKey: Int = 0
-var kTextViewPlaceholderColorKey: Int = 1
-var kTextViewTextLimitLengthKey: Int = 2
+var k_TextViewPlaceholderKey: Int = 0
+var k_TextViewPlaceholderColorKey: Int = 1
+var k_TextViewTextLimitLengthKey: Int = 2
 
 extension UITextView {
     
@@ -19,7 +19,7 @@ extension UITextView {
         
         set {
             
-            objc_setAssociatedObject(self, &kTextViewPlaceholderColorKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, &k_TextViewPlaceholderColorKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             // 占位颜色
             if let placeholder = self.viewWithTag(101) as? UITextView {
                 
@@ -32,7 +32,7 @@ extension UITextView {
         }
         get {
             
-            return objc_getAssociatedObject(self, &kTextViewPlaceholderColorKey) as? UIColor
+            return objc_getAssociatedObject(self, &k_TextViewPlaceholderColorKey) as? UIColor
         }
     }
     
@@ -41,7 +41,7 @@ extension UITextView {
         
         set {
             
-            objc_setAssociatedObject(self, &kTextViewPlaceholderKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, &k_TextViewPlaceholderKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             // 接收通知
             NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextViewTextDidChange, object: nil, queue: OperationQueue.main) { (note) in
                 
@@ -59,7 +59,7 @@ extension UITextView {
         }
         get {
             
-            return objc_getAssociatedObject(self, &kTextViewPlaceholderKey) as? String
+            return objc_getAssociatedObject(self, &k_TextViewPlaceholderKey) as? String
         }
     }
     
@@ -68,7 +68,7 @@ extension UITextView {
         
         set {
             
-            objc_setAssociatedObject(self, &kTextViewTextLimitLengthKey, newValue ?? "", .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            objc_setAssociatedObject(self, &k_TextViewTextLimitLengthKey, newValue ?? "", .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             
             if let _ = self.k_placeholder {
                 
@@ -84,7 +84,7 @@ extension UITextView {
         }
         get {
             
-            return objc_getAssociatedObject(self, &kTextViewTextLimitLengthKey) as? Int
+            return objc_getAssociatedObject(self, &k_TextViewTextLimitLengthKey) as? Int
         }
     }
     

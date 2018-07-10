@@ -8,8 +8,8 @@
 
 import UIKit
 
-var kImageViewClickActionKey: Int = 1
-typealias noArgumentCallBack = (()->Void)?
+var k_ImageViewClickActionKey: Int = 1
+typealias k_noArgumentCallBack = (()->Void)?
 
 extension UIImageView {
     
@@ -37,9 +37,9 @@ extension UIImageView {
     /// 添加点击事件
     ///
     /// - Parameter clickAction: 点击回调
-    func k_addTarget(_ clickAction: noArgumentCallBack) {
+    func k_addTarget(_ clickAction: k_noArgumentCallBack) {
         
-        objc_setAssociatedObject(self, &kImageViewClickActionKey, clickAction, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        objc_setAssociatedObject(self, &k_ImageViewClickActionKey, clickAction, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         
         self.isUserInteractionEnabled = true
         let tap = UITapGestureRecognizer.init(target: self, action: #selector(k_tapAction))
@@ -48,7 +48,7 @@ extension UIImageView {
     /// 点击事件
     @objc func k_tapAction() {
         
-        (objc_getAssociatedObject(self, &kImageViewClickActionKey) as! noArgumentCallBack)?()
+        (objc_getAssociatedObject(self, &k_ImageViewClickActionKey) as! k_noArgumentCallBack)?()
     }
 }
 
