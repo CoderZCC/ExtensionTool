@@ -174,4 +174,26 @@ extension String {
         }
         return "刚刚"
     }
+  
+    //MARK: caches路径
+    /// caches路径
+    static var k_cachesPath: String {
+        
+        return NSHomeDirectory() + "/Library/Caches/"
+    }
+    
+    //MARK: documents路径
+    /// documents路径
+    static var k_documentsPath: String {
+        
+        return NSHomeDirectory() + "/Documents/"
+    }
+    
+    //MARK: tmp路径
+    /// tmp路径
+    static var k_tmpPath: String {
+        
+        return NSHomeDirectory() + "/tmp/"
+    }
+    
 }
