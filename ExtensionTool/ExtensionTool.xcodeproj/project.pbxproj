@@ -17,6 +17,7 @@
 		F0DAA5C020F4414F008E3B66 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DAA5BF20F4414F008E3B66 /* Date+Ext.swift */; };
 		F0DAA5C220F44177008E3B66 /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DAA5C120F44177008E3B66 /* UIImageView+Ext.swift */; };
 		F0DAA5C520F44F05008E3B66 /* CircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DAA5C420F44F05008E3B66 /* CircleImageView.swift */; };
+		F0DAA5C720F4500B008E3B66 /* UITextView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DAA5C620F4500B008E3B66 /* UITextView+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		F0DAA5BF20F4414F008E3B66 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		F0DAA5C120F44177008E3B66 /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
 		F0DAA5C420F44F05008E3B66 /* CircleImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImageView.swift; sourceTree = "<group>"; };
+		F0DAA5C620F4500B008E3B66 /* UITextView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextView+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				F0DAA5BD20F4412F008E3B66 /* String+Ext.swift */,
 				F0DAA5BF20F4414F008E3B66 /* Date+Ext.swift */,
 				F0DAA5C120F44177008E3B66 /* UIImageView+Ext.swift */,
+				F0DAA5C620F4500B008E3B66 /* UITextView+Ext.swift */,
 			);
 			path = ExtensionTool;
 			sourceTree = "<group>";
@@ -167,6 +170,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F077773720F2FC39003D7BD8 /* ViewController.swift in Sources */,
+				F0DAA5C720F4500B008E3B66 /* UITextView+Ext.swift in Sources */,
 				F0DAA5BC20F44118008E3B66 /* ExtensionTool.swift in Sources */,
 				F0DAA5C520F44F05008E3B66 /* CircleImageView.swift in Sources */,
 				F0DAA5BE20F4412F008E3B66 /* String+Ext.swift in Sources */,

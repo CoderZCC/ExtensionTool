@@ -37,6 +37,17 @@ extension UIColor {
             return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
         }
     }
+
+    /// rbg颜色
+    ///
+    /// - Parameters:
+    ///   - rgb: 一个大于1的数
+    ///   - alpha: 透明度 0.0~1.0
+    /// - Returns: 新颜色
+    static func k_colorWith(rgb: CGFloat, alpha: CGFloat = 1.0) -> UIColor {
+        
+        return UIColor.init(red: rgb / 255.0, green: rgb / 255.0, blue: rgb / 255.0, alpha: alpha)
+    }
     
     /// rbg颜色
     ///
@@ -44,6 +55,7 @@ extension UIColor {
     ///   - r: 一个大于1的数
     ///   - g: 一个大于1的数
     ///   - b: 一个大于1的数
+    ///   - alpha: 透明度 0.0~1.0
     /// - Returns: 新颜色
     static func k_colorWith(r: CGFloat, g: CGFloat, b: CGFloat, alpha: CGFloat = 1.0) -> UIColor {
         
