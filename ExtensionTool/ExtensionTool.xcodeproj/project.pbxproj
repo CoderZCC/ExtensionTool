@@ -14,6 +14,7 @@
 		F077773A20F2FC39003D7BD8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F077773820F2FC39003D7BD8 /* Main.storyboard */; };
 		F077773C20F2FC3A003D7BD8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F077773B20F2FC3A003D7BD8 /* Assets.xcassets */; };
 		F077773F20F2FC3A003D7BD8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F077773D20F2FC3A003D7BD8 /* LaunchScreen.storyboard */; };
+		F0962C3820F5CBA00086B24A /* DispatchQueue+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0962C3720F5CBA00086B24A /* DispatchQueue+Ext.swift */; };
 		F0DAA5BC20F44118008E3B66 /* ExtensionTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DAA5BB20F44118008E3B66 /* ExtensionTool.swift */; };
 		F0DAA5BE20F4412F008E3B66 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DAA5BD20F4412F008E3B66 /* String+Ext.swift */; };
 		F0DAA5C020F4414F008E3B66 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0DAA5BF20F4414F008E3B66 /* Date+Ext.swift */; };
@@ -34,6 +35,7 @@
 		F077773B20F2FC3A003D7BD8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F077773E20F2FC3A003D7BD8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F077774020F2FC3A003D7BD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F0962C3720F5CBA00086B24A /* DispatchQueue+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Ext.swift"; sourceTree = "<group>"; };
 		F0DAA5BB20F44118008E3B66 /* ExtensionTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionTool.swift; sourceTree = "<group>"; };
 		F0DAA5BD20F4412F008E3B66 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		F0DAA5BF20F4414F008E3B66 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				F0DAA5C120F44177008E3B66 /* UIImageView+Ext.swift */,
 				F0DAA5C620F4500B008E3B66 /* UITextView+Ext.swift */,
 				F0DAA5C820F4607E008E3B66 /* UIColor+Ext.swift */,
+				F0962C3720F5CBA00086B24A /* DispatchQueue+Ext.swift */,
 				F04930FC20F4B8BC00787CC8 /* Number+Ext.swift */,
 			);
 			path = ExtensionTool;
@@ -196,6 +199,7 @@
 				F0DAA5C920F4607E008E3B66 /* UIColor+Ext.swift in Sources */,
 				F077773520F2FC39003D7BD8 /* AppDelegate.swift in Sources */,
 				F0DAA5C020F4414F008E3B66 /* Date+Ext.swift in Sources */,
+				F0962C3820F5CBA00086B24A /* DispatchQueue+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
