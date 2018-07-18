@@ -20,7 +20,7 @@ extension Date {
         
         return self.addingTimeInterval(TimeInterval(60.0 * 60.0 * CGFloat(num)))
     }
-    
+
     //MARK: 指定日期的 年月日时分秒
     /// 指定日期的 年月日时分秒
     ///
@@ -31,6 +31,42 @@ extension Date {
         let compent = calendar.dateComponents([.year, .day, .month, .hour, .minute, .second], from: self)
         
         return compent
+    }
+    
+    //MARK: 是否是同一年
+    /// 是否是同一年
+    ///
+    /// - Parameter otherDate: 其他日期
+    /// - Returns: 结果
+    func k_isSameYear(otherDate: Date) -> Bool {
+        
+        
+        
+        return true
+    }
+    
+    //MARK: 是否是同一月
+    /// 是否是同一月
+    ///
+    /// - Parameter otherDate: 其他日期
+    /// - Returns: 结果
+    func k_isSameMonth(otherDate: Date) -> Bool {
+        
+        
+        
+        return true
+    }
+    
+    //MARK: 是否是同一天
+    /// 是否是同一天
+    ///
+    /// - Parameter otherDate: 其他日期
+    /// - Returns: 结果
+    func k_isSameDay(otherDate: Date) -> Bool {
+        
+        
+        
+        return true
     }
     
     //MARK: 指定日期是 星期几

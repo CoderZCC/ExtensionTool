@@ -155,7 +155,7 @@ extension kSaveDataTool {
     ///   - path: 文件路径
     /// - Returns: 结果
     @discardableResult
-    static func k_save(str: String, maxCount: Int = 5, to path: String) -> Bool {
+    static func k_save(str: String, maxCount: Int = Int.max, to path: String) -> Bool {
         
         var arr: [String] = []
         if let cachesArr = self.k_getStrArr(from: path) {
@@ -226,6 +226,49 @@ extension kSaveDataTool {
         return nil
     }
     
+    /// 保存字典
+    ///
+    /// - Parameters:
+    ///   - dic: 字典
+    ///   - path: 地址
+    /// - Returns: 是否
+    @discardableResult
+    static func k_saveData(dic: [String: Any], to path: String) -> Bool {
+        
+        let saveDic = NSMutableDictionary.init(dictionary: dic)
+        saveDic.addEntries(from: self.k_getData(from: path))
+       
+        return saveDic.write(toFile: path, atomically: true)
+    }
     
+    /// 获取字典数据
+    ///
+    /// - Parameter path: 路径
+    /// - Returns: 字典
+    static func k_getData(from path: String) -> [String: Any] {
+        
+        let saveDic = NSMutableDictionary.init(contentsOfFile: path)
+        if let saveDic = saveDic as? [String: Any] {
+            
+            return saveDic
+        }
+        return [:]
+    }
+    
+}
+
+//MARK: 归档解档
+extension kSaveDataTool {
+    
+    @discardableResult
+    class func k_saveModel(model: NSObject, to path: String) -> Bool {
+        
+        return NSKeyedArchiver.archiveRootObject(model, toFile: path)
+    }
+    class func k_getModel(from path: String) -> NSObject? {
+        let model = NSKeyedUnarchiver.unarchiveObject(withFile: path) as? NSObject
+        
+        return model
+    }
 }
 

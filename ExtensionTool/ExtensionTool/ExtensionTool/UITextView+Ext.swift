@@ -96,7 +96,8 @@ extension UITextView {
                 maskView?.text = placeholder
                 maskView?.textColor = self.k_placeholderColor ?? UIColor.lightGray
                 maskView?.font = self.font ?? UIFont.systemFont(ofSize: 14.0)
-                
+                maskView?.backgroundColor = self.backgroundColor
+
                 self.insertSubview(maskView!, at: 0)
             }
             if self != maskView! { maskView?.isHidden = !(self.text.isEmpty) }
