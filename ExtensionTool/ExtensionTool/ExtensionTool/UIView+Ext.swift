@@ -8,9 +8,100 @@
 
 import UIKit
 
+extension UIView {
+    
+    /// x
+    var k_x: CGFloat {
+        set {
+            
+            var newFrame = self.frame
+            newFrame.origin.x = newValue
+            self.frame = newFrame
+        }
+        get { return self.frame.origin.x }
+    }
+    /// y
+    var k_y: CGFloat {
+        set {
+            
+            var newFrame = self.frame
+            newFrame.origin.y = newValue
+            self.frame = newFrame
+        }
+        get { return self.frame.origin.y }
+    }
+    /// width
+    var k_width: CGFloat {
+        set {
+            
+            var newFrame = self.frame
+            newFrame.size.width = newValue
+            self.frame = newFrame
+        }
+        get { return self.frame.size.width }
+    }
+    /// height
+    var k_height: CGFloat {
+        set {
+            
+            var newFrame = self.frame
+            newFrame.size.height = newValue
+            self.frame = newFrame
+        }
+        get { return self.frame.size.height }
+    }
+    /// center
+    var k_center: CGPoint {
+        set {
+            
+            var newCenter = self.center
+            newCenter = newValue
+            self.center = newCenter
+        }
+        get { return self.center }
+    }
+    /// 中心点x
+    var k_centerX: CGFloat {
+        set {
+            
+            var newCenter = self.center
+            newCenter.x = newValue
+            self.center = newCenter
+        }
+        get { return self.center.x }
+    }
+    /// 中心点y
+    var k_centerY: CGFloat {
+        set {
+            
+            var newCenter = self.center
+            newCenter.y = newValue
+            self.center = newCenter
+        }
+        get {
+            return self.center.y
+        }
+    }
+    
+    
+}
+
+
 var k_UIViewClickActionKey: Int = 0
 
 extension UIView {
+    
+    //MARK: xib加载View
+    /// xib加载View
+    ///
+    /// - Returns: UIView
+    class func k_viewFromXib(size: CGSize = UIScreen.main.bounds.size) -> UIView {
+        let className = NSStringFromClass(self)
+        let xibView = Bundle.main.loadNibNamed(String(className), owner: nil, options: nil)?.last as! UIView
+        xibView.frame = CGRect(origin: CGPoint.zero, size: size)
+        
+        return xibView
+    }
     
     //MARK: 设置为圆形控件
     /// 设置为圆形控件
@@ -31,6 +122,7 @@ extension UIView {
         self.clipsToBounds = true
     }
     
+    //MARK: 设置边框
     /// 设置边框
     ///
     /// - Parameters:

@@ -33,40 +33,49 @@ extension Date {
         return compent
     }
     
-    //MARK: 是否是同一年
-    /// 是否是同一年
+    //MARK: 是否是今年
+    /// 是否是同今年
     ///
     /// - Parameter otherDate: 其他日期
     /// - Returns: 结果
-    func k_isSameYear(otherDate: Date) -> Bool {
+    func k_isThisYear(otherDate: Date) -> Bool {
+
+        /// 当前时间的年月日
+        let nowCompent = Date().k_YMDHMS()
+        /// self的年月日
+        let selfCompent = self.k_YMDHMS()
         
-        
-        
-        return true
+        return nowCompent.year! == selfCompent.year!
     }
     
-    //MARK: 是否是同一月
-    /// 是否是同一月
+    //MARK: 是否是今月
+    /// 是否是同今月
     ///
     /// - Parameter otherDate: 其他日期
     /// - Returns: 结果
-    func k_isSameMonth(otherDate: Date) -> Bool {
+    func k_isThisMonth(otherDate: Date) -> Bool {
         
+        /// 当前时间的年月日
+        let nowCompent = Date().k_YMDHMS()
+        /// self的年月日
+        let selfCompent = self.k_YMDHMS()
         
-        
-        return true
+        return (nowCompent.year! == selfCompent.year!) && (nowCompent.month! == selfCompent.month!)
     }
     
-    //MARK: 是否是同一天
-    /// 是否是同一天
+    //MARK: 是否是今天
+    /// 是否是今天
     ///
     /// - Parameter otherDate: 其他日期
     /// - Returns: 结果
-    func k_isSameDay(otherDate: Date) -> Bool {
+    func k_isThisDay(otherDate: Date) -> Bool {
+
+        /// 当前时间的年月日
+        let nowCompent = Date().k_YMDHMS()
+        /// self的年月日
+        let selfCompent = self.k_YMDHMS()
         
-        
-        
-        return true
+        return (nowCompent.year! == selfCompent.year!) && (nowCompent.month! == selfCompent.month!) && (nowCompent.day! == selfCompent.day!)
     }
     
     //MARK: 指定日期是 星期几

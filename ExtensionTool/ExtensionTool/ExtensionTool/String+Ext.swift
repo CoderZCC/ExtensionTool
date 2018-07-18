@@ -20,7 +20,7 @@ extension String {
     /// - Returns: 尺寸
     func k_textSize(size: CGSize, font: UIFont) -> CGSize {
         let nsStr = NSString.init(string: self)
-        let rect = nsStr.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font : font], context: nil)
+        let rect = nsStr.boundingRect(with: size, options: [.usesLineFragmentOrigin, .usesFontLeading], attributes: [NSAttributedStringKey.font : font], context: nil)
         
         return rect.size
     }

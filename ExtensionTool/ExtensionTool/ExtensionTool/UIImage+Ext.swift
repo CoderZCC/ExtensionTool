@@ -7,34 +7,55 @@
 //
 
 import UIKit
+import CoreFoundation
 
 extension UIImage {
     
-    static func k_setImage(url: String) -> UIImage {
+    //MARK: 改变图片大小
+    /// 改变图片大小
+    ///
+    /// - Parameter size: 修改的大小
+    /// - Returns: 新图片
+    func k_cropImageWith(newSize: CGSize) -> UIImage {
         
-        // 缓存
-        if let imgData = kCachesImgDic[url] {
+        let scale = self.size.width / self.size.height
+        var rect = CGRect(x: 0.0, y: 0.0, width: 0.0, height: 0.0)
+        
+        if scale > newSize.width / newSize.height {
             
-            return UIImage.init(data: imgData) ?? #imageLiteral(resourceName: "defaultImg")
+            rect.size.width = self.size.height * newSize.width / newSize.height
+            rect.origin.x = (self.size.width - rect.size.width) / 2.0
+            rect.size.height = self.size.height
+
+        } else {
+            
+            rect.origin.y = (self.size.height - self.size.width / newSize.width * newSize.height) / 2.0
+            rect.size.width = self.size.width
+            rect.size.height = self.size.width / newSize.width * newSize.height
         }
-        // 磁盘
-        let dic = kSaveDataTool.k_getData(from: kCachesImgDicPath)
-        if let imgData = dic[url] as? Data {
-            
-            kCachesImgDic[url] = imgData
-            return UIImage.init(data: imgData) ?? #imageLiteral(resourceName: "defaultImg")
-        }      
-        return #imageLiteral(resourceName: "defaultImg")
+        let imgRef = self.cgImage!.cropping(to: rect)
+        let newImg = UIImage.init(cgImage: imgRef!)
+        
+        return newImg
     }
     
     //MARK: 裁剪方形图片为圆形
-    /// 裁剪方形图片为圆形
+    /// 裁剪为圆形图片
     ///
-    /// - Parameter backColor: 填充颜色,默认白色
+    /// - Parameters:
+    ///   - backColor: 裁剪为圆形 空白区域的背景颜色 默认白色
+    ///   - borderColor: 边框颜色
+    ///   - borderWidth: 边框宽度
     /// - Returns: 新图片
-    func k_circleImage(backColor: UIColor = UIColor.white) -> UIImage {
+    func k_circleImage(backColor: UIColor = UIColor.white, borderColor: UIColor? = nil, borderWidth: CGFloat? = 0.0) -> UIImage {
         
-        let rect = CGRect(origin: CGPoint(), size: self.size)
+        // 圆形图片
+        let imgW: CGFloat = self.size.width
+        let imgH: CGFloat = self.size.height
+        let imgWH: CGFloat = min(imgW, imgH)
+        let squareImg = self.k_cropImageWith(newSize: CGSize.init(width: imgWH, height: imgWH))
+        // 圆形框
+        let rect = CGRect(origin: CGPoint(), size: squareImg.size)
         
         UIGraphicsBeginImageContextWithOptions(rect.size, true, UIScreen.main.scale)
         // 填充
@@ -45,12 +66,15 @@ extension UIImage {
         let circlePath = UIBezierPath.init(ovalIn: rect)
         circlePath.addClip()
         
-        self.draw(in: rect)
+        squareImg.draw(in: rect)
         
-        UIColor.darkGray.setStroke()
-        circlePath.lineWidth = 1.0
-        circlePath.stroke()
-        
+        // 是否有边框
+        if let borderColor = borderColor {
+            
+            borderColor.setStroke()
+            circlePath.lineWidth = borderWidth ?? 1.0
+            circlePath.stroke()
+        }
         let result = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
@@ -60,35 +84,43 @@ extension UIImage {
     //MARK: 压缩图片大小
     /// 压缩图片大小
     ///
-    /// - Parameter maxSizeKB: 最大尺寸 80.0KB
+    /// - Parameters:
+    ///   - imgSize: 图片大小 默认原图尺寸
+    ///   - kbSize: 压缩大小
     /// - Returns: 数据流
-    func k_pressImgSize(maxSizeKB: CGFloat = 80.0) -> Data {
+    func k_pressImgSize(imgSize: CGSize? = nil, kbSize: CGFloat = 80.0) -> Data {
         
-        var maxSize = maxSizeKB
+        // kb大小
+        var maxSize = kbSize
         let maxImageSize: CGFloat = 1024.0
         
         if (maxSize <= 0.0) {
             
             maxSize = 1024.0;
         }
-        
+        // 宽高
+        var newImg = self
+        if let imgSize = imgSize {
+            
+            newImg = self.k_cropImageWith(newSize: imgSize)
+        }
         //先调整分辨率
-        var newSize = CGSize.init(width: self.size.width, height: self.size.height)
+        var newSize = CGSize.init(width: newImg.size.width, height: newImg.size.height)
         
         let tempHeight = newSize.height / maxImageSize;
         let tempWidth = newSize.width / maxImageSize;
         
         if (tempWidth > 1.0 && tempWidth > tempHeight) {
             
-            newSize = CGSize.init(width: self.size.width / tempWidth, height: self.size.height / tempWidth)
+            newSize = CGSize.init(width: newImg.size.width / tempWidth, height: newImg.size.height / tempWidth)
             
         } else if (tempHeight > 1.0 && tempWidth < tempHeight){
             
-            newSize = CGSize.init(width: self.size.width / tempHeight, height: self.size.height / tempHeight)
+            newSize = CGSize.init(width: newImg.size.width / tempHeight, height: newImg.size.height / tempHeight)
         }
         UIGraphicsBeginImageContext(newSize)
         
-        self.draw(in: CGRect.init(x: 0, y: 0, width: newSize.width, height: newSize.height))
+        newImg.draw(in: CGRect.init(x: 0, y: 0, width: newSize.width, height: newSize.height))
         
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
