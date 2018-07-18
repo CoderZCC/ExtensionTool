@@ -22,18 +22,6 @@ class CircleImageView: UIImageView {
         self.setCircleImgV()
     }
     
-    /// 添加点击事件
-    ///
-    /// - Parameters:
-    ///   - target: 目标
-    ///   - action: 事件
-    func addTarget(_ target: Any, action: Selector) {
-        
-        self.isUserInteractionEnabled = true
-        let tap = UITapGestureRecognizer.init(target: target, action: action)
-        self.addGestureRecognizer(tap)
-    }
-    
     private func setCircleImgV() {
         
         self.contentMode = .scaleAspectFill
