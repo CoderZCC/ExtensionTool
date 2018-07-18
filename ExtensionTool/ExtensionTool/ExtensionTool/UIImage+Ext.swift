@@ -11,6 +11,23 @@ import CoreFoundation
 
 extension UIImage {
     
+    //MARK: 获取View的截图
+    /// 获取View的截图
+    ///
+    /// - Parameter view: view 默认是屏幕
+    /// - Returns: 截图
+    class func k_screenSnap(view: UIView = kWindow!) -> UIImage {
+        
+        UIGraphicsBeginImageContext(view.bounds.size)
+        let ctx = UIGraphicsGetCurrentContext()
+        view.layer.render(in: ctx!)
+        
+        let newImg = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImg!
+    }
+    
     //MARK: 改变图片大小
     /// 改变图片大小
     ///

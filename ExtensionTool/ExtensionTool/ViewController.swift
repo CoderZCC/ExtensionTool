@@ -16,25 +16,14 @@ let kRootVC = kWindow?.rootViewController
 let kBottomSpace: CGFloat = kHeight > 736.0 ? (34.0) : (0.0)
 
 class ViewController: UIViewController {
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.k_colorWith(rgb: 216.0)
         
-        self.view.addSubview(self.imgV)
         
     }
-    
-    lazy var imgV: UIImageView = {
-        let img = UIImage.init(named: "test")?.k_circleImage()
-        let imgV = UIImageView.init(image: img)
-        imgV.frame = CGRect.init(origin: CGPoint.zero, size: CGSize.init(width: 200.0, height: 200.0))
-        imgV.center = self.view.center
-        
-        return imgV
-    }()
- 
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
