@@ -56,7 +56,7 @@ extension UIImage {
         return newImg
     }
     
-    //MARK: 裁剪方形图片为圆形
+    //MARK: 裁剪圆形为圆形
     /// 裁剪为圆形图片
     ///
     /// - Parameters:
