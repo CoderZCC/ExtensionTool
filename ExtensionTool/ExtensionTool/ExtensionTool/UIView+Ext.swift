@@ -166,11 +166,11 @@ extension UIView {
         let tap = UITapGestureRecognizer.init(target: target, action: action)
         self.addGestureRecognizer(tap)
     }
-    
+
     /// 添加点击事件
     ///
     /// - Parameter clickAction: 点击回调
-    func k_addTarget(_ clickAction: k_gestureCallBack) {
+    func k_addTarget(_ clickAction: ((UIGestureRecognizer)->Void)?) {
         
         objc_setAssociatedObject(self, &k_UIViewClickActionKey, clickAction, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         
@@ -182,7 +182,7 @@ extension UIView {
     /// 添加长按事件
     ///
     /// - Parameter clickAction: 点击回调
-    func k_addLongPressTarget(_ clickAction: k_gestureCallBack) {
+    func k_addLongPressTarget(_ clickAction: ((UIGestureRecognizer)->Void)?) {
         
         objc_setAssociatedObject(self, &k_UIViewClickActionKey, clickAction, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         
@@ -194,7 +194,7 @@ extension UIView {
     /// 点击事件
     @objc func k_tapAction(tap: UIGestureRecognizer) {
         
-        (objc_getAssociatedObject(self, &k_UIViewClickActionKey) as! k_gestureCallBack)?(tap)
+        (objc_getAssociatedObject(self, &k_UIViewClickActionKey) as! ((UIGestureRecognizer)->Void)?)?(tap)
     }
     
     //MARK: 单击移除键盘

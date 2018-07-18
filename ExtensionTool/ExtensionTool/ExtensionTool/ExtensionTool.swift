@@ -9,9 +9,6 @@
 import UIKit
 import UserNotifications
 
-typealias k_noArgumentCallBack = (()->Void)?
-typealias k_gestureCallBack = ((UIGestureRecognizer)->Void)?
-
 extension NSObject {
 
     /// 当前活跃的导航栏
@@ -37,14 +34,7 @@ extension NSObject {
             
             // 导航栏
             return navVC
-            
         }
-//        else if let sliderVC = rootVC as? SliderDrawerViewController {
-//
-//            // 侧滑
-//            let main = sliderVC.mainVC
-//            return self.navigationVC(checkVC: main!)
-//        }
         return nil
     }
     
@@ -73,13 +63,7 @@ extension NSObject {
             
             currentVC = self.getCurrentVC(checkVC: navVC.visibleViewController!)
         
-        }
-//        else if let sliderVC = rVC as? SliderDrawerViewController {
-//
-//            currentVC = self.getCurrentVC(checkVC: sliderVC.mainVC!)
-//
-//        }
-        else {
+        } else {
             
             currentVC = rVC
         }
