@@ -34,6 +34,7 @@
 		F0B5D5AF20FED64F00F642B1 /* ExtensionTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B5D59920FED64F00F642B1 /* ExtensionTool.swift */; };
 		F0B5D5B020FED64F00F642B1 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B5D59A20FED64F00F642B1 /* UIViewController+Ext.swift */; };
 		F0B5D5B120FED64F00F642B1 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B5D59B20FED64F00F642B1 /* UIView+Ext.swift */; };
+		F0B5D5BF20FF2F8500F642B1 /* NotificationCenter+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B5D5BE20FF2F8500F642B1 /* NotificationCenter+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +68,7 @@
 		F0B5D59920FED64F00F642B1 /* ExtensionTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionTool.swift; sourceTree = "<group>"; };
 		F0B5D59A20FED64F00F642B1 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		F0B5D59B20FED64F00F642B1 /* UIView+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		F0B5D5BE20FF2F8500F642B1 /* NotificationCenter+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NotificationCenter+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 				F0B5D59920FED64F00F642B1 /* ExtensionTool.swift */,
 				F0B5D59A20FED64F00F642B1 /* UIViewController+Ext.swift */,
 				F0B5D59B20FED64F00F642B1 /* UIView+Ext.swift */,
+				F0B5D5BE20FF2F8500F642B1 /* NotificationCenter+Ext.swift */,
 			);
 			path = ExtensionTool;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 				F0B5D5AC20FED64F00F642B1 /* UIColor+Ext.swift in Sources */,
 				F0B5D5AA20FED64F00F642B1 /* UIButton+Ext.swift in Sources */,
 				F0B5D5B120FED64F00F642B1 /* UIView+Ext.swift in Sources */,
+				F0B5D5BF20FF2F8500F642B1 /* NotificationCenter+Ext.swift in Sources */,
 				F0B5D59D20FED64F00F642B1 /* VideoPlayer.swift in Sources */,
 				F0B5D5A520FED64F00F642B1 /* Date+Ext.swift in Sources */,
 				F0B5D5A820FED64F00F642B1 /* UIIImageView+Ext.swift in Sources */,
