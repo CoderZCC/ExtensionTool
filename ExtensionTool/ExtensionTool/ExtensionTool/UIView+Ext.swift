@@ -10,6 +10,29 @@ import UIKit
 
 extension UIView {
     
+    // IBInspectble
+    @IBInspectable var borderColor: UIColor? {
+        set {
+            self.layer.borderColor = newValue?.cgColor
+        }
+        get { return nil }
+    }
+    @IBInspectable var borderWidth: CGFloat {
+        set {
+            self.layer.borderWidth = newValue
+        }
+        get { return 0.0 }
+    }
+    @IBInspectable var cornerRadius: CGFloat {
+        set {
+            self.layer.cornerRadius = newValue
+        }
+        get { return 0.0 }
+    }
+}
+
+extension UIView {
+    
     /// x
     var k_x: CGFloat {
         set {
@@ -192,7 +215,26 @@ extension UIView {
         
         self.endEditing(true)
     }
-    
 }
 
 
+/// 国际化
+extension UILabel {
+    
+    @IBInspectable var localizedString: String {
+        set {
+            self.text = NSLocalizedString(newValue, comment: "")
+        }
+        get { return "" }
+    }
+}
+
+extension UIButton {
+    
+    @IBInspectable var localizedString: String {
+        set {
+            self.setTitle(NSLocalizedString(newValue, comment: ""), for: self.state)
+        }
+        get { return "" }
+    }
+}

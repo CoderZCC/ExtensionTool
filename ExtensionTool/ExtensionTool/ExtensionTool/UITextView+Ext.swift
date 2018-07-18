@@ -13,6 +13,21 @@ var k_TextViewPlaceholderColorKey: Int = 1
 
 extension UITextView {
     
+    /// xib
+    @IBInspectable var placeholder: String? {
+        set {
+            self.k_placeholder = newValue
+        }
+        get { return nil }
+    }
+    /// xib
+    @IBInspectable var placeholderColor: UIColor? {
+        set {
+            self.k_placeholderColor = newValue
+        }
+        get { return nil }
+    }
+    
     /// 占位文字颜色
     var k_placeholderColor: UIColor? {
         
@@ -107,6 +122,13 @@ extension UITextView {
 
 extension UITextField {
     
+    /// xib
+    @IBInspectable var placeholderColor: UIColor? {
+        set {
+            self.k_placeholderColor = newValue
+        }
+        get { return nil }
+    }
     /// 占位文字颜色
     var k_placeholderColor: UIColor? {
         
