@@ -36,7 +36,7 @@ extension CameraTool: UIImagePickerControllerDelegate, UINavigationControllerDel
         imgPicker.sourceType = .photoLibrary
         imgPicker.delegate = tool
         
-        kRootVC?.present(imgPicker, animated: true, completion: nil)
+        kRootVC.present(imgPicker, animated: true, completion: nil)
     }
     
     /// 开始拍照
@@ -57,7 +57,7 @@ extension CameraTool: UIImagePickerControllerDelegate, UINavigationControllerDel
         imgPicker.sourceType = .camera
         imgPicker.delegate = tool
         
-        kRootVC?.present(imgPicker, animated: true, completion: nil)
+        kRootVC.present(imgPicker, animated: true, completion: nil)
     }
     
     /// 完成

@@ -16,7 +16,7 @@ extension UIImage {
     ///
     /// - Parameter view: view 默认是屏幕
     /// - Returns: 截图
-    class func k_screenSnap(view: UIView = kWindow!) -> UIImage {
+    class func k_screenSnap(view: UIView = kWindow) -> UIImage {
         
         UIGraphicsBeginImageContext(view.bounds.size)
         let ctx = UIGraphicsGetCurrentContext()

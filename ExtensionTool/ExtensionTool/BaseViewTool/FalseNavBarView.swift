@@ -191,17 +191,13 @@ class AppTool: NSObject {
     @discardableResult
     static func getScreenSnapShot() -> UIImage? {
         
-        if let window = kWindow {
-            
-            UIGraphicsBeginImageContextWithOptions(window.bounds.size, false, 0.0)
-            window.layer.render(in: UIGraphicsGetCurrentContext()!)
-            
-            let image = UIGraphicsGetImageFromCurrentImageContext()
-            UIGraphicsEndImageContext()
-            
-            return image
-        }
-        return nil
+        UIGraphicsBeginImageContextWithOptions(kWindow.bounds.size, false, 0.0)
+        kWindow.layer.render(in: UIGraphicsGetCurrentContext()!)
+        
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return image
     }
     /// 获取当前活跃的导航栏控制器
     static func getCurrentNavVC() -> UINavigationController? {
