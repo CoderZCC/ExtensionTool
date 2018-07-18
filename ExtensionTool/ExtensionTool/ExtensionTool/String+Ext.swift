@@ -196,16 +196,16 @@ extension String {
         return NSHomeDirectory() + "/tmp/"
     }
     
+    //MARK: 转为Int
     /// 转为Int
     ///
     /// - Returns: Int
     func k_toInt() -> Int {
-        if let num = Int(self) {
-            return num
-        }
-        return 0
+
+        return Int(self) ?? 0
     }
     
+    //MARK: 转为转为CGFloat
     /// 转为CGFloat
     ///
     /// - Returns: CGFloat

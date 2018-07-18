@@ -26,7 +26,6 @@ extension Int {
     func k_toString() -> String {
         return "\(self)"
     }
-    
 }
 
 extension CGFloat {

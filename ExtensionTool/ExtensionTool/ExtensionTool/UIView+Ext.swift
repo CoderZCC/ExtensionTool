@@ -82,10 +82,7 @@ extension UIView {
             return self.center.y
         }
     }
-    
-    
 }
-
 
 var k_UIViewClickActionKey: Int = 0
 
