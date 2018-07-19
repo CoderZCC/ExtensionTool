@@ -17,12 +17,12 @@ var kNotificationCenterKey: Int = 0
 extension NSObject {
     
     /// 通知对象,用于移除通知
-    var k_observer: NSObjectProtocol {
+    var k_observer: [String: NSObjectProtocol]? {
         
         set {
             objc_setAssociatedObject(self, &kNotificationCenterKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
-        get { return objc_getAssociatedObject(self, &kNotificationCenterKey) as! NSObjectProtocol }
+        get { return objc_getAssociatedObject(self, &kNotificationCenterKey) as? [String: NSObjectProtocol] }
     }
     
     /// 发送通知
@@ -46,8 +46,12 @@ extension NSObject {
     @discardableResult
     func k_addObserver(forName: NotificationName, object: Any? = nil, queue: OperationQueue? = OperationQueue.main, using: @escaping (Notification) -> Void) -> NSObjectProtocol {
         
-        self.k_observer = NotificationCenter.default.addObserver(forName: NSNotification.Name.init("\(forName)"), object: object, queue: queue, using: using)
-        return self.k_observer
+        var noteDic: [String: NSObjectProtocol] = self.k_observer ?? [:]
+        let value = NotificationCenter.default.addObserver(forName: NSNotification.Name.init("\(forName)"), object: object, queue: queue, using: using)
+        noteDic["\(forName)"] = value
+        self.k_observer = noteDic
+        
+        return value
     }
     
     /// 移除通知
@@ -55,15 +59,23 @@ extension NSObject {
     /// - Parameters:
     ///   - name: 通知枚举
     ///   - object: 传递的对象
-    func k_removeObserver(name: NotificationName? = nil, object: AnyClass? = nil) {
+    func k_removeObserver(name: NotificationName? = nil, object: Any? = nil) {
         
         if let name = name {
             
-            NotificationCenter.default.removeObserver(self.k_observer, name: NSNotification.Name.init("\(name)"), object: object)
-
+            let key = "\(name)"
+            if let value = (self.k_observer ?? [:])["\(name)"] {
+                
+                NotificationCenter.default.removeObserver(value, name: .init(key), object: object)
+            }
+            
         } else {
             
-            NotificationCenter.default.removeObserver(self.k_observer)
+            for value in self.k_observer ?? [:] {
+                
+                NotificationCenter.default.removeObserver(value)
+            }
+            self.k_observer = nil
         }
     }
 }
