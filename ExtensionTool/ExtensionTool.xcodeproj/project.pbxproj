@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F054045321002C9600E3EF87 /* PushToFromStr+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F054045221002C9600E3EF87 /* PushToFromStr+Ext.swift */; };
+		F054045321002C9600E3EF87 /* PushFromStr+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F054045221002C9600E3EF87 /* PushFromStr+Ext.swift */; };
 		F077773520F2FC39003D7BD8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F077773420F2FC39003D7BD8 /* AppDelegate.swift */; };
 		F077773720F2FC39003D7BD8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F077773620F2FC39003D7BD8 /* ViewController.swift */; };
 		F077773A20F2FC39003D7BD8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F077773820F2FC39003D7BD8 /* Main.storyboard */; };
@@ -41,7 +41,7 @@
 
 /* Begin PBXFileReference section */
 		F04930F920F4A08700787CC8 /* ExtensionTool.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ExtensionTool.entitlements; sourceTree = "<group>"; };
-		F054045221002C9600E3EF87 /* PushToFromStr+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PushToFromStr+Ext.swift"; sourceTree = "<group>"; };
+		F054045221002C9600E3EF87 /* PushFromStr+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PushFromStr+Ext.swift"; sourceTree = "<group>"; };
 		F077773120F2FC39003D7BD8 /* ExtensionTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExtensionTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F077773420F2FC39003D7BD8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F077773620F2FC39003D7BD8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -152,7 +152,7 @@
 				F0B5D59520FED64F00F642B1 /* String+Ext.swift */,
 				F0B5D59720FED64F00F642B1 /* DispatchQueue+Ext.swift */,
 				F0B5D5BE20FF2F8500F642B1 /* NotificationCenter+Ext.swift */,
-				F054045221002C9600E3EF87 /* PushToFromStr+Ext.swift */,
+				F054045221002C9600E3EF87 /* PushFromStr+Ext.swift */,
 			);
 			path = ExtensionTool;
 			sourceTree = "<group>";
@@ -244,7 +244,7 @@
 				F0B5D5B120FED64F00F642B1 /* UIView+Ext.swift in Sources */,
 				F0B5D5C120FF409600F642B1 /* UIScrollView+Ext.swift in Sources */,
 				F0B5D5BF20FF2F8500F642B1 /* NotificationCenter+Ext.swift in Sources */,
-				F054045321002C9600E3EF87 /* PushToFromStr+Ext.swift in Sources */,
+				F054045321002C9600E3EF87 /* PushFromStr+Ext.swift in Sources */,
 				F0B5D59D20FED64F00F642B1 /* VideoPlayer.swift in Sources */,
 				F0B5D5A520FED64F00F642B1 /* Date+Ext.swift in Sources */,
 				F0B5D5A820FED64F00F642B1 /* UIIImageView+Ext.swift in Sources */,
