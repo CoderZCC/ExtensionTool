@@ -68,6 +68,7 @@ extension NSObject {
                 
                 NotificationCenter.default.removeObserver(value, name: .init(key), object: object)
             }
+            self.k_observer?.removeValue(forKey: key)
             
         } else {
             

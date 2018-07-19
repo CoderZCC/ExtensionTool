@@ -22,13 +22,6 @@ class ViewController: UIViewController {
 
     }
     
-    
-    @IBAction func btnAction() {
-        
-
-
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
