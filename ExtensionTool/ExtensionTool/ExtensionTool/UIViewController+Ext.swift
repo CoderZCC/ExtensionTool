@@ -42,7 +42,7 @@ extension NSObject {
     /// 当前活跃的导航栏
     ///
     /// - Returns: 导航栏
-    private func navigationVC(checkVC: UIViewController? = nil) -> UINavigationController? {
+    fileprivate func navigationVC(checkVC: UIViewController? = nil) -> UINavigationController? {
         
         let rootVC = checkVC == nil ? (kRootVC) : (checkVC)
         if let tabBarVC = rootVC as? UITabBarController {
@@ -61,11 +61,11 @@ extension NSObject {
     /// 当前活跃的控制器
     ///
     /// - Returns: 控制器
-    private func currentVC() -> UIViewController {
+    fileprivate func currentVC() -> UIViewController {
         
         return self.getCurrentVC()
     }
-    private func getCurrentVC(checkVC: UIViewController? = nil) -> UIViewController {
+    fileprivate func getCurrentVC(checkVC: UIViewController? = nil) -> UIViewController {
         
         var rVC: UIViewController = checkVC == nil ? (kRootVC) : (checkVC!)
         var currentVC: UIViewController!

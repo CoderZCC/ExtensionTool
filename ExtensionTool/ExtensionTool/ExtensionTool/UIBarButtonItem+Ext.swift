@@ -14,13 +14,13 @@ extension UIBarButtonItem {
     
     /// 点击回调
     var k_barItemCallBack: (()->Void)? {
-        
+
         set {
-            
+
             objc_setAssociatedObject(self, &kUIBarItemActionKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
         get {
-            
+
             return objc_getAssociatedObject(self, &kUIBarItemActionKey) as! (()->Void)?
         }
     }
@@ -31,9 +31,9 @@ extension UIBarButtonItem {
     ///   - style: 类型 默认 plain
     ///   - clickCallBack: 点击回调
     /// - Returns: UIBarButtonItem
-    convenience init(image: UIImage?, style: UIBarButtonItemStyle = .plain, clickCallBack: (()->Void)?) {
-        
-        self.init(image: image, style: style, target: nil, action: #selector(k_clickAction))
+    convenience init(image: UIImage, style: UIBarButtonItemStyle = .plain, clickCallBack: (()->Void)?) {
+
+        self.init(image: image, style: style, target: nil, action: #selector(k_myAction))
         self.k_barItemCallBack = clickCallBack
     }
     /// 添加点击事件回调
@@ -43,14 +43,15 @@ extension UIBarButtonItem {
     ///   - style: 类型 默认 plain
     ///   - clickCallBack: 点击回调
     /// - Returns: UIBarButtonItem
-    convenience init(title: String?, style: UIBarButtonItemStyle = .plain, clickCallBack: (()->Void)?) {
-        
-        self.init(title: title, style: style, target: nil, action: #selector(k_clickAction))
+    convenience init(title: String, style: UIBarButtonItemStyle = .plain, clickCallBack: (()->Void)?) {
+
+        self.init(title: title, style: style, target: nil, action: #selector(k_myAction))
         self.k_barItemCallBack = clickCallBack
     }
     /// 点击事件
-    @objc func k_clickAction() {
-        
+    @objc func k_myAction() {
+
         self.k_barItemCallBack?()
     }
 }
+

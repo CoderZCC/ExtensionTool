@@ -8,15 +8,43 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class BaseViewController: UIViewController {
+   
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    deinit {
+        print("###\(self)销毁了###\n")
+    }
+}
+
+class ViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.k_colorWith(hexInt: 0x333333)
-
-
+        
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
+
+class SecondViewController: BaseViewController {
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.backgroundColor = UIColor.white
+      
+    }
+ 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

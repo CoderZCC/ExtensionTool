@@ -31,7 +31,7 @@ extension UIButton {
         self.setTitle(title, for: state)
     }
     
-    private func positionLabelRespectToImage(title: String, position: UIViewContentMode, spacing: CGFloat) {
+    fileprivate func positionLabelRespectToImage(title: String, position: UIViewContentMode, spacing: CGFloat) {
         let imageSize = self.imageRect(forContentRect: self.frame)
         let titleFont = self.titleLabel?.font!
         let titleSize = title.size(withAttributes: [NSAttributedStringKey.font: titleFont!])
