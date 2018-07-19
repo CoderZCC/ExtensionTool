@@ -21,20 +21,3 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
 }
-
-class SecondViewController: UIViewController {
-    
-    @objc var name: String = ""
-    @objc var password: String = ""
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.view.backgroundColor = UIColor.red
-        
-        print("name:\(self.name)")
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-}

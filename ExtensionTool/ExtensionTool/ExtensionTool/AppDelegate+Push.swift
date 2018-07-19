@@ -11,10 +11,9 @@ import UserNotifications
 
 extension AppDelegate {
    
-    /// 注册本地推送
-    func regitserAppLocalNote() {
+    /// 注册推送
+    func regitserAppRemoteAndLocalNote() {
         
-        // 注册通知
         if #available(iOS 10.0, *) {
             
             self.initRemoteAndLocalNoteWithiOS10()
