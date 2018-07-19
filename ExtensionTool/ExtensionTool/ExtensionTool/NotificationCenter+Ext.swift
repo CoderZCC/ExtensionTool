@@ -55,8 +55,15 @@ extension NSObject {
     /// - Parameters:
     ///   - name: 通知枚举
     ///   - object: 传递的对象
-    func k_removeObserver(name: NotificationName, object: Any? = nil) {
+    func k_removeObserver(name: NotificationName? = nil, object: AnyClass? = nil) {
         
-        NotificationCenter.default.removeObserver(self.k_observer)
+        if let name = name {
+            
+            NotificationCenter.default.removeObserver(self.k_observer, name: NSNotification.Name.init("\(name)"), object: object)
+
+        } else {
+            
+            NotificationCenter.default.removeObserver(self.k_observer)
+        }
     }
 }
