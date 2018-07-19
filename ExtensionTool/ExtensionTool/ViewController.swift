@@ -12,8 +12,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.k_colorWith(rgb: 216.0)
-        
+        self.view.backgroundColor = UIColor.k_colorWith(hexInt: 0x333333)
+
 
     }
     
