@@ -11,6 +11,10 @@
 		F0412042210091A20003F7A2 /* CameraTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0412041210091A20003F7A2 /* CameraTool.swift */; };
 		F0412045210091C50003F7A2 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0412043210091C50003F7A2 /* PreviewViewController.swift */; };
 		F054045321002C9600E3EF87 /* PushFromStr+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F054045221002C9600E3EF87 /* PushFromStr+Ext.swift */; };
+		F0561C2F2101BA950007496F /* UILabel+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0561C2E2101BA950007496F /* UILabel+Ext.swift */; };
+		F0561C312101CFED0007496F /* Localized+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0561C302101CFED0007496F /* Localized+Ext.swift */; };
+		F0561C372101DBCA0007496F /* LanguageTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0561C362101DBCA0007496F /* LanguageTool.swift */; };
+		F0561C3A2101DC5C0007496F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F0561C3C2101DC5C0007496F /* Localizable.strings */; };
 		F077773520F2FC39003D7BD8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F077773420F2FC39003D7BD8 /* AppDelegate.swift */; };
 		F077773720F2FC39003D7BD8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F077773620F2FC39003D7BD8 /* ViewController.swift */; };
 		F077773A20F2FC39003D7BD8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F077773820F2FC39003D7BD8 /* Main.storyboard */; };
@@ -47,6 +51,11 @@
 		F0412043210091C50003F7A2 /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 		F04930F920F4A08700787CC8 /* ExtensionTool.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ExtensionTool.entitlements; sourceTree = "<group>"; };
 		F054045221002C9600E3EF87 /* PushFromStr+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PushFromStr+Ext.swift"; sourceTree = "<group>"; };
+		F0561C2E2101BA950007496F /* UILabel+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Ext.swift"; sourceTree = "<group>"; };
+		F0561C302101CFED0007496F /* Localized+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Localized+Ext.swift"; sourceTree = "<group>"; };
+		F0561C362101DBCA0007496F /* LanguageTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageTool.swift; sourceTree = "<group>"; };
+		F0561C3B2101DC5C0007496F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F0561C3D2101DC670007496F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		F077773120F2FC39003D7BD8 /* ExtensionTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExtensionTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F077773420F2FC39003D7BD8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F077773620F2FC39003D7BD8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +111,7 @@
 		F077772820F2FC39003D7BD8 = {
 			isa = PBXGroup;
 			children = (
+				F0561C3C2101DC5C0007496F /* Localizable.strings */,
 				F077773320F2FC39003D7BD8 /* ExtensionTool */,
 				F077773220F2FC39003D7BD8 /* Products */,
 			);
@@ -141,6 +151,7 @@
 				F0B5D58820FED64F00F642B1 /* SliderDrawerViewController.swift */,
 				F0B5D58A20FED64F00F642B1 /* CircleImageView.swift */,
 				F0B5D58B20FED64F00F642B1 /* FalseNavBarView.swift */,
+				F0561C362101DBCA0007496F /* LanguageTool.swift */,
 			);
 			path = BaseViewTool;
 			sourceTree = "<group>";
@@ -158,6 +169,8 @@
 				F0B5D59220FED64F00F642B1 /* UIIImageView+Ext.swift */,
 				F0B5D58E20FED64F00F642B1 /* UIImage+Ext.swift */,
 				F0B5D59420FED64F00F642B1 /* UIButton+Ext.swift */,
+				F0561C2E2101BA950007496F /* UILabel+Ext.swift */,
+				F0561C302101CFED0007496F /* Localized+Ext.swift */,
 				F0B5D59620FED64F00F642B1 /* UIColor+Ext.swift */,
 				F0B5D59320FED64F00F642B1 /* UIBarButtonItem+Ext.swift */,
 				F0B5D58F20FED64F00F642B1 /* Date+Ext.swift */,
@@ -221,6 +234,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = F077772820F2FC39003D7BD8;
 			productRefGroup = F077773220F2FC39003D7BD8 /* Products */;
@@ -238,6 +252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F077773F20F2FC3A003D7BD8 /* LaunchScreen.storyboard in Resources */,
+				F0561C3A2101DC5C0007496F /* Localizable.strings in Resources */,
 				F077773C20F2FC3A003D7BD8 /* Assets.xcassets in Resources */,
 				F077773A20F2FC39003D7BD8 /* Main.storyboard in Resources */,
 			);
@@ -254,7 +269,9 @@
 				F0412042210091A20003F7A2 /* CameraTool.swift in Sources */,
 				F0B5D5A120FED64F00F642B1 /* CircleImageView.swift in Sources */,
 				F0B5D59E20FED64F00F642B1 /* kSaveDataTool.swift in Sources */,
+				F0561C2F2101BA950007496F /* UILabel+Ext.swift in Sources */,
 				F0B5D5A720FED64F00F642B1 /* AppDelegate+Push.swift in Sources */,
+				F0561C312101CFED0007496F /* Localized+Ext.swift in Sources */,
 				F0B5D5AE20FED64F00F642B1 /* Number+Ext.swift in Sources */,
 				F0412045210091C50003F7A2 /* PreviewViewController.swift in Sources */,
 				F0B5D5B020FED64F00F642B1 /* UIViewController+Ext.swift in Sources */,
@@ -263,6 +280,7 @@
 				F0B5D5B120FED64F00F642B1 /* UIView+Ext.swift in Sources */,
 				F0B5D5C120FF409600F642B1 /* UIScrollView+Ext.swift in Sources */,
 				F0B5D5BF20FF2F8500F642B1 /* NotificationCenter+Ext.swift in Sources */,
+				F0561C372101DBCA0007496F /* LanguageTool.swift in Sources */,
 				F054045321002C9600E3EF87 /* PushFromStr+Ext.swift in Sources */,
 				F0B5D59D20FED64F00F642B1 /* VideoPlayer.swift in Sources */,
 				F0B5D5A520FED64F00F642B1 /* Date+Ext.swift in Sources */,
@@ -285,6 +303,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		F0561C3C2101DC5C0007496F /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F0561C3B2101DC5C0007496F /* en */,
+				F0561C3D2101DC670007496F /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		F077773820F2FC39003D7BD8 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -308,6 +335,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -368,6 +396,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
