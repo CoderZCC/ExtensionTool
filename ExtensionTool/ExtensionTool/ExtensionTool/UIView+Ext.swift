@@ -74,6 +74,17 @@ extension UIView {
         }
         get { return self.frame.size.height }
     }
+    /// size
+    var k_size: CGSize {
+        set {
+            
+            var newFrame = self.frame
+            newFrame.size = newValue
+            self.frame = newFrame
+        }
+        get { return self.frame.size }
+    }
+    
     /// center
     var k_center: CGPoint {
         set {

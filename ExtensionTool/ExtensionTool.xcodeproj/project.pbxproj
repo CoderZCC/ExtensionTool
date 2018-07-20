@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		F0412021210079BB0003F7A2 /* Timer+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0412020210079BB0003F7A2 /* Timer+Ext.swift */; };
+		F0412042210091A20003F7A2 /* CameraTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0412041210091A20003F7A2 /* CameraTool.swift */; };
+		F0412045210091C50003F7A2 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0412043210091C50003F7A2 /* PreviewViewController.swift */; };
 		F054045321002C9600E3EF87 /* PushFromStr+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F054045221002C9600E3EF87 /* PushFromStr+Ext.swift */; };
 		F077773520F2FC39003D7BD8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F077773420F2FC39003D7BD8 /* AppDelegate.swift */; };
 		F077773720F2FC39003D7BD8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F077773620F2FC39003D7BD8 /* ViewController.swift */; };
@@ -18,7 +20,6 @@
 		F0B5D59D20FED64F00F642B1 /* VideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B5D58620FED64F00F642B1 /* VideoPlayer.swift */; };
 		F0B5D59E20FED64F00F642B1 /* kSaveDataTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B5D58720FED64F00F642B1 /* kSaveDataTool.swift */; };
 		F0B5D59F20FED64F00F642B1 /* SliderDrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B5D58820FED64F00F642B1 /* SliderDrawerViewController.swift */; };
-		F0B5D5A020FED64F00F642B1 /* CameraTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B5D58920FED64F00F642B1 /* CameraTool.swift */; };
 		F0B5D5A120FED64F00F642B1 /* CircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B5D58A20FED64F00F642B1 /* CircleImageView.swift */; };
 		F0B5D5A220FED64F00F642B1 /* FalseNavBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B5D58B20FED64F00F642B1 /* FalseNavBarView.swift */; };
 		F0B5D5A320FED64F00F642B1 /* UITextView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B5D58D20FED64F00F642B1 /* UITextView+Ext.swift */; };
@@ -42,6 +43,8 @@
 
 /* Begin PBXFileReference section */
 		F0412020210079BB0003F7A2 /* Timer+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timer+Ext.swift"; sourceTree = "<group>"; };
+		F0412041210091A20003F7A2 /* CameraTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraTool.swift; sourceTree = "<group>"; };
+		F0412043210091C50003F7A2 /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 		F04930F920F4A08700787CC8 /* ExtensionTool.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ExtensionTool.entitlements; sourceTree = "<group>"; };
 		F054045221002C9600E3EF87 /* PushFromStr+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PushFromStr+Ext.swift"; sourceTree = "<group>"; };
 		F077773120F2FC39003D7BD8 /* ExtensionTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExtensionTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,7 +58,6 @@
 		F0B5D58620FED64F00F642B1 /* VideoPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayer.swift; sourceTree = "<group>"; };
 		F0B5D58720FED64F00F642B1 /* kSaveDataTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = kSaveDataTool.swift; sourceTree = "<group>"; };
 		F0B5D58820FED64F00F642B1 /* SliderDrawerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderDrawerViewController.swift; sourceTree = "<group>"; };
-		F0B5D58920FED64F00F642B1 /* CameraTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraTool.swift; sourceTree = "<group>"; };
 		F0B5D58A20FED64F00F642B1 /* CircleImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleImageView.swift; sourceTree = "<group>"; };
 		F0B5D58B20FED64F00F642B1 /* FalseNavBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FalseNavBarView.swift; sourceTree = "<group>"; };
 		F0B5D58D20FED64F00F642B1 /* UITextView+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextView+Ext.swift"; sourceTree = "<group>"; };
@@ -88,6 +90,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F0412040210091A20003F7A2 /* CameraTool */ = {
+			isa = PBXGroup;
+			children = (
+				F0412041210091A20003F7A2 /* CameraTool.swift */,
+				F0412043210091C50003F7A2 /* PreviewViewController.swift */,
+			);
+			path = CameraTool;
+			sourceTree = "<group>";
+		};
 		F077772820F2FC39003D7BD8 = {
 			isa = PBXGroup;
 			children = (
@@ -123,11 +134,11 @@
 		F0B5D58420FED64F00F642B1 /* BaseViewTool */ = {
 			isa = PBXGroup;
 			children = (
+				F0412040210091A20003F7A2 /* CameraTool */,
 				F0B5D58520FED64F00F642B1 /* AuthorityTool.swift */,
 				F0B5D58620FED64F00F642B1 /* VideoPlayer.swift */,
 				F0B5D58720FED64F00F642B1 /* kSaveDataTool.swift */,
 				F0B5D58820FED64F00F642B1 /* SliderDrawerViewController.swift */,
-				F0B5D58920FED64F00F642B1 /* CameraTool.swift */,
 				F0B5D58A20FED64F00F642B1 /* CircleImageView.swift */,
 				F0B5D58B20FED64F00F642B1 /* FalseNavBarView.swift */,
 			);
@@ -193,6 +204,9 @@
 					F077773020F2FC39003D7BD8 = {
 						CreatedOnToolsVersion = 9.4.1;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Keychain = {
 								enabled = 1;
 							};
@@ -237,10 +251,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0B5D5AB20FED64F00F642B1 /* String+Ext.swift in Sources */,
+				F0412042210091A20003F7A2 /* CameraTool.swift in Sources */,
 				F0B5D5A120FED64F00F642B1 /* CircleImageView.swift in Sources */,
 				F0B5D59E20FED64F00F642B1 /* kSaveDataTool.swift in Sources */,
 				F0B5D5A720FED64F00F642B1 /* AppDelegate+Push.swift in Sources */,
 				F0B5D5AE20FED64F00F642B1 /* Number+Ext.swift in Sources */,
+				F0412045210091C50003F7A2 /* PreviewViewController.swift in Sources */,
 				F0B5D5B020FED64F00F642B1 /* UIViewController+Ext.swift in Sources */,
 				F0B5D5AC20FED64F00F642B1 /* UIColor+Ext.swift in Sources */,
 				F0B5D5AA20FED64F00F642B1 /* UIButton+Ext.swift in Sources */,
@@ -259,7 +275,6 @@
 				F0B5D5A220FED64F00F642B1 /* FalseNavBarView.swift in Sources */,
 				F0B5D5AD20FED64F00F642B1 /* DispatchQueue+Ext.swift in Sources */,
 				F0B5D5AF20FED64F00F642B1 /* ExtensionTool.swift in Sources */,
-				F0B5D5A020FED64F00F642B1 /* CameraTool.swift in Sources */,
 				F0B5D5A320FED64F00F642B1 /* UITextView+Ext.swift in Sources */,
 				F0B5D5A920FED64F00F642B1 /* UIBarButtonItem+Ext.swift in Sources */,
 				F0B5D5A420FED64F00F642B1 /* UIImage+Ext.swift in Sources */,
@@ -409,7 +424,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ExtensionTool/ExtensionTool.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Z3J38YFUTH;
+				DEVELOPMENT_TEAM = 8W5UTYMJE7;
 				INFOPLIST_FILE = ExtensionTool/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -429,7 +444,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ExtensionTool/ExtensionTool.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Z3J38YFUTH;
+				DEVELOPMENT_TEAM = 8W5UTYMJE7;
 				INFOPLIST_FILE = ExtensionTool/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
