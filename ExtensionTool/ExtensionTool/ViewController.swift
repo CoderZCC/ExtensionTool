@@ -26,16 +26,27 @@ class ViewController: BaseViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.k_colorWith(hexInt: 0x333333)
         
+        self.view.addSubview(self.imgV)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        CameraTool.gotoAlbum()
+        CameraTool.takeFromLibrary { (img) in
+            
+            self.imgV.image = img
+        }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    lazy var imgV: UIImageView = {
+        let imgV = UIImageView.init(frame: self.view.bounds)
+        imgV.contentMode = .scaleAspectFit
+        
+        return imgV
+    }()
 }
 
 class SecondViewController: BaseViewController {

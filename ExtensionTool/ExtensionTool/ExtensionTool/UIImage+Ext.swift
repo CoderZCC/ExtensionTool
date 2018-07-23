@@ -56,35 +56,6 @@ extension UIImage {
         return newImg
     }
     
-    /// 裁剪图片的指定区域
-    ///
-    /// - Parameter rect: 裁剪区域
-    /// - Returns: 新图片
-    func k_cropImageIn(rect: CGRect) -> UIImage {
-        
-        let scale = self.size.width / self.size.height
-        var newRect = rect
-        let newSize = rect.size
-        
-        if scale > newSize.width / newSize.height {
-            
-            newRect.size.width = self.size.height * newSize.width / newSize.height
-            newRect.origin.x = (self.size.width - rect.size.width) / 2.0
-            newRect.size.height = self.size.height
-            
-        } else {
-            
-            // 图片高 > 图片宽
-            newRect.origin.y = (self.size.height - self.size.width / newSize.width * newSize.height) / 2.0
-            newRect.size.width = self.size.width
-            newRect.size.height = self.size.width / newSize.width * newSize.height
-        }
-        let imgRef = self.cgImage!.cropping(to: newRect)
-        let newImg = UIImage.init(cgImage: imgRef!)
-        
-        return newImg
-    }
-    
     //MARK: 裁剪圆形为圆形
     /// 裁剪为圆形图片
     ///

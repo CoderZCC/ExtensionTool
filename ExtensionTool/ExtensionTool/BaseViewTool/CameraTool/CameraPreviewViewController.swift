@@ -15,6 +15,8 @@ class CameraPreviewViewController: UIViewController {
     var thumbImg: UIImage?
     var dataList: [PHAsset]!
     fileprivate let clipRect: CGRect = CGRect.init(x: 0.0, y: (kHeight - kWidth) / 2.0, width: kWidth, height: kWidth)
+    var imgLoadFinish: (()->Void)?
+    var currentImg: UIImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +40,12 @@ class CameraPreviewViewController: UIViewController {
         self.view.addSubview(self.bottomView)
         
         self.collectionView.scrollToItem(at: self.indexPath, at: .centeredHorizontally, animated: false)
+        
+        if #available(iOS 11.0, *) {
+            self.collectionView.contentInsetAdjustmentBehavior = .never
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = false
+        }
     }
     
     //MARK: 事件
@@ -55,8 +63,10 @@ class CameraPreviewViewController: UIViewController {
         collectionView.delegate = self
         collectionView.k_registerCell(cls: CameraPreviewCell.self)
         collectionView.isPagingEnabled = true
+        
+        collectionView.contentOffset = CGPoint.zero
         collectionView.contentInset = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0)
-        layout.itemSize = CGSize(width: kWidth, height: kHeight - 20.0)
+        layout.itemSize = CGSize(width: collectionView.k_width, height: collectionView.k_height - 1.0)
         
         return collectionView
     }()
@@ -128,7 +138,12 @@ class CameraPreviewViewController: UIViewController {
             
             let screenSnap = UIImage.k_screenSnap()
             let newImg = screenSnap.k_cropImageWith(newSize: self.clipRect.size)
+
+            let vc = kRootVC.presentedViewController as! UINavigationController
+            let cameraVC = vc.viewControllers.first as! CameraViewController
+            cameraVC.block?(newImg)
             
+            vc.dismiss(animated: true, completion: nil)
         })
         return view
     }()
@@ -166,33 +181,38 @@ extension CameraPreviewViewController: UICollectionViewDataSource, UICollectionV
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.k_dequeueReusableCell(cls: CameraPreviewCell.self, indexPath: indexPath) as! CameraPreviewCell
-        
+        // 缩略图
+        if self.thumbImg != nil { cell.imageView.image = self.thumbImg }
+        // 高清图
         let asset = self.dataList[indexPath.row]
-        
         let options = PHImageRequestOptions.init()
         options.resizeMode = .fast
         PHImageManager.default().requestImage(for: asset, targetSize: PHImageManagerMaximumSize, contentMode: .default, options: options) { (img, dic) in
             
-            cell.imageView.image = img ?? #imageLiteral(resourceName: "test")
-            
-            // 设置图片可以拖下来,可以推上去
-            // 计算内容
-            var scale = cell.imageView.image!.size.width / cell.imageView.image!.size.height
-            scale = min(1.0, scale)
-            let height = kWidth / scale
-            let topNum: CGFloat = (height - kWidth) / 2.0
-            
-            cell.scrollView.contentSize = CGSize.init(width: 0.0, height: kHeight + topNum)
-            cell.scrollView.contentInset = UIEdgeInsetsMake(topNum - 20.0, 0.0, 0.0, 0.0)
+            cell.imageView.image = img
+            self.thumbImg = nil
+            self.imgLoadFinish?()
+            self.currentImg = cell.imageView.image
         }
         return cell
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
         if let cell = cell as? CameraPreviewCell {
             
+            cell.scrollView.setContentOffset(CGPoint.init(x: 0.0, y: 0.0), animated: false)
             cell.scrollView.zoomScale = 1.0
+            
+            if let img = cell.imageView.image {
+                
+                self.currentImg = img
+                cell.setScrollViewModel()
+            }
+            self.imgLoadFinish = {
+                
+                cell.setScrollViewModel()
+            }
         }
     }
 }
@@ -204,8 +224,6 @@ class CameraPreviewCell: UICollectionViewCell {
     var imageView:UIImageView!
     /// 单击回调
     var clickCallBack:()->Void = {}
-    /// 是否在拖动
-    private var isDragging: Bool = false
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -245,6 +263,22 @@ class CameraPreviewCell: UICollectionViewCell {
         self.imageView.addGestureRecognizer(tapSingle)
         self.imageView.addGestureRecognizer(tapDouble)
     }
+    
+    // 设置图片可以拖下来,可以推上去
+    func setScrollViewModel() {
+        
+        // 计算内容
+        if let img = self.imageView.image {
+            
+            var scale = img.size.width / img.size.height
+            scale = min(1.0, scale)
+            let height = kWidth / scale
+            let topNum: CGFloat = (height - kWidth) / 2.0
+            self.scrollView.contentSize = CGSize.init(width: 0.0, height: kHeight + topNum)
+            self.scrollView.contentInset = UIEdgeInsetsMake(topNum - 20.0, 0.0, 0.0, 0.0)
+        }
+    }
+    
     // 图片单击事件响应
     @objc func tapSingleDid(_ ges:UITapGestureRecognizer){
         
@@ -287,18 +321,6 @@ class CameraPreviewCell: UICollectionViewCell {
 
 extension CameraPreviewCell: UIScrollViewDelegate {
     
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        
-        self.isDragging = true
-    }
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        
-        if scrollView.contentOffset.y < -88.0 && self.isDragging {
-            
-            self.clickCallBack()
-            self.isDragging = false
-        }
-    }
     // 缩放视图
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         

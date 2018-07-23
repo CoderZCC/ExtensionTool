@@ -13,10 +13,11 @@ class CameraTool: NSObject {
 
     var dataList: [AlbumModel] = []
     
-    class func gotoAlbum() {
+    class func takeFromLibrary(isCrop: Bool = false, block: ((UIImage)->Void)?) {
         
         let cameraVC = CameraViewController()
         let nav = UINavigationController.init(rootViewController: cameraVC)
+        cameraVC.block = block
         
         kRootVC.present(nav, animated: true, completion: nil)
     }

@@ -13,6 +13,8 @@ let CameraRowHeight: CGFloat = 80.0
 
 class CameraViewController: UIViewController {
 
+    var block: ((UIImage)->Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
