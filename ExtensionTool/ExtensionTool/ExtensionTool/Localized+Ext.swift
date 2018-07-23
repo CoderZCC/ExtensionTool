@@ -17,7 +17,6 @@ import UIKit
 extension UILabel {
     
     /// 实现国际化
-    /// UILabel.initLocalized()
     static func initLocalized() {
         
         let originalMethod = class_getInstanceMethod(UILabel.self, #selector(setter: UILabel.text))

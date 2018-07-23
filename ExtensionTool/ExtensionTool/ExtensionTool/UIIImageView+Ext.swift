@@ -13,6 +13,17 @@ let kCachesImgDicPath: String = String.k_documentsPath + "cachesImg.plist"
 
 extension UIImageView {
     
+    /// 设置内容模式
+    ///
+    /// - Parameters:
+    ///   - model: 模式
+    ///   - clips: 是否裁剪
+    func k_contenModel(model: UIViewContentMode = .scaleAspectFill, clips: Bool = true) {
+        
+        self.contentMode = model
+        self.clipsToBounds = clips
+    }
+    
     /// 设置图片
     ///
     /// - Parameters:

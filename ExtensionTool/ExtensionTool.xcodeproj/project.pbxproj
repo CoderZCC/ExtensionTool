@@ -7,14 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F021414621056CC40067D1E5 /* CameraListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F021414521056CC40067D1E5 /* CameraListViewController.swift */; };
 		F0412021210079BB0003F7A2 /* Timer+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0412020210079BB0003F7A2 /* Timer+Ext.swift */; };
-		F0412042210091A20003F7A2 /* CameraTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0412041210091A20003F7A2 /* CameraTool.swift */; };
-		F0412045210091C50003F7A2 /* PreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0412043210091C50003F7A2 /* PreviewViewController.swift */; };
 		F054045321002C9600E3EF87 /* PushFromStr+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F054045221002C9600E3EF87 /* PushFromStr+Ext.swift */; };
 		F0561C2F2101BA950007496F /* UILabel+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0561C2E2101BA950007496F /* UILabel+Ext.swift */; };
 		F0561C312101CFED0007496F /* Localized+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0561C302101CFED0007496F /* Localized+Ext.swift */; };
 		F0561C372101DBCA0007496F /* LanguageTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0561C362101DBCA0007496F /* LanguageTool.swift */; };
 		F0561C3A2101DC5C0007496F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F0561C3C2101DC5C0007496F /* Localizable.strings */; };
+		F0561C3F2101DEF50007496F /* CameraTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0561C3E2101DEF50007496F /* CameraTool.swift */; };
+		F0561C412101E6590007496F /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0561C402101E6590007496F /* CameraViewController.swift */; };
 		F077773520F2FC39003D7BD8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F077773420F2FC39003D7BD8 /* AppDelegate.swift */; };
 		F077773720F2FC39003D7BD8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F077773620F2FC39003D7BD8 /* ViewController.swift */; };
 		F077773A20F2FC39003D7BD8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F077773820F2FC39003D7BD8 /* Main.storyboard */; };
@@ -43,12 +44,12 @@
 		F0B5D5B120FED64F00F642B1 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B5D59B20FED64F00F642B1 /* UIView+Ext.swift */; };
 		F0B5D5BF20FF2F8500F642B1 /* NotificationCenter+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B5D5BE20FF2F8500F642B1 /* NotificationCenter+Ext.swift */; };
 		F0B5D5C120FF409600F642B1 /* UIScrollView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B5D5C020FF409600F642B1 /* UIScrollView+Ext.swift */; };
+		F0C452A42105715A00571B0A /* CameraPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C452A32105715A00571B0A /* CameraPreviewViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F021414521056CC40067D1E5 /* CameraListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraListViewController.swift; sourceTree = "<group>"; };
 		F0412020210079BB0003F7A2 /* Timer+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timer+Ext.swift"; sourceTree = "<group>"; };
-		F0412041210091A20003F7A2 /* CameraTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraTool.swift; sourceTree = "<group>"; };
-		F0412043210091C50003F7A2 /* PreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewViewController.swift; sourceTree = "<group>"; };
 		F04930F920F4A08700787CC8 /* ExtensionTool.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ExtensionTool.entitlements; sourceTree = "<group>"; };
 		F054045221002C9600E3EF87 /* PushFromStr+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PushFromStr+Ext.swift"; sourceTree = "<group>"; };
 		F0561C2E2101BA950007496F /* UILabel+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Ext.swift"; sourceTree = "<group>"; };
@@ -56,6 +57,8 @@
 		F0561C362101DBCA0007496F /* LanguageTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LanguageTool.swift; sourceTree = "<group>"; };
 		F0561C3B2101DC5C0007496F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F0561C3D2101DC670007496F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		F0561C3E2101DEF50007496F /* CameraTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraTool.swift; sourceTree = "<group>"; };
+		F0561C402101E6590007496F /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		F077773120F2FC39003D7BD8 /* ExtensionTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExtensionTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F077773420F2FC39003D7BD8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F077773620F2FC39003D7BD8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +89,7 @@
 		F0B5D59B20FED64F00F642B1 /* UIView+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		F0B5D5BE20FF2F8500F642B1 /* NotificationCenter+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NotificationCenter+Ext.swift"; sourceTree = "<group>"; };
 		F0B5D5C020FF409600F642B1 /* UIScrollView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Ext.swift"; sourceTree = "<group>"; };
+		F0C452A32105715A00571B0A /* CameraPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,8 +106,10 @@
 		F0412040210091A20003F7A2 /* CameraTool */ = {
 			isa = PBXGroup;
 			children = (
-				F0412041210091A20003F7A2 /* CameraTool.swift */,
-				F0412043210091C50003F7A2 /* PreviewViewController.swift */,
+				F0561C3E2101DEF50007496F /* CameraTool.swift */,
+				F0561C402101E6590007496F /* CameraViewController.swift */,
+				F021414521056CC40067D1E5 /* CameraListViewController.swift */,
+				F0C452A32105715A00571B0A /* CameraPreviewViewController.swift */,
 			);
 			path = CameraTool;
 			sourceTree = "<group>";
@@ -266,15 +272,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0B5D5AB20FED64F00F642B1 /* String+Ext.swift in Sources */,
-				F0412042210091A20003F7A2 /* CameraTool.swift in Sources */,
 				F0B5D5A120FED64F00F642B1 /* CircleImageView.swift in Sources */,
+				F0561C3F2101DEF50007496F /* CameraTool.swift in Sources */,
 				F0B5D59E20FED64F00F642B1 /* kSaveDataTool.swift in Sources */,
 				F0561C2F2101BA950007496F /* UILabel+Ext.swift in Sources */,
 				F0B5D5A720FED64F00F642B1 /* AppDelegate+Push.swift in Sources */,
 				F0561C312101CFED0007496F /* Localized+Ext.swift in Sources */,
 				F0B5D5AE20FED64F00F642B1 /* Number+Ext.swift in Sources */,
-				F0412045210091C50003F7A2 /* PreviewViewController.swift in Sources */,
+				F021414621056CC40067D1E5 /* CameraListViewController.swift in Sources */,
 				F0B5D5B020FED64F00F642B1 /* UIViewController+Ext.swift in Sources */,
+				F0C452A42105715A00571B0A /* CameraPreviewViewController.swift in Sources */,
 				F0B5D5AC20FED64F00F642B1 /* UIColor+Ext.swift in Sources */,
 				F0B5D5AA20FED64F00F642B1 /* UIButton+Ext.swift in Sources */,
 				F0B5D5B120FED64F00F642B1 /* UIView+Ext.swift in Sources */,
@@ -295,6 +302,7 @@
 				F0B5D5AF20FED64F00F642B1 /* ExtensionTool.swift in Sources */,
 				F0B5D5A320FED64F00F642B1 /* UITextView+Ext.swift in Sources */,
 				F0B5D5A920FED64F00F642B1 /* UIBarButtonItem+Ext.swift in Sources */,
+				F0561C412101E6590007496F /* CameraViewController.swift in Sources */,
 				F0B5D5A420FED64F00F642B1 /* UIImage+Ext.swift in Sources */,
 				F0412021210079BB0003F7A2 /* Timer+Ext.swift in Sources */,
 			);
