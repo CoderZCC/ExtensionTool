@@ -11,23 +11,27 @@ import Photos
 
 class CameraPreviewViewController: UIViewController {
 
-    var indexPath: IndexPath!
+    /// 回调
+    var block: ((UIImage)->Void)?
+    /// 是否裁剪
+    var isCrop: Bool!
+    /// 当前展示的位置
+    var indexPath: IndexPath?
+    /// 缩略图
     var thumbImg: UIImage?
-    var dataList: [PHAsset]!
+    /// 数据源
+    var dataList: [PHAsset]?
+    /// 裁剪区域
     fileprivate let clipRect: CGRect = CGRect.init(x: 0.0, y: (kHeight - kWidth) / 2.0, width: kWidth, height: kWidth)
-    var imgLoadFinish: (()->Void)?
-    var currentImg: UIImage!
+    /// 图片加载完毕
+    fileprivate var imgLoadFinish: (()->Void)?
+    /// 当前展示的图片
+    fileprivate var currentImg: UIImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setupNavigation()
         self.setupSubViews()
-    }
-    
-    //MARK: 设置导航栏
-    func setupNavigation() {
-        
     }
     
     //MARK: 初始化子视图
@@ -35,12 +39,16 @@ class CameraPreviewViewController: UIViewController {
         
         self.view.addSubview(self.collectionView)
        
-        self.view.addSubview(self.maskView)
+        if self.isCrop {
+            
+            self.view.addSubview(self.maskView)
+        }
         self.view.addSubview(self.topView)
         self.view.addSubview(self.bottomView)
         
-        self.collectionView.scrollToItem(at: self.indexPath, at: .centeredHorizontally, animated: false)
-        
+        if let indexPath = self.indexPath {
+            self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
+        }
         if #available(iOS 11.0, *) {
             self.collectionView.contentInsetAdjustmentBehavior = .never
         } else {
@@ -52,7 +60,7 @@ class CameraPreviewViewController: UIViewController {
     
     
     //MARK: 懒加载
-    lazy var collectionView: UICollectionView = {
+    lazy var collectionView: UICollectionView = { [unowned self] in
         let layout = UICollectionViewFlowLayout.init()
         layout.minimumLineSpacing = 0.0
         layout.minimumInteritemSpacing = 0.0
@@ -108,7 +116,7 @@ class CameraPreviewViewController: UIViewController {
         let imgWH: CGFloat = 20.0
         let imgV = UIImageView.init(frame: CGRect.init(x: 12.0, y: kNavBarHeight - imgWH - 10.0, width: imgWH, height: imgWH))
         imgV.image = #imageLiteral(resourceName: "back")
-        clickView.k_addTarget({ (tap) in
+        clickView.k_addTarget({ [unowned self] (tap) in
             
             if let nav = self.navigationController {
                 
@@ -134,16 +142,26 @@ class CameraPreviewViewController: UIViewController {
         label.textAlignment = .right
         view.addSubview(label)
         
-        label.k_addTarget({ (tap) in
+        label.k_addTarget({ [unowned self] (tap) in
             
-            let screenSnap = UIImage.k_screenSnap()
-            let newImg = screenSnap.k_cropImageWith(newSize: self.clipRect.size)
-
-            let vc = kRootVC.presentedViewController as! UINavigationController
-            let cameraVC = vc.viewControllers.first as! CameraViewController
-            cameraVC.block?(newImg)
-            
-            vc.dismiss(animated: true, completion: nil)
+            var newImg: UIImage = self.currentImg
+            if self.isCrop {
+                
+                let screenSnap = UIImage.k_screenSnap()
+                newImg = screenSnap.k_cropImageWith(newSize: self.clipRect.size)
+            }
+            if let nav = kRootVC.presentedViewController as? UINavigationController {
+                
+                let cameraVC = nav.viewControllers.first as! CameraViewController
+                cameraVC.block?(newImg)
+                
+                nav.dismiss(animated: true, completion: nil)
+                
+            } else if let previewVC = kRootVC.presentedViewController as? CameraPreviewViewController {
+                
+                previewVC.block?(newImg)
+                previewVC.dismiss(animated: true, completion: nil)
+            }
         })
         return view
     }()
@@ -175,24 +193,32 @@ extension CameraPreviewViewController: UICollectionViewDataSource, UICollectionV
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return self.dataList.count
+        if let dataList = self.dataList {
+            
+            return dataList.count
+        }
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.k_dequeueReusableCell(cls: CameraPreviewCell.self, indexPath: indexPath) as! CameraPreviewCell
+        cell.isCrop = self.isCrop
         // 缩略图
         if self.thumbImg != nil { cell.imageView.image = self.thumbImg }
         // 高清图
-        let asset = self.dataList[indexPath.row]
-        let options = PHImageRequestOptions.init()
-        options.resizeMode = .fast
-        PHImageManager.default().requestImage(for: asset, targetSize: PHImageManagerMaximumSize, contentMode: .default, options: options) { (img, dic) in
+        if let dataList = self.dataList {
             
-            cell.imageView.image = img
-            self.thumbImg = nil
-            self.imgLoadFinish?()
-            self.currentImg = cell.imageView.image
+            let asset = dataList[indexPath.row]
+            let options = PHImageRequestOptions.init()
+            options.resizeMode = .fast
+            PHImageManager.default().requestImage(for: asset, targetSize: PHImageManagerMaximumSize, contentMode: .default, options: options) { (img, dic) in
+                
+                cell.imageView.image = img
+                self.thumbImg = nil
+                self.imgLoadFinish?()
+                self.currentImg = cell.imageView.image
+            }
         }
         return cell
     }
@@ -207,11 +233,14 @@ extension CameraPreviewViewController: UICollectionViewDataSource, UICollectionV
             if let img = cell.imageView.image {
                 
                 self.currentImg = img
-                cell.setScrollViewModel()
             }
-            self.imgLoadFinish = {
+            if self.isCrop { cell.setScrollViewModel() }
+            self.imgLoadFinish = { [unowned self] in
                 
-                cell.setScrollViewModel()
+                if self.isCrop {
+                    
+                    cell.setScrollViewModel()
+                }
             }
         }
     }
@@ -219,6 +248,16 @@ extension CameraPreviewViewController: UICollectionViewDataSource, UICollectionV
 
 class CameraPreviewCell: UICollectionViewCell {
     
+    var isCrop: Bool! {
+        willSet {
+            if newValue {
+                
+                scrollView.delegate = self
+                scrollView.maximumZoomScale = 3.0
+                scrollView.minimumZoomScale = 1.0
+            }
+        }
+    }
     /// 滚动视图
     var scrollView:UIScrollView!
     var imageView:UIImageView!
@@ -231,11 +270,7 @@ class CameraPreviewCell: UICollectionViewCell {
         scrollView = UIScrollView(frame: self.contentView.bounds)
         scrollView.contentInset = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0)
         self.contentView.addSubview(scrollView)
-        scrollView.delegate = self
         scrollView.alwaysBounceVertical = true
-        
-        scrollView.maximumZoomScale = 3.0
-        scrollView.minimumZoomScale = 1.0
         
         imageView = UIImageView.init(frame: scrollView.bounds)
         imageView.isUserInteractionEnabled = true

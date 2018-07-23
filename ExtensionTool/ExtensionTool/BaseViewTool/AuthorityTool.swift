@@ -19,6 +19,8 @@ class AuthorityTool: NSObject {
     
     class func gotoSetting() {
      
+        print("无权限")
+
 //        kWindow?.k_showAlert(title: "请在iPhone的\"设置\"中允许访问此项权限", rightAction: {
 //            
 //            let url = URL.init(string: UIApplicationOpenSettingsURLString)
@@ -35,7 +37,7 @@ extension AuthorityTool {
     ///
     /// - Returns: true/false
     @discardableResult
-    class func canUseCamera() -> Bool {
+    class func canUseCamera(block:(()->Void)? = nil) -> Bool {
         
         if !UIImagePickerController.isSourceTypeAvailable(.camera) {
             
@@ -47,6 +49,7 @@ extension AuthorityTool {
             
             AVCaptureDevice.requestAccess(for: .video) { (isOK) in
                 
+                if isOK { block?() }
                 self.canUseCamera()
             }
             return true
@@ -110,7 +113,7 @@ extension AuthorityTool {
     ///   - result: true/false
     class func saveMediaToAlbum(img: UIImage?, videoPath: String? = nil, result: ((Bool)->Void)?) {
         
-        if !self.canSaveMediaToAlbum() { return }
+        if !self.canUseAlbum() { return }
         PHPhotoLibrary.shared().performChanges({
             
             if let img = img {
@@ -143,7 +146,7 @@ extension AuthorityTool {
     ///
     /// - Returns: true/false
     @discardableResult
-    class func canSaveMediaToAlbum() -> Bool {
+    class func canUseAlbum(block:(()->Void)? = nil) -> Bool {
         
         let status = PHPhotoLibrary.authorizationStatus()
         if status == .notDetermined {
@@ -151,7 +154,8 @@ extension AuthorityTool {
             PHPhotoLibrary.requestAuthorization { (status) in
                 
                 DispatchQueue.main.async {
-                    AuthorityTool.canSaveMediaToAlbum()
+                    AuthorityTool.canUseAlbum()
+                    if status == .authorized { block?() }
                 }
             }
             return true

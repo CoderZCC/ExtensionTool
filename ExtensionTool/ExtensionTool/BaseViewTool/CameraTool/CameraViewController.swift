@@ -13,14 +13,21 @@ let CameraRowHeight: CGFloat = 80.0
 
 class CameraViewController: UIViewController {
 
+    /// 回调
     var block: ((UIImage)->Void)?
+    /// 是否裁剪
+    var isCrop: Bool!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.cameraTool.getAllAlbums()
         self.setupNavigation()
         self.setupSubViews()
+        AuthorityTool.canUseAlbum { [unowned self] in
+            
+            self.cameraTool.getAllAlbums()
+            self.tableView.reloadData()
+        }
     }
     
     //MARK: 设置导航栏
@@ -80,6 +87,8 @@ extension CameraViewController: UITableViewDelegate, UITableViewDataSource {
         let listVC = CameraListViewController()
         listVC.title = model.title
         listVC.dataList = model.dataList
+        listVC.isCrop = self.isCrop
+        
         self.navigationController?.pushViewController(listVC, animated: true)
     }
     

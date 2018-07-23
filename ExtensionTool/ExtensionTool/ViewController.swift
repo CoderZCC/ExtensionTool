@@ -31,8 +31,12 @@ class ViewController: BaseViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        CameraTool.takeFromLibrary { (img) in
-            
+//        CameraTool.takeFromLibrary { (img) in
+//
+//            self.imgV.image = img
+//        }
+        CameraTool.takeFromCamera { (img) in
+
             self.imgV.image = img
         }
     }

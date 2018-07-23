@@ -11,6 +11,8 @@ import Photos
 
 class CameraListViewController: UIViewController {
 
+    /// 是否裁剪
+    var isCrop: Bool!
     /// 数据源
     var dataList: [PHAsset]!
     
@@ -80,6 +82,7 @@ extension CameraListViewController: UICollectionViewDataSource, UICollectionView
         previewVC.dataList = self.dataList
         previewVC.thumbImg = cell.imgV.image
         previewVC.indexPath = indexPath
+        previewVC.isCrop = self.isCrop
         
         self.navigationController?.pushViewController(previewVC, animated: true)
     }
