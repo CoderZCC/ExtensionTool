@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		F016903B2106F40D00E0C60A /* HorizontalLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F016903A2106F40D00E0C60A /* HorizontalLabelView.swift */; };
+		F01690612106F9C400E0C60A /* HUDViewTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F016905F2106F9C400E0C60A /* HUDViewTool.swift */; };
+		F01690622106F9C400E0C60A /* HUDViewTool.xib in Resources */ = {isa = PBXBuildFile; fileRef = F01690602106F9C400E0C60A /* HUDViewTool.xib */; };
+		F01690692106FB9D00E0C60A /* AlertViewTool.xib in Resources */ = {isa = PBXBuildFile; fileRef = F01690672106FB9D00E0C60A /* AlertViewTool.xib */; };
+		F016906A2106FB9D00E0C60A /* AlertViewTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01690682106FB9D00E0C60A /* AlertViewTool.swift */; };
+		F016906C2106FBDF00E0C60A /* AlertSheetTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F016906B2106FBDF00E0C60A /* AlertSheetTool.swift */; };
 		F021414621056CC40067D1E5 /* CameraListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F021414521056CC40067D1E5 /* CameraListViewController.swift */; };
 		F0412021210079BB0003F7A2 /* Timer+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0412020210079BB0003F7A2 /* Timer+Ext.swift */; };
 		F054045321002C9600E3EF87 /* PushFromStr+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F054045221002C9600E3EF87 /* PushFromStr+Ext.swift */; };
@@ -51,6 +56,11 @@
 
 /* Begin PBXFileReference section */
 		F016903A2106F40D00E0C60A /* HorizontalLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalLabelView.swift; sourceTree = "<group>"; };
+		F016905F2106F9C400E0C60A /* HUDViewTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDViewTool.swift; sourceTree = "<group>"; };
+		F01690602106F9C400E0C60A /* HUDViewTool.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HUDViewTool.xib; sourceTree = "<group>"; };
+		F01690672106FB9D00E0C60A /* AlertViewTool.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertViewTool.xib; sourceTree = "<group>"; };
+		F01690682106FB9D00E0C60A /* AlertViewTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewTool.swift; sourceTree = "<group>"; };
+		F016906B2106FBDF00E0C60A /* AlertSheetTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertSheetTool.swift; sourceTree = "<group>"; };
 		F021414521056CC40067D1E5 /* CameraListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraListViewController.swift; sourceTree = "<group>"; };
 		F0412020210079BB0003F7A2 /* Timer+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timer+Ext.swift"; sourceTree = "<group>"; };
 		F04930F920F4A08700787CC8 /* ExtensionTool.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ExtensionTool.entitlements; sourceTree = "<group>"; };
@@ -107,6 +117,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F016905E2106F9C400E0C60A /* LoadingTool */ = {
+			isa = PBXGroup;
+			children = (
+				F016905F2106F9C400E0C60A /* HUDViewTool.swift */,
+				F01690602106F9C400E0C60A /* HUDViewTool.xib */,
+				F01690682106FB9D00E0C60A /* AlertViewTool.swift */,
+				F01690672106FB9D00E0C60A /* AlertViewTool.xib */,
+				F016906B2106FBDF00E0C60A /* AlertSheetTool.swift */,
+			);
+			path = LoadingTool;
+			sourceTree = "<group>";
+		};
 		F0412040210091A20003F7A2 /* CameraTool */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +176,7 @@
 		F0B5D58420FED64F00F642B1 /* BaseViewTool */ = {
 			isa = PBXGroup;
 			children = (
+				F016905E2106F9C400E0C60A /* LoadingTool */,
 				F0412040210091A20003F7A2 /* CameraTool */,
 				F0B5D58520FED64F00F642B1 /* AuthorityTool.swift */,
 				F0B5D58620FED64F00F642B1 /* VideoPlayer.swift */,
@@ -263,9 +286,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F01690622106F9C400E0C60A /* HUDViewTool.xib in Resources */,
 				F077773F20F2FC3A003D7BD8 /* LaunchScreen.storyboard in Resources */,
 				F0561C3A2101DC5C0007496F /* Localizable.strings in Resources */,
 				F077773C20F2FC3A003D7BD8 /* Assets.xcassets in Resources */,
+				F01690692106FB9D00E0C60A /* AlertViewTool.xib in Resources */,
 				F077773A20F2FC39003D7BD8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,7 +307,9 @@
 				F0561C3F2101DEF50007496F /* CameraTool.swift in Sources */,
 				F0B5D59E20FED64F00F642B1 /* kSaveDataTool.swift in Sources */,
 				F0561C2F2101BA950007496F /* UILabel+Ext.swift in Sources */,
+				F01690612106F9C400E0C60A /* HUDViewTool.swift in Sources */,
 				F0B5D5A720FED64F00F642B1 /* AppDelegate+Push.swift in Sources */,
+				F016906C2106FBDF00E0C60A /* AlertSheetTool.swift in Sources */,
 				F0561C312101CFED0007496F /* Localized+Ext.swift in Sources */,
 				F0B5D5AE20FED64F00F642B1 /* Number+Ext.swift in Sources */,
 				F021414621056CC40067D1E5 /* CameraListViewController.swift in Sources */,
@@ -292,6 +319,7 @@
 				F0C452A42105715A00571B0A /* CameraPreviewViewController.swift in Sources */,
 				F0B5D5AC20FED64F00F642B1 /* UIColor+Ext.swift in Sources */,
 				F0B5D5AA20FED64F00F642B1 /* UIButton+Ext.swift in Sources */,
+				F016906A2106FB9D00E0C60A /* AlertViewTool.swift in Sources */,
 				F0B5D5B120FED64F00F642B1 /* UIView+Ext.swift in Sources */,
 				F0B5D5C120FF409600F642B1 /* UIScrollView+Ext.swift in Sources */,
 				F0B5D5BF20FF2F8500F642B1 /* NotificationCenter+Ext.swift in Sources */,

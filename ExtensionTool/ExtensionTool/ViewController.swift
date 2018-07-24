@@ -25,7 +25,7 @@ class ViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.k_colorWith(hexInt: 0x666666)
-       
+
     }
 
     override func didReceiveMemoryWarning() {
