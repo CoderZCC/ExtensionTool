@@ -166,8 +166,8 @@ extension UIView {
         self.layer.borderWidth = width
     }
     
-    //MARK: 添加点击事件
-    /// 添加点击事件
+    //MARK: UIView添加点击事件
+    /// UIView添加点击事件
     ///
     /// - Parameters:
     ///   - target: 目标
@@ -179,7 +179,7 @@ extension UIView {
         self.addGestureRecognizer(tap)
     }
 
-    /// 添加点击事件
+    /// UIView添加点击事件
     ///
     /// - Parameter clickAction: 点击回调
     func k_addTarget(_ clickAction: ((UIGestureRecognizer)->Void)?) {
@@ -191,7 +191,7 @@ extension UIView {
         self.addGestureRecognizer(tap)
     }
     
-    /// 添加长按事件
+    /// UIView添加长按事件
     ///
     /// - Parameter clickAction: 点击回调
     func k_addLongPressTarget(_ clickAction: ((UIGestureRecognizer)->Void)?) {
@@ -203,7 +203,7 @@ extension UIView {
         self.addGestureRecognizer(tap)
     }
     
-    /// 点击事件
+    /// UIView点击事件
     @objc func k_tapAction(tap: UIGestureRecognizer) {
         
         (objc_getAssociatedObject(self, &k_UIViewClickActionKey) as! ((UIGestureRecognizer)->Void)?)?(tap)

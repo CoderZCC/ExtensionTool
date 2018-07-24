@@ -21,13 +21,14 @@ class BaseViewController: UIViewController {
 }
 
 class ViewController: BaseViewController {
-        
+    
+    let secondVC = SecondViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.k_colorWith(hexInt: 0x333333)
+        self.view.backgroundColor = UIColor.k_colorWith(hexInt: 0x666666)
         
     }
-    
 
     
     override func didReceiveMemoryWarning() {
@@ -40,10 +41,11 @@ class SecondViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = UIColor.white
-      
+        self.view.backgroundColor = UIColor.k_colorWith(hexInt: 0x999999)
+
     }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
