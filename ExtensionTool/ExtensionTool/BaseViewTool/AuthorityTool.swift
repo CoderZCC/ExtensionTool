@@ -19,13 +19,11 @@ class AuthorityTool: NSObject {
     
     class func gotoSetting() {
      
-        print("无权限")
-
-//        kWindow?.k_showAlert(title: "请在iPhone的\"设置\"中允许访问此项权限", rightAction: {
-//            
-//            let url = URL.init(string: UIApplicationOpenSettingsURLString)
-//            UIApplication.shared.openURL(url!)
-//        })
+        kWindow.showAlertView(title: "请在iPhone的\"设置\"中允许访问此项权限", message: nil) {
+            
+            let url = URL.init(string: UIApplicationOpenSettingsURLString)
+            UIApplication.shared.openURL(url!)
+        }
     }
 }
 
