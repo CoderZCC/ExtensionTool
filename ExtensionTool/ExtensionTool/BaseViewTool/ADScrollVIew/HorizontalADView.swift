@@ -26,8 +26,8 @@ class HorizontalADView: UIView {
             self.pageControl.currentPage = newValue
         }
     }
-    /// 数据源,给这个赋值
-    var imgUrlArr: [String] = [] {
+    /// 需要更新的数据源,给这个赋值
+    var updateArr: [String] = [] {
         
         didSet {
             
@@ -44,21 +44,23 @@ class HorizontalADView: UIView {
     init(frame: CGRect, imgUrlArr: [String]? = nil, block: ((Int)->Void)? = nil) {
         super.init(frame: frame)
         
-        if let arr = imgUrlArr, !arr.isEmpty {
-            
-            self.imgUrlArr = arr
-        }
         self.clickBlock = block
         
         self.addSubview(self.scrolView)
         self.scrolView.setContentOffset(CGPoint(x: 0.0, y: self.bounds.height), animated: true)
+        
+        if let arr = imgUrlArr, !arr.isEmpty {
+            
+            self.updateArr = arr
+            self.updateSubView()
+        }
     }
     
     /// 启动定时器
     @objc func startTimer() {
         
         self.stopTimer()
-        self.k_startTimer(timerIdentifier: "HorizontalADView", timeInterval: 3.0, repeats: true) { [unowned self] (timer) in
+        self.k_startTimer(timerIdentifier: "HorizontalADView", timeInterval: self.scrollSpaceDuration, repeats: true) { [unowned self] (timer) in
 
             DispatchQueue.main.async {
 
@@ -76,6 +78,10 @@ class HorizontalADView: UIView {
     }
     
     //MARK: -实现部分
+    /// 滚动时间
+    private let scrollSpaceDuration: Double = 3.0
+    /// 拖动后 延迟开启定时器
+    private let delayDuration: Double = 1.5
     /// 点击的回调
     private var clickBlock: ((Int)->Void)?
     /// pageControl的宽高
@@ -102,9 +108,9 @@ class HorizontalADView: UIView {
     
     /// 更新页面控件
     private func updateSubView() {
-    
+        
         // 更新图片
-        if self.imgUrlArr.isEmpty {
+        if self.updateArr.isEmpty {
             
             self.firstImgV.image = nil
             self.secondImgV.image = nil
@@ -112,15 +118,14 @@ class HorizontalADView: UIView {
             
         } else {
             
-            self.setImage(to: self.firstImgV, with: self.imgUrlArr.last!)
-            self.setImage(to: self.secondImgV, with: self.imgUrlArr.first!)
-            self.setImage(to: self.thirdImgV, with: self.imgUrlArr.count > 1 ? (self.imgUrlArr[1]) : (self.imgUrlArr.first)!)
+            self.setImage(to: self.firstImgV, with: self.updateArr.last!)
+            self.setImage(to: self.secondImgV, with: self.updateArr.first!)
+            self.setImage(to: self.thirdImgV, with: self.updateArr.count > 1 ? (self.updateArr[1]) : (self.updateArr.first)!)
         }
-        
         // 更新pageControl
-        let width: CGFloat = self.pageWH * CGFloat(self.imgUrlArr.count)
+        let width: CGFloat = self.pageWH * CGFloat(self.updateArr.count)
         self.pageControl.frame = CGRect(x: self.bounds.width - width - 15.0, y: self.bounds.height - self.pageWH - 10.0, width: width, height: self.pageWH)
-        self.pageControl.numberOfPages = self.imgUrlArr.count
+        self.pageControl.numberOfPages = self.updateArr.count
         // 下标归0
         self.currentIndex = 0
         
@@ -173,13 +178,13 @@ class HorizontalADView: UIView {
         return imgV
     }()
     private lazy var pageControl: UIPageControl = { [unowned self] in
-        let width: CGFloat = self.pageWH * CGFloat(self.imgUrlArr.count)
+        let width: CGFloat = self.pageWH * CGFloat(self.updateArr.count)
         let pageControl = UIPageControl(frame: CGRect(x: self.bounds.width - width - 15.0, y: self.bounds.height - self.pageWH - 10.0, width: width, height: self.pageWH))
         pageControl.currentPageIndicatorTintColor = UIColor.red
         pageControl.pageIndicatorTintColor = UIColor.lightGray
         
         self.addSubview(pageControl)
-
+        
         return pageControl
     }()
     
@@ -190,22 +195,22 @@ class HorizontalADView: UIView {
         var firstIndex: Int = 0
         var secondIndex: Int = 0
         var thirdIndex: Int = 0
-        switch self.imgUrlArr.count {
+        switch self.updateArr.count {
             
         case 0:
             break
             
         case 1:
             
-            for _ in 0..<3 { arr.append(self.imgUrlArr[0]) }
+            for _ in 0..<3 { arr.append(self.updateArr[0]) }
             
         default :
             
-            firstIndex = (self.currentIndex - 1) < 0 ? self.imgUrlArr.count - 1 : self.currentIndex - 1
+            firstIndex = (self.currentIndex - 1) < 0 ? self.updateArr.count - 1 : self.currentIndex - 1
             secondIndex = self.currentIndex
-            thirdIndex = (self.currentIndex + 1) > self.imgUrlArr.count - 1 ? 0 : self.currentIndex + 1
+            thirdIndex = (self.currentIndex + 1) > self.updateArr.count - 1 ? 0 : self.currentIndex + 1
             
-            arr = [self.imgUrlArr[firstIndex], self.imgUrlArr[secondIndex], self.imgUrlArr[thirdIndex] ]
+            arr = [self.updateArr[firstIndex], self.updateArr[secondIndex], self.updateArr[thirdIndex] ]
         }
         return arr
     }
@@ -217,7 +222,7 @@ extension HorizontalADView: UIScrollViewDelegate {
         
         DispatchQueue.main.async {
             
-            if self.imgUrlArr.isEmpty { return }
+            if self.updateArr.isEmpty { return }
             if self.isFirstRun {
                 
                 scrollView.setContentOffset(CGPoint(x: self.bounds.width, y: 0.0), animated: false)
@@ -232,7 +237,7 @@ extension HorizontalADView: UIScrollViewDelegate {
             let offsetX: CGFloat = scrollView.contentOffset.x
             if offsetX <= 0.0 {
                 
-                self.currentIndex = self.currentIndex == 0 ? (self.imgUrlArr.count - 1) : (self.currentIndex - 1)
+                self.currentIndex = self.currentIndex == 0 ? (self.updateArr.count - 1) : (self.currentIndex - 1)
                 
                 self.thirdImgV.image = self.secondImgV.image
                 self.secondImgV.image = self.firstImgV.image
@@ -242,7 +247,7 @@ extension HorizontalADView: UIScrollViewDelegate {
                 
             } else if offsetX >= self.bounds.width * 2.0 {
                 
-                self.currentIndex = self.currentIndex == self.imgUrlArr.count - 1 ? (0) : (self.currentIndex + 1)
+                self.currentIndex = self.currentIndex == self.updateArr.count - 1 ? (0) : (self.currentIndex + 1)
                 self.firstImgV.image = self.secondImgV.image
                 self.secondImgV.image = self.thirdImgV.image
                 self.setImage(to: self.thirdImgV, with: self.dealArr[2])
@@ -260,6 +265,6 @@ extension HorizontalADView: UIScrollViewDelegate {
     // 结束滚动时,重启延迟操作
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         
-        self.perform(#selector(startTimer), with: nil, afterDelay: 2.0)
+        self.perform(#selector(startTimer), with: nil, afterDelay: self.delayDuration)
     }
 }

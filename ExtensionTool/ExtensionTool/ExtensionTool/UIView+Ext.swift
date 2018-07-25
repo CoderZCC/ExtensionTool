@@ -172,10 +172,10 @@ extension UIView {
     /// - Parameters:
     ///   - target: 目标
     ///   - action: 事件
-    func k_addTarget(_ target: Any, action: Selector) {
+    func k_addTarget(action: Selector) {
         
         self.isUserInteractionEnabled = true
-        let tap = UITapGestureRecognizer.init(target: target, action: action)
+        let tap = UITapGestureRecognizer.init(target: self, action: action)
         self.addGestureRecognizer(tap)
     }
 
