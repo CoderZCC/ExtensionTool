@@ -146,6 +146,15 @@
 			path = ADScrollVIew;
 			sourceTree = "<group>";
 		};
+		F01EC3F321082AD800AE2D11 /* LabelTool */ = {
+			isa = PBXGroup;
+			children = (
+				F0D686662106D8360098B388 /* VerticalLabelView.swift */,
+				F016903A2106F40D00E0C60A /* HorizontalLabelView.swift */,
+			);
+			path = LabelTool;
+			sourceTree = "<group>";
+		};
 		F0412040210091A20003F7A2 /* CameraTool */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,6 +202,7 @@
 		F0B5D58420FED64F00F642B1 /* BaseViewTool */ = {
 			isa = PBXGroup;
 			children = (
+				F01EC3F321082AD800AE2D11 /* LabelTool */,
 				F016906F2107231300E0C60A /* ADScrollVIew */,
 				F016905E2106F9C400E0C60A /* LoadingTool */,
 				F0412040210091A20003F7A2 /* CameraTool */,
@@ -203,8 +213,6 @@
 				F0B5D58A20FED64F00F642B1 /* CircleImageView.swift */,
 				F0B5D58B20FED64F00F642B1 /* FalseNavBarView.swift */,
 				F0561C362101DBCA0007496F /* LanguageTool.swift */,
-				F0D686662106D8360098B388 /* VerticalLabelView.swift */,
-				F016903A2106F40D00E0C60A /* HorizontalLabelView.swift */,
 			);
 			path = BaseViewTool;
 			sourceTree = "<group>";
