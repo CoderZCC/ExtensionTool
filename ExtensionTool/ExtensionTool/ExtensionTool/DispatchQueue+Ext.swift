@@ -37,5 +37,32 @@ extension DispatchQueue {
             callBack?()
         }
     }
+}
+
+var kNSObjectDelayKey: Int = 0
+
+extension NSObject {
     
+    /// 启动延迟操作
+    ///
+    /// - Parameters:
+    ///   - afterDelay: 延迟时间
+    ///   - block: 回调
+    func k_startDelayTimer(afterDelay: TimeInterval, block:@escaping()->Void) {
+        
+        objc_setAssociatedObject(self, &kNSObjectDelayKey, block, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        self.perform(#selector(k_delayTimerAction), with: nil, afterDelay: afterDelay)
+    }
+    
+    /// 取消延迟操作
+    func k_stopDelayTimer() {
+        
+        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(k_delayTimerAction), object: nil)
+    }
+    
+    /// 延迟事件
+    @objc func k_delayTimerAction() {
+        
+        (objc_getAssociatedObject(self, &kNSObjectDelayKey) as! (()->Void))()
+    }
 }

@@ -30,7 +30,7 @@ extension NSObject {
     ///   - repeats: 是否重复 true一直运行 false运行一次
     ///   - block:  回调
     /// - Returns: 定时器
-    func k_init(timerIdentifier: String? = nil, timeInterval: TimeInterval, repeats: Bool, block: @escaping (DispatchSourceTimer?)->Void) {
+    func k_startTimer(timerIdentifier: String? = nil, timeInterval: TimeInterval, repeats: Bool, block: @escaping (DispatchSourceTimer?)->Void) {
         
         let timer = DispatchSource.makeTimerSource(flags: [], queue: DispatchQueue.main)
         timer.schedule(wallDeadline: DispatchWallTime.now(), repeating: timeInterval)
@@ -39,7 +39,7 @@ extension NSObject {
             
             if !repeats && count == 1 {
                 
-                self.k_invalidate(timerIdentifier: timerIdentifier)
+                self.k_stopTimer(timerIdentifier: timerIdentifier)
                 return
             }
             count += 1
@@ -56,7 +56,7 @@ extension NSObject {
     /// 销毁定时器
     ///
     /// - Parameter timerIdentifier: 定时器唯一标记符
-    func k_invalidate(timerIdentifier: String? = nil) {
+    func k_stopTimer(timerIdentifier: String? = nil) {
         
         let key = timerIdentifier ?? "timer"
         var timers = self.k_timers ?? [:]
@@ -69,5 +69,4 @@ extension NSObject {
         
         if timers.isEmpty { self.k_timers = nil }
     }
-    
 }

@@ -26,8 +26,27 @@ class ViewController: BaseViewController {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.k_colorWith(hexInt: 0x666666)
 
+        self.adTool.clickBlock = { index in
+
+            print(index)
+        }
+        self.view.addSubview(self.adTool)
     }
 
+//    lazy var adTool: HorizontalADView = {
+//        let tool = HorizontalADView.init(frame: CGRect.init(x: 0.0, y: kNavBarHeight, width: kWidth, height: 260.0))
+//        tool.imgUrlArr = ["1", "2", "3", "4"]
+
+//
+//        return tool
+//    }()
+    
+    lazy var adTool: VerticalADView = {
+        let tool = VerticalADView.init(frame: CGRect.init(x: 0.0, y: kNavBarHeight, width: kWidth, height: 260.0))
+        tool.imgUrlArr = ["1", "2", "3", "4"]
+
+        return tool
+    }()
    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
