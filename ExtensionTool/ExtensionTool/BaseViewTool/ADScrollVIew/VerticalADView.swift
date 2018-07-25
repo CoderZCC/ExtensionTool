@@ -15,6 +15,7 @@ protocol VerticalADViewProtocol: NSObjectProtocol {
 
 class VerticalADView: UIView {
     
+    //MARK: -调用部分
     /// 代理
     var adDelegate: VerticalADViewProtocol?
     /// 当前下标
@@ -33,12 +34,6 @@ class VerticalADView: UIView {
             self.updateSubView()
         }
     }
-    /// 点击的回调
-    private var clickBlock: ((Int)->Void)?
-    /// pageControl的宽高
-    private let pageWH: CGFloat = 20.0
-    /// 是否刚启动
-    private var isFirstRun: Bool = true
     
     /// 初始化轮播
     ///
@@ -58,9 +53,9 @@ class VerticalADView: UIView {
         self.addSubview(self.scrolView)
         self.scrolView.setContentOffset(CGPoint(x: 0.0, y: self.bounds.height), animated: true)
     }
-
+    
     /// 启动定时器
-    @objc private func startTimer() {
+    @objc func startTimer() {
         
         self.stopTimer()
         self.k_startTimer(timerIdentifier: "VerticalADView", timeInterval: 2.0, repeats: true) { [unowned self] (timer) in
@@ -75,11 +70,18 @@ class VerticalADView: UIView {
         }
     }
     /// 销毁定时器
-    private func stopTimer() {
+    func stopTimer() {
         
         self.k_stopTimer(timerIdentifier: "VerticalADView")
     }
     
+    //MARK: -实现部分
+    /// 点击的回调
+    private var clickBlock: ((Int)->Void)?
+    /// pageControl的宽高
+    private let pageWH: CGFloat = 20.0
+    /// 是否刚启动
+    private var isFirstRun: Bool = true
     /// 设置图片
     ///
     /// - Parameters:

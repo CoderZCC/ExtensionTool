@@ -10,16 +10,30 @@ import UIKit
 
 class VerticalLabelView: UIView {
 
+    /// 初始化控件
+    ///
+    /// - Parameters:
+    ///   - frame: 位置
+    ///   - labelArr: 标签数组
+    ///   - block: 回调
+    init(frame: CGRect, labelArr: [String], block: ((Int)->Void)?) {
+        super.init(frame: frame)
+        
+        self.labelArr = labelArr
+        self.block = block
+        self.addSubview(self.scrollView)
+    }
+    
     /// 横向间距
-    let marginX: CGFloat = 8.0
+    private let marginX: CGFloat = 8.0
     /// 纵向间距
-    let marginY: CGFloat = 8.0
+    private let marginY: CGFloat = 8.0
     /// 一个标签的高度
-    let labelHeight: CGFloat = 30.0
+    private let labelHeight: CGFloat = 30.0
     /// 点击回调
-    var block: ((Int)->Void)?
+    private var block: ((Int)->Void)?
     /// 数据源
-    var labelArr: [String] = [] {
+    private var labelArr: [String] = [] {
         willSet {
             
             var markBtn: UIButton!
@@ -67,19 +81,13 @@ class VerticalLabelView: UIView {
         }
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        self.addSubview(self.scrollView)
-    }
-    
-    func textWidth(text: String, font: UIFont) -> CGFloat {
+    private func textWidth(text: String, font: UIFont) -> CGFloat {
         let str = NSString.init(string: text)
         let rect = str.boundingRect(with: CGSize.init(width: kWidth - 20.0, height: self.labelHeight), options: .usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font : font], context: nil)
     
         return rect.size.width
     }
-    @objc func btnAction(btn: UIButton) {
+    @objc private func btnAction(btn: UIButton) {
  
         self.block?(btn.tag)
     }
