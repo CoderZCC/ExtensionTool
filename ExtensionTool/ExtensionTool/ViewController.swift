@@ -27,17 +27,8 @@ class ViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.addSubview(self.ad)
     }
 
-    lazy var ad: HorizontalADView = {
-        let tool = HorizontalADView.init(frame: CGRect.init(x: 0.0, y: kNavBarHeight, width: kWidth, height: 260.0), imgUrlArr: ["1", "2", "3", "4"], block: { (index) in
-            
-            
-        })
-        
-        return tool
-    }()
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

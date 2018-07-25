@@ -47,7 +47,7 @@ class HorizontalADView: UIView {
         self.clickBlock = block
         
         self.addSubview(self.scrolView)
-        self.scrolView.setContentOffset(CGPoint(x: 0.0, y: self.bounds.height), animated: true)
+        self.scrolView.setContentOffset(CGPoint(x: self.bounds.width, y: 0.0), animated: true)
         
         if let arr = imgUrlArr, !arr.isEmpty {
             
