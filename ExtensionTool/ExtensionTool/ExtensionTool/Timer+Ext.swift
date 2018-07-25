@@ -18,7 +18,7 @@ extension NSObject {
         set {
             objc_setAssociatedObject(self, &kTimerKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
-        get {  return objc_getAssociatedObject(self, &kTimerKey) as? [String: DispatchSourceTimer?] }
+        get { return objc_getAssociatedObject(self, &kTimerKey) as? [String: DispatchSourceTimer?] }
     }
     
     //MARK: 启动定时器
@@ -43,10 +43,18 @@ extension NSObject {
                 return
             }
             count += 1
-            block(timer)
+            if let k_timers = self.k_timers {
+                
+                let key = timerIdentifier ?? "timer"
+                block(k_timers[key] as? DispatchSourceTimer)
+                
+            } else {
+                
+                block(nil)
+            }
         }
         timer.resume()
-
+        
         var timers = self.k_timers ?? [:]
         timers[timerIdentifier ?? "timer"] = timer
         self.k_timers = timers

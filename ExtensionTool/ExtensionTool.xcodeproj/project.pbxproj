@@ -67,6 +67,7 @@
 		F016906D210704FA00E0C60A /* Badge+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Badge+Ext.swift"; sourceTree = "<group>"; };
 		F01690702107232600E0C60A /* VerticalADView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalADView.swift; sourceTree = "<group>"; };
 		F016907221072A1D00E0C60A /* HorizontalADView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalADView.swift; sourceTree = "<group>"; };
+		F01EC3EC21081C2200AE2D11 /* Swift-OCHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Swift-OCHeader.h"; sourceTree = "<group>"; };
 		F021414521056CC40067D1E5 /* CameraListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraListViewController.swift; sourceTree = "<group>"; };
 		F0412020210079BB0003F7A2 /* Timer+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timer+Ext.swift"; sourceTree = "<group>"; };
 		F04930F920F4A08700787CC8 /* ExtensionTool.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ExtensionTool.entitlements; sourceTree = "<group>"; };
@@ -138,6 +139,7 @@
 		F016906F2107231300E0C60A /* ADScrollVIew */ = {
 			isa = PBXGroup;
 			children = (
+				F01EC3EC21081C2200AE2D11 /* Swift-OCHeader.h */,
 				F01690702107232600E0C60A /* VerticalADView.swift */,
 				F016907221072A1D00E0C60A /* HorizontalADView.swift */,
 			);
@@ -526,6 +528,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zcc.ExtensionTool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/ExtensionTool/BaseViewTool/ADScrollVIew/Swift-OCHeader.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -546,6 +549,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.zcc.ExtensionTool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/ExtensionTool/BaseViewTool/ADScrollVIew/Swift-OCHeader.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
