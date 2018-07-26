@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina5_5" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -13,32 +13,30 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="BottomView" customModule="ExtensionTool" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w6O-r3-Zon" userLabel="showView">
-                    <rect key="frame" x="0.0" y="470" width="414" height="300"/>
-                    <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fp3-8U-uBt" userLabel="安全区域">
-                            <rect key="frame" x="0.0" y="266" width="414" height="34"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="34" id="nvE-Ge-JOd"/>
-                            </constraints>
-                        </view>
-                    </subviews>
+                    <rect key="frame" x="0.0" y="478" width="375" height="300"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="bottom" secondItem="fp3-8U-uBt" secondAttribute="bottom" id="8VB-Ol-2Wx"/>
-                        <constraint firstAttribute="trailing" secondItem="fp3-8U-uBt" secondAttribute="trailing" id="F4z-rh-Se6"/>
                         <constraint firstAttribute="height" constant="300" id="G2d-DG-ICY"/>
-                        <constraint firstItem="fp3-8U-uBt" firstAttribute="leading" secondItem="w6O-r3-Zon" secondAttribute="leading" id="TS3-gY-kRf"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fp3-8U-uBt" userLabel="安全区域">
+                    <rect key="frame" x="0.0" y="778" width="375" height="34"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="34" id="nvE-Ge-JOd"/>
                     </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.1993257705479452" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="w6O-r3-Zon" secondAttribute="bottom" constant="-34" id="fan-UI-7ce"/>
+                <constraint firstItem="fp3-8U-uBt" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="00D-qL-wqy"/>
+                <constraint firstItem="fp3-8U-uBt" firstAttribute="top" secondItem="w6O-r3-Zon" secondAttribute="bottom" id="bAD-eO-4FC"/>
+                <constraint firstAttribute="bottom" secondItem="fp3-8U-uBt" secondAttribute="bottom" id="idN-tF-05c"/>
+                <constraint firstAttribute="trailing" secondItem="fp3-8U-uBt" secondAttribute="trailing" id="lZd-mU-5K5"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="w6O-r3-Zon" secondAttribute="trailing" id="qKa-Zv-jeE"/>
                 <constraint firstItem="w6O-r3-Zon" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="qcf-Og-AkV"/>
             </constraints>

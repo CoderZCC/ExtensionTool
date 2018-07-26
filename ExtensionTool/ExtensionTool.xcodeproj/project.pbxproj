@@ -34,6 +34,8 @@
 		F077773F20F2FC3A003D7BD8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F077773D20F2FC3A003D7BD8 /* LaunchScreen.storyboard */; };
 		F085C4822109576B00CB0D2B /* BottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F085C4812109576B00CB0D2B /* BottomView.swift */; };
 		F085C4842109577D00CB0D2B /* BottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F085C4832109577D00CB0D2B /* BottomView.xib */; };
+		F085C4872109606E00CB0D2B /* SpecialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F085C4852109606D00CB0D2B /* SpecialView.xib */; };
+		F085C4882109606E00CB0D2B /* SpecialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F085C4862109606D00CB0D2B /* SpecialView.swift */; };
 		F0B5D59C20FED64F00F642B1 /* AuthorityTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B5D58520FED64F00F642B1 /* AuthorityTool.swift */; };
 		F0B5D59D20FED64F00F642B1 /* VideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B5D58620FED64F00F642B1 /* VideoPlayer.swift */; };
 		F0B5D59E20FED64F00F642B1 /* kSaveDataTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B5D58720FED64F00F642B1 /* kSaveDataTool.swift */; };
@@ -94,6 +96,8 @@
 		F077774020F2FC3A003D7BD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F085C4812109576B00CB0D2B /* BottomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomView.swift; sourceTree = "<group>"; };
 		F085C4832109577D00CB0D2B /* BottomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomView.xib; sourceTree = "<group>"; };
+		F085C4852109606D00CB0D2B /* SpecialView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpecialView.xib; sourceTree = "<group>"; };
+		F085C4862109606D00CB0D2B /* SpecialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialView.swift; sourceTree = "<group>"; };
 		F0B5D58520FED64F00F642B1 /* AuthorityTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorityTool.swift; sourceTree = "<group>"; };
 		F0B5D58620FED64F00F642B1 /* VideoPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayer.swift; sourceTree = "<group>"; };
 		F0B5D58720FED64F00F642B1 /* kSaveDataTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = kSaveDataTool.swift; sourceTree = "<group>"; };
@@ -212,6 +216,8 @@
 			children = (
 				F085C4812109576B00CB0D2B /* BottomView.swift */,
 				F085C4832109577D00CB0D2B /* BottomView.xib */,
+				F085C4862109606D00CB0D2B /* SpecialView.swift */,
+				F085C4852109606D00CB0D2B /* SpecialView.xib */,
 			);
 			path = BottomView;
 			sourceTree = "<group>";
@@ -337,6 +343,7 @@
 				F077773F20F2FC3A003D7BD8 /* LaunchScreen.storyboard in Resources */,
 				F0561C3A2101DC5C0007496F /* Localizable.strings in Resources */,
 				F077773C20F2FC3A003D7BD8 /* Assets.xcassets in Resources */,
+				F085C4872109606E00CB0D2B /* SpecialView.xib in Resources */,
 				F01690692106FB9D00E0C60A /* AlertViewTool.xib in Resources */,
 				F085C4842109577D00CB0D2B /* BottomView.xib in Resources */,
 				F077773A20F2FC39003D7BD8 /* Main.storyboard in Resources */,
@@ -382,6 +389,7 @@
 				F016906E210704FA00E0C60A /* Badge+Ext.swift in Sources */,
 				F0B5D5A820FED64F00F642B1 /* UIIImageView+Ext.swift in Sources */,
 				F077773720F2FC39003D7BD8 /* ViewController.swift in Sources */,
+				F085C4882109606E00CB0D2B /* SpecialView.swift in Sources */,
 				F0B5D5A620FED64F00F642B1 /* UITableView+Ext.swift in Sources */,
 				F0B5D59C20FED64F00F642B1 /* AuthorityTool.swift in Sources */,
 				F0B5D59F20FED64F00F642B1 /* SliderDrawerViewController.swift in Sources */,
