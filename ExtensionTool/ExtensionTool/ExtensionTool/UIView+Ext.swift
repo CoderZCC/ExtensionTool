@@ -166,6 +166,21 @@ extension UIView {
         self.layer.borderWidth = width
     }
     
+    //MARK: 设置特定的圆角
+    /// 设置特定的圆角
+    ///
+    /// - Parameters:
+    ///   - corners: 位置
+    ///   - radii: 圆角
+    func k_setCorner(byRoundingCorners corners: UIRectCorner, radii: CGFloat) {
+        
+        let maskPath = UIBezierPath(roundedRect: CGRect.init(x: 0.0, y: 0.0, width: self.bounds.width, height: self.bounds.height), byRoundingCorners: corners, cornerRadii: CGSize(width: radii, height: radii))
+        let maskLayer = CAShapeLayer()
+        maskLayer.frame = CGRect.init(x: 0.0, y: 0.0, width: kWidth, height: self.bounds.height)
+        maskLayer.path = maskPath.cgPath
+        self.layer.mask = maskLayer
+    }
+    
     //MARK: UIView添加点击事件
     /// UIView添加点击事件
     ///

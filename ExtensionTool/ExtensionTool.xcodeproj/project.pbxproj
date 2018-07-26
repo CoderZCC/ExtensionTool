@@ -17,6 +17,7 @@
 		F01690712107232600E0C60A /* VerticalADView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01690702107232600E0C60A /* VerticalADView.swift */; };
 		F016907321072A1D00E0C60A /* HorizontalADView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F016907221072A1D00E0C60A /* HorizontalADView.swift */; };
 		F01EC3F821083FC000AE2D11 /* BarrageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01EC3F721083FC000AE2D11 /* BarrageView.swift */; };
+		F01EC3FC210879BD00AE2D11 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01EC3FB210879BD00AE2D11 /* CalendarView.swift */; };
 		F021414621056CC40067D1E5 /* CameraListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F021414521056CC40067D1E5 /* CameraListViewController.swift */; };
 		F0412021210079BB0003F7A2 /* Timer+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0412020210079BB0003F7A2 /* Timer+Ext.swift */; };
 		F054045321002C9600E3EF87 /* PushFromStr+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F054045221002C9600E3EF87 /* PushFromStr+Ext.swift */; };
@@ -31,6 +32,8 @@
 		F077773A20F2FC39003D7BD8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F077773820F2FC39003D7BD8 /* Main.storyboard */; };
 		F077773C20F2FC3A003D7BD8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F077773B20F2FC3A003D7BD8 /* Assets.xcassets */; };
 		F077773F20F2FC3A003D7BD8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F077773D20F2FC3A003D7BD8 /* LaunchScreen.storyboard */; };
+		F085C4822109576B00CB0D2B /* BottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F085C4812109576B00CB0D2B /* BottomView.swift */; };
+		F085C4842109577D00CB0D2B /* BottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F085C4832109577D00CB0D2B /* BottomView.xib */; };
 		F0B5D59C20FED64F00F642B1 /* AuthorityTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B5D58520FED64F00F642B1 /* AuthorityTool.swift */; };
 		F0B5D59D20FED64F00F642B1 /* VideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B5D58620FED64F00F642B1 /* VideoPlayer.swift */; };
 		F0B5D59E20FED64F00F642B1 /* kSaveDataTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B5D58720FED64F00F642B1 /* kSaveDataTool.swift */; };
@@ -70,6 +73,7 @@
 		F016907221072A1D00E0C60A /* HorizontalADView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalADView.swift; sourceTree = "<group>"; };
 		F01EC3EC21081C2200AE2D11 /* Swift-OCHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Swift-OCHeader.h"; sourceTree = "<group>"; };
 		F01EC3F721083FC000AE2D11 /* BarrageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarrageView.swift; sourceTree = "<group>"; };
+		F01EC3FB210879BD00AE2D11 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		F021414521056CC40067D1E5 /* CameraListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraListViewController.swift; sourceTree = "<group>"; };
 		F0412020210079BB0003F7A2 /* Timer+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timer+Ext.swift"; sourceTree = "<group>"; };
 		F04930F920F4A08700787CC8 /* ExtensionTool.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ExtensionTool.entitlements; sourceTree = "<group>"; };
@@ -88,6 +92,8 @@
 		F077773B20F2FC3A003D7BD8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F077773E20F2FC3A003D7BD8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F077774020F2FC3A003D7BD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F085C4812109576B00CB0D2B /* BottomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomView.swift; sourceTree = "<group>"; };
+		F085C4832109577D00CB0D2B /* BottomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomView.xib; sourceTree = "<group>"; };
 		F0B5D58520FED64F00F642B1 /* AuthorityTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorityTool.swift; sourceTree = "<group>"; };
 		F0B5D58620FED64F00F642B1 /* VideoPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayer.swift; sourceTree = "<group>"; };
 		F0B5D58720FED64F00F642B1 /* kSaveDataTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = kSaveDataTool.swift; sourceTree = "<group>"; };
@@ -201,9 +207,19 @@
 			path = ExtensionTool;
 			sourceTree = "<group>";
 		};
+		F085C4802109576B00CB0D2B /* BottomView */ = {
+			isa = PBXGroup;
+			children = (
+				F085C4812109576B00CB0D2B /* BottomView.swift */,
+				F085C4832109577D00CB0D2B /* BottomView.xib */,
+			);
+			path = BottomView;
+			sourceTree = "<group>";
+		};
 		F0B5D58420FED64F00F642B1 /* BaseViewTool */ = {
 			isa = PBXGroup;
 			children = (
+				F085C4802109576B00CB0D2B /* BottomView */,
 				F01EC3F321082AD800AE2D11 /* LabelTool */,
 				F016906F2107231300E0C60A /* ADScrollVIew */,
 				F016905E2106F9C400E0C60A /* LoadingTool */,
@@ -216,6 +232,7 @@
 				F0B5D58B20FED64F00F642B1 /* FalseNavBarView.swift */,
 				F0561C362101DBCA0007496F /* LanguageTool.swift */,
 				F01EC3F721083FC000AE2D11 /* BarrageView.swift */,
+				F01EC3FB210879BD00AE2D11 /* CalendarView.swift */,
 			);
 			path = BaseViewTool;
 			sourceTree = "<group>";
@@ -321,6 +338,7 @@
 				F0561C3A2101DC5C0007496F /* Localizable.strings in Resources */,
 				F077773C20F2FC3A003D7BD8 /* Assets.xcassets in Resources */,
 				F01690692106FB9D00E0C60A /* AlertViewTool.xib in Resources */,
+				F085C4842109577D00CB0D2B /* BottomView.xib in Resources */,
 				F077773A20F2FC39003D7BD8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -338,6 +356,7 @@
 				F0561C3F2101DEF50007496F /* CameraTool.swift in Sources */,
 				F0B5D59E20FED64F00F642B1 /* kSaveDataTool.swift in Sources */,
 				F0561C2F2101BA950007496F /* UILabel+Ext.swift in Sources */,
+				F01EC3FC210879BD00AE2D11 /* CalendarView.swift in Sources */,
 				F01690612106F9C400E0C60A /* HUDViewTool.swift in Sources */,
 				F0B5D5A720FED64F00F642B1 /* AppDelegate+Push.swift in Sources */,
 				F016906C2106FBDF00E0C60A /* AlertSheetTool.swift in Sources */,
@@ -367,6 +386,7 @@
 				F0B5D59C20FED64F00F642B1 /* AuthorityTool.swift in Sources */,
 				F0B5D59F20FED64F00F642B1 /* SliderDrawerViewController.swift in Sources */,
 				F077773520F2FC39003D7BD8 /* AppDelegate.swift in Sources */,
+				F085C4822109576B00CB0D2B /* BottomView.swift in Sources */,
 				F0B5D5A220FED64F00F642B1 /* FalseNavBarView.swift in Sources */,
 				F0B5D5AD20FED64F00F642B1 /* DispatchQueue+Ext.swift in Sources */,
 				F0B5D5AF20FED64F00F642B1 /* ExtensionTool.swift in Sources */,

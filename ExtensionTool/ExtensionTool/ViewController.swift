@@ -29,10 +29,33 @@ class ViewController: BaseViewController {
 
     }
 
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        self.navigationController?.pushViewController(SecondViewController(), animated: true)
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
    
+}
+
+class SecondViewController: BaseViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.view.k_addTarget { (tap) in
+            
+            BottomView.showBottomView(baseView: nil)
+        }
+    }
+    
+    
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
 }
 
