@@ -21,6 +21,35 @@ extension Date {
         return self.addingTimeInterval(TimeInterval(60.0 * 60.0 * CGFloat(num)))
     }
 
+    //MARK: 获取时间月份有几天
+    /// 获取时间月份有几天
+    ///
+    /// - Returns: 天数
+    func k_getDaysInMonth() -> Int {
+        
+        let component = self.k_YMDHMS()
+        let year = component.year!
+        let month = component.month!
+        
+        var startComps = DateComponents()
+        startComps.day = 1
+        startComps.year = year
+        startComps.month = month
+        
+        var endComps = DateComponents()
+        endComps.day = 1
+        endComps.year = (month == 12 ? (year + 1) : (year))
+        endComps.month = (month == 12 ? (1) : (month + 1))
+        
+        let calendar = Calendar.current
+        let startDate = calendar.date(from: startComps)!
+        let endDate = calendar.date(from: endComps)!
+        
+        let diff = calendar.dateComponents([.day], from: startDate, to: endDate)
+        
+        return diff.day!
+    }
+    
     //MARK: 指定日期的 年月日时分秒
     /// 指定日期的 年月日时分秒
     ///

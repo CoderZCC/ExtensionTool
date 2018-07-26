@@ -36,6 +36,7 @@
 		F085C4842109577D00CB0D2B /* BottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F085C4832109577D00CB0D2B /* BottomView.xib */; };
 		F085C4872109606E00CB0D2B /* SpecialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F085C4852109606D00CB0D2B /* SpecialView.xib */; };
 		F085C4882109606E00CB0D2B /* SpecialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F085C4862109606D00CB0D2B /* SpecialView.swift */; };
+		F085C48A21096E6F00CB0D2B /* CalendarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F085C48921096E6F00CB0D2B /* CalendarView.xib */; };
 		F0B5D59C20FED64F00F642B1 /* AuthorityTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B5D58520FED64F00F642B1 /* AuthorityTool.swift */; };
 		F0B5D59D20FED64F00F642B1 /* VideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B5D58620FED64F00F642B1 /* VideoPlayer.swift */; };
 		F0B5D59E20FED64F00F642B1 /* kSaveDataTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B5D58720FED64F00F642B1 /* kSaveDataTool.swift */; };
@@ -98,6 +99,7 @@
 		F085C4832109577D00CB0D2B /* BottomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomView.xib; sourceTree = "<group>"; };
 		F085C4852109606D00CB0D2B /* SpecialView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpecialView.xib; sourceTree = "<group>"; };
 		F085C4862109606D00CB0D2B /* SpecialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialView.swift; sourceTree = "<group>"; };
+		F085C48921096E6F00CB0D2B /* CalendarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarView.xib; sourceTree = "<group>"; };
 		F0B5D58520FED64F00F642B1 /* AuthorityTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorityTool.swift; sourceTree = "<group>"; };
 		F0B5D58620FED64F00F642B1 /* VideoPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayer.swift; sourceTree = "<group>"; };
 		F0B5D58720FED64F00F642B1 /* kSaveDataTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = kSaveDataTool.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 				F0561C362101DBCA0007496F /* LanguageTool.swift */,
 				F01EC3F721083FC000AE2D11 /* BarrageView.swift */,
 				F01EC3FB210879BD00AE2D11 /* CalendarView.swift */,
+				F085C48921096E6F00CB0D2B /* CalendarView.xib */,
 			);
 			path = BaseViewTool;
 			sourceTree = "<group>";
@@ -342,6 +345,7 @@
 				F01690622106F9C400E0C60A /* HUDViewTool.xib in Resources */,
 				F077773F20F2FC3A003D7BD8 /* LaunchScreen.storyboard in Resources */,
 				F0561C3A2101DC5C0007496F /* Localizable.strings in Resources */,
+				F085C48A21096E6F00CB0D2B /* CalendarView.xib in Resources */,
 				F077773C20F2FC3A003D7BD8 /* Assets.xcassets in Resources */,
 				F085C4872109606E00CB0D2B /* SpecialView.xib in Resources */,
 				F01690692106FB9D00E0C60A /* AlertViewTool.xib in Resources */,
