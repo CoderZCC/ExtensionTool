@@ -34,10 +34,10 @@ class CameraViewController: UIViewController {
     func setupNavigation() {
         
         self.title = "照片"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "取消", clickCallBack: { [unowned self] in
+        self.k_navigationItem(title: "取消") { [unowned self] in
             
             self.dismiss(animated: true, completion: nil)
-        })
+        }
     }
     
     //MARK: 初始化子视图

@@ -34,7 +34,7 @@ class ViewController: BaseViewController {
         let pushVC = SecondViewController()
         self.navigationController?.pushViewController(pushVC, animated: true)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
