@@ -150,8 +150,14 @@ extension UIView {
     /// - Parameter radius: 圆角数
     func k_setCornerRadius(_ radius: CGFloat) {
         
-        self.layer.cornerRadius = radius
-        self.clipsToBounds = true
+//        self.layer.cornerRadius = radius
+//        self.clipsToBounds = true
+        
+        let maskPath = UIBezierPath.init(roundedRect: self.bounds, cornerRadius: radius)
+        let maskLayer = CAShapeLayer()
+        maskLayer.frame = CGRect.init(x: 0.0, y: 0.0, width: kWidth, height: self.bounds.height)
+        maskLayer.path = maskPath.cgPath
+        self.layer.mask = maskLayer
     }
     
     //MARK: 设置边框
@@ -162,8 +168,19 @@ extension UIView {
     ///   - width: 宽度
     func k_setBorder(color: UIColor, width: CGFloat) {
         
-        self.layer.borderColor = color.cgColor
-        self.layer.borderWidth = width
+//        self.layer.borderColor = color.cgColor
+//        self.layer.borderWidth = width
+        
+        let circleLayer = CAShapeLayer.init()
+        
+        let circlePath = UIBezierPath.init(roundedRect: self.bounds, cornerRadius: self.bounds.height / 2.0)
+        circleLayer.path = circlePath.cgPath
+        
+        circleLayer.fillColor = UIColor.clear.cgColor
+        circleLayer.lineWidth = width
+        circleLayer.strokeColor = color.cgColor
+        
+        self.layer.addSublayer(circleLayer)
     }
     
     //MARK: 设置特定的圆角
