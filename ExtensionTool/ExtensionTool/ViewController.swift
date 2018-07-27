@@ -24,16 +24,19 @@ class BaseViewController: UIViewController {
 
 class ViewController: BaseViewController {
     
+    @IBOutlet weak var textL: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        let pushVC = SecondViewController()
-        self.navigationController?.pushViewController(pushVC, animated: true)
-    }
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//
+//        let pushVC = SecondViewController()
+//        self.navigationController?.pushViewController(pushVC, animated: true)
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
