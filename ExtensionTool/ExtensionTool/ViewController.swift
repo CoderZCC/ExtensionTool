@@ -23,9 +23,7 @@ class BaseViewController: UIViewController {
 }
 
 class ViewController: BaseViewController {
-    
-    @IBOutlet weak var textL: UILabel!
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
 
