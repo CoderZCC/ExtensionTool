@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F0105B9A210AC3DC005B8661 /* MyPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0105B99210AC3DC005B8661 /* MyPageControl.swift */; };
+		F0105B9C210AC865005B8661 /* InputAssistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0105B9B210AC865005B8661 /* InputAssistView.swift */; };
 		F016903B2106F40D00E0C60A /* HorizontalLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F016903A2106F40D00E0C60A /* HorizontalLabelView.swift */; };
 		F01690612106F9C400E0C60A /* HUDViewTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F016905F2106F9C400E0C60A /* HUDViewTool.swift */; };
 		F01690622106F9C400E0C60A /* HUDViewTool.xib in Resources */ = {isa = PBXBuildFile; fileRef = F01690602106F9C400E0C60A /* HUDViewTool.xib */; };
@@ -67,6 +69,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F0105B99210AC3DC005B8661 /* MyPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageControl.swift; sourceTree = "<group>"; };
+		F0105B9B210AC865005B8661 /* InputAssistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputAssistView.swift; sourceTree = "<group>"; };
 		F016903A2106F40D00E0C60A /* HorizontalLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalLabelView.swift; sourceTree = "<group>"; };
 		F016905F2106F9C400E0C60A /* HUDViewTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDViewTool.swift; sourceTree = "<group>"; };
 		F01690602106F9C400E0C60A /* HUDViewTool.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HUDViewTool.xib; sourceTree = "<group>"; };
@@ -160,6 +164,7 @@
 				F01EC3EC21081C2200AE2D11 /* Swift-OCHeader.h */,
 				F01690702107232600E0C60A /* VerticalADView.swift */,
 				F016907221072A1D00E0C60A /* HorizontalADView.swift */,
+				F0105B99210AC3DC005B8661 /* MyPageControl.swift */,
 			);
 			path = ADScrollVIew;
 			sourceTree = "<group>";
@@ -248,6 +253,7 @@
 				F085C48921096E6F00CB0D2B /* CalendarView.xib */,
 				F085C48B2109AFE000CB0D2B /* DatePickerTool.swift */,
 				F085C48D2109AFF300CB0D2B /* MyPickerTool.xib */,
+				F0105B9B210AC865005B8661 /* InputAssistView.swift */,
 			);
 			path = BaseViewTool;
 			sourceTree = "<group>";
@@ -368,6 +374,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0105B9C210AC865005B8661 /* InputAssistView.swift in Sources */,
 				F0B5D5AB20FED64F00F642B1 /* String+Ext.swift in Sources */,
 				F016907321072A1D00E0C60A /* HorizontalADView.swift in Sources */,
 				F0B5D5A120FED64F00F642B1 /* CircleImageView.swift in Sources */,
@@ -402,6 +409,7 @@
 				F0B5D5A820FED64F00F642B1 /* UIIImageView+Ext.swift in Sources */,
 				F077773720F2FC39003D7BD8 /* ViewController.swift in Sources */,
 				F085C4882109606E00CB0D2B /* SpecialView.swift in Sources */,
+				F0105B9A210AC3DC005B8661 /* MyPageControl.swift in Sources */,
 				F0B5D5A620FED64F00F642B1 /* UITableView+Ext.swift in Sources */,
 				F0B5D59C20FED64F00F642B1 /* AuthorityTool.swift in Sources */,
 				F0B5D59F20FED64F00F642B1 /* SliderDrawerViewController.swift in Sources */,

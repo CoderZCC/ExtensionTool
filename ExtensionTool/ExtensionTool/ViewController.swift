@@ -48,10 +48,7 @@ class SecondViewController: BaseViewController {
         
     }
     
-   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-    
+    }    
 }
-
