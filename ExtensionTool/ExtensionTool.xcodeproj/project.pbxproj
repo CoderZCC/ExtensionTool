@@ -20,6 +20,7 @@
 		F016907321072A1D00E0C60A /* HorizontalADView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F016907221072A1D00E0C60A /* HorizontalADView.swift */; };
 		F01EC3F821083FC000AE2D11 /* BarrageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01EC3F721083FC000AE2D11 /* BarrageView.swift */; };
 		F01EC3FC210879BD00AE2D11 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01EC3FB210879BD00AE2D11 /* CalendarView.swift */; };
+		F01FECFF210E9E65004BEF6B /* BottomInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01FECFE210E9E65004BEF6B /* BottomInputView.swift */; };
 		F021414621056CC40067D1E5 /* CameraListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F021414521056CC40067D1E5 /* CameraListViewController.swift */; };
 		F0412021210079BB0003F7A2 /* Timer+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0412020210079BB0003F7A2 /* Timer+Ext.swift */; };
 		F054045321002C9600E3EF87 /* PushFromStr+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F054045221002C9600E3EF87 /* PushFromStr+Ext.swift */; };
@@ -83,6 +84,7 @@
 		F01EC3EC21081C2200AE2D11 /* Swift-OCHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Swift-OCHeader.h"; sourceTree = "<group>"; };
 		F01EC3F721083FC000AE2D11 /* BarrageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarrageView.swift; sourceTree = "<group>"; };
 		F01EC3FB210879BD00AE2D11 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		F01FECFE210E9E65004BEF6B /* BottomInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomInputView.swift; sourceTree = "<group>"; };
 		F021414521056CC40067D1E5 /* CameraListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraListViewController.swift; sourceTree = "<group>"; };
 		F0412020210079BB0003F7A2 /* Timer+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timer+Ext.swift"; sourceTree = "<group>"; };
 		F04930F920F4A08700787CC8 /* ExtensionTool.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ExtensionTool.entitlements; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 				F085C48B2109AFE000CB0D2B /* DatePickerTool.swift */,
 				F085C48D2109AFF300CB0D2B /* MyPickerTool.xib */,
 				F0105B9B210AC865005B8661 /* InputAssistView.swift */,
+				F01FECFE210E9E65004BEF6B /* BottomInputView.swift */,
 			);
 			path = BaseViewTool;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 				F016906E210704FA00E0C60A /* Badge+Ext.swift in Sources */,
 				F0B5D5A820FED64F00F642B1 /* UIIImageView+Ext.swift in Sources */,
 				F077773720F2FC39003D7BD8 /* ViewController.swift in Sources */,
+				F01FECFF210E9E65004BEF6B /* BottomInputView.swift in Sources */,
 				F085C4882109606E00CB0D2B /* SpecialView.swift in Sources */,
 				F0105B9A210AC3DC005B8661 /* MyPageControl.swift in Sources */,
 				F0B5D5A620FED64F00F642B1 /* UITableView+Ext.swift in Sources */,

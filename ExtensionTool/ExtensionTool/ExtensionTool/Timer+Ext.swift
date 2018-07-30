@@ -53,7 +53,10 @@ extension NSObject {
                 block(nil)
             }
         }
-        timer.resume()
+        DispatchQueue.k_asyncAfterOnMain(dealyTime: 3.0) {
+            
+            timer.resume()
+        }
         
         var timers = self.k_timers ?? [:]
         timers[timerIdentifier ?? "timer"] = timer

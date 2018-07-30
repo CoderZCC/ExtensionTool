@@ -9,8 +9,14 @@
 import UIKit
 
 enum NotificationName: Int {
+    
     case loginSuccess, loginFail, loginError
 }
+
+//extension NSNotification.Name {
+//
+//    case loginSuccess, loginFail, loginError
+//}
 
 var kNotificationCenterKey: Int = 0
 

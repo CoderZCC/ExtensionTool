@@ -22,8 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateInitialViewController()!
         let nav = UINavigationController.init(rootViewController: vc)
         window?.rootViewController = nav
-
+        
         return true
     }
+    
 }
 
