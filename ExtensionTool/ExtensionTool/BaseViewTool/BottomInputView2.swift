@@ -1,5 +1,5 @@
 //
-//  BottomInputView.swift
+//  BottomInputView2.swift
 //  ExtensionTool
 //
 //  Created by 张崇超 on 2018/7/30.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BottomInputView: UIView {
+class BottomInputView2: UIView {
 
     //MARK: -调用部分
     /// 占位文字
@@ -57,6 +57,7 @@ class BottomInputView: UIView {
             
             let textView = note.object as! UITextView
             let text: String = textView.text ?? ""
+            self.isBtnEnabled = !text.isEmpty
             
             var textHeight = self.getInputTextHeight(text: text)
             if self.lastHeight != textHeight {
@@ -64,14 +65,18 @@ class BottomInputView: UIView {
                 // 输入框
                 var tVFrame = textView.frame
                 tVFrame.size.height = textHeight - (self.originalFrame.height - self.tFHeight)
-                tVFrame.size.height = max(self.originalTVFrame.height, tVFrame.size.height)
-
+                if tVFrame.size.height < self.originalTVFrame.height {
+                    tVFrame.size.height = self.originalTVFrame.height
+                }
+                
                 // 父视图
                 var newFrame = self.frame
-                textHeight = max(self.originalFrame.height, textHeight)
+                if textHeight < self.originalFrame.height {
+                    textHeight = self.originalFrame.height
+                }
                 newFrame.size.height = textHeight
                 newFrame.origin.y -= (textHeight - self.frame.height)
-                
+
                 // 按钮
                 var btnFrame = self.rightBtn.frame
                 btnFrame.origin.y = (newFrame.size.height - self.btnHeight) - (self.originalFrame.height - self.btnHeight) / 2.0
@@ -100,13 +105,13 @@ class BottomInputView: UIView {
     /// 输入框左侧间隔
     private let tFLeftMargin: CGFloat = 10.0
     /// 输入框右侧间隔
-    private let tFRightMargin: CGFloat = 15.0
+    private let tFRightMargin: CGFloat = 10.0
     /// 按钮宽度
-    private let btnWidth: CGFloat = 35.0
+    private let btnWidth: CGFloat = 75.0
     /// 按钮高度
     private let btnHeight: CGFloat = 35.0
     /// 按钮右侧间隔
-    private let btnRightMargin: CGFloat = 15.0
+    private let btnRightMargin: CGFloat = 10.0
     /// 原始位置
     private var originalFrame: CGRect!
     /// 输入框原始位置
@@ -118,11 +123,20 @@ class BottomInputView: UIView {
     private var note1: NSObjectProtocol!
     private var note2: NSObjectProtocol!
     private var note3: NSObjectProtocol!
+    /// 发送按钮是否可用
+    private var isBtnEnabled: Bool! {
+        willSet {
+            
+            self.rightBtn.isEnabled = newValue
+            self.rightBtn.backgroundColor = newValue ? (UIColor.blue) : (UIColor.darkGray)
+        }
+    }
     
     /// 添加控件
     private func initSubViews() {
         
         self.addSubview(self.rightBtn)
+        self.isBtnEnabled = false
         self.addSubview(self.textView)
     }
     
@@ -152,13 +166,16 @@ class BottomInputView: UIView {
     
     private lazy var rightBtn: UIButton = { [unowned self] in
         let btn = UIButton.init(type: .custom)
-        btn.setImage(#imageLiteral(resourceName: "emoij"), for: .normal)
+        btn.setTitle("发送", for: .normal)
         btn.frame = CGRect(x: self.bounds.width - self.btnWidth - self.btnRightMargin, y: (self.bounds.height - self.btnHeight) / 2.0, width: self.btnWidth, height: self.btnHeight)
         btn.k_setCornerRadius(5.0)
         
         btn.k_addTarget { [unowned self] in
             
+            self.textView.resignFirstResponder()
+            self.textCallBack?(self.textView.text!)
             
+            self.textView.text = nil
         }
         
         return btn

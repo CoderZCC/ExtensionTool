@@ -29,14 +29,7 @@ class ViewController: BaseViewController {
         super.viewDidLoad()
 
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        print("发送通知")
-        self.k_post(name: NotificationName.loginSuccess)
-    }
-    
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 
         let pushVC = SecondViewController()
@@ -57,8 +50,8 @@ class SecondViewController: BaseViewController {
         self.view.addSubview(self.myInputView)
     }
     
-    lazy var myInputView: BottomInputView = {
-        let view = BottomInputView.init(frame: CGRect(x: 0.0, y: kHeight - 40.0, width: kWidth, height: 40.0))
+    lazy var myInputView: BottomInputView1 = {
+        let view = BottomInputView1.init(frame: CGRect(x: 0.0, y: kHeight - 44.0 - kBottomSpace, width: kWidth, height: 44.0))
         view.backgroundColor = UIColor.lightGray
         view.textCallBack = { str in
             
