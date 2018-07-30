@@ -56,6 +56,10 @@ extension UITextView {
         set {
             
             objc_setAssociatedObject(self, &k_TextViewPlaceholderKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            if let placeholder = self.viewWithTag(101) as? UITextView {
+                
+                placeholder.isHidden = !(self.text ?? "").isEmpty
+            }
             // 接收通知
             NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextViewTextDidChange, object: nil, queue: OperationQueue.main) { (note) in
                 

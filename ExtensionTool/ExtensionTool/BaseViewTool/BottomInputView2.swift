@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// 输入框(可换行) + 按钮
 class BottomInputView2: UIView {
 
     //MARK: -调用部分
@@ -180,6 +181,38 @@ class BottomInputView2: UIView {
         
         return btn
     }()
+    
+    lazy var insertView: UIView = {
+        let view = UIView.init(frame: CGRect.init(x: 0.0, y: 0.0, width: kWidth, height: kHeight))
+        view.backgroundColor = UIColor.white.withAlphaComponent(0.01)
+        view.k_addTarget({ [unowned self] (tap) in
+            
+            DispatchQueue.main.async {
+                
+                self.textView.resignFirstResponder()
+                UIView.animate(withDuration: 0.25, animations: {
+                    
+                    self.transform = CGAffineTransform.identity
+                })
+            }
+        })
+        
+        return view
+    }()
+    
+    override func willMove(toSuperview newSuperview: UIView?) {
+        super.willMove(toSuperview: newSuperview)
+        
+        if let newSuperview = newSuperview {
+            
+            // 添加蒙版
+            newSuperview.insertSubview(self.insertView, belowSubview: self)
+            
+        } else {
+            
+            self.insertView.removeFromSuperview()
+        }
+    }
     
     deinit {
         

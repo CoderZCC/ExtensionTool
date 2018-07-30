@@ -12,7 +12,6 @@ class BaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.k_tapDismissKeyboard()
         self.view.backgroundColor = UIColor.k_colorWith(hexInt: 0x666666)
     }
     override func didReceiveMemoryWarning() {
@@ -50,8 +49,8 @@ class SecondViewController: BaseViewController {
         self.view.addSubview(self.myInputView)
     }
     
-    lazy var myInputView: BottomInputView1 = {
-        let view = BottomInputView1.init(frame: CGRect(x: 0.0, y: kHeight - 44.0 - kBottomSpace, width: kWidth, height: 44.0))
+    lazy var myInputView: BottomInputView3 = {
+        let view = BottomInputView3.init(frame: CGRect(x: 0.0, y: kHeight - 44.0 - kBottomSpace, width: kWidth, height: 44.0))
         view.backgroundColor = UIColor.lightGray
         view.textCallBack = { str in
             

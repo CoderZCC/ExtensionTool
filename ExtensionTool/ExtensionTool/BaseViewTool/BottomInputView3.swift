@@ -1,5 +1,5 @@
 //
-//  BottomInputView.swift
+//  BottomInputView3.swift
 //  ExtensionTool
 //
 //  Created by 张崇超 on 2018/7/30.
@@ -8,7 +8,8 @@
 
 import UIKit
 
-class BottomInputView: UIView {
+/// 输入框(可换行) + 按钮 + 底部View
+class BottomInputView3: UIView, UITextViewDelegate {
 
     //MARK: -调用部分
     /// 占位文字
@@ -46,35 +47,41 @@ class BottomInputView: UIView {
                 let value = dic[UIKeyboardFrameEndUserInfoKey] as! NSValue
                 height = value.cgRectValue.size.height
             }
-            self.transform = CGAffineTransform.init(translationX: 0.0, y: -height + kBottomSpace)
+            self.keyboradHeight = height
+            self.transform = CGAffineTransform.init(translationX: 0.0, y: -self.keyboradHeight + kBottomSpace)
+            
+            self.isEditting = true
         }
         
         self.note2 = NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardWillHide, object: nil, queue: OperationQueue.main) { [unowned self] (note) in
             
+            if self.isClickEmoij { return }
             self.transform = CGAffineTransform.identity
+            self.isEditting = false
         }
+        
         self.note3 = NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextViewTextDidChange, object: nil, queue: OperationQueue.main) { [unowned self] (note) in
             
             let textView = note.object as! UITextView
             let text: String = textView.text ?? ""
             
-            var textHeight = self.getInputTextHeight(text: text)
+            let textHeight = self.getInputTextHeight(text: text)
+
             if self.lastHeight != textHeight {
 
                 // 输入框
                 var tVFrame = textView.frame
                 tVFrame.size.height = textHeight - (self.originalFrame.height - self.tFHeight)
                 tVFrame.size.height = max(self.originalTVFrame.height, tVFrame.size.height)
-
+                
                 // 父视图
                 var newFrame = self.frame
-                textHeight = max(self.originalFrame.height, textHeight)
-                newFrame.size.height = textHeight
-                newFrame.origin.y -= (textHeight - self.frame.height)
+                newFrame.size.height = max(self.originalFrame.height, textHeight) + self.keyboradHeight
+                newFrame.origin.y = kHeight - max(self.originalFrame.height, textHeight) - self.keyboradHeight
                 
                 // 按钮
                 var btnFrame = self.rightBtn.frame
-                btnFrame.origin.y = (newFrame.size.height - self.btnHeight) - (self.originalFrame.height - self.btnHeight) / 2.0
+                btnFrame.origin.y = (newFrame.size.height - self.keyboradHeight - self.btnHeight) - (self.originalFrame.height - self.btnHeight) / 2.0
                 
                 UIView.animate(withDuration: 0.25, animations: {
                     
@@ -83,6 +90,8 @@ class BottomInputView: UIView {
                     self.rightBtn.frame = btnFrame
                 })
                 self.lastHeight = textHeight
+                // 偏移,防止文字展示不全
+                textView.setContentOffset(CGPoint(x: 0.0, y: self.lastHeight == self.originalTVFrame.height ? (0.0): (4.0)), animated: true)
             }
         }
     }
@@ -113,6 +122,14 @@ class BottomInputView: UIView {
     private var originalTVFrame: CGRect!
     /// 标记换行
     private var lastHeight: CGFloat!
+    /// 键盘高度
+    private var keyboradHeight: CGFloat!
+    /// 键盘是否弹出
+    private var isEditting: Bool = false
+    /// 额外的高度 键盘收起时.展示emoijView
+    private var extraHeight: CGFloat = 240.0
+    /// 是否点击了emoij
+    private var isClickEmoij: Bool = false
     
     /// 通知
     private var note1: NSObjectProtocol!
@@ -146,6 +163,8 @@ class BottomInputView: UIView {
         textView.font = UIFont.systemFont(ofSize: 17.0)
         textView.layer.cornerRadius = 5.0
         textView.clipsToBounds = true
+        textView.returnKeyType = .send
+        textView.delegate = self
         
         return textView
     }()
@@ -158,15 +177,82 @@ class BottomInputView: UIView {
         
         btn.k_addTarget { [unowned self] in
             
-            
+            DispatchQueue.main.async {
+                
+                self.isClickEmoij = true
+                if self.isEditting {
+                    
+                    self.textView.resignFirstResponder()
+                }
+                UIView.animate(withDuration: 0.25, animations: {
+                    
+                    self.transform = CGAffineTransform.init(translationX: 0.0, y: -self.extraHeight + kBottomSpace)
+                })
+                var newFrame = self.frame
+                newFrame.size.height = self.extraHeight + self.originalFrame.height
+                
+                self.frame = newFrame
+            }
         }
         
         return btn
     }()
+    
+    lazy var insertView: UIView = {
+        let view = UIView.init(frame: CGRect.init(x: 0.0, y: 0.0, width: kWidth, height: kHeight))
+        view.backgroundColor = UIColor.white.withAlphaComponent(0.01)
+        view.k_addTarget({ [unowned self] (tap) in
+            
+            DispatchQueue.main.async {
+                
+                self.isClickEmoij = false
+                self.textView.resignFirstResponder()
+                
+                UIView.animate(withDuration: 0.25, animations: {
+                    
+                    self.transform = CGAffineTransform.identity
+                    self.isEditting = false
+                })
+            }
+        })
+        
+        return view
+    }()
+    
+    override func willMove(toSuperview newSuperview: UIView?) {
+        super.willMove(toSuperview: newSuperview)
+        
+        if let newSuperview = newSuperview {
+            
+            // 添加蒙版
+            newSuperview.insertSubview(self.insertView, belowSubview: self)
+            
+        } else {
+            
+            self.insertView.removeFromSuperview()
+        }
+    }
     
     deinit {
         
         self.destroyNote()
         print("###\(self)销毁了###\n")
     }
+    
+    //MARK: -UITextViewDelegate
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+        if text == "\n" && !textView.text.isEmpty {
+            
+            textView.resignFirstResponder()
+            textCallBack?(textView.text!)
+            
+            textView.text = ""
+            self.textView.k_placeholder = self.placeHolder
+            
+            return false
+        }
+        return true
+    }
+    
 }
