@@ -21,19 +21,15 @@ class BottomInputView3: UIView, UITextViewDelegate {
     /// 点击文字回调
     var textCallBack: ((String)->Void)?
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    class func initInputView() -> BottomInputView3 {
         
-        self.originalFrame = frame
-        self.initSubViews()
-        self.registerNote()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        let tool = BottomInputView3.init(frame: CGRect(x: 0.0, y: kHeight - 49.0 - kBottomSpace, width: kWidth, height: 44.0 + kBottomSpace))
+        tool.k_height += tool.extraHeight
+        tool.originalFrame = CGRect(x: 0.0, y: kHeight - 44.0 - kBottomSpace, width: kWidth, height: 49.0)
+        tool.initSubViews()
+        tool.registerNote()
         
-        self.initSubViews()
-        self.registerNote()
+        return tool
     }
     
     /// 注册通知
@@ -48,8 +44,10 @@ class BottomInputView3: UIView, UITextViewDelegate {
                 height = value.cgRectValue.size.height
             }
             self.keyboradHeight = height
-            self.transform = CGAffineTransform.init(translationX: 0.0, y: -self.keyboradHeight + kBottomSpace)
+            self.transform = CGAffineTransform(translationX: 0.0, y: -self.keyboradHeight + kBottomSpace)
             
+            self.emoijView.transform =  CGAffineTransform(translationX: 0.0, y: kHeight)
+
             self.isEditting = true
         }
         
@@ -76,12 +74,12 @@ class BottomInputView3: UIView, UITextViewDelegate {
                 
                 // 父视图
                 var newFrame = self.frame
-                newFrame.size.height = max(self.originalFrame.height, textHeight) + self.keyboradHeight
+                newFrame.size.height = max(self.originalFrame.height, textHeight) + self.keyboradHeight + self.extraHeight
                 newFrame.origin.y = kHeight - max(self.originalFrame.height, textHeight) - self.keyboradHeight
                 
                 // 按钮
                 var btnFrame = self.rightBtn.frame
-                btnFrame.origin.y = (newFrame.size.height - self.keyboradHeight - self.btnHeight) - (self.originalFrame.height - self.btnHeight) / 2.0
+                btnFrame.origin.y = (newFrame.size.height - self.keyboradHeight - self.btnHeight) - (self.originalFrame.height - self.btnHeight) / 2.0 - self.extraHeight
                 
                 UIView.animate(withDuration: 0.25, animations: {
                     
@@ -123,11 +121,11 @@ class BottomInputView3: UIView, UITextViewDelegate {
     /// 标记换行
     private var lastHeight: CGFloat!
     /// 键盘高度
-    private var keyboradHeight: CGFloat!
+    private var keyboradHeight: CGFloat = 271.0
     /// 键盘是否弹出
     private var isEditting: Bool = false
     /// 额外的高度 键盘收起时.展示emoijView
-    private var extraHeight: CGFloat = 240.0
+    private var extraHeight: CGFloat = 180.0 + kBottomSpace
     /// 是否点击了emoij
     private var isClickEmoij: Bool = false
     
@@ -141,6 +139,7 @@ class BottomInputView3: UIView, UITextViewDelegate {
         
         self.addSubview(self.rightBtn)
         self.addSubview(self.textView)
+        self.addSubview(self.emoijView)
     }
     
     /// 计算文字高度
@@ -157,7 +156,7 @@ class BottomInputView3: UIView, UITextViewDelegate {
     
     //MARK: -Lazy
     private lazy var textView: UITextView = { [unowned self] in
-        self.originalTVFrame = CGRect(x: self.tFLeftMargin, y: (self.bounds.height - self.tFHeight) / 2.0, width: kWidth - self.tFLeftMargin - self.tFRightMargin - self.btnWidth - self.btnRightMargin, height: self.tFHeight)
+        self.originalTVFrame = CGRect(x: self.tFLeftMargin, y: (self.originalFrame.height - self.tFHeight) / 2.0, width: kWidth - self.tFLeftMargin - self.tFRightMargin - self.btnWidth - self.btnRightMargin, height: self.tFHeight)
         self.lastHeight = self.originalTVFrame.height
         let textView = UITextView.init(frame: self.originalTVFrame)
         textView.font = UIFont.systemFont(ofSize: 17.0)
@@ -172,7 +171,7 @@ class BottomInputView3: UIView, UITextViewDelegate {
     private lazy var rightBtn: UIButton = { [unowned self] in
         let btn = UIButton.init(type: .custom)
         btn.setImage(#imageLiteral(resourceName: "emoij"), for: .normal)
-        btn.frame = CGRect(x: self.bounds.width - self.btnWidth - self.btnRightMargin, y: (self.bounds.height - self.btnHeight) / 2.0, width: self.btnWidth, height: self.btnHeight)
+        btn.frame = CGRect(x: self.originalFrame.width - self.btnWidth - self.btnRightMargin, y: (self.originalFrame.height - self.btnHeight) / 2.0, width: self.btnWidth, height: self.btnHeight)
         btn.k_setCornerRadius(5.0)
         
         btn.k_addTarget { [unowned self] in
@@ -186,16 +185,20 @@ class BottomInputView3: UIView, UITextViewDelegate {
                 }
                 UIView.animate(withDuration: 0.25, animations: {
                     
-                    self.transform = CGAffineTransform.init(translationX: 0.0, y: -self.extraHeight + kBottomSpace)
+                    self.emoijView.transform = CGAffineTransform(translationX: 0.0, y: self.textView.frame.maxY + 8.0)
+                    self.transform = CGAffineTransform(translationX: 0.0, y: -self.extraHeight + kBottomSpace)
                 })
-                var newFrame = self.frame
-                newFrame.size.height = self.extraHeight + self.originalFrame.height
-                
-                self.frame = newFrame
             }
         }
         
         return btn
+    }()
+    
+    lazy var emoijView: EmoijView = { [unowned self] in
+        let view = EmoijView.init(frame: CGRect.init(x: 0.0, y: 0.0, width: self.originalFrame.width, height: self.extraHeight))
+        view.transform = CGAffineTransform(translationX: 0.0, y: kHeight)
+        
+        return view
     }()
     
     lazy var insertView: UIView = {
@@ -210,6 +213,7 @@ class BottomInputView3: UIView, UITextViewDelegate {
                 
                 UIView.animate(withDuration: 0.25, animations: {
                     
+                    self.emoijView.transform =  CGAffineTransform(translationX: 0.0, y: kHeight)
                     self.transform = CGAffineTransform.identity
                     self.isEditting = false
                 })
@@ -255,4 +259,127 @@ class BottomInputView3: UIView, UITextViewDelegate {
         return true
     }
     
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        
+        self.textView.setContentOffset(CGPoint(x: 0.0, y: 4.0), animated: true)
+    }
 }
+
+class EmoijView: UIView {
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        self.addSubview(self.collectionView)
+        self.addSubview(self.pageControl)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: -Lazy
+    lazy var dataList: [String] = {
+        let path = Bundle.main.path(forResource: "EmotionPlist", ofType: "plist")
+        var arr: [String] = []
+        for str in NSArray.init(contentsOfFile: path!)! {
+            arr.append(str as! String)
+        }
+        
+        return arr
+    }()
+    
+    /// pageControl的高度
+    lazy var pClHeight: CGFloat = {
+        
+        return kIsIphoneX ? (40.0) : (20.0)
+    }()
+    /// page的个数
+    lazy var pageNum: Int = {
+        
+        return self.dataList.count / (3 * 9)
+    }()
+    /// pageControl
+    lazy var pageControl: UIPageControl = { [unowned self] in
+        let width: CGFloat = CGFloat(self.dataList.count) * 30.0
+        let pageControl = UIPageControl.init(frame: CGRect(x: (self.bounds.width - width) / 2.0, y: self.bounds.height - kBottomSpace - 30.0 - 10.0, width: width, height: 30.0))
+        if kIsIphoneX {
+            pageControl.frame = CGRect(x: (self.bounds.width - width) / 2.0, y: self.bounds.height - kBottomSpace - 25.0, width: width, height: 30.0)
+        }
+        pageControl.numberOfPages = self.pageNum
+        
+        return pageControl
+    }()
+    /// collectionView
+    lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout.init()
+        layout.scrollDirection = .horizontal
+        
+        let collectionView = UICollectionView(frame: CGRect(x: 8.0, y: 0.0, width: self.bounds.width - 16.0, height: self.bounds.height), collectionViewLayout: layout)
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.register(EmoijViewCell.self, forCellWithReuseIdentifier: "EmoijViewCell")
+        collectionView.contentInset = UIEdgeInsetsMake(8.0, 0.0, 20.0 + self.pClHeight, 0.0)
+        collectionView.backgroundColor = self.backgroundColor
+        collectionView.isPagingEnabled = true
+        
+        layout.minimumLineSpacing = 5.0
+        layout.minimumInteritemSpacing = 5.0
+        
+        let cellHeight: CGFloat = (collectionView.frame.height - collectionView.contentInset.top - collectionView.contentInset.bottom - layout.minimumInteritemSpacing * 2.0) / 3.0
+        let cellWidth: CGFloat = (collectionView.frame.width - collectionView.contentInset.left - collectionView.contentInset.right - layout.minimumLineSpacing * 8.0) / 9.0
+
+        layout.itemSize = CGSize.init(width: cellWidth, height: cellHeight)
+        
+        return collectionView
+    }()
+}
+
+extension EmoijView: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return self.dataList.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmoijViewCell", for: indexPath) as! EmoijViewCell
+        cell.textL.text = self.dataList[indexPath.row]
+        
+        return cell
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        let page = Int(scrollView.contentOffset.x / self.bounds.width)
+        self.pageControl.currentPage = page
+    }
+    
+}
+
+class EmoijViewCell: UICollectionViewCell {
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        self.contentView.addSubview(self.textL)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    lazy var textL: UILabel = {
+        let label = UILabel.init(frame: self.contentView.bounds)
+        label.textAlignment = .center
+        
+        return label
+    }()
+    
+}
+

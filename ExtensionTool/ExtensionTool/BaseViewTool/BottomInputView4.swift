@@ -21,19 +21,15 @@ class BottomInputView4: UIView, UITextFieldDelegate {
     /// 点击文字回调
     var textCallBack: ((String)->Void)?
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    class func initInputView() -> BottomInputView4 {
         
-        self.originalFrame = frame
-        self.initSubViews()
-        self.registerNote()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        let tool = BottomInputView4.init(frame: CGRect(x: 0.0, y: kHeight - 44.0 - kBottomSpace, width: kWidth, height: 44.0 + kBottomSpace))
         
-        self.initSubViews()
-        self.registerNote()
+        tool.originalFrame = CGRect(x: 0.0, y: kHeight - 44.0 - kBottomSpace, width: kWidth, height: 44.0)
+        tool.initSubViews()
+        tool.registerNote()
+        
+        return tool
     }
     
     /// 注册通知
@@ -120,7 +116,7 @@ class BottomInputView4: UIView, UITextFieldDelegate {
     
     //MARK: -Lazy
     private lazy var textField: UITextField = { [unowned self] in
-        let textField = UITextField.init(frame: CGRect(x: self.tFLeftMargin, y: (self.bounds.height - self.tFHeight) / 2.0, width: kWidth - self.tFLeftMargin - self.tFRightMargin - self.btnWidth - self.btnRightMargin, height: self.tFHeight))
+        let textField = UITextField.init(frame: CGRect(x: self.tFLeftMargin, y: (self.originalFrame.height - self.tFHeight) / 2.0, width: kWidth - self.tFLeftMargin - self.tFRightMargin - self.btnWidth - self.btnRightMargin, height: self.tFHeight))
         textField.borderStyle = .roundedRect
         textField.returnKeyType = .send
         textField.delegate = self
@@ -131,7 +127,7 @@ class BottomInputView4: UIView, UITextFieldDelegate {
     private lazy var rightBtn: UIButton = { [unowned self] in
         let btn = UIButton.init(type: .custom)
         btn.setImage(#imageLiteral(resourceName: "emoij"), for: .normal)
-        btn.frame = CGRect(x: self.bounds.width - self.btnWidth - self.btnRightMargin, y: (self.bounds.height - self.btnHeight) / 2.0, width: self.btnWidth, height: self.btnHeight)
+        btn.frame = CGRect(x: self.originalFrame.width - self.btnWidth - self.btnRightMargin, y: (self.originalFrame.height - self.btnHeight) / 2.0, width: self.btnWidth, height: self.btnHeight)
         btn.k_setCornerRadius(5.0)
         
         btn.k_addTarget { [unowned self] in

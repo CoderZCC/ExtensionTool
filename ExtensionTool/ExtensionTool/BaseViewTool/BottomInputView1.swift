@@ -21,18 +21,13 @@ class BottomInputView1: UIView {
     /// 点击文字回调
     var textCallBack: ((String)->Void)?
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    class func initInputView() -> BottomInputView1 {
+        let tool = BottomInputView1.init(frame: CGRect(x: 0.0, y: kHeight - 44.0 - kBottomSpace, width: kWidth, height: 44.0))
         
-        self.initSubViews()
-        self.registerNote()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        tool.initSubViews()
+        tool.registerNote()
         
-        self.initSubViews()
-        self.registerNote()
+        return tool
     }
     
     /// 注册通知

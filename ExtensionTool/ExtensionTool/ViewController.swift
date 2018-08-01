@@ -48,9 +48,9 @@ class SecondViewController: BaseViewController {
         
         self.view.addSubview(self.myInputView)
     }
-    
+
     lazy var myInputView: BottomInputView3 = {
-        let view = BottomInputView3.init(frame: CGRect(x: 0.0, y: kHeight - 44.0 - kBottomSpace, width: kWidth, height: 44.0))
+        let view = BottomInputView3.initInputView()
         view.backgroundColor = UIColor.lightGray
         view.textCallBack = { str in
             
