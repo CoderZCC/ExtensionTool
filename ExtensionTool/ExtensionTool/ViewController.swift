@@ -61,11 +61,6 @@ class SecondViewController: BaseViewController {
         return view
     }()
     
-    deinit {
-
-        self.myInputView.removeFromSuperview()
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }    

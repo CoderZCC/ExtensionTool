@@ -33,7 +33,7 @@ class BottomInputView1: UIView {
     /// 注册通知
     func registerNote() {
 
-        self.note1 = NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardWillShow, object: nil, queue: OperationQueue.main) { (note) in
+        self.note1 = NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardWillShow, object: nil, queue: OperationQueue.main) { [unowned self] (note) in
 
             var height: CGFloat = 271.0
             if let dic = note.userInfo {
@@ -44,7 +44,7 @@ class BottomInputView1: UIView {
             self.transform = CGAffineTransform.init(translationX: 0.0, y: -height)
         }
 
-        self.note2 = NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardWillHide, object: nil, queue: OperationQueue.main) { (note) in
+        self.note2 = NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardWillHide, object: nil, queue: OperationQueue.main) { [unowned self] (note) in
             
             self.transform = CGAffineTransform.identity
         }
@@ -132,10 +132,10 @@ class BottomInputView1: UIView {
         view.backgroundColor = UIColor.white.withAlphaComponent(0.01)
         view.k_addTarget({ [unowned self] (tap) in
             
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [unowned self] in
                 
                 self.textField.resignFirstResponder()
-                UIView.animate(withDuration: 0.25, animations: {
+                UIView.animate(withDuration: 0.25, animations: { [unowned self] in
                     
                     self.transform = CGAffineTransform.identity
                 })

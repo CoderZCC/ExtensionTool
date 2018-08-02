@@ -155,7 +155,7 @@ class BottomInputView3: UIView, UITextViewDelegate {
     }
     
     //MARK: -Lazy
-    private lazy var textView: UITextView = { [unowned self] in
+    private lazy var textView: UITextView = {
         self.originalTVFrame = CGRect(x: self.tFLeftMargin, y: (self.originalFrame.height - self.tFHeight) / 2.0, width: kWidth - self.tFLeftMargin - self.tFRightMargin - self.btnWidth - self.btnRightMargin, height: self.tFHeight)
         self.lastHeight = self.originalTVFrame.height
         let textView = UITextView.init(frame: self.originalTVFrame)
@@ -168,7 +168,7 @@ class BottomInputView3: UIView, UITextViewDelegate {
         return textView
     }()
     
-    private lazy var rightBtn: UIButton = { [unowned self] in
+    private lazy var rightBtn: UIButton = {
         let btn = UIButton.init(type: .custom)
         btn.setImage(#imageLiteral(resourceName: "emoij"), for: .normal)
         btn.frame = CGRect(x: self.originalFrame.width - self.btnWidth - self.btnRightMargin, y: (self.originalFrame.height - self.btnHeight) / 2.0, width: self.btnWidth, height: self.btnHeight)
@@ -176,14 +176,14 @@ class BottomInputView3: UIView, UITextViewDelegate {
         
         btn.k_addTarget { [unowned self] in
             
-            DispatchQueue.main.async {
+            DispatchQueue.main.async {[unowned self] in
                 
                 self.isClickEmoij = true
                 if self.isEditting {
                     
                     self.textView.resignFirstResponder()
                 }
-                UIView.animate(withDuration: 0.25, animations: {
+                UIView.animate(withDuration: 0.25, animations: {[unowned self] in
                     
                     self.emoijView.transform = CGAffineTransform(translationX: 0.0, y: self.textView.frame.maxY + 8.0)
                     self.transform = CGAffineTransform(translationX: 0.0, y: -self.extraHeight + kBottomSpace)
@@ -194,7 +194,7 @@ class BottomInputView3: UIView, UITextViewDelegate {
         return btn
     }()
     
-    lazy var emoijView: EmoijView = { [unowned self] in
+    lazy var emoijView: EmoijView = {
         let view = EmoijView.init(frame: CGRect.init(x: 0.0, y: 0.0, width: self.originalFrame.width, height: self.extraHeight))
         view.transform = CGAffineTransform(translationX: 0.0, y: kHeight)
         
@@ -206,12 +206,12 @@ class BottomInputView3: UIView, UITextViewDelegate {
         view.backgroundColor = UIColor.white.withAlphaComponent(0.01)
         view.k_addTarget({ [unowned self] (tap) in
             
-            DispatchQueue.main.async {
+            DispatchQueue.main.async {[unowned self] in
                 
                 self.isClickEmoij = false
                 self.textView.resignFirstResponder()
                 
-                UIView.animate(withDuration: 0.25, animations: {
+                UIView.animate(withDuration: 0.25, animations: {[unowned self] in
                     
                     self.emoijView.transform =  CGAffineTransform(translationX: 0.0, y: kHeight)
                     self.transform = CGAffineTransform.identity
