@@ -28,6 +28,7 @@
 	<string>😕</string>
 	<string>😰</string>
 	<string>😋</string>
+	<string>delete</string>
 	<string>😝</string>
 	<string>😓</string>
 	<string>😃</string>
@@ -54,6 +55,7 @@
 	<string>🙈</string>
 	<string>👌</string>
 	<string>👏</string>
+	<string>delete</string>
 	<string>✊</string>
 	<string>💪</string>
 	<string>😆</string>
@@ -80,6 +82,7 @@
 	<string>⛅</string>
 	<string>✏</string>
 	<string>💩</string>
+	<string>delete</string>
 	<string>🎄</string>
 	<string>🍷</string>
 	<string>🎤</string>
@@ -106,6 +109,7 @@
 	<string>👼</string>
 	<string>💊</string>
 	<string>🔫</string>
+	<string>delete</string>
 	<string>🌹</string>
 	<string>🐶</string>
 	<string>💄</string>
@@ -130,5 +134,8 @@
 	<string>⚽</string>
 	<string>⏰</string>
 	<string>😁</string>
+	<string>🐶</string>
+	<string>💣</string>
+	<string>delete</string>
 </array>
 </plist>

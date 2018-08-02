@@ -24,7 +24,7 @@
 		F01FED03210ED826004BEF6B /* BottomInputView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01FED02210ED826004BEF6B /* BottomInputView3.swift */; };
 		F01FED05210EDF2F004BEF6B /* BottomInputView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01FED04210EDF2F004BEF6B /* BottomInputView1.swift */; };
 		F01FED07210EF724004BEF6B /* BottomInputView4.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01FED06210EF724004BEF6B /* BottomInputView4.swift */; };
-		F01FED09210EFB96004BEF6B /* EmotionPlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = F01FED08210EFB95004BEF6B /* EmotionPlist.plist */; };
+		F020CD2D2112E10F0029DD74 /* EmotionPlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = F020CD2C2112E10F0029DD74 /* EmotionPlist.plist */; };
 		F021414621056CC40067D1E5 /* CameraListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F021414521056CC40067D1E5 /* CameraListViewController.swift */; };
 		F0412021210079BB0003F7A2 /* Timer+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0412020210079BB0003F7A2 /* Timer+Ext.swift */; };
 		F054045321002C9600E3EF87 /* PushFromStr+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F054045221002C9600E3EF87 /* PushFromStr+Ext.swift */; };
@@ -92,7 +92,7 @@
 		F01FED02210ED826004BEF6B /* BottomInputView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomInputView3.swift; sourceTree = "<group>"; };
 		F01FED04210EDF2F004BEF6B /* BottomInputView1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomInputView1.swift; sourceTree = "<group>"; };
 		F01FED06210EF724004BEF6B /* BottomInputView4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomInputView4.swift; sourceTree = "<group>"; };
-		F01FED08210EFB95004BEF6B /* EmotionPlist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EmotionPlist.plist; sourceTree = "<group>"; };
+		F020CD2C2112E10F0029DD74 /* EmotionPlist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EmotionPlist.plist; sourceTree = "<group>"; };
 		F021414521056CC40067D1E5 /* CameraListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraListViewController.swift; sourceTree = "<group>"; };
 		F0412020210079BB0003F7A2 /* Timer+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timer+Ext.swift"; sourceTree = "<group>"; };
 		F04930F920F4A08700787CC8 /* ExtensionTool.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ExtensionTool.entitlements; sourceTree = "<group>"; };
@@ -268,7 +268,7 @@
 				F01FED00210EB93B004BEF6B /* BottomInputView2.swift */,
 				F01FED02210ED826004BEF6B /* BottomInputView3.swift */,
 				F01FED06210EF724004BEF6B /* BottomInputView4.swift */,
-				F01FED08210EFB95004BEF6B /* EmotionPlist.plist */,
+				F020CD2C2112E10F0029DD74 /* EmotionPlist.plist */,
 			);
 			path = BaseViewTool;
 			sourceTree = "<group>";
@@ -372,10 +372,10 @@
 				F01690622106F9C400E0C60A /* HUDViewTool.xib in Resources */,
 				F085C48E2109AFF400CB0D2B /* MyPickerTool.xib in Resources */,
 				F077773F20F2FC3A003D7BD8 /* LaunchScreen.storyboard in Resources */,
+				F020CD2D2112E10F0029DD74 /* EmotionPlist.plist in Resources */,
 				F0561C3A2101DC5C0007496F /* Localizable.strings in Resources */,
 				F085C48A21096E6F00CB0D2B /* CalendarView.xib in Resources */,
 				F077773C20F2FC3A003D7BD8 /* Assets.xcassets in Resources */,
-				F01FED09210EFB96004BEF6B /* EmotionPlist.plist in Resources */,
 				F085C4872109606E00CB0D2B /* SpecialView.xib in Resources */,
 				F01690692106FB9D00E0C60A /* AlertViewTool.xib in Resources */,
 				F085C4842109577D00CB0D2B /* BottomView.xib in Resources */,
