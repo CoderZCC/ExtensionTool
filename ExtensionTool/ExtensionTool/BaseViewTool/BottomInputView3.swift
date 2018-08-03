@@ -18,15 +18,17 @@ class BottomInputView3: UIView, UITextViewDelegate {
             self.textView.k_placeholder = newValue
         }
     }
-    /// 点击文字回调
-    var textCallBack: ((String)->Void)?
-    
-    class func initInputView() -> BottomInputView3 {
-        let tool = BottomInputView3.init(frame: CGRect(x: 0.0, y: kHeight - 49.0 - kBottomSpace, width: kWidth, height: 49.0 + kBottomSpace))
+    /// 创建试图
+    ///
+    /// - Parameter block: 点击文字回调
+    class func initInputView(_ block: ((String)->Void)?) -> BottomInputView3 {
+        let toolHeight: CGFloat = 49.0 + kBottomSpace
+        let tool = BottomInputView3.init(frame: CGRect(x: 0.0, y: kHeight - toolHeight, width: kWidth, height: toolHeight))
         tool.k_height += tool.extraHeight
-        tool.originalFrame = CGRect(x: 0.0, y: kHeight - 49.0 - kBottomSpace, width: kWidth, height: 49.0)
+        tool.originalFrame = CGRect(x: 0.0, y: kHeight - toolHeight, width: kWidth, height: 49.0)
         tool.initSubViews()
         tool.registerNote()
+        tool.textCallBack = block
         
         return tool
     }
@@ -72,8 +74,8 @@ class BottomInputView3: UIView, UITextViewDelegate {
     }
     
     //MARK: -实现部分
-    /// 输入框高度
-    private let tFHeight: CGFloat = 35.0
+    /// 点击文字回调
+    private var textCallBack: ((String)->Void)?
     /// 输入框左侧间隔
     private let tFLeftMargin: CGFloat = 10.0
     /// 输入框右侧间隔
@@ -86,8 +88,6 @@ class BottomInputView3: UIView, UITextViewDelegate {
     private let btnRightMargin: CGFloat = 15.0
     /// 原始位置
     private var originalFrame: CGRect!
-    /// 输入框原始位置
-    private var originalTVFrame: CGRect!
     /// 标记换行
     private var lastHeight: CGFloat!
     /// 键盘高度
@@ -126,7 +126,7 @@ class BottomInputView3: UIView, UITextViewDelegate {
         // 文字高度
         let textHeight = self.textView.sizeThatFits(CGSize(width: self.textView.k_width, height: kHeight)).height
         if self.lastHeight == nil { self.lastHeight = textHeight }
-        
+       
         // 换行时执行
         if self.lastHeight != textHeight {
             
@@ -145,7 +145,7 @@ class BottomInputView3: UIView, UITextViewDelegate {
             
             // 表情View
             var emoijFrame = self.emoijView.frame
-            emoijFrame.origin.y = tVFrame.maxY + self.originalTVFrame.origin.y
+            emoijFrame.origin.y = tVFrame.maxY + tVFrame.origin.y
 
             UIView.animate(withDuration: 0.25, animations: {
                 
@@ -160,14 +160,17 @@ class BottomInputView3: UIView, UITextViewDelegate {
     
     //MARK: -Lazy
     private lazy var textView: UITextView = {
-        self.originalTVFrame = CGRect(x: self.tFLeftMargin, y: (self.originalFrame.height - self.tFHeight) / 2.0, width: kWidth - self.tFLeftMargin - self.tFRightMargin - self.btnWidth - self.btnRightMargin, height: self.tFHeight)
-        let textView = UITextView.init(frame: self.originalTVFrame)
+        let textView = UITextView.init(frame: CGRect(x: self.tFLeftMargin, y: 0.0, width: kWidth - self.tFLeftMargin - self.tFRightMargin - self.btnWidth - self.btnRightMargin, height: 0.0))
+        
         textView.font = UIFont.systemFont(ofSize: 17.0)
         textView.layer.cornerRadius = 5.0
         textView.clipsToBounds = true
         textView.returnKeyType = .send
         textView.delegate = self
         textView.isScrollEnabled = false
+        
+        textView.k_height = textView.sizeThatFits(CGSize(width: textView.k_width, height: kHeight)).height
+        textView.k_y = (self.originalFrame.height - textView.k_height) / 2.0
         
         return textView
     }()
@@ -180,27 +183,25 @@ class BottomInputView3: UIView, UITextViewDelegate {
         
         btn.k_addTarget { [unowned self] in
             
-            DispatchQueue.main.async {[unowned self] in
+            if self.isClickEmoij { return }
+            
+            self.isClickEmoij = true
+            if self.isEditting {
                 
-                self.isClickEmoij = true
-                if self.isEditting {
-                    
-                    self.textView.resignFirstResponder()
-                }
-                
-                UIView.animate(withDuration: 0.25, animations: {[unowned self] in
-                    
-                    self.emoijView.alpha = 1.0
-                    self.transform = CGAffineTransform(translationX: 0.0, y: -self.extraHeight + kBottomSpace)
-                })
+                self.textView.resignFirstResponder()
             }
+            UIView.animate(withDuration: 0.25, animations: {[unowned self] in
+                
+                self.emoijView.alpha = 1.0
+                self.transform = CGAffineTransform(translationX: 0.0, y: -self.extraHeight + kBottomSpace)
+            })
         }
         
         return btn
     }()
     
     lazy var emoijView: EmoijView = {
-        let view = EmoijView.init(frame: CGRect(x: 0.0, y: self.textView.frame.maxY + 10.0, width: self.originalFrame.width, height: self.extraHeight))
+        let view = EmoijView.init(frame: CGRect(x: 0.0, y: self.textView.frame.maxY + self.textView.frame.origin.y, width: self.originalFrame.width, height: self.extraHeight))
         view.alpha = 0.0
         view.clickCallBack = { [unowned self] str in
             
@@ -275,7 +276,7 @@ class BottomInputView3: UIView, UITextViewDelegate {
             
             textCallBack?(textView.text!)
             
-            textView.text = ""
+            textView.text = nil
             self.changeTextViewHeight()
             self.textView.k_placeholder = self.placeHolder
             

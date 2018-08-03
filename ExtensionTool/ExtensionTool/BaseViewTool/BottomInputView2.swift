@@ -9,7 +9,7 @@
 import UIKit
 
 /// 输入框(可换行) + 按钮
-class BottomInputView2: UIView, UITextViewDelegate {
+class BottomInputView2: UIView {
 
     //MARK: -调用部分
     /// 占位文字
@@ -18,16 +18,18 @@ class BottomInputView2: UIView, UITextViewDelegate {
             self.textView.k_placeholder = newValue
         }
     }
-    /// 点击文字回调
-    var textCallBack: ((String)->Void)?
-    
-    class func initInputView() -> BottomInputView2 {
-        let tool = BottomInputView2.init(frame: CGRect(x: 0.0, y: kHeight - 44.0 - kBottomSpace, width: kWidth, height: 44.0 + kBottomSpace))
+    /// 创建试图
+    ///
+    /// - Parameter block: 点击文字回调
+    class func initInputView(_ block: ((String)->Void)?) -> BottomInputView2 {
+        let toolHeight: CGFloat = 49.0 + kBottomSpace
+        let tool = BottomInputView2.init(frame: CGRect(x: 0.0, y: kHeight - toolHeight, width: kWidth, height: toolHeight))
         
-        tool.originalFrame = CGRect(x: 0.0, y: kHeight - 44.0 - kBottomSpace, width: kWidth, height: 44.0)
+        tool.originalFrame = CGRect(x: 0.0, y: kHeight - 49.0 - kBottomSpace, width: kWidth, height: 49.0)
         tool.initSubViews()
         tool.registerNote()
-        
+        tool.textCallBack = block
+
         return tool
     }
 
@@ -52,37 +54,7 @@ class BottomInputView2: UIView, UITextViewDelegate {
         }
         self.note3 = NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextViewTextDidChange, object: nil, queue: OperationQueue.main) { [unowned self] (note) in
             
-            let textView = note.object as! UITextView
-            let text: String = textView.text ?? ""
-            self.isBtnEnabled = !text.isEmpty
-            
-            let textHeight = self.getInputTextHeight(text: text)
-            if self.lastHeight != textHeight {
-
-                // 输入框
-                var tVFrame = textView.frame
-                tVFrame.size.height = textHeight - (self.originalFrame.height - self.tFHeight)
-                tVFrame.size.height = max(self.originalTVFrame.height, tVFrame.size.height)
-                
-                // 父视图
-                var newFrame = self.frame
-                newFrame.size.height = max(self.originalFrame.height, textHeight) + self.keyboradHeight
-                newFrame.origin.y = kHeight - max(self.originalFrame.height, textHeight) - self.keyboradHeight
-
-                // 按钮
-                var btnFrame = self.rightBtn.frame
-                btnFrame.origin.y = (newFrame.size.height - self.keyboradHeight - self.btnHeight) - (self.originalFrame.height - self.btnHeight) / 2.0
-
-                UIView.animate(withDuration: 0.25, animations: {
-                    
-                    self.frame = newFrame
-                    textView.frame = tVFrame
-                    self.rightBtn.frame = btnFrame
-                })
-                self.lastHeight = textHeight
-                // 偏移,防止文字展示不全
-                textView.setContentOffset(CGPoint(x: 0.0, y: self.lastHeight == self.originalTVFrame.height ? (0.0): (4.0)), animated: true)
-            }
+            self.changeTextViewHeight()
         }
     }
     /// 销毁通知
@@ -94,8 +66,8 @@ class BottomInputView2: UIView, UITextViewDelegate {
     }
     
     //MARK: -实现部分
-    /// 输入框高度
-    private let tFHeight: CGFloat = 35.0
+    /// 点击文字回调
+    private var textCallBack: ((String)->Void)?
     /// 输入框左侧间隔
     private let tFLeftMargin: CGFloat = 10.0
     /// 输入框右侧间隔
@@ -108,8 +80,6 @@ class BottomInputView2: UIView, UITextViewDelegate {
     private let btnRightMargin: CGFloat = 10.0
     /// 原始位置
     private var originalFrame: CGRect!
-    /// 输入框原始位置
-    private var originalTVFrame: CGRect!
     /// 标记换行
     private var lastHeight: CGFloat!
     /// 键盘高度
@@ -136,27 +106,51 @@ class BottomInputView2: UIView, UITextViewDelegate {
         self.addSubview(self.textView)
     }
     
-    /// 计算文字高度
-    private func getInputTextHeight(text: String) -> CGFloat {
+    /// 更改试图frame
+    private func changeTextViewHeight() {
         
-        if text.isEmpty {
+        let text: String = self.textView.text ?? ""
+        self.isBtnEnabled = !text.isEmpty
+        
+        let textHeight = self.textView.sizeThatFits(CGSize(width: self.textView.k_width, height: kHeight)).height
+        if self.lastHeight == nil { self.lastHeight = textHeight }
+
+        if self.lastHeight != textHeight {
             
-            return self.originalTVFrame.height
+            // 输入框
+            var tVFrame = self.textView.frame
+            tVFrame.size.height = textHeight
+            
+            // 父视图
+            var newFrame = self.frame
+            newFrame.size.height = tVFrame.maxY + tVFrame.origin.y + self.keyboradHeight
+            newFrame.origin.y = kHeight - newFrame.size.height
+            
+            // 按钮
+            var btnFrame = self.rightBtn.frame
+            btnFrame.origin.y = tVFrame.maxY - self.btnHeight
+            
+            UIView.animate(withDuration: 0.25, animations: {
+                
+                self.frame = newFrame
+                self.textView.frame = tVFrame
+                self.rightBtn.frame = btnFrame
+            })
+            self.lastHeight = textHeight
         }
-        let str = NSString.init(string: text)
-        let rect = str.boundingRect(with: CGSize.init(width: self.textView.frame.width - 10.0, height: 999.0), options: .usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font : self.textView.font!], context: nil)
-        return max(rect.size.height + 13.0, self.originalTVFrame.height)
     }
     
     //MARK: -Lazy
     private lazy var textView: UITextView = { [unowned self] in
-        self.originalTVFrame = CGRect(x: self.tFLeftMargin, y: (self.originalFrame.height - self.tFHeight) / 2.0, width: kWidth - self.tFLeftMargin - self.tFRightMargin - self.btnWidth - self.btnRightMargin, height: self.tFHeight)
-        self.lastHeight = self.originalTVFrame.height
-        let textView = UITextView.init(frame: self.originalTVFrame)
+        let textView = UITextView.init(frame: CGRect(x: self.tFLeftMargin, y: 0.0, width: kWidth - self.tFLeftMargin - self.tFRightMargin - self.btnWidth - self.btnRightMargin, height: 0.0))
+        
         textView.font = UIFont.systemFont(ofSize: 17.0)
         textView.layer.cornerRadius = 5.0
         textView.clipsToBounds = true
-        textView.delegate = self
+        textView.isScrollEnabled = false
+
+        textView.k_height = textView.sizeThatFits(CGSize(width: textView.k_width, height: kHeight)).height
+        textView.k_y = (self.originalFrame.height - textView.k_height) / 2.0
         
         return textView
     }()
@@ -169,10 +163,9 @@ class BottomInputView2: UIView, UITextViewDelegate {
         
         btn.k_addTarget { [unowned self] in
             
-            self.textView.resignFirstResponder()
             self.textCallBack?(self.textView.text!)
-            
             self.textView.text = nil
+            self.changeTextViewHeight()
         }
         
         return btn
@@ -195,12 +188,6 @@ class BottomInputView2: UIView, UITextViewDelegate {
         
         return view
     }()
-    
-    //MARK: -UITextViewDelegate
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        
-        self.textView.setContentOffset(CGPoint(x: 0.0, y: 4.0), animated: true)
-    }
     
     override func willMove(toSuperview newSuperview: UIView?) {
         super.willMove(toSuperview: newSuperview)

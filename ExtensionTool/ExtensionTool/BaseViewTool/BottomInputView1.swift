@@ -18,14 +18,15 @@ class BottomInputView1: UIView {
             self.textField.placeholder = newValue
         }
     }
-    /// 点击文字回调
-    var textCallBack: ((String)->Void)?
-    
-    class func initInputView() -> BottomInputView1 {
-        let tool = BottomInputView1.init(frame: CGRect(x: 0.0, y: kHeight - 44.0 - kBottomSpace, width: kWidth, height: 44.0))
-        
+    /// 创建试图
+    ///
+    /// - Parameter block: 点击文字回调
+    class func initInputView(_ block: ((String)->Void)?) -> BottomInputView1 {
+        let toolHeight: CGFloat = 49.0
+        let tool = BottomInputView1.init(frame: CGRect(x: 0.0, y: kHeight - toolHeight - kBottomSpace, width: kWidth, height: toolHeight))
         tool.initSubViews()
         tool.registerNote()
+        tool.textCallBack = block
         
         return tool
     }
@@ -68,6 +69,8 @@ class BottomInputView1: UIView {
     }
     
     //MARK: -实现部分
+    /// 点击文字回调
+    private var textCallBack: ((String)->Void)?
     /// 输入框高度
     private let tFHeight: CGFloat = 35.0
     /// 输入框左侧间隔
