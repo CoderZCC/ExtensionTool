@@ -18,16 +18,18 @@ class BottomInputView4: UIView, UITextFieldDelegate {
             self.textField.placeholder = newValue
         }
     }
-    /// 点击文字回调
-    var textCallBack: ((String)->Void)?
-    
-    class func initInputView() -> BottomInputView4 {
+    /// 创建试图
+    ///
+    /// - Parameter block: 点击文字回调
+    class func initInputView(_ block: ((String)->Void)?) -> BottomInputView4 {
+        let toolHeight: CGFloat = 49.0 + kBottomSpace
+        let tool = BottomInputView4.init(frame: CGRect(x: 0.0, y: kHeight - toolHeight, width: kWidth, height: toolHeight))
+        tool.k_height += tool.extraHeight
+        tool.originalFrame = CGRect(x: 0.0, y: kHeight - toolHeight, width: kWidth, height: 49.0)
         
-        let tool = BottomInputView4.init(frame: CGRect(x: 0.0, y: kHeight - 44.0 - kBottomSpace, width: kWidth, height: 44.0 + kBottomSpace))
-        
-        tool.originalFrame = CGRect(x: 0.0, y: kHeight - 44.0 - kBottomSpace, width: kWidth, height: 44.0)
         tool.initSubViews()
         tool.registerNote()
+        tool.textCallBack = block
         
         return tool
     }
@@ -37,6 +39,8 @@ class BottomInputView4: UIView, UITextFieldDelegate {
         
         self.note1 = NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardWillShow, object: nil, queue: OperationQueue.main) { [unowned self] (note) in
             
+            self.isClickEmoij = false
+            
             var height: CGFloat = 271.0
             if let dic = note.userInfo {
                 
@@ -44,7 +48,8 @@ class BottomInputView4: UIView, UITextFieldDelegate {
                 height = value.cgRectValue.size.height
             }
             self.keyboradHeight = height
-            self.transform = CGAffineTransform.init(translationX: 0.0, y: -self.keyboradHeight + kBottomSpace)
+            self.transform = CGAffineTransform(translationX: 0.0, y: -self.keyboradHeight + kBottomSpace)
+            self.emoijView.alpha = 0.0
             
             self.isEditting = true
         }
@@ -55,17 +60,25 @@ class BottomInputView4: UIView, UITextFieldDelegate {
             self.transform = CGAffineTransform.identity
             self.isEditting = false
         }
+        
+        self.note3 = NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextFieldTextDidChange, object: nil, queue: OperationQueue.main) { (note) in
+            
+            
+        }
     }
     /// 销毁通知
     func destroyNote() {
         
         NotificationCenter.default.removeObserver(self.note1)
         NotificationCenter.default.removeObserver(self.note2)
+        NotificationCenter.default.removeObserver(self.note3)
     }
     
     //MARK: -实现部分
     /// 输入框高度
     private let tFHeight: CGFloat = 35.0
+    /// 点击文字回调
+    private var textCallBack: ((String)->Void)?
     /// 输入框左侧间隔
     private let tFLeftMargin: CGFloat = 10.0
     /// 输入框右侧间隔
@@ -78,40 +91,33 @@ class BottomInputView4: UIView, UITextFieldDelegate {
     private let btnRightMargin: CGFloat = 15.0
     /// 原始位置
     private var originalFrame: CGRect!
-    /// 输入框原始位置
-    private var originalTVFrame: CGRect!
     /// 标记换行
     private var lastHeight: CGFloat!
     /// 键盘高度
-    private var keyboradHeight: CGFloat!
+    private var keyboradHeight: CGFloat = 271.0
     /// 键盘是否弹出
     private var isEditting: Bool = false
     /// 额外的高度 键盘收起时.展示emoijView
-    private var extraHeight: CGFloat = 240.0
+    private var extraHeight: CGFloat = 200.0 + kBottomSpace
     /// 是否点击了emoij
     private var isClickEmoij: Bool = false
+    /// 占位文字
+    private lazy var placeholderText: String = {
+        
+        return self.placeHolder ?? ""
+    }()
     
     /// 通知
     private var note1: NSObjectProtocol!
     private var note2: NSObjectProtocol!
+    private var note3: NSObjectProtocol!
     
     /// 添加控件
     private func initSubViews() {
         
         self.addSubview(self.rightBtn)
         self.addSubview(self.textField)
-    }
-    
-    /// 计算文字高度
-    private func getInputTextHeight(text: String) -> CGFloat {
-        
-        if text.isEmpty {
-            
-            return self.originalTVFrame.height
-        }
-        let str = NSString.init(string: text)
-        let rect = str.boundingRect(with: CGSize.init(width: self.textField.frame.width - 10.0, height: 999.0), options: .usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font : self.textField.font ?? UIFont.systemFont(ofSize: 17.0)], context: nil)
-        return max(rect.size.height + 13.0, self.originalTVFrame.height)
+        self.addSubview(self.emoijView)
     }
     
     //MARK: -Lazy
@@ -124,7 +130,7 @@ class BottomInputView4: UIView, UITextFieldDelegate {
         return textField
     }()
     
-    private lazy var rightBtn: UIButton = { [unowned self] in
+    private lazy var rightBtn: UIButton = {
         let btn = UIButton.init(type: .custom)
         btn.setImage(#imageLiteral(resourceName: "emoij"), for: .normal)
         btn.frame = CGRect(x: self.originalFrame.width - self.btnWidth - self.btnRightMargin, y: (self.originalFrame.height - self.btnHeight) / 2.0, width: self.btnWidth, height: self.btnHeight)
@@ -132,25 +138,42 @@ class BottomInputView4: UIView, UITextFieldDelegate {
         
         btn.k_addTarget { [unowned self] in
             
-            DispatchQueue.main.async {
+            if self.isClickEmoij { return }
+            
+            self.isClickEmoij = true
+            if self.isEditting {
                 
-                self.isClickEmoij = true
-                if self.isEditting {
-                    
-                    self.textField.resignFirstResponder()
-                }
-                UIView.animate(withDuration: 0.25, animations: {
-                    
-                    self.transform = CGAffineTransform.init(translationX: 0.0, y: -self.extraHeight + kBottomSpace)
-                })
-                var newFrame = self.frame
-                newFrame.size.height = self.extraHeight + self.originalFrame.height
-                
-                self.frame = newFrame
+                self.textField.resignFirstResponder()
             }
+            UIView.animate(withDuration: 0.25, animations: {[unowned self] in
+                
+                self.emoijView.alpha = 1.0
+                self.transform = CGAffineTransform(translationX: 0.0, y: -self.extraHeight + kBottomSpace)
+            })
         }
         
         return btn
+    }()
+    
+    lazy var emoijView: EmoijView = {
+        let view = EmoijView.init(frame: CGRect(x: 0.0, y: self.textField.frame.maxY + self.textField.frame.origin.y, width: self.originalFrame.width, height: self.extraHeight))
+        view.alpha = 0.0
+        view.clickCallBack = { [unowned self] str in
+            
+            if str.contains("delete") {
+                
+                if let text = self.textField.text, !text.isEmpty {
+                    
+                    self.textField.text!.removeLast()
+                }
+                
+            } else {
+                
+                self.textField.text!.append(str)
+            }
+        }
+        
+        return view
     }()
     
     lazy var insertView: UIView = {
@@ -158,13 +181,14 @@ class BottomInputView4: UIView, UITextFieldDelegate {
         view.backgroundColor = UIColor.white.withAlphaComponent(0.01)
         view.k_addTarget({ [unowned self] (tap) in
             
-            DispatchQueue.main.async {
+            DispatchQueue.main.async {[unowned self] in
                 
                 self.isClickEmoij = false
                 self.textField.resignFirstResponder()
                 
-                UIView.animate(withDuration: 0.25, animations: {
+                UIView.animate(withDuration: 0.25, animations: {[unowned self] in
                     
+                    self.emoijView.alpha = 0.0
                     self.transform = CGAffineTransform.identity
                     self.isEditting = false
                 })
@@ -194,16 +218,15 @@ class BottomInputView4: UIView, UITextFieldDelegate {
         print("###\(self)销毁了###\n")
     }
     
-    //MARK:- UITextFieldDelegate
+    //MARK: -UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
-        if !(textField.text ?? "").isEmpty {
+        if let text = textField.text, !text.isEmpty {
             
-            textField.resignFirstResponder()
-            textCallBack?(textField.text!)
-            
+            self.textCallBack?(textField.text!)
             textField.text = nil
+            return false
         }
         return true
-    }    
+    }
 }

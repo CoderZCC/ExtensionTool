@@ -122,8 +122,8 @@ class BottomInputView3: UIView, UITextViewDelegate {
     private func changeTextViewHeight() {
         
         let text: String = self.textView.text
-        if text.isEmpty { self.textView.k_placeholder = self.placeholderText }
-        
+        self.textView.k_placeholder = text.isEmpty ? (self.placeholderText) : (nil)
+
         // 文字高度
         let textHeight = self.textView.sizeThatFits(CGSize(width: self.textView.k_width, height: kHeight)).height
         if self.lastHeight == nil { self.lastHeight = textHeight }
@@ -167,8 +167,8 @@ class BottomInputView3: UIView, UITextViewDelegate {
         textView.layer.cornerRadius = 5.0
         textView.clipsToBounds = true
         textView.returnKeyType = .send
-        textView.delegate = self
         textView.isScrollEnabled = false
+        textView.delegate = self
         
         textView.k_height = textView.sizeThatFits(CGSize(width: textView.k_width, height: kHeight)).height
         textView.k_y = (self.originalFrame.height - textView.k_height) / 2.0
@@ -211,15 +211,10 @@ class BottomInputView3: UIView, UITextViewDelegate {
                 if let text = self.textView.text, !text.isEmpty {
                     
                     self.textView.text.removeLast()
-                    
-                } else {
-
-                    self.textView.k_placeholder = self.placeholderText
                 }
                 
             } else {
                 
-                self.textView.k_placeholder = nil
                 self.textView.text.append(str)
             }
             self.changeTextViewHeight()
@@ -279,7 +274,6 @@ class BottomInputView3: UIView, UITextViewDelegate {
             
             textView.text = nil
             self.changeTextViewHeight()
-            self.textView.k_placeholder = self.placeHolder
             
             return false
         }

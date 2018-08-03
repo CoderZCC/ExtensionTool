@@ -49,8 +49,8 @@ class SecondViewController: BaseViewController {
         self.view.addSubview(self.myInputView)
     }
 
-    lazy var myInputView: BottomInputView2 = {
-        let view = BottomInputView2.initInputView({ (str) in
+    lazy var myInputView: BottomInputView3 = {
+        let view = BottomInputView3.initInputView({ (str) in
 
             print("\(str)")
         })

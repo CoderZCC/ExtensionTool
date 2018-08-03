@@ -84,6 +84,11 @@ class BottomInputView2: UIView {
     private var lastHeight: CGFloat!
     /// 键盘高度
     private var keyboradHeight: CGFloat!
+    /// 占位文字
+    private lazy var placeholderText: String = {
+        
+        return self.placeHolder ?? ""
+    }()
     
     /// 通知
     private var note1: NSObjectProtocol!
@@ -110,6 +115,8 @@ class BottomInputView2: UIView {
     private func changeTextViewHeight() {
         
         let text: String = self.textView.text ?? ""
+        if text.isEmpty { self.textView.k_placeholder = self.placeholderText }
+        
         self.isBtnEnabled = !text.isEmpty
         
         let textHeight = self.textView.sizeThatFits(CGSize(width: self.textView.k_width, height: kHeight)).height

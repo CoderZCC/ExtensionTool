@@ -84,6 +84,11 @@ class BottomInputView1: UIView {
     private let btnHeight: CGFloat = 35.0
     /// 按钮右侧间隔
     private let btnRightMargin: CGFloat = 10.0
+    /// 占位文字
+    private lazy var placeholderText: String = {
+        
+        return self.placeHolder ?? ""
+    }()
     
     /// 通知
     private var note1: NSObjectProtocol!
@@ -122,9 +127,7 @@ class BottomInputView1: UIView {
         
         btn.k_addTarget { [unowned self] in
 
-            self.textField.resignFirstResponder()
             self.textCallBack?(self.textField.text!)
-            
             self.textField.text = nil
         }
         
