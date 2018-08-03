@@ -347,6 +347,7 @@ class EmoijView: UIView {
         collectionView.contentInset = UIEdgeInsetsMake(8.0, 0.0, 20.0 + self.pClHeight, 0.0)
         collectionView.backgroundColor = self.backgroundColor
         collectionView.isPagingEnabled = true
+        collectionView.showsHorizontalScrollIndicator = false
         
         layout.minimumLineSpacing = 0.0
         layout.minimumInteritemSpacing = 0.0

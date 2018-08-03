@@ -26,16 +26,16 @@ var kIsIphoneX: Bool {
     return ((arr.first ?? "") == "iPhone10") && ((arr.last ?? "") == "3" || (arr.last ?? "") == "6")
 }
 /// 导航栏高度
-var kNavBarHeight: CGFloat { return kIsIphoneX ? (88.0) : (64.0) }
+let kNavBarHeight: CGFloat = kIsIphoneX ? (88.0) : (64.0)
 /// 底部不可控区域
-var kBottomSpace: CGFloat { return kIsIphoneX ? (34.0) : (0.0) }
+let kBottomSpace: CGFloat = kIsIphoneX ? (34.0) : (0.0)
 /// 屏幕宽
-var kWidth: CGFloat { return UIScreen.main.bounds.size.width }
+let kWidth: CGFloat = UIScreen.main.bounds.size.width
 /// 屏幕高
-var kHeight: CGFloat { return UIScreen.main.bounds.size.height }
+let kHeight: CGFloat = UIScreen.main.bounds.size.height
 /// 主窗口
-var kWindow: UIWindow { return UIApplication.shared.keyWindow! }
+let kWindow: UIWindow = UIApplication.shared.keyWindow!
 /// 根试图控制器
-var kRootVC: UIViewController { return kWindow.rootViewController! }
+let kRootVC: UIViewController = kWindow.rootViewController!
 /// AppDeleagte
-var kAppDelegate: AppDelegate { return UIApplication.shared.delegate as! AppDelegate }
+let kAppDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
