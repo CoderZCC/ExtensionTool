@@ -26,6 +26,7 @@ class BottomInputView3: UIView, UITextViewDelegate {
         let tool = BottomInputView3.init(frame: CGRect(x: 0.0, y: kHeight - toolHeight, width: kWidth, height: toolHeight))
         tool.k_height += tool.extraHeight
         tool.originalFrame = CGRect(x: 0.0, y: kHeight - toolHeight, width: kWidth, height: 49.0)
+       
         tool.initSubViews()
         tool.registerNote()
         tool.textCallBack = block

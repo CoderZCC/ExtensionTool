@@ -24,6 +24,7 @@ class BottomInputView1: UIView {
     class func initInputView(_ block: ((String)->Void)?) -> BottomInputView1 {
         let toolHeight: CGFloat = 49.0
         let tool = BottomInputView1.init(frame: CGRect(x: 0.0, y: kHeight - toolHeight - kBottomSpace, width: kWidth, height: toolHeight))
+      
         tool.initSubViews()
         tool.registerNote()
         tool.textCallBack = block
