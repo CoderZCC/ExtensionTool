@@ -26,6 +26,7 @@
 		F01FED07210EF724004BEF6B /* BottomInputView4.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01FED06210EF724004BEF6B /* BottomInputView4.swift */; };
 		F020CD2D2112E10F0029DD74 /* EmotionPlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = F020CD2C2112E10F0029DD74 /* EmotionPlist.plist */; };
 		F021414621056CC40067D1E5 /* CameraListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F021414521056CC40067D1E5 /* CameraListViewController.swift */; };
+		F02965B121141E1500EA4ADB /* BottomInputView5.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02965B021141E1500EA4ADB /* BottomInputView5.swift */; };
 		F0412021210079BB0003F7A2 /* Timer+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0412020210079BB0003F7A2 /* Timer+Ext.swift */; };
 		F054045321002C9600E3EF87 /* PushFromStr+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F054045221002C9600E3EF87 /* PushFromStr+Ext.swift */; };
 		F0561C2F2101BA950007496F /* UILabel+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0561C2E2101BA950007496F /* UILabel+Ext.swift */; };
@@ -94,6 +95,7 @@
 		F01FED06210EF724004BEF6B /* BottomInputView4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomInputView4.swift; sourceTree = "<group>"; };
 		F020CD2C2112E10F0029DD74 /* EmotionPlist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EmotionPlist.plist; sourceTree = "<group>"; };
 		F021414521056CC40067D1E5 /* CameraListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraListViewController.swift; sourceTree = "<group>"; };
+		F02965B021141E1500EA4ADB /* BottomInputView5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomInputView5.swift; sourceTree = "<group>"; };
 		F0412020210079BB0003F7A2 /* Timer+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timer+Ext.swift"; sourceTree = "<group>"; };
 		F04930F920F4A08700787CC8 /* ExtensionTool.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ExtensionTool.entitlements; sourceTree = "<group>"; };
 		F054045221002C9600E3EF87 /* PushFromStr+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PushFromStr+Ext.swift"; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 				F01FED00210EB93B004BEF6B /* BottomInputView2.swift */,
 				F01FED02210ED826004BEF6B /* BottomInputView3.swift */,
 				F01FED06210EF724004BEF6B /* BottomInputView4.swift */,
+				F02965B021141E1500EA4ADB /* BottomInputView5.swift */,
 				F020CD2C2112E10F0029DD74 /* EmotionPlist.plist */,
 			);
 			path = BaseViewTool;
@@ -390,6 +393,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F02965B121141E1500EA4ADB /* BottomInputView5.swift in Sources */,
 				F0105B9C210AC865005B8661 /* InputAssistView.swift in Sources */,
 				F0B5D5AB20FED64F00F642B1 /* String+Ext.swift in Sources */,
 				F016907321072A1D00E0C60A /* HorizontalADView.swift in Sources */,

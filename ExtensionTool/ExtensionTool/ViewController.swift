@@ -43,21 +43,21 @@ class ViewController: BaseViewController {
 
 class SecondViewController: BaseViewController {
     
+    let input = UITextView.init(frame: CGRect(x: 30.0, y: 100.0, width: kWidth - 60.0, height: 200.0))
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.addSubview(input)
         
         self.view.addSubview(self.myInputView)
     }
 
-    lazy var myInputView: BottomInputView3 = {
-        let view = BottomInputView3.initInputView({ (str) in
-
-            print("\(str)")
-        })
-        view.backgroundColor = UIColor.lightGray
-        view.placeHolder = "输入文字吧"
+    lazy var myInputView: BottomInputView5 = {
+        let tool = BottomInputView5.initViewWith(self.input)
+        tool.backgroundColor = UIColor.lightGray
         
-        return view
+        return tool
     }()
     
     override func didReceiveMemoryWarning() {
