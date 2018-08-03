@@ -55,6 +55,12 @@ extension UITextView {
         
         set {
             
+            if newValue == nil {
+                
+                // 删除
+                self.viewWithTag(101)?.isHidden = true
+                return
+            }
             objc_setAssociatedObject(self, &k_TextViewPlaceholderKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
             if let placeholder = self.viewWithTag(101) as? UITextView {
                 

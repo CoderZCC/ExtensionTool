@@ -22,7 +22,6 @@ class BottomInputView3: UIView, UITextViewDelegate {
     var textCallBack: ((String)->Void)?
     
     class func initInputView() -> BottomInputView3 {
-        
         let tool = BottomInputView3.init(frame: CGRect(x: 0.0, y: kHeight - 49.0 - kBottomSpace, width: kWidth, height: 49.0 + kBottomSpace))
         tool.k_height += tool.extraHeight
         tool.originalFrame = CGRect(x: 0.0, y: kHeight - 49.0 - kBottomSpace, width: kWidth, height: 49.0)
@@ -99,6 +98,13 @@ class BottomInputView3: UIView, UITextViewDelegate {
     private var extraHeight: CGFloat = 200.0 + kBottomSpace
     /// 是否点击了emoij
     private var isClickEmoij: Bool = false
+    /// 一行文字的高度
+    private var singleTextHeight: CGFloat!
+    /// 占位文字
+    private lazy var placeholderText: String = {
+        
+        return self.placeHolder ?? ""
+    }()
     
     /// 通知
     private var note1: NSObjectProtocol!
@@ -116,11 +122,14 @@ class BottomInputView3: UIView, UITextViewDelegate {
     private func changeTextViewHeight() {
         
         let text: String = self.textView.text
+        if text.isEmpty {
+            self.textView.k_placeholder = self.placeholderText
+        }
+        
         let textHeight = self.getInputTextHeight(text: text)
         if self.lastHeight == nil { self.lastHeight = textHeight }
         
         if self.lastHeight != textHeight {
-            
             
             // 输入框
             var tVFrame = textView.frame
@@ -157,20 +166,29 @@ class BottomInputView3: UIView, UITextViewDelegate {
             })
             self.lastHeight = textHeight
             // 偏移,防止文字展示不全
-            self.textView.setContentOffset(CGPoint(x: 0.0, y: self.lastHeight == self.originalTVFrame.height ? (0.0): (6.0)), animated: true)
+            if self.lastHeight == self.singleTextHeight || self.textView.text.isEmpty {
+                
+                self.textView.setContentOffset(CGPoint.zero, animated: true)
+                
+            } else {
+                
+                self.textView.setContentOffset(CGPoint(x: 0.0, y: self.lastHeight == self.originalTVFrame.height ? (0.0): (6.0)), animated: true)
+            }
         }
     }
     
     /// 计算文字高度
     private func getInputTextHeight(text: String) -> CGFloat {
-        if text.isEmpty {
-            
-            return self.originalTVFrame.height
-        }
-        let str = NSString.init(string: text)
-        let rect = str.boundingRect(with: CGSize.init(width: self.textView.frame.width - 10.0, height: 999.0), options: .usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font : self.textView.font!], context: nil)
+
+        let str = NSString.init(string: (text.isEmpty ? ("A") : (text)))
+        let rect = str.boundingRect(with: CGSize.init(width: self.textView.frame.width - 10.0, height: 999.0), options: [.usesLineFragmentOrigin, .usesFontLeading, .truncatesLastVisibleLine], attributes: [NSAttributedStringKey.font : self.textView.font!], context: nil)
         
-        return max(rect.size.height + 15.0, self.originalTVFrame.height)
+        let textHeight = max(rect.size.height + 15.0, self.originalTVFrame.height)
+        if self.singleTextHeight == nil {
+            
+            self.singleTextHeight = textHeight
+        }
+        return textHeight
     }
     
     //MARK: -Lazy
@@ -215,15 +233,23 @@ class BottomInputView3: UIView, UITextViewDelegate {
     
     lazy var emoijView: EmoijView = {
         let view = EmoijView.init(frame: CGRect(x: 0.0, y: self.textView.frame.maxY + 10.0, width: self.originalFrame.width, height: self.extraHeight))
-        
+        view.alpha = 0.0
         view.clickCallBack = { [unowned self] str in
             
-            if str.contains("delete"){
+            if str.contains("delete") {
                 
-                print("删除操作")
+                if let text = self.textView.text, !text.isEmpty {
+                    
+                    self.textView.text.removeLast()
+                    
+                } else {
+
+                    self.textView.k_placeholder = self.placeholderText
+                }
                 
             } else {
                 
+                self.textView.k_placeholder = nil
                 self.textView.text.append(str)
             }
             self.changeTextViewHeight()
@@ -244,6 +270,7 @@ class BottomInputView3: UIView, UITextViewDelegate {
                 
                 UIView.animate(withDuration: 0.25, animations: {[unowned self] in
                     
+                    self.emoijView.alpha = 0.0
                     self.transform = CGAffineTransform.identity
                     self.isEditting = false
                 })
@@ -303,6 +330,8 @@ class EmoijView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        self.k_addLineWith(UIColor.white, at: CGRect(x: 0.0, y: 0.0, width: self.k_width, height: 1.0))
+
         self.addSubview(self.collectionView)
         self.addSubview(self.pageControl)
     }

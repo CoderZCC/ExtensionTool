@@ -144,6 +144,17 @@ extension UIView {
         self.clipsToBounds = true
     }
     
+    //MARK: -添加一条线
+    func k_addLineWith(_ color: UIColor, at: CGRect) {
+        
+        //添加自定义分割线
+        let lineLayer = CALayer.init()
+        
+        lineLayer.frame = at
+        lineLayer.backgroundColor = color.cgColor
+        self.layer.addSublayer(lineLayer)
+    }
+    
     //MARK: 设置圆角
     /// 设置圆角
     ///
