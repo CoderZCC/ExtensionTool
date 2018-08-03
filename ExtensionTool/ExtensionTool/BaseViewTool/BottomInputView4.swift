@@ -34,46 +34,6 @@ class BottomInputView4: UIView, UITextFieldDelegate {
         return tool
     }
     
-    /// 注册通知
-    func registerNote() {
-        
-        self.note1 = NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardWillShow, object: nil, queue: OperationQueue.main) { [unowned self] (note) in
-            
-            self.isClickEmoij = false
-            
-            var height: CGFloat = 271.0
-            if let dic = note.userInfo {
-                
-                let value = dic[UIKeyboardFrameEndUserInfoKey] as! NSValue
-                height = value.cgRectValue.size.height
-            }
-            self.keyboradHeight = height
-            self.transform = CGAffineTransform(translationX: 0.0, y: -self.keyboradHeight + kBottomSpace)
-            self.emoijView.alpha = 0.0
-            
-            self.isEditting = true
-        }
-        
-        self.note2 = NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardWillHide, object: nil, queue: OperationQueue.main) { [unowned self] (note) in
-            
-            if self.isClickEmoij { return }
-            self.transform = CGAffineTransform.identity
-            self.isEditting = false
-        }
-        
-        self.note3 = NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextFieldTextDidChange, object: nil, queue: OperationQueue.main) { (note) in
-            
-            
-        }
-    }
-    /// 销毁通知
-    func destroyNote() {
-        
-        NotificationCenter.default.removeObserver(self.note1)
-        NotificationCenter.default.removeObserver(self.note2)
-        NotificationCenter.default.removeObserver(self.note3)
-    }
-    
     //MARK: -实现部分
     /// 输入框高度
     private let tFHeight: CGFloat = 35.0
@@ -110,7 +70,6 @@ class BottomInputView4: UIView, UITextFieldDelegate {
     /// 通知
     private var note1: NSObjectProtocol!
     private var note2: NSObjectProtocol!
-    private var note3: NSObjectProtocol!
     
     /// 添加控件
     private func initSubViews() {
@@ -118,6 +77,40 @@ class BottomInputView4: UIView, UITextFieldDelegate {
         self.addSubview(self.rightBtn)
         self.addSubview(self.textField)
         self.addSubview(self.emoijView)
+    }
+    
+    /// 注册通知
+    private func registerNote() {
+        
+        self.note1 = NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardWillShow, object: nil, queue: OperationQueue.main) { [unowned self] (note) in
+            
+            self.isClickEmoij = false
+            
+            var height: CGFloat = 271.0
+            if let dic = note.userInfo {
+                
+                let value = dic[UIKeyboardFrameEndUserInfoKey] as! NSValue
+                height = value.cgRectValue.size.height
+            }
+            self.keyboradHeight = height
+            self.transform = CGAffineTransform(translationX: 0.0, y: -self.keyboradHeight + kBottomSpace)
+            self.emoijView.alpha = 0.0
+            
+            self.isEditting = true
+        }
+        
+        self.note2 = NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardWillHide, object: nil, queue: OperationQueue.main) { [unowned self] (note) in
+            
+            if self.isClickEmoij { return }
+            self.transform = CGAffineTransform.identity
+            self.isEditting = false
+        }
+    }
+    /// 销毁通知
+    private func destroyNote() {
+        
+        NotificationCenter.default.removeObserver(self.note1)
+        NotificationCenter.default.removeObserver(self.note2)
     }
     
     //MARK: -Lazy

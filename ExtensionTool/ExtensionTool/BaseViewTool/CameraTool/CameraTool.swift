@@ -56,7 +56,7 @@ class CameraTool: NSObject {
         let nav = UINavigationController.init(rootViewController: cameraVC)
         cameraVC.block = block
         cameraVC.isCrop = isCrop
-
+        
         kRootVC.present(nav, animated: true, completion: nil)
     }
     
@@ -140,9 +140,11 @@ extension CameraTool {
             if result.count > 0 {
                 
                 let title = obj.localizedTitle ?? ""
-                
-                let model = AlbumModel.init(title: title, fetchResult: result)
-                self.dataList.append(model)
+                if title != "最近删除" && title != "Recently Deleted" {
+                    
+                    let model = AlbumModel.init(title: title, fetchResult: result)
+                    self.dataList.append(model)
+                }
             }
         }
     }

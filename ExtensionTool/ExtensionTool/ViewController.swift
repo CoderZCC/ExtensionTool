@@ -54,7 +54,10 @@ class SecondViewController: BaseViewController {
     }
 
     lazy var myInputView: BottomInputView5 = {
-        let tool = BottomInputView5.initViewWith(self.input)
+        let tool = BottomInputView5.initWith(self.input, block: { (img) in
+            
+            
+        })
         tool.backgroundColor = UIColor.lightGray
         
         return tool

@@ -33,38 +33,6 @@ class BottomInputView2: UIView {
         return tool
     }
 
-    /// 注册通知
-    func registerNote() {
-        
-        self.note1 = NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardWillShow, object: nil, queue: OperationQueue.main) { [unowned self] (note) in
-            
-            var height: CGFloat = 271.0
-            if let dic = note.userInfo {
-                
-                let value = dic[UIKeyboardFrameEndUserInfoKey] as! NSValue
-                height = value.cgRectValue.size.height
-            }
-            self.transform = CGAffineTransform.init(translationX: 0.0, y: -height + kBottomSpace)
-            self.keyboradHeight = height
-        }
-        
-        self.note2 = NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardWillHide, object: nil, queue: OperationQueue.main) { [unowned self] (note) in
-            
-            self.transform = CGAffineTransform.identity
-        }
-        self.note3 = NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextViewTextDidChange, object: nil, queue: OperationQueue.main) { [unowned self] (note) in
-            
-            self.changeTextViewHeight()
-        }
-    }
-    /// 销毁通知
-    func destroyNote() {
-        
-        NotificationCenter.default.removeObserver(self.note1)
-        NotificationCenter.default.removeObserver(self.note2)
-        NotificationCenter.default.removeObserver(self.note3)
-    }
-    
     //MARK: -实现部分
     /// 点击文字回调
     private var textCallBack: ((String)->Void)?
@@ -101,6 +69,38 @@ class BottomInputView2: UIView {
             self.rightBtn.isEnabled = newValue
             self.rightBtn.backgroundColor = newValue ? (UIColor.blue) : (UIColor.darkGray)
         }
+    }
+    
+    /// 注册通知
+    private func registerNote() {
+        
+        self.note1 = NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardWillShow, object: nil, queue: OperationQueue.main) { [unowned self] (note) in
+            
+            var height: CGFloat = 271.0
+            if let dic = note.userInfo {
+                
+                let value = dic[UIKeyboardFrameEndUserInfoKey] as! NSValue
+                height = value.cgRectValue.size.height
+            }
+            self.transform = CGAffineTransform.init(translationX: 0.0, y: -height + kBottomSpace)
+            self.keyboradHeight = height
+        }
+        
+        self.note2 = NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardWillHide, object: nil, queue: OperationQueue.main) { [unowned self] (note) in
+            
+            self.transform = CGAffineTransform.identity
+        }
+        self.note3 = NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextViewTextDidChange, object: nil, queue: OperationQueue.main) { [unowned self] (note) in
+            
+            self.changeTextViewHeight()
+        }
+    }
+    /// 销毁通知
+    private func destroyNote() {
+        
+        NotificationCenter.default.removeObserver(self.note1)
+        NotificationCenter.default.removeObserver(self.note2)
+        NotificationCenter.default.removeObserver(self.note3)
     }
     
     /// 添加控件
