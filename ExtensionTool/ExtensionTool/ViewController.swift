@@ -43,25 +43,10 @@ class ViewController: BaseViewController {
 
 class SecondViewController: BaseViewController {
     
-    let input = UITextView.init(frame: CGRect(x: 30.0, y: 100.0, width: kWidth - 60.0, height: 200.0))
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.addSubview(input)
-        
-        self.view.addSubview(self.myInputView)
     }
-
-    lazy var myInputView: BottomInputView5 = {
-        let tool = BottomInputView5.initWith(self.input, block: { (img) in
-            
-            
-        })
-        tool.backgroundColor = UIColor.lightGray
-        
-        return tool
-    }()
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
