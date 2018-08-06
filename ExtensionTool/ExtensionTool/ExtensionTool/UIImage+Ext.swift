@@ -64,7 +64,7 @@ extension UIImage {
     ///   - borderColor: 边框颜色
     ///   - borderWidth: 边框宽度
     /// - Returns: 新图片
-    func k_circleImage(backColor: UIColor = UIColor.white, borderColor: UIColor? = nil, borderWidth: CGFloat? = 0.0) -> UIImage {
+    func k_circleImage(backColor: UIColor? = UIColor.white, borderColor: UIColor? = nil, borderWidth: CGFloat? = 0.0) -> UIImage {
         
         // 圆形图片
         let imgW: CGFloat = self.size.width
@@ -76,7 +76,7 @@ extension UIImage {
         
         UIGraphicsBeginImageContextWithOptions(rect.size, true, UIScreen.main.scale)
         // 填充
-        backColor.setFill()
+        (backColor ?? UIColor.white).setFill()
         UIRectFill(rect)
         
         // 形状

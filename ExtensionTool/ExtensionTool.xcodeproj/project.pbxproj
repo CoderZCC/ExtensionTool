@@ -72,6 +72,7 @@
 		F0B5D5C120FF409600F642B1 /* UIScrollView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B5D5C020FF409600F642B1 /* UIScrollView+Ext.swift */; };
 		F0C452A42105715A00571B0A /* CameraPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C452A32105715A00571B0A /* CameraPreviewViewController.swift */; };
 		F0D686672106D8360098B388 /* VerticalLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D686662106D8360098B388 /* VerticalLabelView.swift */; };
+		F0F7B7C42117EED900AD0659 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F7B7C32117EED900AD0659 /* CircleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -145,6 +146,7 @@
 		F0B5D5C020FF409600F642B1 /* UIScrollView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Ext.swift"; sourceTree = "<group>"; };
 		F0C452A32105715A00571B0A /* CameraPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewViewController.swift; sourceTree = "<group>"; };
 		F0D686662106D8360098B388 /* VerticalLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalLabelView.swift; sourceTree = "<group>"; };
+		F0F7B7C32117EED900AD0659 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -280,6 +282,7 @@
 				F085C48921096E6F00CB0D2B /* CalendarView.xib */,
 				F085C48B2109AFE000CB0D2B /* DatePickerTool.swift */,
 				F085C48D2109AFF300CB0D2B /* MyPickerTool.xib */,
+				F0F7B7C32117EED900AD0659 /* CircleView.swift */,
 			);
 			path = BaseViewTool;
 			sourceTree = "<group>";
@@ -407,6 +410,7 @@
 				F085C48C2109AFE000CB0D2B /* DatePickerTool.swift in Sources */,
 				F0561C3F2101DEF50007496F /* CameraTool.swift in Sources */,
 				F0B5D59E20FED64F00F642B1 /* kSaveDataTool.swift in Sources */,
+				F0F7B7C42117EED900AD0659 /* CircleView.swift in Sources */,
 				F0561C2F2101BA950007496F /* UILabel+Ext.swift in Sources */,
 				F02965BD2114404200EA4ADB /* BottomInputView4.swift in Sources */,
 				F01EC3FC210879BD00AE2D11 /* CalendarView.swift in Sources */,
