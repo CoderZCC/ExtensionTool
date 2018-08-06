@@ -7,13 +7,6 @@
 //
 
 import UIKit
-import Photos
-import CoreLocation
-import AssetsLibrary
-
-enum kLocationType {
-    case whenInUse, always
-}
 
 class AuthorityTool: NSObject {
     
@@ -27,15 +20,92 @@ class AuthorityTool: NSObject {
     }
 }
 
-//MARK: 是否可用摄像头
+import Contacts
+//MARK: 通讯录
 extension AuthorityTool {
     
-    //MARK: 是否可用摄像头
-    /// 是否可用摄像头
+    /// 请求通讯录权限
+    ///
+    /// - Parameter block: 回调
+    /// - Returns: true/false
+    @discardableResult
+    class func requestContactAuthor(block:(()->Void)? = nil) -> Bool {
+        
+        let status = CNContactStore.authorizationStatus(for: .contacts)
+        if status == .notDetermined {
+            
+            CNContactStore.init().requestAccess(for: .contacts) { (isOK, error) in
+                
+                if isOK {
+                
+                   block?()
+                }
+                self.requestContactAuthor()
+            }
+            return false
+
+        } else if status == .restricted || status == .denied {
+            
+            return false
+
+        } else {
+            
+            return true
+        }
+    }
+    
+    /// 获取通讯录列表
+    class func getContactList() {
+        
+        let isOk = AuthorityTool.requestContactAuthor {
+            
+            self.getContactList()
+        }
+        if !isOk { return }
+        
+        let request = CNContactFetchRequest.init(keysToFetch: [CNContactGivenNameKey as CNKeyDescriptor, CNContactFamilyNameKey as CNKeyDescriptor, CNContactPhoneNumbersKey as CNKeyDescriptor])
+        
+        do {
+            try CNContactStore.init().enumerateContacts(with: request) { (contact, obj) in
+                
+                let givenName = contact.givenName
+                let familyName = contact.familyName
+                let name = familyName + givenName
+                print(name)
+
+                for value in contact.phoneNumbers {
+                    
+                    var phoneStr = value.value.stringValue
+                    
+                    phoneStr = phoneStr.replacingOccurrences(of: "-", with: "")
+                    phoneStr = phoneStr.replacingOccurrences(of: "(", with: "")
+                    phoneStr = phoneStr.replacingOccurrences(of: ")", with: "")
+                    phoneStr = phoneStr.replacingOccurrences(of: " ", with: "")
+                    phoneStr = phoneStr.replacingOccurrences(of: "+86", with: "")
+                    
+                    print(phoneStr)
+                }
+            }
+            
+        } catch {
+            
+            print("拉取失败")
+        }
+    }
+}
+
+import Photos
+import AssetsLibrary
+
+//MARK: 摄像头
+extension AuthorityTool {
+    
+    //MARK: 请求摄像头权限
+    /// 请求摄像头权限
     ///
     /// - Returns: true/false
     @discardableResult
-    class func canUseCamera(block:(()->Void)? = nil) -> Bool {
+    class func requestCameraAuthor(block:(()->Void)? = nil) -> Bool {
         
         if !UIImagePickerController.isSourceTypeAvailable(.camera) {
             
@@ -48,7 +118,7 @@ extension AuthorityTool {
             AVCaptureDevice.requestAccess(for: .video) { (isOK) in
                 
                 if isOK { block?() }
-                self.canUseCamera()
+                self.requestCameraAuthor()
             }
             return true
             
@@ -64,17 +134,22 @@ extension AuthorityTool {
     }
 }
 
-//MARK: 获取定位权限
+import CoreLocation
+
+enum kLocationType {
+    case whenInUse, always
+}
+//MARK: 定位
 extension AuthorityTool {
     
-    //MARK: 是否可以访问定位服务
+    //MARK: 请求定位权限
     private static let locationMgr: CLLocationManager = CLLocationManager.init()
-    /// 是否可以访问定位服务
+    /// 请求定位权限
     ///
     /// - Parameter type: 请求类型
     /// - Returns: true/false
     @discardableResult
-    class func canUseLocation(type: kLocationType = .whenInUse) -> Bool {
+    class func requestLocationAuthor(type: kLocationType = .whenInUse) -> Bool {
         
         let status = CLLocationManager.authorizationStatus()
         if status == .notDetermined {
@@ -111,7 +186,7 @@ extension AuthorityTool {
     ///   - result: true/false
     class func saveMediaToAlbum(img: UIImage?, videoPath: String? = nil, result: ((Bool)->Void)?) {
         
-        if !self.canUseAlbum() { return }
+        if !self.requestAlbumAuthor() { return }
         PHPhotoLibrary.shared().performChanges({
             
             if let img = img {
@@ -139,12 +214,12 @@ extension AuthorityTool {
         }
     }
     
-    //MARK: -是否可以保存媒体资料到图库
-    /// 是否可以保存媒体资料到图库
+    //MARK: -请求图库权限 是否可以保存
+    /// 请求图库权限 是否可以保存
     ///
     /// - Returns: true/false
     @discardableResult
-    class func canUseAlbum(block:(()->Void)? = nil) -> Bool {
+    class func requestAlbumAuthor(block:(()->Void)? = nil) -> Bool {
         
         let status = PHPhotoLibrary.authorizationStatus()
         if status == .notDetermined {
@@ -152,7 +227,7 @@ extension AuthorityTool {
             PHPhotoLibrary.requestAuthorization { (status) in
                 
                 DispatchQueue.main.async {
-                    AuthorityTool.canUseAlbum()
+                    AuthorityTool.requestAlbumAuthor()
                     if status == .authorized { block?() }
                 }
             }

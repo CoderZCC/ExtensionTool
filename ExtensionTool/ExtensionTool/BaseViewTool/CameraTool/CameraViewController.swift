@@ -23,7 +23,7 @@ class CameraViewController: UIViewController {
         
         self.setupNavigation()
         self.setupSubViews()
-        let can = AuthorityTool.canUseAlbum { [unowned self] in
+        let can = AuthorityTool.requestAlbumAuthor() { [unowned self] in
             
             self.cameraTool.getAllAlbums()
             self.tableView.reloadData()

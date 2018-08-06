@@ -67,7 +67,7 @@ class CameraTool: NSObject {
     ///   - block: 图片回调
     class func takeFromCamera(isCrop: Bool = false, block: ((UIImage)->Void)?) {
         
-        if !AuthorityTool.canUseCamera() {
+        if !AuthorityTool.requestCameraAuthor() {
             
             print("设备不支持摄像头")
             return
