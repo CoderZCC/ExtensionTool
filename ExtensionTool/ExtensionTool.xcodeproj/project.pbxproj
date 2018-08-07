@@ -31,7 +31,6 @@
 		F02EF30C211929120086C98A /* CellPlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02EF30B211929120086C98A /* CellPlayerViewModel.swift */; };
 		F02EF30F211929930086C98A /* CellPlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02EF30D211929930086C98A /* CellPlayerCell.swift */; };
 		F02EF310211929930086C98A /* CellPlayerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F02EF30E211929930086C98A /* CellPlayerCell.xib */; };
-		F02EF338211985B20086C98A /* PresentAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02EF337211985B20086C98A /* PresentAnimation.swift */; };
 		F02EF3432119955B0086C98A /* PhotoBrowerTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02EF3412119955B0086C98A /* PhotoBrowerTool.swift */; };
 		F02EF3442119955B0086C98A /* DownLoadViewTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02EF3422119955B0086C98A /* DownLoadViewTool.swift */; };
 		F02EF346211997060086C98A /* CellDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02EF345211997060086C98A /* CellDetailView.swift */; };
@@ -109,7 +108,6 @@
 		F02EF30B211929120086C98A /* CellPlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellPlayerViewModel.swift; sourceTree = "<group>"; };
 		F02EF30D211929930086C98A /* CellPlayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellPlayerCell.swift; sourceTree = "<group>"; };
 		F02EF30E211929930086C98A /* CellPlayerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CellPlayerCell.xib; sourceTree = "<group>"; };
-		F02EF337211985B20086C98A /* PresentAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentAnimation.swift; sourceTree = "<group>"; };
 		F02EF3412119955B0086C98A /* PhotoBrowerTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoBrowerTool.swift; sourceTree = "<group>"; };
 		F02EF3422119955B0086C98A /* DownLoadViewTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownLoadViewTool.swift; sourceTree = "<group>"; };
 		F02EF345211997060086C98A /* CellDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellDetailView.swift; sourceTree = "<group>"; };
@@ -235,7 +233,6 @@
 		F02EF306211928C90086C98A /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				F02EF337211985B20086C98A /* PresentAnimation.swift */,
 				F02EF30B211929120086C98A /* CellPlayerViewModel.swift */,
 			);
 			path = ViewModel;
@@ -481,7 +478,6 @@
 				F02965BD2114404200EA4ADB /* BottomInputView4.swift in Sources */,
 				F01EC3FC210879BD00AE2D11 /* CalendarView.swift in Sources */,
 				F01690612106F9C400E0C60A /* HUDViewTool.swift in Sources */,
-				F02EF338211985B20086C98A /* PresentAnimation.swift in Sources */,
 				F0B5D5A720FED64F00F642B1 /* AppDelegate+Push.swift in Sources */,
 				F02EF30F211929930086C98A /* CellPlayerCell.swift in Sources */,
 				F02965BF2114404200EA4ADB /* BottomInputView1.swift in Sources */,
