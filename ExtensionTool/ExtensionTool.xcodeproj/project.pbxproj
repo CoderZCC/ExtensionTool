@@ -27,6 +27,14 @@
 		F02965BE2114404200EA4ADB /* BottomInputView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02965B72114404200EA4ADB /* BottomInputView3.swift */; };
 		F02965BF2114404200EA4ADB /* BottomInputView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02965B82114404200EA4ADB /* BottomInputView1.swift */; };
 		F02965C02114404200EA4ADB /* BottomInputView5.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02965B92114404200EA4ADB /* BottomInputView5.swift */; };
+		F02EF30A211928C90086C98A /* CellPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02EF309211928C90086C98A /* CellPlayerViewController.swift */; };
+		F02EF30C211929120086C98A /* CellPlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02EF30B211929120086C98A /* CellPlayerViewModel.swift */; };
+		F02EF30F211929930086C98A /* CellPlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02EF30D211929930086C98A /* CellPlayerCell.swift */; };
+		F02EF310211929930086C98A /* CellPlayerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F02EF30E211929930086C98A /* CellPlayerCell.xib */; };
+		F02EF338211985B20086C98A /* PresentAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02EF337211985B20086C98A /* PresentAnimation.swift */; };
+		F02EF3432119955B0086C98A /* PhotoBrowerTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02EF3412119955B0086C98A /* PhotoBrowerTool.swift */; };
+		F02EF3442119955B0086C98A /* DownLoadViewTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02EF3422119955B0086C98A /* DownLoadViewTool.swift */; };
+		F02EF346211997060086C98A /* CellDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02EF345211997060086C98A /* CellDetailView.swift */; };
 		F0412021210079BB0003F7A2 /* Timer+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0412020210079BB0003F7A2 /* Timer+Ext.swift */; };
 		F054045321002C9600E3EF87 /* PushFromStr+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F054045221002C9600E3EF87 /* PushFromStr+Ext.swift */; };
 		F0561C2F2101BA950007496F /* UILabel+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0561C2E2101BA950007496F /* UILabel+Ext.swift */; };
@@ -48,7 +56,7 @@
 		F085C48C2109AFE000CB0D2B /* DatePickerTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F085C48B2109AFE000CB0D2B /* DatePickerTool.swift */; };
 		F085C48E2109AFF400CB0D2B /* MyPickerTool.xib in Resources */ = {isa = PBXBuildFile; fileRef = F085C48D2109AFF300CB0D2B /* MyPickerTool.xib */; };
 		F0B5D59C20FED64F00F642B1 /* AuthorityTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B5D58520FED64F00F642B1 /* AuthorityTool.swift */; };
-		F0B5D59D20FED64F00F642B1 /* VideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B5D58620FED64F00F642B1 /* VideoPlayer.swift */; };
+		F0B5D59D20FED64F00F642B1 /* VideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B5D58620FED64F00F642B1 /* VideoPlayerView.swift */; };
 		F0B5D59E20FED64F00F642B1 /* kSaveDataTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B5D58720FED64F00F642B1 /* kSaveDataTool.swift */; };
 		F0B5D59F20FED64F00F642B1 /* SliderDrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B5D58820FED64F00F642B1 /* SliderDrawerViewController.swift */; };
 		F0B5D5A120FED64F00F642B1 /* CircleImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B5D58A20FED64F00F642B1 /* CircleImageView.swift */; };
@@ -97,6 +105,14 @@
 		F02965B72114404200EA4ADB /* BottomInputView3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomInputView3.swift; sourceTree = "<group>"; };
 		F02965B82114404200EA4ADB /* BottomInputView1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomInputView1.swift; sourceTree = "<group>"; };
 		F02965B92114404200EA4ADB /* BottomInputView5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomInputView5.swift; sourceTree = "<group>"; };
+		F02EF309211928C90086C98A /* CellPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellPlayerViewController.swift; sourceTree = "<group>"; };
+		F02EF30B211929120086C98A /* CellPlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellPlayerViewModel.swift; sourceTree = "<group>"; };
+		F02EF30D211929930086C98A /* CellPlayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellPlayerCell.swift; sourceTree = "<group>"; };
+		F02EF30E211929930086C98A /* CellPlayerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CellPlayerCell.xib; sourceTree = "<group>"; };
+		F02EF337211985B20086C98A /* PresentAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentAnimation.swift; sourceTree = "<group>"; };
+		F02EF3412119955B0086C98A /* PhotoBrowerTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoBrowerTool.swift; sourceTree = "<group>"; };
+		F02EF3422119955B0086C98A /* DownLoadViewTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownLoadViewTool.swift; sourceTree = "<group>"; };
+		F02EF345211997060086C98A /* CellDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellDetailView.swift; sourceTree = "<group>"; };
 		F0412020210079BB0003F7A2 /* Timer+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timer+Ext.swift"; sourceTree = "<group>"; };
 		F04930F920F4A08700787CC8 /* ExtensionTool.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ExtensionTool.entitlements; sourceTree = "<group>"; };
 		F054045221002C9600E3EF87 /* PushFromStr+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PushFromStr+Ext.swift"; sourceTree = "<group>"; };
@@ -122,7 +138,7 @@
 		F085C48B2109AFE000CB0D2B /* DatePickerTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerTool.swift; sourceTree = "<group>"; };
 		F085C48D2109AFF300CB0D2B /* MyPickerTool.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyPickerTool.xib; sourceTree = "<group>"; };
 		F0B5D58520FED64F00F642B1 /* AuthorityTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorityTool.swift; sourceTree = "<group>"; };
-		F0B5D58620FED64F00F642B1 /* VideoPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayer.swift; sourceTree = "<group>"; };
+		F0B5D58620FED64F00F642B1 /* VideoPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerView.swift; sourceTree = "<group>"; };
 		F0B5D58720FED64F00F642B1 /* kSaveDataTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = kSaveDataTool.swift; sourceTree = "<group>"; };
 		F0B5D58820FED64F00F642B1 /* SliderDrawerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SliderDrawerViewController.swift; sourceTree = "<group>"; };
 		F0B5D58A20FED64F00F642B1 /* CircleImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleImageView.swift; sourceTree = "<group>"; };
@@ -206,6 +222,52 @@
 			path = InputView;
 			sourceTree = "<group>";
 		};
+		F02EF305211928C90086C98A /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				F02EF307211928C90086C98A /* View */,
+				F02EF308211928C90086C98A /* ViewController */,
+				F02EF306211928C90086C98A /* ViewModel */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		F02EF306211928C90086C98A /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F02EF337211985B20086C98A /* PresentAnimation.swift */,
+				F02EF30B211929120086C98A /* CellPlayerViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F02EF307211928C90086C98A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F02EF30D211929930086C98A /* CellPlayerCell.swift */,
+				F02EF30E211929930086C98A /* CellPlayerCell.xib */,
+				F02EF345211997060086C98A /* CellDetailView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F02EF308211928C90086C98A /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F02EF309211928C90086C98A /* CellPlayerViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		F02EF3402119955B0086C98A /* PhotoBrowerTool */ = {
+			isa = PBXGroup;
+			children = (
+				F02EF3412119955B0086C98A /* PhotoBrowerTool.swift */,
+				F02EF3422119955B0086C98A /* DownLoadViewTool.swift */,
+			);
+			path = PhotoBrowerTool;
+			sourceTree = "<group>";
+		};
 		F0412040210091A20003F7A2 /* CameraTool */ = {
 			isa = PBXGroup;
 			children = (
@@ -244,6 +306,7 @@
 				F077773B20F2FC3A003D7BD8 /* Assets.xcassets */,
 				F077773D20F2FC3A003D7BD8 /* LaunchScreen.storyboard */,
 				F077774020F2FC3A003D7BD8 /* Info.plist */,
+				F02EF305211928C90086C98A /* Sections */,
 				F0B5D58420FED64F00F642B1 /* BaseViewTool */,
 				F0B5D58C20FED64F00F642B1 /* ExtensionTool */,
 			);
@@ -264,6 +327,7 @@
 		F0B5D58420FED64F00F642B1 /* BaseViewTool */ = {
 			isa = PBXGroup;
 			children = (
+				F02EF3402119955B0086C98A /* PhotoBrowerTool */,
 				F02965B22114404200EA4ADB /* InputView */,
 				F085C4802109576B00CB0D2B /* BottomView */,
 				F01EC3F321082AD800AE2D11 /* LabelTool */,
@@ -271,7 +335,7 @@
 				F016905E2106F9C400E0C60A /* LoadingTool */,
 				F0412040210091A20003F7A2 /* CameraTool */,
 				F0B5D58520FED64F00F642B1 /* AuthorityTool.swift */,
-				F0B5D58620FED64F00F642B1 /* VideoPlayer.swift */,
+				F0B5D58620FED64F00F642B1 /* VideoPlayerView.swift */,
 				F0B5D58720FED64F00F642B1 /* kSaveDataTool.swift */,
 				F0B5D58820FED64F00F642B1 /* SliderDrawerViewController.swift */,
 				F0B5D58A20FED64F00F642B1 /* CircleImageView.swift */,
@@ -387,6 +451,7 @@
 				F085C48E2109AFF400CB0D2B /* MyPickerTool.xib in Resources */,
 				F077773F20F2FC3A003D7BD8 /* LaunchScreen.storyboard in Resources */,
 				F02965BA2114404200EA4ADB /* EmotionPlist.plist in Resources */,
+				F02EF310211929930086C98A /* CellPlayerCell.xib in Resources */,
 				F0561C3A2101DC5C0007496F /* Localizable.strings in Resources */,
 				F085C48A21096E6F00CB0D2B /* CalendarView.xib in Resources */,
 				F077773C20F2FC3A003D7BD8 /* Assets.xcassets in Resources */,
@@ -409,15 +474,20 @@
 				F0B5D5A120FED64F00F642B1 /* CircleImageView.swift in Sources */,
 				F085C48C2109AFE000CB0D2B /* DatePickerTool.swift in Sources */,
 				F0561C3F2101DEF50007496F /* CameraTool.swift in Sources */,
+				F02EF3432119955B0086C98A /* PhotoBrowerTool.swift in Sources */,
 				F0B5D59E20FED64F00F642B1 /* kSaveDataTool.swift in Sources */,
 				F0F7B7C42117EED900AD0659 /* CircleView.swift in Sources */,
 				F0561C2F2101BA950007496F /* UILabel+Ext.swift in Sources */,
 				F02965BD2114404200EA4ADB /* BottomInputView4.swift in Sources */,
 				F01EC3FC210879BD00AE2D11 /* CalendarView.swift in Sources */,
 				F01690612106F9C400E0C60A /* HUDViewTool.swift in Sources */,
+				F02EF338211985B20086C98A /* PresentAnimation.swift in Sources */,
 				F0B5D5A720FED64F00F642B1 /* AppDelegate+Push.swift in Sources */,
+				F02EF30F211929930086C98A /* CellPlayerCell.swift in Sources */,
 				F02965BF2114404200EA4ADB /* BottomInputView1.swift in Sources */,
 				F016906C2106FBDF00E0C60A /* AlertSheetTool.swift in Sources */,
+				F02EF3442119955B0086C98A /* DownLoadViewTool.swift in Sources */,
+				F02EF30C211929120086C98A /* CellPlayerViewModel.swift in Sources */,
 				F0561C312101CFED0007496F /* Localized+Ext.swift in Sources */,
 				F0B5D5AE20FED64F00F642B1 /* Number+Ext.swift in Sources */,
 				F01EC3F821083FC000AE2D11 /* BarrageView.swift in Sources */,
@@ -436,7 +506,7 @@
 				F0B5D5BF20FF2F8500F642B1 /* NotificationCenter+Ext.swift in Sources */,
 				F0561C372101DBCA0007496F /* LanguageTool.swift in Sources */,
 				F054045321002C9600E3EF87 /* PushFromStr+Ext.swift in Sources */,
-				F0B5D59D20FED64F00F642B1 /* VideoPlayer.swift in Sources */,
+				F0B5D59D20FED64F00F642B1 /* VideoPlayerView.swift in Sources */,
 				F0B5D5A520FED64F00F642B1 /* Date+Ext.swift in Sources */,
 				F02965BE2114404200EA4ADB /* BottomInputView3.swift in Sources */,
 				F01690712107232600E0C60A /* VerticalADView.swift in Sources */,
@@ -454,11 +524,13 @@
 				F0B5D5A220FED64F00F642B1 /* FalseNavBarView.swift in Sources */,
 				F0B5D5AD20FED64F00F642B1 /* DispatchQueue+Ext.swift in Sources */,
 				F0B5D5AF20FED64F00F642B1 /* ExtensionTool.swift in Sources */,
+				F02EF346211997060086C98A /* CellDetailView.swift in Sources */,
 				F0B5D5A320FED64F00F642B1 /* UITextView+Ext.swift in Sources */,
 				F0B5D5A920FED64F00F642B1 /* UIBarButtonItem+Ext.swift in Sources */,
 				F0561C412101E6590007496F /* CameraViewController.swift in Sources */,
 				F0B5D5A420FED64F00F642B1 /* UIImage+Ext.swift in Sources */,
 				F0412021210079BB0003F7A2 /* Timer+Ext.swift in Sources */,
+				F02EF30A211928C90086C98A /* CellPlayerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

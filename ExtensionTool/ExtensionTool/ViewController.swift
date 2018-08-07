@@ -31,7 +31,8 @@ class ViewController: BaseViewController {
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 
-        let pushVC = SecondViewController()
+//        let pushVC = SecondViewController()
+        let pushVC = CellPlayerViewController()
         self.navigationController?.pushViewController(pushVC, animated: true)
     }
     
@@ -47,7 +48,6 @@ class SecondViewController: BaseViewController {
         super.viewDidLoad()
         
     }
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

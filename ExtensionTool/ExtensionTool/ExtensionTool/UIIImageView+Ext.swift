@@ -29,7 +29,7 @@ extension UIImageView {
     /// - Parameters:
     ///   - url: 图片地址
     ///   - placeholder: 占位图片
-    func k_setImage(url: String, placeholder: UIImage = #imageLiteral(resourceName: "defaultImg")) {
+    func k_setImage(url: String, placeholder: UIImage = #imageLiteral(resourceName: "photo")) {
         
         if let imgData = kCachesImgDic[url] {
             
@@ -44,7 +44,7 @@ extension UIImageView {
             return
         }
         self.image = placeholder
-        if let imgUrl = URL.init(string: url) {
+        if let imgUrl = URL.init(string: url.replacingOccurrences(of: " ", with: "%20")) {
             
             DispatchQueue.global().async {
                 
