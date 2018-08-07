@@ -293,3 +293,13 @@ extension UIButton {
         get { return "" }
     }
 }
+
+extension UIView {
+    
+    static func k_animate(withDuration: TimeInterval, usingSpringWithDamping: CGFloat, animations: @escaping()->Void, completion: ((Bool)->Void)?) {
+    
+        UIView.animate(withDuration: withDuration, delay: 0.0, usingSpringWithDamping: usingSpringWithDamping, initialSpringVelocity: 0.0, options: .allowAnimatedContent, animations: animations, completion: completion)
+    }
+    
+}
+

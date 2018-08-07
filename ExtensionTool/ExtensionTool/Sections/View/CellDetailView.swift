@@ -10,57 +10,54 @@ import UIKit
 
 class CellDetailView: UIView {
 
-    static func showDetail(currentImg: UIImage?, originalFrame: CGRect) {
+    static func showDetail(baseView: UIImageView, playerView: VideoPlayerView, originalFrame: CGRect) {
         
         let tool = CellDetailView.init(frame: UIScreen.main.bounds)
-        tool.originalFrame = originalFrame
+        tool.k_setCornerRadius(baseView.layer.cornerRadius)
+        tool.clipsToBounds = true
         
+        // 添加视频View
+        tool.addSubview(playerView)
         // 添加动画View
-        tool.falseImgV.frame = originalFrame
-        tool.falseImgV.alpha = 1.0
-        tool.falseImgV.image = currentImg
-        kWindow.addSubview(tool.falseImgV)
-        
-        // 添加最终展示的View
-        tool.alpha = 0.0
+        tool.frame = originalFrame
         kWindow.addSubview(tool)
         
         // 执行放大动画
-        UIView.animate(withDuration: 0.2, animations: {
+        UIView.k_animate(withDuration: 0.25, usingSpringWithDamping: 0.7, animations: {
             
-            tool.falseImgV.frame = CGRect.init(x: 0.0, y: 0.0, width: kWidth, height: kHeight)
+            tool.frame = CGRect.init(x: 0.0, y: 0.0, width: kWidth, height: kHeight)
+            playerView.frame = tool.bounds
             
         }) { (isOk) in
             
-            // 隐藏动画View
-            //tool.falseImgV.alpha = 0.0
-            // 展示出最终View
-            //tool.alpha = 1.0
+            tool.k_addTarget({ (tap) in
+                
+                UIView.k_animate(withDuration: 0.25, usingSpringWithDamping: 0.7, animations: {
+                    
+                    tool.frame = originalFrame
+                    playerView.frame = tool.bounds
+                    
+                }, completion: { (isOk) in
+                    
+                    baseView.addSubview(playerView)
+                    tool.alpha = 0.0
+                    tool.removeFromSuperview()
+                })
+            })
         }
     }
     
-    private var originalFrame: CGRect?
-    
-    //MARK: -懒加载
-    /// 假的View,用于处理放大动画
-    lazy var falseImgV: UIImageView = {
-        let imgV: UIImageView = UIImageView.init()
-        imgV.contentMode = .scaleAspectFit
-        imgV.backgroundColor = UIColor.black
-        imgV.k_addTarget({ (tap) in
-            
-            UIView.animate(withDuration: 0.25, animations: {
-                
-                self.falseImgV.frame = self.originalFrame ?? CGRect.zero
-                
-            }, completion: { (isOK) in
-                
-                self.falseImgV.alpha = 0.0
-                self.falseImgV.removeFromSuperview()
-            })
-        })
+    @objc func panAction(pan: UIPanGestureRecognizer) {
         
-        return imgV
+        
+        
+    }
+    
+    lazy var panGesture: UIPanGestureRecognizer = {
+        let pan = UIPanGestureRecognizer.init(target: self, action: #selector(panAction))
+        return pan
     }()
+    
 
+    
 }
