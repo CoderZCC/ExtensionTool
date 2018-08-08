@@ -10,6 +10,10 @@ import UIKit
 
 class CellPlayerViewController: BaseViewController {
 
+    /// 上一次的播放器
+    var lastPlayerView: VideoPlayerView?
+    var lastCell: CellPlayerCell?
+    /// 当前的播放器
     var currentPlayerView: VideoPlayerView?
     var currentCell: CellPlayerCell?
 
@@ -55,17 +59,39 @@ class CellPlayerViewController: BaseViewController {
         playerView.videoUrl = url
         playerView.isRunPlay = true
         playerView.readyToPlay()
+        playerView.player?.volume = 0.0
 
-        self.currentPlayerView = playerView
-        self.currentCell = cell
+        // 第一个播放器
+        self.lastPlayerView = playerView
+        self.lastCell = cell
+//        if self.lastPlayerView != nil {
+//
+//            // 暂停之前的播放器
+//            self.lastPlayerView?.pausePlayer()
+//            // 第二个播放器
+//            self.currentPlayerView = playerView
+//            self.currentCell = cell
+//
+//        } else {
+//
+//            // 第一个播放器
+//            self.lastPlayerView = playerView
+//            self.lastCell = cell
+//        }
     }
     
     /// 销毁
     func destoryPlayer() {
         
+        self.lastPlayerView?.removeFromSuperview()
+        self.lastPlayerView?.destoryPlayer()
+        self.lastPlayerView = nil
+        self.lastCell = nil
+        
         self.currentPlayerView?.removeFromSuperview()
         self.currentPlayerView?.destoryPlayer()
         self.currentPlayerView = nil
+        self.currentCell = nil
     }
    
     /// 播放或全屏播放
@@ -74,7 +100,7 @@ class CellPlayerViewController: BaseViewController {
         let model = self.viewModel.dataList[indexPath.row]
         let cell = tableView.cellForRow(at: indexPath) as! CellPlayerCell
         
-        if !(self.currentCell ?? UITableViewCell()).isEqual(cell) {
+        if !(self.currentCell ?? (self.lastCell ?? UITableViewCell())).isEqual(cell) {
             
             // 创建播放器
             self.creatPlayerWith(cell: cell, url: model.videoUrl)
@@ -83,7 +109,8 @@ class CellPlayerViewController: BaseViewController {
             
             // 全屏播放器
             let frame = cell.convert(cell.coverImgV.frame, to: self.view)
-            CellDetailView.showDetail(currentCell: cell, playerView: self.currentPlayerView!, originalFrame: frame)
+            let player = self.currentPlayerView ?? self.lastPlayerView!
+            CellDetailView.showDetail(currentCell: cell, playerView: player, originalFrame: frame)
         }
     }
     

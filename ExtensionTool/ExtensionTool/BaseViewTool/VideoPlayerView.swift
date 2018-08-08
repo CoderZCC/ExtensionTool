@@ -96,6 +96,7 @@ class VideoPlayerView: UIView {
     /// 暂停播放
     func pausePlayer() {
         
+        self.player?.pause()
         self.isAccessToPlay = false
         self.launchImageView.isHidden = true
     }
@@ -175,7 +176,6 @@ extension VideoPlayerView {
             let status = (changeDic[.newKey] as! NSNumber).intValue
             if status == AVPlayerStatus.readyToPlay.rawValue {
                 
-                print("准备播放")
                 if self.isPlaying || !self.isAccessToPlay { return }
                 
                 self.launchImageView.isHidden = true
@@ -195,14 +195,16 @@ extension VideoPlayerView {
             
         case "loadedTimeRanges":
             
-            let arr = playItem.loadedTimeRanges
-            let timeRange: CMTimeRange = arr.first!.timeRangeValue
+//            let arr = playItem.loadedTimeRanges
+//            let timeRange: CMTimeRange = arr.first!.timeRangeValue
+//
+//            let startSeconds = timeRange.start.seconds
+//            let durationSeconds = timeRange.duration.seconds
+//            // 缓冲总长度
+//            let totalBuffer = startSeconds + durationSeconds
+//            print("缓冲长度:\(totalBuffer)")
             
-            let startSeconds = timeRange.start.seconds
-            let durationSeconds = timeRange.duration.seconds
-            // 缓冲总长度
-            let totalBuffer = startSeconds + durationSeconds
-            print("缓冲长度:\(totalBuffer)")
+            break
             
         case "playbackBufferEmpty":
             
