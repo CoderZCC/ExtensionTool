@@ -20,8 +20,7 @@ class CellDetailView: UIView {
         
         let tool = CellDetailView.init(frame: UIScreen.main.bounds)
         let baseView = currentCell.coverImgV!
-        tool.k_setCornerRadius(baseView.layer.cornerRadius)
-        
+
         // 获取父视图
         let superView = currentCell.superview?.superview
         superView?.addSubview(tool.blackView)
@@ -30,11 +29,11 @@ class CellDetailView: UIView {
         tool.playerView = playerView
         tool.originlaiFrame = originalFrame
         tool.coverImg = baseView.image!
+        tool.baseView = baseView
         // 删除原图片
         baseView.backgroundColor = UIColor.black
         baseView.image = nil
         
-        tool.baseView = baseView
         // 添加视频View
         tool.addSubview(playerView)
 
