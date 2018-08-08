@@ -195,6 +195,9 @@ extension CellPlayerViewController: UITableViewDelegate, UITableViewDataSource {
         for subCells in self.tableView.visibleCells {
             
             let cell = subCells as! CellPlayerCell
+            
+            
+            
             print(cell)
         }
         print("结束减速")

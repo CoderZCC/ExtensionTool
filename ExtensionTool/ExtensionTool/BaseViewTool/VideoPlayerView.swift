@@ -84,20 +84,33 @@ class VideoPlayerView: UIView {
             
             self.launchImageView.frame = CGRect(x: 0.0, y: 0.0, width: newValue.width, height: newValue.height)
             self.playerLayer?.frame = self.launchImageView.bounds
+            
+            let wh: CGFloat = 40.0
+            self.loadingView.isHidden = true
+            self.loadingView.frame = CGRect(x: min(newValue.width, kWidth) - wh, y: min(newValue.height, kHeight) - wh, width: wh, height: wh)
+            DispatchQueue.k_asyncAfterOnMain(dealyTime: 0.5) {
+                
+                self.loadingView.isHidden = false
+            }
         }
     }
     
     /// 准备播放
     func readyToPlay() {
         
-        self.isAccessToPlay = true
+        self.isReadyToPlay = { [unowned self] in
+            
+            self.player?.play()
+            self.isPlaying = true
+            self.isResume = true
+        }
     }
     
     /// 暂停播放
     func pausePlayer() {
         
+        self.isPlaying = false
         self.player?.pause()
-        self.isAccessToPlay = false
         self.launchImageView.isHidden = true
     }
     
@@ -117,8 +130,51 @@ class VideoPlayerView: UIView {
     //MARK: -实现部分
     /// 是否在返回时播放视频
     private var isResume: Bool = false
-    /// 是否允许播放
-    private var isAccessToPlay: Bool = false
+    /// 是否可以播放
+    private var isReadyToPlay: (()->Void)?
+    
+    private lazy var loadingView: UIView = {
+        let wh: CGFloat = 40.0
+        let view = UIView.init(frame: CGRect(x: self.frame.width - wh, y: self.frame.height - wh, width: wh, height: wh))
+        view.addSubview(self.pauseImgV)
+        view.addSubview(self.playImgV)
+        view.addSubview(self.loadingImgV)
+
+        return view
+    }()
+    lazy var loadingImgV: UIImageView = {
+        let imgV = UIImageView.init(image: #imageLiteral(resourceName: "loading"))
+        
+        return imgV
+    }()
+    lazy var pauseImgV: UIImageView = {
+        let imgV = UIImageView.init(image: #imageLiteral(resourceName: "stop"))
+        imgV.isHidden = true
+        imgV.k_addTarget({ [unowned self] (tap) in
+            
+            imgV.isHidden = true
+            self.loadingImgV.isHidden = true
+            self.playImgV.isHidden = false
+            self.pausePlayer()
+        })
+        
+        return imgV
+    }()
+    lazy var playImgV: UIImageView = {
+        let imgV = UIImageView.init(image: #imageLiteral(resourceName: "play"))
+        imgV.isHidden = true
+        imgV.k_addTarget({ [unowned self] (tap) in
+            
+            imgV.isHidden = true
+            self.loadingImgV.isHidden = true
+            self.pauseImgV.isHidden = false
+            self.player?.play()
+            self.isPlaying = true
+            self.isResume = true
+        })
+        
+        return imgV
+    }()
     
     deinit {
         
@@ -139,6 +195,7 @@ extension VideoPlayerView {
         NotificationCenter.default.addObserver(self, selector: #selector(enterBackgroundNote), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
         
         self.addSubview(self.launchImageView)
+        self.addSubview(self.loadingView)
     }
     
     /// 添加监听
@@ -167,7 +224,6 @@ extension VideoPlayerView {
     /// 监听
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         
-        guard let playItem = object as? AVPlayerItem else { return }
         guard let changeDic = change else { return }
         
         switch keyPath {
@@ -176,14 +232,19 @@ extension VideoPlayerView {
             let status = (changeDic[.newKey] as! NSNumber).intValue
             if status == AVPlayerStatus.readyToPlay.rawValue {
                 
-                if self.isPlaying || !self.isAccessToPlay { return }
+                if self.isPlaying { return }
                 
                 self.launchImageView.isHidden = true
                 self.layer.addSublayer(self.playerLayer!)
-                self.player?.play()
-                self.isPlaying = true
-                self.isResume = true
+                self.bringSubview(toFront: self.loadingView)
                 
+                self.isReadyToPlay?()
+                
+                self.loadingImgV.isHidden = true
+                self.playImgV.isHidden = true
+                self.pauseImgV.isHidden = false
+                print("准备播放")
+
             } else if status == AVPlayerStatus.failed.rawValue {
                 
                 print("播放失败")
@@ -195,6 +256,7 @@ extension VideoPlayerView {
             
         case "loadedTimeRanges":
             
+//            guard let playItem = object as? AVPlayerItem else { return }
 //            let arr = playItem.loadedTimeRanges
 //            let timeRange: CMTimeRange = arr.first!.timeRangeValue
 //
@@ -204,15 +266,27 @@ extension VideoPlayerView {
 //            let totalBuffer = startSeconds + durationSeconds
 //            print("缓冲长度:\(totalBuffer)")
             
+            // 加载
+            
+            
             break
             
         case "playbackBufferEmpty":
             
             print("缓存为空")
-
+            // 开始加载
+            let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
+            rotationAnimation.toValue = NSNumber.init(value: Double.pi * 2.0)
+            rotationAnimation.duration = 0.6
+            // 旋转累加角度
+            rotationAnimation.isCumulative = true
+            rotationAnimation.repeatCount = Float(Int.max)
+            self.loadingImgV.layer.add(rotationAnimation, forKey: "rotationAnimation")
+            
         case "playbackLikelyToKeepUp":
             
             print("缓存可以播放")
+            self.loadingImgV.layer.removeAnimation(forKey: "rotationAnimation")
 
         default:
             break
