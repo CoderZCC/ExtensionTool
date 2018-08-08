@@ -35,9 +35,8 @@ class CellDetailView: UIView {
         tool.originlaiFrame = originalFrame
         baseView.isHidden = true
         tool.baseView = baseView
-        
         // 添加视频View
-        tool.addSubview(playerView)
+        tool.showView.addSubview(playerView)
         // 添加动画View
         tool.frame = originalFrame
         kWindow.addSubview(tool)
@@ -45,21 +44,21 @@ class CellDetailView: UIView {
         let pan = tool.panGesture
         playerView.addGestureRecognizer(pan)
         // 执行放大动画
-        UIView.k_animate(withDuration: tool.showDuraton, usingSpringWithDamping: 0.7, animations: {
+        UIView.k_animate(withDuration: tool.showDuraton, usingSpringWithDamping: 0.7, animations: { [unowned tool] in
             
             tool.frame = CGRect.init(x: 0.0, y: 0.0, width: kWidth, height: kHeight)
             playerView.frame = tool.bounds
             
-        }) { (isOk) in
+        }) { [unowned tool] (isOk) in
             
-            tool.k_addTarget({ (tap) in
+            tool.k_addTarget({ [unowned tool] (tap) in
                 
-                UIView.k_animate(withDuration: tool.hiddenDuration, usingSpringWithDamping: 0.7, animations: {
+                UIView.k_animate(withDuration: tool.hiddenDuration, usingSpringWithDamping: 0.7, animations: { [unowned tool] in
                     
                     tool.frame = originalFrame
                     playerView.frame = tool.bounds
                     
-                }, completion: { (isOk) in
+                }, completion: { [unowned tool] (isOk) in
                     
                     tool.baseView.isHidden = false
                     playerView.removeGestureRecognizer(pan)
@@ -84,7 +83,6 @@ class CellDetailView: UIView {
     private var hiddenDuration: TimeInterval = 0.25
     /// 缩放进度
     private var progress: CGFloat = 0.0
-    
     
     // MARK: -事件
     @objc private func panAction(pan: UIPanGestureRecognizer) {
@@ -112,27 +110,31 @@ class CellDetailView: UIView {
             
             if self.progress >= 0.3 {
                 
-                UIView.k_animate(withDuration: self.hiddenDuration, usingSpringWithDamping: 0.7, animations: {
+                UIView.k_animate(withDuration: self.hiddenDuration, usingSpringWithDamping: 0.7, animations: { [unowned self] in
                     
                     // 恢复原位置大小
                     self.frame = self.originlaiFrame
                     self.playerView.frame = self.bounds
+//                    self.showView.frame = self.bounds
                     // 蒙版
                     self.blackView.alpha = 0.0
                     
-                }, completion: { (isOk) in
+                }, completion: { [unowned self] (isOk) in
                     
                     // 恢复位移和缩放
+                    self.showView.transform = CGAffineTransform.identity
                     self.playerView.transform = CGAffineTransform.identity
-
-                    // 移除手势
-                    self.playerView.removeGestureRecognizer(pan)
-                    self.playerView.frame = self.bounds
-                    
                     // 添加到原父视图
                     self.baseView.isHidden = false
                     self.baseView.addSubview(self.playerView)
+                    
+                    // 移除手势
+                    self.playerView.removeGestureRecognizer(pan)
+//                    self.showView.frame = self.bounds
+                    self.playerView.frame = self.bounds
+                    
                     // 从父视图移除
+                    self.showView.removeFromSuperview()
                     self.blackView.removeFromSuperview()
                     self.removeFromSuperview()
                 })
@@ -141,9 +143,10 @@ class CellDetailView: UIView {
                 
                 UIView.animate(withDuration: self.hiddenDuration, animations: {
                     
-                    self.backgroundColor = UIColor.black.withAlphaComponent(1.0)
+                    self.blackView.alpha = 0.0
                     self.playerView.transform = CGAffineTransform.identity
-                    
+                    self.showView.transform = CGAffineTransform.identity
+
                 }) { (isOK) in
                     
                     
