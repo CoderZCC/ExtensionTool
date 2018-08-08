@@ -83,7 +83,7 @@ class CellPlayerViewController: BaseViewController {
             
             // 全屏播放器
             let frame = cell.convert(cell.coverImgV.frame, to: self.view)
-            CellDetailView.showDetail(baseView: cell.coverImgV, playerView: self.currentPlayerView!, originalFrame: frame)
+            CellDetailView.showDetail(currentCell: cell, playerView: self.currentPlayerView!, originalFrame: frame)
         }
     }
     
