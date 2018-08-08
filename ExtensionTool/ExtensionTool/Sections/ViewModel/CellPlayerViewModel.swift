@@ -34,9 +34,9 @@ class CellPlayerViewModel: NSObject {
     }
     
     /// 视频地址
-    private let videoArr: [String] = ["http://res.supervolleyball.com/SVBallMp4/android_1561533692188893.mp4", "http://res.supervolleyball.com/SVBallMp4/ios_20180807054656.mp4", "http://res.supervolleyball.com/SVBallMp4/ios_20180807041846.mp4", "http://res.supervolleyball.com/SVBallMp4/android_3801533622947134.mp4", "http://res.supervolleyball.com/SVBallMp4/ios_20180619051643.mp4", "http://res.supervolleyball.com/SVBallMp4/android_1441528796015818.mp4", "http://res.supervolleyball.com/SVBallMp4/android_1441528795887853.mp4"]
+    private let videoArr: [String] = ["http://res.supervolleyball.com/SVBallMp4/ios_20180807054656.mp4", "http://res.supervolleyball.com/SVBallMp4/android_1561533692188893.mp4", "http://res.supervolleyball.com/SVBallMp4/ios_20180807041846.mp4", "http://res.supervolleyball.com/SVBallMp4/android_3801533622947134.mp4", "http://res.supervolleyball.com/SVBallMp4/ios_20180619051643.mp4", "http://res.supervolleyball.com/SVBallMp4/android_1441528796015818.mp4", "http://res.supervolleyball.com/SVBallMp4/android_1441528795887853.mp4"]
     
     /// 封面地址
-    private let imageArr: [String] = ["http://res.supervolleyball.com/SVBallPic/android_1561533692188722.jpg", "http://res.supervolleyball.com/SVBallPic/ios_201808070547010.jpg", "http://res.supervolleyball.com/SVBallPic/android_3801533623994214.jpg", "http://res.supervolleyball.com/SVBallPic/android_3801533622946840.jpg", "http://res.supervolleyball.com/SVBallPic/ios_201806190516480.jpg", "http://res.supervolleyball.com/SVBallPic/android_1441528796015670.jpg", "http://res.supervolleyball.com/SVBallPic/android_1441528795887265.jpg"]
+    private let imageArr: [String] = ["http://res.supervolleyball.com/SVBallPic/ios_201808070547010.jpg", "http://res.supervolleyball.com/SVBallPic/android_1561533692188722.jpg", "http://res.supervolleyball.com/SVBallPic/android_3801533623994214.jpg", "http://res.supervolleyball.com/SVBallPic/android_3801533622946840.jpg", "http://res.supervolleyball.com/SVBallPic/ios_201806190516480.jpg", "http://res.supervolleyball.com/SVBallPic/android_1441528796015670.jpg", "http://res.supervolleyball.com/SVBallPic/android_1441528795887265.jpg"]
 
 }

@@ -20,11 +20,10 @@ class CellDetailView: UIView {
         
         let tool = CellDetailView.init(frame: UIScreen.main.bounds)
         tool.k_setCornerRadius(baseView.layer.cornerRadius)
-        tool.clipsToBounds = true
         
         // 静音
-        playerView.player?.volume = 0.0
-        playerView.player?.pause()
+//        playerView.player?.volume = 0.0
+//        playerView.player?.pause()
         //  赋值
         tool.playerView = playerView
         tool.originlaiFrame = originalFrame
@@ -102,12 +101,14 @@ class CellDetailView: UIView {
             
             UIView.k_animate(withDuration: 0.25, usingSpringWithDamping: 0.7, animations: {
                 
-                self.playerView.frame = self.originlaiFrame
+                self.frame = self.originlaiFrame
+                self.playerView.frame = self.bounds
                 
             }, completion: { (isOk) in
                 
                 self.playerView.transform = CGAffineTransform.identity
                 self.playerView.removeGestureRecognizer(pan)
+                self.playerView.frame = self.bounds
                 self.baseView.addSubview(self.playerView)
                 self.alpha = 0.0
                 self.removeFromSuperview()
