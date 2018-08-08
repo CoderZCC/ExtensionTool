@@ -9,6 +9,13 @@
 import UIKit
 import AVKit
 
+protocol VideoPlayerDelegate: NSObjectProtocol {
+    
+    func videoPlayerCaching()
+    
+    func videoPlayerReadyToPlay()
+}
+
 class VideoPlayerView: UIView {
     
     //MARK: -调用部分
@@ -36,14 +43,15 @@ class VideoPlayerView: UIView {
             // 初始化播放器
             let item = AVPlayerItem.init(url: url)
             let player = AVPlayer.init(playerItem: item)
-            
+
             let playerLayer = AVPlayerLayer.init(player: player)
             playerLayer.frame = self.bounds
-            //playerLayer.videoGravity = .resizeAspect
             playerLayer.videoGravity = .resizeAspectFill
             
             self.playerLayer = playerLayer
             self.player = player
+            // 添加监听
+            self.addObserver()
         }
     }
     /// 是否无限轮播
@@ -58,6 +66,7 @@ class VideoPlayerView: UIView {
         }
     }
     
+    // MARK: -重写
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -81,16 +90,7 @@ class VideoPlayerView: UIView {
     /// 准备播放
     func readyToPlay() {
         
-        if self.isPlaying { return }
-        self.layer.addSublayer(self.playerLayer!)
-        self.player?.play()
-        self.isPlaying = true
-        self.isResume = true
-        
-        UIView.animate(withDuration: 0.25) {
-            
-            self.launchImageView.alpha = 0.0
-        }
+        self.isAccessToPlay = true
     }
     
     /// 销毁播放器
@@ -109,6 +109,19 @@ class VideoPlayerView: UIView {
     //MARK: -实现部分
     /// 是否在返回时播放视频
     private var isResume: Bool = false
+    /// 是否允许播放
+    private var isAccessToPlay: Bool = false
+    
+    deinit {
+        
+        NotificationCenter.default.removeObserver(self)
+        self.removeObserver()
+        print("###\(self)销毁了###\n")
+    }
+}
+
+//MARK : -私有方法
+extension VideoPlayerView {
     
     /// 初始化
     private func setup() {
@@ -120,6 +133,82 @@ class VideoPlayerView: UIView {
         self.addSubview(self.launchImageView)
     }
     
+    /// 添加监听
+    private func addObserver() {
+        
+        let item = self.player?.currentItem
+        //监控状态属性，注意AVPlayer也有一个status属性，通过监控它的status也可以获得播放状态
+        item?.addObserver(self, forKeyPath: "status", options: NSKeyValueObservingOptions.new, context: nil)
+        // 监控网络加载情况属性
+        item?.addObserver(self, forKeyPath: "loadedTimeRanges", options: NSKeyValueObservingOptions.new, context: nil)
+        // 监听播放的区域缓存是否为空
+        item?.addObserver(self, forKeyPath: "playbackBufferEmpty", options: NSKeyValueObservingOptions.new, context: nil)
+        // 缓存可以播放的时候调用
+        item?.addObserver(self, forKeyPath: "playbackLikelyToKeepUp", options: NSKeyValueObservingOptions.new, context: nil)
+    }
+    /// 移除监听
+    private func removeObserver() {
+        
+        let item = self.player?.currentItem
+        item?.removeObserver(self, forKeyPath: "status")
+        item?.removeObserver(self, forKeyPath: "loadedTimeRanges")
+        item?.removeObserver(self, forKeyPath: "playbackBufferEmpty")
+        item?.removeObserver(self, forKeyPath: "playbackLikelyToKeepUp")
+    }
+    
+    /// 监听
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        
+        guard let playItem = object as? AVPlayerItem else { return }
+        guard let changeDic = change else { return }
+        
+        switch keyPath {
+        case "status":
+            
+            let status = (changeDic[.newKey] as! NSNumber).intValue
+            if status == AVPlayerStatus.readyToPlay.rawValue {
+                
+                print("准备播放")
+                if self.isPlaying || !self.isAccessToPlay { return }
+                self.layer.addSublayer(self.playerLayer!)
+                self.player?.play()
+                self.isPlaying = true
+                self.isResume = true
+                
+            } else if status == AVPlayerStatus.failed.rawValue {
+                
+                print("播放失败")
+                
+            } else if status == AVPlayerStatus.unknown.rawValue {
+                
+                print("未知错误")
+            }
+            
+        case "loadedTimeRanges":
+            
+            let arr = playItem.loadedTimeRanges
+            let timeRange: CMTimeRange = arr.first!.timeRangeValue
+            
+            let startSeconds = timeRange.start.seconds
+            let durationSeconds = timeRange.duration.seconds
+            // 缓冲总长度
+            let totalBuffer = startSeconds + durationSeconds
+            print("缓冲长度:\(totalBuffer)")
+            
+        case "playbackBufferEmpty":
+            
+            print("缓存为空")
+
+        case "playbackLikelyToKeepUp":
+            
+            print("缓存可以播放")
+
+        default:
+            break
+        }        
+    }
+    
+    // MARK: -通知事件
     /// 进入前台
     @objc private func enterForegroundNote() {
         
@@ -145,7 +234,7 @@ class VideoPlayerView: UIView {
             
             self.player?.pause()
             self.player?.seekTimeToPlay(time: 0.0) { [unowned self] (isOK) in
-
+                
                 self.player?.play()
             }
             
@@ -153,10 +242,6 @@ class VideoPlayerView: UIView {
             
             self.isPlaying = false
         }
-    }
-    
-    deinit {
-        print("###\(self)销毁了###\n")
     }
 }
 
@@ -198,3 +283,4 @@ extension URL {
         return urlAsset.duration.toFloat()
     }
 }
+

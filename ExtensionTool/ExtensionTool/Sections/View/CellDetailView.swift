@@ -21,7 +21,6 @@ class CellDetailView: UIView {
         let tool = CellDetailView.init(frame: UIScreen.main.bounds)
         tool.k_setCornerRadius(baseView.layer.cornerRadius)
         tool.clipsToBounds = true
-        tool.backgroundColor = UIColor.black.withAlphaComponent(0.6)
         
         // 静音
         playerView.player?.volume = 0.0
@@ -82,7 +81,8 @@ class CellDetailView: UIView {
         case .began:
             
             self.lastPoint = currentPoint
-            
+            //self.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+
         case .changed:
             
             self.playerView.transform = CGAffineTransform(translationX: currentPoint.x - self.lastPoint.x, y: currentPoint.y - self.lastPoint.y)

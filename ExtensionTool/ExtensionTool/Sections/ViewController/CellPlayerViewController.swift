@@ -43,6 +43,7 @@ class CellPlayerViewController: BaseViewController {
     }
     
     //MARK: 事件
+    /// 创建播放器
     func creatPlayerWith(cell: CellPlayerCell, url: String) {
         
         self.destoryPlayer()
@@ -52,14 +53,14 @@ class CellPlayerViewController: BaseViewController {
         
         playerView.launchImageView.image = cell.coverImgV.image
         playerView.videoUrl = url
-        playerView.readyToPlay()
         playerView.isRunPlay = true
-        
+        playerView.readyToPlay()
+
         self.currentPlayerView = playerView
         self.currentCell = cell
     }
     
-    // 销毁
+    /// 销毁
     func destoryPlayer() {
         
         self.currentPlayerView?.removeFromSuperview()
@@ -67,6 +68,25 @@ class CellPlayerViewController: BaseViewController {
         self.currentPlayerView = nil
     }
    
+    /// 播放或全屏播放
+    func playOrMoveToFullScreen(_ indexPath: IndexPath) {
+        
+        let model = self.viewModel.dataList[indexPath.row]
+        let cell = tableView.cellForRow(at: indexPath) as! CellPlayerCell
+        
+        if !(self.currentCell ?? UITableViewCell()).isEqual(cell) {
+            
+            // 创建播放器
+            self.creatPlayerWith(cell: cell, url: model.videoUrl)
+            
+        } else {
+            
+            // 全屏播放器
+            let frame = cell.convert(cell.coverImgV.frame, to: self.view)
+            CellDetailView.showDetail(baseView: cell.coverImgV, playerView: self.currentPlayerView!, originalFrame: frame)
+        }
+    }
+    
     //MARK: 懒加载
     lazy var viewModel: CellPlayerViewModel = {
         
@@ -95,11 +115,19 @@ class CellPlayerViewController: BaseViewController {
         
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.tableView(self.tableView, didSelectRowAt: IndexPath.init(row: 0, section: 0))
+        self.playOrMoveToFullScreen(IndexPath.init(row: 0, section: 0))
     }
+
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
@@ -108,25 +136,12 @@ class CellPlayerViewController: BaseViewController {
 }
 
 extension CellPlayerViewController: UITableViewDelegate, UITableViewDataSource {
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let model = self.viewModel.dataList[indexPath.row]
-        let cell = tableView.cellForRow(at: indexPath) as! CellPlayerCell
-        
-        if !(self.currentCell ?? UITableViewCell()).isEqual(cell) {
-
-            // 创建播放器
-            self.creatPlayerWith(cell: cell, url: model.videoUrl)
-
-        } else {
-
-            // 全屏播放器
-            let frame = cell.convert(cell.coverImgV.frame, to: self.view)
-            CellDetailView.showDetail(baseView: cell.coverImgV, playerView: self.currentPlayerView!, originalFrame: frame)
-        }
+        self.navigationController?.popViewController(animated: true)
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return self.viewModel.dataList.count
@@ -136,6 +151,11 @@ extension CellPlayerViewController: UITableViewDelegate, UITableViewDataSource {
         
         let cell = tableView.k_dequeueReusableCell(cls: CellPlayerCell.self, indexPath: indexPath) as! CellPlayerCell
         cell.model = self.viewModel.dataList[indexPath.row]
+        
+        cell.coverImgV.k_addTarget { [unowned self] (tap) in
+            
+            self.playOrMoveToFullScreen(indexPath)
+        }
         
         return cell
     }

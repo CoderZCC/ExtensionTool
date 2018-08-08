@@ -34,11 +34,9 @@ class CellPlayerViewModel: NSObject {
     }
     
     /// 视频地址
-    private let videoArr: [String] = ["http://ksy.fffffive.com/mda-hinp1ik37b0rt1mj/mda-hinp1ik37b0rt1mj.mp4","http://ksy.fffffive.com/mda-himtqzs2un1u8x2v/mda-himtqzs2un1u8x2v.mp4","http://ksy.fffffive.com/mda-hiw5zixc1ghpgrhn/mda-hiw5zixc1ghpgrhn.mp4","http://ksy.fffffive.com/mda-hiw61ic7i4qkcvmx/mda-hiw61ic7i4qkcvmx.mp4","http://ksy.fffffive.com/mda-hihvysind8etz7ga/mda-hihvysind8etz7ga.mp4","http://ksy.fffffive.com/mda-hiw60i3kczgum0av/mda-hiw60i3kczgum0av.mp4","http://ksy.fffffive.com/mda-hidnzn5r61qwhxp4/mda-hidnzn5r61qwhxp4.mp4","http://ksy.fffffive.com/mda-he1zy3rky0rwrf60/mda-he1zy3rky0rwrf60.mp4","http://ksy.fffffive.com/mda-hh6cxd0dqjqcszcj/mda-hh6cxd0dqjqcszcj.mp4","http://ksy.fffffive.com/mda-hifsrhtqjn8jxeha/mda-hifsrhtqjn8jxeha.mp4"]
+    private let videoArr: [String] = ["http://res.supervolleyball.com/SVBallMp4/android_1561533692188893.mp4", "http://res.supervolleyball.com/SVBallMp4/ios_20180807054656.mp4", "http://res.supervolleyball.com/SVBallMp4/ios_20180807041846.mp4", "http://res.supervolleyball.com/SVBallMp4/android_3801533622947134.mp4", "http://res.supervolleyball.com/SVBallMp4/ios_20180619051643.mp4", "http://res.supervolleyball.com/SVBallMp4/android_1441528796015818.mp4", "http://res.supervolleyball.com/SVBallMp4/android_1441528795887853.mp4"]
     
     /// 封面地址
-    private let imageArr: [String] = ["http://ksy.fffffive.com/mda-hinp1ik37b0rt1mj/mda-hinp1ik37b0rt1mj.jpg","http://ksy.fffffive.com/mda-himtqzs2un1u8x2v/mda-himtqzs2un1u8x2v.jpg","http://ksy.fffffive.com/mda-hiw5zixc1ghpgrhn/mda-hiw5zixc1ghpgrhn.jpg","http://ksy.fffffive.com/mda-hiw61ic7i4qkcvmx/mda-hiw61ic7i4qkcvmx.jpg", "http://ksy.fffffive.com/mda-hihvysind8etz7ga/mda-hihvysind8etz7ga.jpg","http://ksy.fffffive.com/mda-hiw60i3kczgum0av/mda-hiw60i3kczgum0av.jpg", "http://ksy.fffffive.com/mda-hidnzn5r61qwhxp4/mda-hidnzn5r61qwhxp4.jpg", "http://ksy.fffffive.com/mda-he1zy3rky0rwrf60/mda-he1zy3rky0rwrf60.jpg", "http://ksy.fffffive.com/mda-hh6cxd0dqjqcszcj/mda-hh6cxd0dqjqcszcj.jpg","http://ksy.fffffive.com/mda-hifsrhtqjn8jxeha/mda-hifsrhtqjn8jxeha.jpg"]
-    
-    
-    
+    private let imageArr: [String] = ["http://res.supervolleyball.com/SVBallPic/android_1561533692188722.jpg", "http://res.supervolleyball.com/SVBallPic/ios_201808070547010.jpg", "http://res.supervolleyball.com/SVBallPic/android_3801533623994214.jpg", "http://res.supervolleyball.com/SVBallPic/android_3801533622946840.jpg", "http://res.supervolleyball.com/SVBallPic/ios_201806190516480.jpg", "http://res.supervolleyball.com/SVBallPic/android_1441528796015670.jpg", "http://res.supervolleyball.com/SVBallPic/android_1441528795887265.jpg"]
+
 }
