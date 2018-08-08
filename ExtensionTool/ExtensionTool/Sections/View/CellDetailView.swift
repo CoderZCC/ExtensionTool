@@ -21,22 +21,23 @@ class CellDetailView: UIView {
         let tool = CellDetailView.init(frame: UIScreen.main.bounds)
         let baseView = currentCell.coverImgV!
         tool.k_setCornerRadius(baseView.layer.cornerRadius)
-        tool.addSubview(tool.showView)
         
         // 获取父视图
         let superView = currentCell.superview?.superview
         superView?.addSubview(tool.blackView)
         
-        // 静音
-        playerView.player?.volume = 0.0
-
         //  赋值
         tool.playerView = playerView
         tool.originlaiFrame = originalFrame
-        baseView.isHidden = true
+        tool.coverImg = baseView.image!
+        // 删除原图片
+        baseView.backgroundColor = UIColor.black
+        baseView.image = nil
+        
         tool.baseView = baseView
         // 添加视频View
-        tool.showView.addSubview(playerView)
+        tool.addSubview(playerView)
+
         // 添加动画View
         tool.frame = originalFrame
         kWindow.addSubview(tool)
@@ -53,16 +54,24 @@ class CellDetailView: UIView {
             
             tool.k_addTarget({ [unowned tool] (tap) in
                 
-                UIView.k_animate(withDuration: tool.hiddenDuration, usingSpringWithDamping: 0.7, animations: { [unowned tool] in
+                // 先隐藏原图片
+                tool.baseView.isHidden = true
+                tool.baseView.image = tool.coverImg
+                
+                UIView.animate(withDuration: tool.hiddenDuration, animations: {
                     
                     tool.frame = originalFrame
                     playerView.frame = tool.bounds
                     
-                }, completion: { [unowned tool] (isOk) in
+                }, completion: { (isOk) in
                     
+                    // 展示原图片
                     tool.baseView.isHidden = false
+                    // 移除手势
                     playerView.removeGestureRecognizer(pan)
+                    // 添加到原父视图
                     baseView.addSubview(playerView)
+                    // 移除子控件
                     tool.blackView.removeFromSuperview()
                     tool.removeFromSuperview()
                 })
@@ -79,10 +88,12 @@ class CellDetailView: UIView {
     /// 父视图
     private var baseView: UIImageView!
     /// 动画执行时间
-    private var showDuraton: TimeInterval = 0.5
+    private var showDuraton: TimeInterval = 0.4
     private var hiddenDuration: TimeInterval = 0.25
     /// 缩放进度
     private var progress: CGFloat = 0.0
+    /// 记录封面图
+    private var coverImg: UIImage!
     
     // MARK: -事件
     @objc private func panAction(pan: UIPanGestureRecognizer) {
@@ -97,60 +108,47 @@ class CellDetailView: UIView {
             
             // 手指移动的比例
             let distance = sqrt(pow((currentPoint.x - self.lastPoint.x), 2) + pow((currentPoint.y - self.lastPoint.y), 2))
-            self.progress = distance / (kHeight / 2.0)
-            let progress = 1.0 - min(0.2, self.progress)
+            self.progress = distance / (kHeight)
+            print(self.progress)
             // 蒙版
-            self.blackView.alpha = progress
+            self.blackView.alpha = 1.0 - min(1.0, self.progress)
             // 播放器位移
             self.playerView.transform = CGAffineTransform(translationX: currentPoint.x - self.lastPoint.x, y: currentPoint.y - self.lastPoint.y)
-            // 播放器父视图缩放
-            self.showView.transform = CGAffineTransform(scaleX: progress, y: progress)
-
-        case .ended,.cancelled:
             
-            if self.progress >= 0.3 {
-                
-                UIView.k_animate(withDuration: self.hiddenDuration, usingSpringWithDamping: 0.7, animations: { [unowned self] in
-                    
-                    // 恢复原位置大小
-                    self.frame = self.originlaiFrame
-                    self.playerView.frame = self.bounds
-//                    self.showView.frame = self.bounds
-                    // 蒙版
-                    self.blackView.alpha = 0.0
-                    
-                }, completion: { [unowned self] (isOk) in
-                    
-                    // 恢复位移和缩放
-                    self.showView.transform = CGAffineTransform.identity
-                    self.playerView.transform = CGAffineTransform.identity
-                    // 添加到原父视图
-                    self.baseView.isHidden = false
-                    self.baseView.addSubview(self.playerView)
-                    
-                    // 移除手势
-                    self.playerView.removeGestureRecognizer(pan)
-//                    self.showView.frame = self.bounds
-                    self.playerView.frame = self.bounds
-                    
-                    // 从父视图移除
-                    self.showView.removeFromSuperview()
-                    self.blackView.removeFromSuperview()
-                    self.removeFromSuperview()
-                })
-                
-            } else {
-                
-                UIView.animate(withDuration: self.hiddenDuration, animations: {
-                    
-                    self.blackView.alpha = 0.0
-                    self.playerView.transform = CGAffineTransform.identity
-                    self.showView.transform = CGAffineTransform.identity
+            // 播放器缩放
+            let progress = 1.0 - min(0.3, self.progress)
+            var newFrame = self.playerView.frame
+            newFrame.size.width = progress * kWidth
+            newFrame.size.height = progress * kHeight
+            self.playerView.frame = newFrame
+            
+        case .ended,.cancelled:
 
-                }) { (isOK) in
-                    
-                    
-                }
+            UIView.animate(withDuration: self.hiddenDuration, animations: {
+                
+                // 恢复原位置大小
+                self.frame = self.originlaiFrame
+                self.playerView.frame = self.bounds
+                // 蒙版
+                self.blackView.alpha = 0.0
+                
+            }) { (isOk) in
+                
+                // 展示原图片
+                self.baseView.image = self.coverImg
+                // 恢复位移和缩放
+                self.playerView.transform = CGAffineTransform.identity
+                // 添加到原父视图
+                self.baseView.image = self.coverImg
+                self.baseView.addSubview(self.playerView)
+                
+                // 移除手势
+                self.playerView.removeGestureRecognizer(pan)
+                self.playerView.frame = self.bounds
+                
+                // 从父视图移除
+                self.blackView.removeFromSuperview()
+                self.removeFromSuperview()
             }
    
         default:
@@ -171,16 +169,9 @@ class CellDetailView: UIView {
         
         return view
     }()
-    lazy var showView: UIView = {
-        let view = UIView.init(frame: UIScreen.main.bounds)
-        
-        
-        return view
-    }()
-    
+
     deinit {
         
-        self.showView.removeFromSuperview()
         print("\n====\(self)销毁了====\n")
     }
     

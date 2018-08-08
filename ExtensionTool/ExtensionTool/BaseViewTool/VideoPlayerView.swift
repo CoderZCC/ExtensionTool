@@ -93,6 +93,13 @@ class VideoPlayerView: UIView {
         self.isAccessToPlay = true
     }
     
+    /// 暂停播放
+    func pausePlayer() {
+        
+        self.isAccessToPlay = false
+        self.launchImageView.isHidden = true
+    }
+    
     /// 销毁播放器
     func destoryPlayer() {
         
@@ -170,6 +177,8 @@ extension VideoPlayerView {
                 
                 print("准备播放")
                 if self.isPlaying || !self.isAccessToPlay { return }
+                
+                self.launchImageView.isHidden = true
                 self.layer.addSublayer(self.playerLayer!)
                 self.player?.play()
                 self.isPlaying = true
