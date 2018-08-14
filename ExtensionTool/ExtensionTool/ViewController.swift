@@ -12,7 +12,11 @@ class BaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor.k_colorWith(hexInt: 0x666666)
+        let backItem = UIBarButtonItem.init()
+        backItem.title = ""
+        self.navigationItem.backBarButtonItem = backItem
+        
+        self.view.backgroundColor = UIColor.k_colorWith(rgb: 216.0)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -31,8 +35,8 @@ class ViewController: BaseViewController {
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 
+        let pushVC = SearchViewController()
 //        let pushVC = SecondViewController()
-        let pushVC = CellPlayerViewController()
         self.navigationController?.pushViewController(pushVC, animated: true)
     }
     
