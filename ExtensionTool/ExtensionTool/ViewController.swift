@@ -35,9 +35,11 @@ class ViewController: BaseViewController {
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 
-        let pushVC = SearchViewController()
-//        let pushVC = SecondViewController()
-        self.navigationController?.pushViewController(pushVC, animated: true)
+        AddressPickerTool.showAddressPickView { (str) in
+            
+            print(str)
+        }
+        
     }
     
     override func didReceiveMemoryWarning() {

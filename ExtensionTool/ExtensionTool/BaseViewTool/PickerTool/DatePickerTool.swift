@@ -54,16 +54,16 @@ class DatePickerTool: UIView {
     }
     
     /// pickerView
-    @IBOutlet weak var pickerView: UIDatePicker!
+    @IBOutlet weak private var pickerView: UIDatePicker!
     /// 展示View
-    @IBOutlet weak var showView: UIView!
+    @IBOutlet weak private var showView: UIView!
     /// 是否在执行动画
     private var isAnimating: Bool = false
     /// 回调
     private var callback: ((String)->Void)?
 
-    class func loadXibView() -> DatePickerTool {
-        let tool = Bundle.main.loadNibNamed("MyPickerTool", owner: nil, options: nil)?.first as! DatePickerTool
+    private class func loadXibView() -> DatePickerTool {
+        let tool = Bundle.main.loadNibNamed("DatePickerTool", owner: nil, options: nil)?.first as! DatePickerTool
         tool.frame = UIScreen.main.bounds
         
         return tool
@@ -75,7 +75,7 @@ class DatePickerTool: UIView {
     }
     
     /// 取消事件
-    @IBAction func cancleAction() {
+    @IBAction private func cancleAction() {
         
         if self.isAnimating { return }
         self.isAnimating = true
@@ -92,7 +92,7 @@ class DatePickerTool: UIView {
     }
     
     /// 确定事件
-    @IBAction func sureAction() {
+    @IBAction private func sureAction() {
         
         self.cancleAction()
         let timeStr = self.pickerView.date.k_toDateStr("yyyy MM-dd HH:mm")
@@ -101,5 +101,9 @@ class DatePickerTool: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+    }
+    
+    deinit {
+        print("###\(self)销毁了###\n")
     }
 }
