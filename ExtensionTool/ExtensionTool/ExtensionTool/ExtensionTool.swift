@@ -25,6 +25,8 @@ var kIsIphoneX: Bool {
     }
     return ((arr.first ?? "") == "iPhone10") && ((arr.last ?? "") == "3" || (arr.last ?? "") == "6")
 }
+/// 标签栏高度
+let kTabBarHeight: CGFloat = 49.0
 /// 导航栏高度
 let kNavBarHeight: CGFloat = kIsIphoneX ? (88.0) : (64.0)
 /// 底部不可控区域
@@ -39,3 +41,5 @@ let kWindow: UIWindow = UIApplication.shared.keyWindow!
 let kRootVC: UIViewController = kWindow.rootViewController!
 /// AppDeleagte
 let kAppDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+/// 系统版本
+let kVersion: CGFloat = UIDevice.current.systemVersion.k_toCGFloat()

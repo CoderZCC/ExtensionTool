@@ -11,6 +11,32 @@ import UIKit
 //MARK: 字符串相关
 extension String {
     
+    /// 是否为空, 全空格/empty
+    ///
+    /// - Returns: 是否
+    func k_isEmpty() -> Bool {
+        if self.isEmpty {
+            
+            return true
+        }
+        let set = CharacterSet.whitespacesAndNewlines
+        let trimedStr = self.trimmingCharacters(in: set)
+        
+        return trimedStr.isEmpty
+    }
+    
+    /// 转为URL
+    ///
+    /// - Returns: URL
+    func k_toURL() -> URL? {
+        if self.hasPrefix("http") {
+            
+            return URL(string: self)
+        }
+        
+        return URL(fileURLWithPath: self)
+    }
+    
     //MARK: 计算文字尺寸
     /// 计算文字尺寸
     ///
