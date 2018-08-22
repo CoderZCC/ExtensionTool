@@ -54,7 +54,6 @@
 		F091FBCD212BFBE200F347C3 /* DatePickerTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F091FBCB212BFBE200F347C3 /* DatePickerTool.swift */; };
 		F091FBD1212BFEDD00F347C3 /* AddressPickerTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F091FBD0212BFEDD00F347C3 /* AddressPickerTool.swift */; };
 		F091FBD3212BFEED00F347C3 /* AddressPickerTool.xib in Resources */ = {isa = PBXBuildFile; fileRef = F091FBD2212BFEED00F347C3 /* AddressPickerTool.xib */; };
-		F091FBD5212C089D00F347C3 /* city.plist in Resources */ = {isa = PBXBuildFile; fileRef = F091FBD4212C089D00F347C3 /* city.plist */; };
 		F0B5D59C20FED64F00F642B1 /* AuthorityTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B5D58520FED64F00F642B1 /* AuthorityTool.swift */; };
 		F0B5D59D20FED64F00F642B1 /* VideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B5D58620FED64F00F642B1 /* VideoPlayerView.swift */; };
 		F0B5D59E20FED64F00F642B1 /* kSaveDataTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B5D58720FED64F00F642B1 /* kSaveDataTool.swift */; };
@@ -135,7 +134,6 @@
 		F091FBCB212BFBE200F347C3 /* DatePickerTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerTool.swift; sourceTree = "<group>"; };
 		F091FBD0212BFEDD00F347C3 /* AddressPickerTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressPickerTool.swift; sourceTree = "<group>"; };
 		F091FBD2212BFEED00F347C3 /* AddressPickerTool.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressPickerTool.xib; sourceTree = "<group>"; };
-		F091FBD4212C089D00F347C3 /* city.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = city.plist; sourceTree = "<group>"; };
 		F0B5D58520FED64F00F642B1 /* AuthorityTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorityTool.swift; sourceTree = "<group>"; };
 		F0B5D58620FED64F00F642B1 /* VideoPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerView.swift; sourceTree = "<group>"; };
 		F0B5D58720FED64F00F642B1 /* kSaveDataTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = kSaveDataTool.swift; sourceTree = "<group>"; };
@@ -291,7 +289,6 @@
 				F091FBCA212BFBE200F347C3 /* DatePickerTool.xib */,
 				F091FBD0212BFEDD00F347C3 /* AddressPickerTool.swift */,
 				F091FBD2212BFEED00F347C3 /* AddressPickerTool.xib */,
-				F091FBD4212C089D00F347C3 /* city.plist */,
 				F023CCE8212CF72400ABAD96 /* Address.plist */,
 			);
 			path = PickerTool;
@@ -424,7 +421,6 @@
 				F077773F20F2FC3A003D7BD8 /* LaunchScreen.storyboard in Resources */,
 				F091FBD3212BFEED00F347C3 /* AddressPickerTool.xib in Resources */,
 				F02965BA2114404200EA4ADB /* EmotionPlist.plist in Resources */,
-				F091FBD5212C089D00F347C3 /* city.plist in Resources */,
 				F091FBCC212BFBE200F347C3 /* DatePickerTool.xib in Resources */,
 				F0561C3A2101DC5C0007496F /* Localizable.strings in Resources */,
 				F085C48A21096E6F00CB0D2B /* CalendarView.xib in Resources */,

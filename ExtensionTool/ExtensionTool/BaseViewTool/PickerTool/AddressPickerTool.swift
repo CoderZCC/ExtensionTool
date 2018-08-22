@@ -72,7 +72,9 @@ class AddressPickerTool: UIView {
         
         self.provinceStr = self.allProvinces[0]
         self.cityStr = self.allCitys[0]
-        self.areaStr = self.allAreas[0]
+        if self.showType == .provinceCityArea {
+            self.areaStr = self.allAreas[0]
+        }
         
         self.pickerView.delegate = self
         self.pickerView.dataSource = self
@@ -135,7 +137,12 @@ class AddressPickerTool: UIView {
             let dict = cityEmelemt as! NSDictionary
             arr.append(dict["city"] as! String)
         }
-
+        if self.cityIndex <= 3 {
+            
+            let dict = citys[self.areaIndex] as! NSDictionary
+            arr = dict["districts"] as! [String]
+        }
+        
         return arr
     }
     /// 区
@@ -171,21 +178,17 @@ extension AddressPickerTool: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
+        if component == 0 {
+            
+            return self.allProvinces.count
+        }
         if self.showType == .provinceCity {
             
-            if component == 0 {
-                
-                return self.allProvinces.count
-            }
             return self.allCitys.count
             
         } else {
             
-            if component == 0 {
-                
-                return self.allProvinces.count
-                
-            } else if component == 1 {
+            if component == 1 {
                 
                 return self.allCitys.count
             }
@@ -194,26 +197,22 @@ extension AddressPickerTool: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
+        if component == 0 {
+            
+            return self.allProvinces[row]
+        }
         if self.showType == .provinceCity {
-
-            if component == 0 {
-                
-                return self.allProvinces[row]
-            }
+            
             return self.allCitys[row]
 
         } else {
             
-            if component == 0 {
-                
-                return self.allProvinces[row]
-                
-            } else if component == 1 {
+            if component == 1 {
                 
                 return self.allCitys[row]
             }
+            return self.allAreas[row]
         }
-        return self.allAreas[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
