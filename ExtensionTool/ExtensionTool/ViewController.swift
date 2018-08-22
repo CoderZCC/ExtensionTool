@@ -35,11 +35,7 @@ class ViewController: BaseViewController {
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 
-        AddressPickerTool.showView(type: .provinceCity) { (str) in
-            
-            print(str)
-        }
-        
+  
     }
     
     override func didReceiveMemoryWarning() {
