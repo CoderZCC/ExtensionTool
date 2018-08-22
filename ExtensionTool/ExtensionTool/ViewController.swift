@@ -35,7 +35,7 @@ class ViewController: BaseViewController {
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 
-        AddressPickerTool.showAddressPickView { (str) in
+        AddressPickerTool.showView(type: .provinceCity) { (str) in
             
             print(str)
         }

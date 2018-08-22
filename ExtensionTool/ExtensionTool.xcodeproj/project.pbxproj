@@ -21,6 +21,7 @@
 		F01EC3F821083FC000AE2D11 /* BarrageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01EC3F721083FC000AE2D11 /* BarrageView.swift */; };
 		F01EC3FC210879BD00AE2D11 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01EC3FB210879BD00AE2D11 /* CalendarView.swift */; };
 		F021414621056CC40067D1E5 /* CameraListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F021414521056CC40067D1E5 /* CameraListViewController.swift */; };
+		F023CCE9212CF72400ABAD96 /* Address.plist in Resources */ = {isa = PBXBuildFile; fileRef = F023CCE8212CF72400ABAD96 /* Address.plist */; };
 		F02965BA2114404200EA4ADB /* EmotionPlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = F02965B32114404200EA4ADB /* EmotionPlist.plist */; };
 		F02965BB2114404200EA4ADB /* BottomInputView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02965B42114404200EA4ADB /* BottomInputView2.swift */; };
 		F02965BC2114404200EA4ADB /* InputAssistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02965B52114404200EA4ADB /* InputAssistView.swift */; };
@@ -97,6 +98,7 @@
 		F01EC3F721083FC000AE2D11 /* BarrageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarrageView.swift; sourceTree = "<group>"; };
 		F01EC3FB210879BD00AE2D11 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		F021414521056CC40067D1E5 /* CameraListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraListViewController.swift; sourceTree = "<group>"; };
+		F023CCE8212CF72400ABAD96 /* Address.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Address.plist; sourceTree = "<group>"; };
 		F02965B32114404200EA4ADB /* EmotionPlist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EmotionPlist.plist; sourceTree = "<group>"; };
 		F02965B42114404200EA4ADB /* BottomInputView2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomInputView2.swift; sourceTree = "<group>"; };
 		F02965B52114404200EA4ADB /* InputAssistView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InputAssistView.swift; sourceTree = "<group>"; };
@@ -290,6 +292,7 @@
 				F091FBD0212BFEDD00F347C3 /* AddressPickerTool.swift */,
 				F091FBD2212BFEED00F347C3 /* AddressPickerTool.xib */,
 				F091FBD4212C089D00F347C3 /* city.plist */,
+				F023CCE8212CF72400ABAD96 /* Address.plist */,
 			);
 			path = PickerTool;
 			sourceTree = "<group>";
@@ -430,6 +433,7 @@
 				F01690692106FB9D00E0C60A /* AlertViewTool.xib in Resources */,
 				F085C4842109577D00CB0D2B /* BottomView.xib in Resources */,
 				F077773A20F2FC39003D7BD8 /* Main.storyboard in Resources */,
+				F023CCE9212CF72400ABAD96 /* Address.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

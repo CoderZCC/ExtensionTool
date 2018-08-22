@@ -21,7 +21,7 @@ class DatePickerTool: UIView {
     ///   - minimumDate: 最小时间
     ///   - maximumDate: 最大时间
     ///   - callback: 选中回调
-    static func showDatePickView(showModel: UIDatePickerMode, currentTime: Date? = Date(), minimumDate: Date? = nil, maximumDate: Date? = Date(), callback: ((String)->Void)?) {
+    static func showView(showModel: UIDatePickerMode, currentTime: Date? = Date(), minimumDate: Date? = nil, maximumDate: Date? = Date(), callback: ((String)->Void)?) {
         
         let tool = DatePickerTool.loadXibView()
         tool.alpha = 0.0
