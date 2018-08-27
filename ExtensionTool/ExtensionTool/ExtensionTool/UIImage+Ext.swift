@@ -9,7 +9,30 @@
 import UIKit
 import CoreFoundation
 
+enum PlaceholderImg: String {
+    
+    var k_toImage: UIImage? {
+        return UIImage.init(named: self.k_toString)
+    }
+    
+    /// 转为字符串
+    var k_toString: String {
+        
+        return self.rawValue
+    }
+    /// 无数据
+    case noData
+    /// 无网络
+    case noNetwork
+    /// 未关注
+}
+
 extension UIImage {
+    
+    static func k_init(type: PlaceholderImg) -> UIImage? {
+        
+        return type.k_toImage
+    }
     
     //MARK: 获取View的截图
     /// 获取View的截图
