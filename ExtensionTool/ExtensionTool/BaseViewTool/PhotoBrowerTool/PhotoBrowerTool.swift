@@ -316,6 +316,9 @@ class PhotoBrowerTool: UIView {
         return collection
     }()
     
+    deinit {
+        print("###\(self)销毁了###\n")
+    }
 }
 
 extension PhotoBrowerTool: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
