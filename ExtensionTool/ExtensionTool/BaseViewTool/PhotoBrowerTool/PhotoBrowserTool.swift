@@ -30,11 +30,9 @@ class PhotoBrowserTool: UIView {
 
         tool.showFirstImage()
         
-        if #available(iOS 11.0, *) {
-            tool.collectionView.contentInsetAdjustmentBehavior = .never
-        } else {
-            // Fallback on earlier versions
-        }
+        /// 接收屏幕旋转通知
+        tool.frameChangeNoteAction()
+        NotificationCenter.default.addObserver(tool, selector: #selector(frameChangeNoteAction), name: .UIDeviceOrientationDidChange, object: nil)
         
         kWindow.addSubview(tool)
     }
@@ -49,6 +47,9 @@ class PhotoBrowserTool: UIView {
     private var currentImg: UIImage?
     /// 是否执行动画
     private var isAnimating: Bool = false
+    /// 翻转以后的屏幕宽高
+    private var changeW: CGFloat = kWidth
+    private var changeH: CGFloat = kHeight
     
     /// 展示
     private func showFirstImage() {
@@ -186,6 +187,8 @@ class PhotoBrowserTool: UIView {
     }()
 
     deinit {
+        
+        NotificationCenter.default.removeObserver(self)
         print("##### \(self)销毁了 #####")
     }
 }
@@ -200,8 +203,24 @@ extension PhotoBrowserTool: UICollectionViewDataSource, UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoBrowerCell", for: indexPath) as! PhotoBrowerCell
-        cell.imageView.image = UIImage.init(named: self.imgArr[indexPath.row])
-        cell.clickCallBack = { [unowned self] in
+        
+        cell.scrollView.frame = CGRect.init(x: 0.0, y: 0.0, width: self.changeW, height: self.changeH)
+        cell.scrollView.center = CGPoint.init(x: self.changeW / 2.0, y: self.changeH / 2.0)
+        cell.imageView.frame = CGRect.init(x: 0.0, y: 0.0, width: self.changeW, height: self.changeH)
+        cell.imageView.center = CGPoint.init(x: self.changeW / 2.0, y: self.changeH / 2.0)
+        
+        cell.imageView.image = UIImage(named: self.imgArr[indexPath.row])
+        
+//        cell.imageView.sd_setImage(with: URL.init(string: self.imgsArr[indexPath.row].appendDomain()), placeholderImage: kPlaceholderDefalutImage) { (img, error, cachesType, imgUrl) in
+//
+//            cell.imageView.frame = CGRect.init(x: 0.0, y: 0.0, width: self.changeW, height: self.changeH)
+//            cell.imageView.contentMode = .scaleAspectFit
+//            if let img = img {
+//
+//                PhotoBrowerTool.imgDic[String.init(describing: imgUrl!)] = img
+//            }
+//        }
+        cell.clickCallBack = {
             
             self.dismissView()
         }
@@ -212,12 +231,42 @@ extension PhotoBrowserTool: UICollectionViewDataSource, UICollectionViewDelegate
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         
         let offSetY = scrollView.contentOffset.x
-        let index = Int(offSetY / self.bounds.width)
+        let index = Int(offSetY / self.changeW)
         self.currentIndex = index
-        //self.alertLabel.text = "\(index + 1)/\(self.dataList.count)"
         
         let cell = self.collectionView.cellForItem(at: IndexPath.init(row: index, section: 0)) as! PhotoBrowerCell
         self.currentImg = cell.imageView.image
     }    
 }
 
+extension PhotoBrowserTool {
+    
+    @objc func frameChangeNoteAction() {
+        
+        UIView.animate(withDuration: 0.3) {
+            
+            let layout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+            let orient = UIDevice.current.orientation
+            
+            if orient == .portrait {
+                
+                self.changeW = kWidth
+                self.changeH = kHeight
+                self.collectionView.transform = CGAffineTransform.identity
+                
+            } else if orient == .landscapeLeft || orient == .landscapeRight {
+                
+                self.changeW = kHeight
+                self.changeH = kWidth
+                var angle: CGFloat = CGFloat.pi / 2.0
+                orient == .landscapeLeft ? (angle = CGFloat.pi / 2.0) : (angle = -CGFloat.pi / 2.0)
+                self.collectionView.transform = CGAffineTransform.init(rotationAngle: angle)
+            }
+            layout.itemSize = CGSize.init(width: self.changeW, height: self.changeH)
+            self.collectionView.frame = CGRect.init(x: 0.0, y: 0.0, width: kWidth, height: kHeight)
+            self.collectionView.reloadData()
+            self.collectionView.setContentOffset(CGPoint.init(x: self.changeW * CGFloat(self.currentIndex), y: 0.0), animated: false)
+        }
+    }
+    
+}
