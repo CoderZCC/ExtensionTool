@@ -382,8 +382,6 @@ class PhotoBrowerCell: UICollectionViewCell {
     var imageView:UIImageView!
     /// 单击回调
     var clickCallBack:()->Void = {}
-    /// 是否在拖动
-    private var isDragging: Bool = false
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -458,6 +456,10 @@ class PhotoBrowerCell: UICollectionViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder:aDecoder)
+    }
+    
+    deinit {
+        print("##### \(self)销毁了 #####")
     }
 }
 

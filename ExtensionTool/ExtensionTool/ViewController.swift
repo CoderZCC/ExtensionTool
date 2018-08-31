@@ -26,17 +26,33 @@ class BaseViewController: UIViewController {
     }
 }
 
+class ImageCell: UICollectionViewCell {
+    
+    @IBOutlet weak var imgV: UIImageView!
+    
+}
+
 class ViewController: BaseViewController {
-        
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var layout: UICollectionViewFlowLayout!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.layout.minimumLineSpacing = 2.0
+        self.layout.minimumInteritemSpacing = 2.0
+        self.layout.itemSize = CGSize.init(width: (kWidth - 100.0 - 2.0 * 2.0) / 3.0, height: (kWidth - 100.0 - 2.0 * 2.0) / 3.0)
+        self.collectionView.delegate = self
+        self.collectionView.dataSource = self
     }
-
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-
-  
+    
+    @IBAction func btnAction() {
+        
+        let secondVC = SecondViewController()
+        self.navigationController?.pushViewController(secondVC, animated: true)
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -44,14 +60,24 @@ class ViewController: BaseViewController {
     
 }
 
-class SecondViewController: BaseViewController {
+extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let cell = collectionView.cellForItem(at: indexPath) as! ImageCell
+        PhotoBrowserTool.showImage(containerView: collectionView, imgArr: ["1", "2", "3", "4"], currentIndex: indexPath.row, currentImg: cell.imgV.image)        
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        return 4
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath) as! ImageCell
+        cell.imgV.image = UIImage.init(named: "\(indexPath.row + 1)")
+      
+        return cell
     }
 }

@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,9 +18,66 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EKM-MC-cKc">
+                                <rect key="frame" x="50" y="196" width="275" height="275"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="EKM-MC-cKc" secondAttribute="height" multiplier="1:1" id="HAH-PD-1Vv"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="alH-pU-bKy">
+                                    <size key="itemSize" width="88" height="87"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" reuseIdentifier="ImageCell" id="nea-Zu-Zwp" customClass="ImageCell" customModule="ExtensionTool" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="88" height="87"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="88" height="87"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EWE-0d-i5s">
+                                                    <rect key="frame" x="0.0" y="0.0" width="88" height="87"/>
+                                                </imageView>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="EWE-0d-i5s" firstAttribute="leading" secondItem="nea-Zu-Zwp" secondAttribute="leading" id="Dkb-If-ZKx"/>
+                                            <constraint firstAttribute="trailing" secondItem="EWE-0d-i5s" secondAttribute="trailing" id="n5Z-YQ-6wT"/>
+                                            <constraint firstItem="EWE-0d-i5s" firstAttribute="top" secondItem="nea-Zu-Zwp" secondAttribute="top" id="sHf-rL-ekv"/>
+                                            <constraint firstAttribute="bottom" secondItem="EWE-0d-i5s" secondAttribute="bottom" id="znj-S3-MER"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="imgV" destination="EWE-0d-i5s" id="hdE-Yq-NgW"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UTX-F1-KDd">
+                                <rect key="frame" x="164" y="491" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="btnAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="kEj-ht-pOf"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="EKM-MC-cKc" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="IUh-zm-xrb"/>
+                            <constraint firstItem="EKM-MC-cKc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="NPu-Eg-bmP"/>
+                            <constraint firstItem="UTX-F1-KDd" firstAttribute="top" secondItem="EKM-MC-cKc" secondAttribute="bottom" constant="20" id="bo2-Av-eC1"/>
+                            <constraint firstItem="EKM-MC-cKc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="fav-8L-lld"/>
+                            <constraint firstItem="UTX-F1-KDd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jR2-vB-4eU"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="collectionView" destination="EKM-MC-cKc" id="us0-68-ehf"/>
+                        <outlet property="layout" destination="alH-pU-bKy" id="ea6-bY-oOH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

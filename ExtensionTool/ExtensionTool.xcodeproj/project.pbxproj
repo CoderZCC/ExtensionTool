@@ -18,6 +18,10 @@
 		F01690712107232600E0C60A /* VerticalADView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01690702107232600E0C60A /* VerticalADView.swift */; };
 		F016907321072A1D00E0C60A /* HorizontalADView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F016907221072A1D00E0C60A /* HorizontalADView.swift */; };
 		F01D2C422122768800B2F848 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01D2C412122768800B2F848 /* SearchViewController.swift */; };
+		F01DCECF2134F1F400512599 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01DCECE2134F1F400512599 /* SecondViewController.swift */; };
+		F01DCED22134F27800512599 /* TestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01DCED02134F27800512599 /* TestTableViewCell.swift */; };
+		F01DCED32134F27800512599 /* TestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F01DCED12134F27800512599 /* TestTableViewCell.xib */; };
+		F01DCEDF2135565100512599 /* PhotoBrowserTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01DCEDE2135565100512599 /* PhotoBrowserTool.swift */; };
 		F01EC3F821083FC000AE2D11 /* BarrageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01EC3F721083FC000AE2D11 /* BarrageView.swift */; };
 		F01EC3FC210879BD00AE2D11 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01EC3FB210879BD00AE2D11 /* CalendarView.swift */; };
 		F021414621056CC40067D1E5 /* CameraListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F021414521056CC40067D1E5 /* CameraListViewController.swift */; };
@@ -93,6 +97,10 @@
 		F01690702107232600E0C60A /* VerticalADView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalADView.swift; sourceTree = "<group>"; };
 		F016907221072A1D00E0C60A /* HorizontalADView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalADView.swift; sourceTree = "<group>"; };
 		F01D2C412122768800B2F848 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; wrapsLines = 1; };
+		F01DCECE2134F1F400512599 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		F01DCED02134F27800512599 /* TestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestTableViewCell.swift; sourceTree = "<group>"; };
+		F01DCED12134F27800512599 /* TestTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TestTableViewCell.xib; sourceTree = "<group>"; };
+		F01DCEDE2135565100512599 /* PhotoBrowserTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoBrowserTool.swift; sourceTree = "<group>"; };
 		F01EC3EC21081C2200AE2D11 /* Swift-OCHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Swift-OCHeader.h"; sourceTree = "<group>"; };
 		F01EC3F721083FC000AE2D11 /* BarrageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarrageView.swift; sourceTree = "<group>"; };
 		F01EC3FB210879BD00AE2D11 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
@@ -223,6 +231,7 @@
 			children = (
 				F02EF3412119955B0086C98A /* PhotoBrowerTool.swift */,
 				F02EF3422119955B0086C98A /* DownLoadViewTool.swift */,
+				F01DCEDE2135565100512599 /* PhotoBrowserTool.swift */,
 			);
 			path = PhotoBrowerTool;
 			sourceTree = "<group>";
@@ -262,6 +271,9 @@
 				F077773420F2FC39003D7BD8 /* AppDelegate.swift */,
 				F077773620F2FC39003D7BD8 /* ViewController.swift */,
 				F077773820F2FC39003D7BD8 /* Main.storyboard */,
+				F01DCECE2134F1F400512599 /* SecondViewController.swift */,
+				F01DCED02134F27800512599 /* TestTableViewCell.swift */,
+				F01DCED12134F27800512599 /* TestTableViewCell.xib */,
 				F077773B20F2FC3A003D7BD8 /* Assets.xcassets */,
 				F077773D20F2FC3A003D7BD8 /* LaunchScreen.storyboard */,
 				F077774020F2FC3A003D7BD8 /* Info.plist */,
@@ -428,6 +440,7 @@
 				F085C4872109606E00CB0D2B /* SpecialView.xib in Resources */,
 				F01690692106FB9D00E0C60A /* AlertViewTool.xib in Resources */,
 				F085C4842109577D00CB0D2B /* BottomView.xib in Resources */,
+				F01DCED32134F27800512599 /* TestTableViewCell.xib in Resources */,
 				F077773A20F2FC39003D7BD8 /* Main.storyboard in Resources */,
 				F023CCE9212CF72400ABAD96 /* Address.plist in Resources */,
 			);
@@ -448,13 +461,16 @@
 				F02EF3432119955B0086C98A /* PhotoBrowerTool.swift in Sources */,
 				F0B5D59E20FED64F00F642B1 /* kSaveDataTool.swift in Sources */,
 				F0F7B7C42117EED900AD0659 /* CircleView.swift in Sources */,
+				F01DCECF2134F1F400512599 /* SecondViewController.swift in Sources */,
 				F0561C2F2101BA950007496F /* UILabel+Ext.swift in Sources */,
 				F02965BD2114404200EA4ADB /* BottomInputView4.swift in Sources */,
+				F01DCED22134F27800512599 /* TestTableViewCell.swift in Sources */,
 				F01EC3FC210879BD00AE2D11 /* CalendarView.swift in Sources */,
 				F01690612106F9C400E0C60A /* HUDViewTool.swift in Sources */,
 				F0B5D5A720FED64F00F642B1 /* AppDelegate+Push.swift in Sources */,
 				F02965BF2114404200EA4ADB /* BottomInputView1.swift in Sources */,
 				F016906C2106FBDF00E0C60A /* AlertSheetTool.swift in Sources */,
+				F01DCEDF2135565100512599 /* PhotoBrowserTool.swift in Sources */,
 				F02EF3442119955B0086C98A /* DownLoadViewTool.swift in Sources */,
 				F0561C312101CFED0007496F /* Localized+Ext.swift in Sources */,
 				F0B5D5AE20FED64F00F642B1 /* Number+Ext.swift in Sources */,
