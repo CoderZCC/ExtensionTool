@@ -204,22 +204,12 @@ extension PhotoBrowserTool: UICollectionViewDataSource, UICollectionViewDelegate
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PhotoBrowerCell", for: indexPath) as! PhotoBrowerCell
         
-        cell.scrollView.frame = CGRect.init(x: 0.0, y: 0.0, width: self.changeW, height: self.changeH)
-        cell.scrollView.center = CGPoint.init(x: self.changeW / 2.0, y: self.changeH / 2.0)
-        cell.imageView.frame = CGRect.init(x: 0.0, y: 0.0, width: self.changeW, height: self.changeH)
-        cell.imageView.center = CGPoint.init(x: self.changeW / 2.0, y: self.changeH / 2.0)
+//        cell.scrollView.frame = CGRect.init(x: 0.0, y: 0.0, width: self.changeW, height: self.changeH)
+//        cell.scrollView.center = CGPoint.init(x: self.changeW / 2.0, y: self.changeH / 2.0)
+//        cell.imageView.frame = CGRect.init(x: 0.0, y: 0.0, width: self.changeW, height: self.changeH)
+//        cell.imageView.center = CGPoint.init(x: self.changeW / 2.0, y: self.changeH / 2.0)
         
         cell.imageView.image = UIImage(named: self.imgArr[indexPath.row])
-        
-//        cell.imageView.sd_setImage(with: URL.init(string: self.imgsArr[indexPath.row].appendDomain()), placeholderImage: kPlaceholderDefalutImage) { (img, error, cachesType, imgUrl) in
-//
-//            cell.imageView.frame = CGRect.init(x: 0.0, y: 0.0, width: self.changeW, height: self.changeH)
-//            cell.imageView.contentMode = .scaleAspectFit
-//            if let img = img {
-//
-//                PhotoBrowerTool.imgDic[String.init(describing: imgUrl!)] = img
-//            }
-//        }
         cell.clickCallBack = {
             
             self.dismissView()
@@ -230,18 +220,45 @@ extension PhotoBrowserTool: UICollectionViewDataSource, UICollectionViewDelegate
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         
-        let offSetY = scrollView.contentOffset.x
-        let index = Int(offSetY / self.changeW)
-        self.currentIndex = index
-        
-        let cell = self.collectionView.cellForItem(at: IndexPath.init(row: index, section: 0)) as! PhotoBrowerCell
-        self.currentImg = cell.imageView.image
-    }    
+//        let offSetY = scrollView.contentOffset.x
+//        let index = Int(offSetY / self.changeW)
+//        self.currentIndex = index
+//
+//        let cell = self.collectionView.cellForItem(at: IndexPath.init(row: index, section: 0)) as! PhotoBrowerCell
+//        self.currentImg = cell.imageView.image
+    }
 }
 
 extension PhotoBrowserTool {
     
     @objc func frameChangeNoteAction() {
+        
+        let orient = UIDevice.current.orientation
+
+        UIView.animate(withDuration: 0.3, animations: {
+            
+            for cell in self.collectionView.visibleCells {
+                
+                if orient == .portrait {
+
+                    cell.transform = CGAffineTransform.identity
+                    
+                } else if orient == .landscapeLeft || orient == .landscapeRight {
+
+                    var angle: CGFloat = CGFloat.pi / 2.0
+                    orient == .landscapeLeft ? (angle = CGFloat.pi / 2.0) : (angle = -CGFloat.pi / 2.0)
+                    cell.transform = CGAffineTransform(rotationAngle: angle)
+                }
+                
+            }
+            
+        }) { (isOk) in
+            
+
+        }
+    }
+    
+    @objc func frameChangeNoteAction1() {
         
         UIView.animate(withDuration: 0.3) {
             

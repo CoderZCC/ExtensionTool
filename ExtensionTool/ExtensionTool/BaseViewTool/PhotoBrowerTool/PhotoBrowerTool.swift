@@ -458,6 +458,12 @@ class PhotoBrowerCell: UICollectionViewCell {
         super.init(coder:aDecoder)
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        
+    }
+    
     deinit {
         print("##### \(self)销毁了 #####")
     }
