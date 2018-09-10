@@ -377,26 +377,15 @@ extension PhotoBrowerTool: UICollectionViewDataSource, UICollectionViewDelegateF
 
 class PhotoBrowerCell: UICollectionViewCell {
     
-    /// 滚动视图
-    var scrollView:UIScrollView!
-    var imageView:UIImageView!
     /// 单击回调
     var clickCallBack:()->Void = {}
+    var changeSize: CGSize!
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        scrollView = UIScrollView(frame: self.contentView.bounds)
-        self.contentView.addSubview(scrollView)
-        scrollView.delegate = self
-        
-        scrollView.maximumZoomScale = 3.0
-        scrollView.minimumZoomScale = 1.0
-        
-        imageView = UIImageView.init(frame: scrollView.bounds)
-        imageView.isUserInteractionEnabled = true
-        imageView.contentMode = .scaleAspectFit
-        scrollView.addSubview(imageView)
+        self.contentView.addSubview(self.scrollView)
+        self.scrollView.addSubview(self.imageView)
         
         // 单击监听
         let scrollClick = UITapGestureRecognizer(target:self, action:#selector(tapSingleDid))
@@ -419,12 +408,12 @@ class PhotoBrowerCell: UICollectionViewCell {
         self.imageView.addGestureRecognizer(tapSingle)
         self.imageView.addGestureRecognizer(tapDouble)
     }
-    // 图片单击事件响应
+    /// 图片单击事件响应
     @objc func tapSingleDid(_ ges:UITapGestureRecognizer){
         
         self.clickCallBack()
     }
-    // 图片双击事件响应
+    /// 图片双击事件响应
     @objc func tapDoubleDid(_ ges:UITapGestureRecognizer){
         
         weak var weakSelf = self
@@ -437,13 +426,13 @@ class PhotoBrowerCell: UICollectionViewCell {
                     
                     // 以点击的位置为中心，放大3倍
                     let pointInView = ges.location(in: self.imageView)
-                    let newZoomScale:CGFloat = 3
+                    let newZoomScale: CGFloat = 3
                     let scrollViewSize = weakSelf.scrollView.bounds.size
                     let w = scrollViewSize.width / newZoomScale
                     let h = scrollViewSize.height / newZoomScale
-                    let x = pointInView.x - (w / 2.0)
-                    let y = pointInView.y - (h / 2.0)
-                    let rectToZoomTo = CGRect(x:x, y:y, width:w, height:h)
+                    let x = pointInView.x - ( w / 2.0)
+                    let y = pointInView.y - ( h / 2.0)
+                    let rectToZoomTo = CGRect(x: x, y: y, width: w, height: h)
                     weakSelf.scrollView.zoom(to: rectToZoomTo, animated: true)
                     
                 } else {
@@ -461,8 +450,26 @@ class PhotoBrowerCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        
+        self.scrollView.frame = CGRect(x: 0.0, y: 0.0, width: self.changeSize.width, height: self.changeSize.height)
+        self.imageView.frame = self.scrollView.bounds
     }
+    
+    lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView(frame: self.contentView.bounds)
+        scrollView.delegate = self
+        scrollView.maximumZoomScale = 3.0
+        scrollView.minimumZoomScale = 1.0
+        
+        return scrollView
+    }()
+    
+    lazy var imageView: UIImageView = {
+        let imageView = UIImageView.init(frame: self.contentView.bounds)
+        imageView.isUserInteractionEnabled = true
+        imageView.contentMode = .scaleAspectFit
+        
+        return imageView
+    }()
     
     deinit {
         print("##### \(self)销毁了 #####")
@@ -471,20 +478,17 @@ class PhotoBrowerCell: UICollectionViewCell {
 
 extension PhotoBrowerCell: UIScrollViewDelegate{
  
-    // 缩放视图
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         
         return self.imageView
     }
-    // 缩放响应，设置imageView的中心位置
     func scrollViewDidZoom(_ scrollView: UIScrollView) {
         
-        var centerX = scrollView.center.x
-        var centerY = scrollView.center.y
-        centerX = scrollView.contentSize.width > scrollView.frame.size.width ?
-            scrollView.contentSize.width/2:centerX
-        centerY = scrollView.contentSize.height > scrollView.frame.size.height ? scrollView.contentSize.height/2:centerY
-        imageView.center = CGPoint(x: centerX, y: centerY)
+        let centerX = scrollView.contentSize.width > scrollView.frame.size.width ?
+            (scrollView.contentSize.width / 2) : (scrollView.center.x)
+        let centerY = scrollView.contentSize.height > scrollView.frame.size.height ? (scrollView.contentSize.height / 2) : (scrollView.center.y)
+        
+        self.imageView.center = CGPoint(x: centerX, y: centerY)
     }
 }
 

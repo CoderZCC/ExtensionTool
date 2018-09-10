@@ -53,6 +53,11 @@ class ViewController: BaseViewController {
         self.navigationController?.pushViewController(secondVC, animated: true)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.collectionView(self.collectionView, didSelectItemAt: IndexPath.init(row: 0, section: 0))
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
