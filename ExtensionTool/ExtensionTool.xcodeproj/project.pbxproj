@@ -33,7 +33,6 @@
 		F02965BE2114404200EA4ADB /* BottomInputView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02965B72114404200EA4ADB /* BottomInputView3.swift */; };
 		F02965BF2114404200EA4ADB /* BottomInputView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02965B82114404200EA4ADB /* BottomInputView1.swift */; };
 		F02965C02114404200EA4ADB /* BottomInputView5.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02965B92114404200EA4ADB /* BottomInputView5.swift */; };
-		F02EF3432119955B0086C98A /* PhotoBrowerTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02EF3412119955B0086C98A /* PhotoBrowerTool.swift */; };
 		F02EF3442119955B0086C98A /* DownLoadViewTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02EF3422119955B0086C98A /* DownLoadViewTool.swift */; };
 		F0412021210079BB0003F7A2 /* Timer+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0412020210079BB0003F7A2 /* Timer+Ext.swift */; };
 		F054045321002C9600E3EF87 /* PushFromStr+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F054045221002C9600E3EF87 /* PushFromStr+Ext.swift */; };
@@ -113,7 +112,6 @@
 		F02965B72114404200EA4ADB /* BottomInputView3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomInputView3.swift; sourceTree = "<group>"; };
 		F02965B82114404200EA4ADB /* BottomInputView1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomInputView1.swift; sourceTree = "<group>"; };
 		F02965B92114404200EA4ADB /* BottomInputView5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomInputView5.swift; sourceTree = "<group>"; };
-		F02EF3412119955B0086C98A /* PhotoBrowerTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoBrowerTool.swift; sourceTree = "<group>"; };
 		F02EF3422119955B0086C98A /* DownLoadViewTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownLoadViewTool.swift; sourceTree = "<group>"; };
 		F0412020210079BB0003F7A2 /* Timer+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timer+Ext.swift"; sourceTree = "<group>"; };
 		F04930F920F4A08700787CC8 /* ExtensionTool.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ExtensionTool.entitlements; sourceTree = "<group>"; };
@@ -229,7 +227,6 @@
 		F02EF3402119955B0086C98A /* PhotoBrowerTool */ = {
 			isa = PBXGroup;
 			children = (
-				F02EF3412119955B0086C98A /* PhotoBrowerTool.swift */,
 				F02EF3422119955B0086C98A /* DownLoadViewTool.swift */,
 				F01DCEDE2135565100512599 /* PhotoBrowserTool.swift */,
 			);
@@ -458,7 +455,6 @@
 				F0B5D5A120FED64F00F642B1 /* CircleImageView.swift in Sources */,
 				F0561C3F2101DEF50007496F /* CameraTool.swift in Sources */,
 				F091FBD1212BFEDD00F347C3 /* AddressPickerTool.swift in Sources */,
-				F02EF3432119955B0086C98A /* PhotoBrowerTool.swift in Sources */,
 				F0B5D59E20FED64F00F642B1 /* kSaveDataTool.swift in Sources */,
 				F0F7B7C42117EED900AD0659 /* CircleView.swift in Sources */,
 				F01DCECF2134F1F400512599 /* SecondViewController.swift in Sources */,

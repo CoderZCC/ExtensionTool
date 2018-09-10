@@ -70,7 +70,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegateFl
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let cell = collectionView.cellForItem(at: indexPath) as! ImageCell
-        PhotoBrowserTool.showImage(containerView: collectionView, imgArr: ["1", "2", "3", "4"], currentIndex: indexPath.row, currentImg: cell.imgV.image)        
+        PhotoBrowserTool.showImage(containerView: collectionView, imgArr: ["1", "2", "3", "4"], currentIndex: indexPath.row, currentImg: cell.imgV.image)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
