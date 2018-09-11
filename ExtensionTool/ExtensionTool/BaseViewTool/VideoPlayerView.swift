@@ -47,7 +47,7 @@ class VideoPlayerView: UIView {
             let playerLayer = AVPlayerLayer.init(player: player)
             playerLayer.frame = self.bounds
             playerLayer.videoGravity = .resizeAspectFill
-            
+
             self.playerLayer = playerLayer
             self.player = player
             // 添加监听
