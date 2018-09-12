@@ -149,6 +149,7 @@ extension UIView {
         
         //添加自定义分割线
         let lineLayer = CALayer.init()
+        lineLayer.removeFromSuperlayer()
         
         lineLayer.frame = at
         lineLayer.backgroundColor = color.cgColor

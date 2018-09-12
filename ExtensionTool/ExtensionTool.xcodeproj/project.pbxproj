@@ -40,6 +40,7 @@
 		F0561C3A2101DC5C0007496F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F0561C3C2101DC5C0007496F /* Localizable.strings */; };
 		F0561C3F2101DEF50007496F /* CameraTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0561C3E2101DEF50007496F /* CameraTool.swift */; };
 		F0561C412101E6590007496F /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0561C402101E6590007496F /* CameraViewController.swift */; };
+		F05D566E2148C515002DC1B8 /* PickerTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05D566D2148C514002DC1B8 /* PickerTool.swift */; };
 		F077773520F2FC39003D7BD8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F077773420F2FC39003D7BD8 /* AppDelegate.swift */; };
 		F077773720F2FC39003D7BD8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F077773620F2FC39003D7BD8 /* ViewController.swift */; };
 		F077773A20F2FC39003D7BD8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F077773820F2FC39003D7BD8 /* Main.storyboard */; };
@@ -52,10 +53,6 @@
 		F085C4882109606E00CB0D2B /* SpecialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F085C4862109606D00CB0D2B /* SpecialView.swift */; };
 		F085C48A21096E6F00CB0D2B /* CalendarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F085C48921096E6F00CB0D2B /* CalendarView.xib */; };
 		F091FBC8212BC47D00F347C3 /* NotificationCenter+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F091FBC7212BC47D00F347C3 /* NotificationCenter+Ext.swift */; };
-		F091FBCC212BFBE200F347C3 /* DatePickerTool.xib in Resources */ = {isa = PBXBuildFile; fileRef = F091FBCA212BFBE200F347C3 /* DatePickerTool.xib */; };
-		F091FBCD212BFBE200F347C3 /* DatePickerTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F091FBCB212BFBE200F347C3 /* DatePickerTool.swift */; };
-		F091FBD1212BFEDD00F347C3 /* AddressPickerTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F091FBD0212BFEDD00F347C3 /* AddressPickerTool.swift */; };
-		F091FBD3212BFEED00F347C3 /* AddressPickerTool.xib in Resources */ = {isa = PBXBuildFile; fileRef = F091FBD2212BFEED00F347C3 /* AddressPickerTool.xib */; };
 		F0B5D59C20FED64F00F642B1 /* AuthorityTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B5D58520FED64F00F642B1 /* AuthorityTool.swift */; };
 		F0B5D59D20FED64F00F642B1 /* VideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B5D58620FED64F00F642B1 /* VideoPlayerView.swift */; };
 		F0B5D59E20FED64F00F642B1 /* kSaveDataTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B5D58720FED64F00F642B1 /* kSaveDataTool.swift */; };
@@ -120,6 +117,7 @@
 		F0561C3D2101DC670007496F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		F0561C3E2101DEF50007496F /* CameraTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraTool.swift; sourceTree = "<group>"; };
 		F0561C402101E6590007496F /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		F05D566D2148C514002DC1B8 /* PickerTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTool.swift; sourceTree = "<group>"; };
 		F077773120F2FC39003D7BD8 /* ExtensionTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExtensionTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F077773420F2FC39003D7BD8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F077773620F2FC39003D7BD8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -134,10 +132,6 @@
 		F085C4862109606D00CB0D2B /* SpecialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialView.swift; sourceTree = "<group>"; };
 		F085C48921096E6F00CB0D2B /* CalendarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarView.xib; sourceTree = "<group>"; };
 		F091FBC7212BC47D00F347C3 /* NotificationCenter+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NotificationCenter+Ext.swift"; sourceTree = "<group>"; };
-		F091FBCA212BFBE200F347C3 /* DatePickerTool.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerTool.xib; sourceTree = "<group>"; };
-		F091FBCB212BFBE200F347C3 /* DatePickerTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerTool.swift; sourceTree = "<group>"; };
-		F091FBD0212BFEDD00F347C3 /* AddressPickerTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressPickerTool.swift; sourceTree = "<group>"; };
-		F091FBD2212BFEED00F347C3 /* AddressPickerTool.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressPickerTool.xib; sourceTree = "<group>"; };
 		F0B5D58520FED64F00F642B1 /* AuthorityTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorityTool.swift; sourceTree = "<group>"; };
 		F0B5D58620FED64F00F642B1 /* VideoPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerView.swift; sourceTree = "<group>"; };
 		F0B5D58720FED64F00F642B1 /* kSaveDataTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = kSaveDataTool.swift; sourceTree = "<group>"; };
@@ -291,10 +285,7 @@
 		F091FBC9212BFBE200F347C3 /* PickerTool */ = {
 			isa = PBXGroup;
 			children = (
-				F091FBCB212BFBE200F347C3 /* DatePickerTool.swift */,
-				F091FBCA212BFBE200F347C3 /* DatePickerTool.xib */,
-				F091FBD0212BFEDD00F347C3 /* AddressPickerTool.swift */,
-				F091FBD2212BFEED00F347C3 /* AddressPickerTool.xib */,
+				F05D566D2148C514002DC1B8 /* PickerTool.swift */,
 				F023CCE8212CF72400ABAD96 /* Address.plist */,
 			);
 			path = PickerTool;
@@ -425,9 +416,7 @@
 			files = (
 				F01690622106F9C400E0C60A /* HUDViewTool.xib in Resources */,
 				F077773F20F2FC3A003D7BD8 /* LaunchScreen.storyboard in Resources */,
-				F091FBD3212BFEED00F347C3 /* AddressPickerTool.xib in Resources */,
 				F02965BA2114404200EA4ADB /* EmotionPlist.plist in Resources */,
-				F091FBCC212BFBE200F347C3 /* DatePickerTool.xib in Resources */,
 				F0561C3A2101DC5C0007496F /* Localizable.strings in Resources */,
 				F085C48A21096E6F00CB0D2B /* CalendarView.xib in Resources */,
 				F077773C20F2FC3A003D7BD8 /* Assets.xcassets in Resources */,
@@ -450,7 +439,6 @@
 				F016907321072A1D00E0C60A /* HorizontalADView.swift in Sources */,
 				F0B5D5A120FED64F00F642B1 /* CircleImageView.swift in Sources */,
 				F0561C3F2101DEF50007496F /* CameraTool.swift in Sources */,
-				F091FBD1212BFEDD00F347C3 /* AddressPickerTool.swift in Sources */,
 				F0B5D59E20FED64F00F642B1 /* kSaveDataTool.swift in Sources */,
 				F0F7B7C42117EED900AD0659 /* CircleView.swift in Sources */,
 				F01DCECF2134F1F400512599 /* SecondViewController.swift in Sources */,
@@ -471,6 +459,7 @@
 				F016903B2106F40D00E0C60A /* HorizontalLabelView.swift in Sources */,
 				F0D686672106D8360098B388 /* VerticalLabelView.swift in Sources */,
 				F0B5D5B020FED64F00F642B1 /* UIViewController+Ext.swift in Sources */,
+				F05D566E2148C515002DC1B8 /* PickerTool.swift in Sources */,
 				F0C452A42105715A00571B0A /* CameraPreviewViewController.swift in Sources */,
 				F0B5D5AC20FED64F00F642B1 /* UIColor+Ext.swift in Sources */,
 				F02965BB2114404200EA4ADB /* BottomInputView2.swift in Sources */,
@@ -496,7 +485,6 @@
 				F0B5D59C20FED64F00F642B1 /* AuthorityTool.swift in Sources */,
 				F02965BC2114404200EA4ADB /* InputAssistView.swift in Sources */,
 				F0B5D59F20FED64F00F642B1 /* SliderDrawerViewController.swift in Sources */,
-				F091FBCD212BFBE200F347C3 /* DatePickerTool.swift in Sources */,
 				F077773520F2FC39003D7BD8 /* AppDelegate.swift in Sources */,
 				F085C4822109576B00CB0D2B /* BottomView.swift in Sources */,
 				F0B5D5A220FED64F00F642B1 /* FalseNavBarView.swift in Sources */,
