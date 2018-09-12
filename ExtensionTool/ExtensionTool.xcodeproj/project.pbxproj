@@ -46,7 +46,6 @@
 		F077773A20F2FC39003D7BD8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F077773820F2FC39003D7BD8 /* Main.storyboard */; };
 		F077773C20F2FC3A003D7BD8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F077773B20F2FC3A003D7BD8 /* Assets.xcassets */; };
 		F077773F20F2FC3A003D7BD8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F077773D20F2FC3A003D7BD8 /* LaunchScreen.storyboard */; };
-		F07975242146735500F91EC5 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F07975232146735500F91EC5 /* VideoView.swift */; };
 		F085C4822109576B00CB0D2B /* BottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F085C4812109576B00CB0D2B /* BottomView.swift */; };
 		F085C4842109577D00CB0D2B /* BottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F085C4832109577D00CB0D2B /* BottomView.xib */; };
 		F085C4872109606E00CB0D2B /* SpecialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F085C4852109606D00CB0D2B /* SpecialView.xib */; };
@@ -125,7 +124,6 @@
 		F077773B20F2FC3A003D7BD8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F077773E20F2FC3A003D7BD8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F077774020F2FC3A003D7BD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F07975232146735500F91EC5 /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		F085C4812109576B00CB0D2B /* BottomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomView.swift; sourceTree = "<group>"; };
 		F085C4832109577D00CB0D2B /* BottomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomView.xib; sourceTree = "<group>"; };
 		F085C4852109606D00CB0D2B /* SpecialView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpecialView.xib; sourceTree = "<group>"; };
@@ -266,7 +264,6 @@
 				F077774020F2FC3A003D7BD8 /* Info.plist */,
 				F0B5D58420FED64F00F642B1 /* BaseViewTool */,
 				F0B5D58C20FED64F00F642B1 /* ExtensionTool */,
-				F07975232146735500F91EC5 /* VideoView.swift */,
 			);
 			path = ExtensionTool;
 			sourceTree = "<group>";
@@ -443,7 +440,6 @@
 				F0F7B7C42117EED900AD0659 /* CircleView.swift in Sources */,
 				F01DCECF2134F1F400512599 /* SecondViewController.swift in Sources */,
 				F0561C2F2101BA950007496F /* UILabel+Ext.swift in Sources */,
-				F07975242146735500F91EC5 /* VideoView.swift in Sources */,
 				F02965BD2114404200EA4ADB /* BottomInputView4.swift in Sources */,
 				F01EC3FC210879BD00AE2D11 /* CalendarView.swift in Sources */,
 				F01690612106F9C400E0C60A /* HUDViewTool.swift in Sources */,

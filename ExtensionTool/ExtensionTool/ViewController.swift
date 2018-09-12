@@ -32,20 +32,11 @@ class ViewController: BaseViewController {
         super.viewDidLoad()
 
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        
-        PickerTool.showDatePicker(with: UIDatePickerMode.date) { (time) in
-            
-            
-        }
-    }
-    
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-     
-//        let secondVC = SecondViewController()
-//        self.navigationController?.pushViewController(secondVC, animated: true)
+        let secondVC = SecondViewController()
+        self.navigationController?.pushViewController(secondVC, animated: true)
     }
 
     override func didReceiveMemoryWarning() {

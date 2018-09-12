@@ -18,7 +18,7 @@ class PhotoBrowserTool: UIView {
     ///   - imgArr: 图片数组
     ///   - currentIndex: 当前下标
     ///   - currentImg: 当前图片
-    class func showImage(containerView: UIView?, imgArr: [String], currentIndex: Int, currentImg: UIImage?) {
+    class func showImage(with containerView: UIView?, imgArr: [String], currentIndex: Int, currentImg: UIImage?) {
         
         let tool = PhotoBrowserTool(frame: UIScreen.main.bounds)
         // 赋值
