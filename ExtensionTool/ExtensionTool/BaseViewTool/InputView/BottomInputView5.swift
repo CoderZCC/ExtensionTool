@@ -18,7 +18,8 @@ class BottomInputView5: UIView {
     ///   - block: 回调
     class func initWith(_ inputView: UITextView, block: ((UIImage) ->Void)?) -> BottomInputView5 {
         let toolHeight: CGFloat = 49.0 + kBottomSpace
-        let tool = BottomInputView5.init(frame: CGRect(x: 0.0, y: kHeight - toolHeight, width: kWidth, height: toolHeight))
+        let tool = BottomInputView5.init(frame: CGRect(x: 0.0, y: kHeight - toolHeight - kNavBarHeight, width: kWidth, height: toolHeight))
+        tool.backgroundColor = UIColor.lightGray
         tool.k_height += tool.extraHeight
         tool.originalFrame = CGRect(x: 0.0, y: kHeight - toolHeight, width: kWidth, height: 49.0)
 
@@ -64,25 +65,27 @@ class BottomInputView5: UIView {
     /// 注册通知
     private func registerNote() {
         
-        self.note1 = NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardWillShow, object: nil, queue: OperationQueue.main) { [unowned self] (note) in
-            
+        self.note1 = NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardWillShow, object: nil, queue: OperationQueue.main) { [weak self] (note) in
+
+            guard let weakSelf = self else { return }
             var height: CGFloat = 271.0
             if let dic = note.userInfo {
                 
                 let value = dic[UIKeyboardFrameEndUserInfoKey] as! NSValue
                 height = value.cgRectValue.size.height
             }
-            self.setEmoijEnabled(isEnabled: true)
-            self.isShowExtra = false
-            self.emoijView.alpha = 0.0
-            self.transform = CGAffineTransform.init(translationX: 0.0, y: -height)
+            weakSelf.setEmoijEnabled(isEnabled: true)
+            weakSelf.isShowExtra = false
+            weakSelf.emoijView.alpha = 0.0
+            weakSelf.transform = CGAffineTransform(translationX: 0.0, y: -height + kBottomSpace)
         }
         
-        self.note2 = NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardWillHide, object: nil, queue: OperationQueue.main) { [unowned self] (note) in
+        self.note2 = NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardWillHide, object: nil, queue: OperationQueue.main) { [weak self] (note) in
             
-            if !self.isShowExtra {
+            guard let weakSelf = self else { return }
+            if !weakSelf.isShowExtra {
                 
-                self.transform = CGAffineTransform.identity
+                weakSelf.transform = CGAffineTransform.identity
             }
         }
     }
@@ -97,7 +100,7 @@ class BottomInputView5: UIView {
     private func hiddenExtraView() {
         
         self.textView.resignFirstResponder()
-        UIView.animate(withDuration: 0.25, animations: {[unowned self] in
+        UIView.animate(withDuration: 0.25, animations: {
             
             self.emoijView.alpha = 0.0
             self.transform = CGAffineTransform.identity
@@ -108,16 +111,10 @@ class BottomInputView5: UIView {
         
         self.isShowExtra = true
         self.textView.resignFirstResponder()
-        UIView.animate(withDuration: 0.25, animations: {[unowned self] in
+        UIView.animate(withDuration: 0.25, animations: {
             
             self.transform = CGAffineTransform(translationX: 0.0, y: -self.extraHeight + kBottomSpace)
         })
-        
-//        // 加入蒙版
-//        if let superview = self.superview {
-//
-//            superview.insertSubview(self.insertView, belowSubview: self)
-//        }
     }
     
     /// 设置表情按钮图片
@@ -163,28 +160,6 @@ class BottomInputView5: UIView {
                 self.textView.text.append(str)
             }
         }
-        
-        return view
-    }()
-    
-    private lazy var insertView: UIView = {
-        let view = UIView.init(frame: CGRect.init(x: 0.0, y: 0.0, width: kWidth, height: kHeight))
-        view.backgroundColor = UIColor.white.withAlphaComponent(0.01)
-        view.k_addTarget({ [unowned self] (tap) in
-            
-            DispatchQueue.main.async {[unowned self] in
-                
-                self.isShowExtra = false
-                self.textView.resignFirstResponder()
-                self.setEmoijEnabled(isEnabled: true)
-                
-                UIView.animate(withDuration: 0.25, animations: {[unowned self] in
-                    
-                    self.emoijView.alpha = 0.0
-                    self.transform = CGAffineTransform.identity
-                })
-            }
-        })
         
         return view
     }()

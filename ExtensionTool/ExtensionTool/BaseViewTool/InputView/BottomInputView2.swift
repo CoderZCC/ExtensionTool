@@ -74,25 +74,28 @@ class BottomInputView2: UIView {
     /// 注册通知
     private func registerNote() {
         
-        self.note1 = NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardWillShow, object: nil, queue: OperationQueue.main) { [unowned self] (note) in
+        self.note1 = NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardWillShow, object: nil, queue: OperationQueue.main) { [weak self] (note) in
             
+            guard let weakSelf = self else { return }
             var height: CGFloat = 271.0
             if let dic = note.userInfo {
                 
                 let value = dic[UIKeyboardFrameEndUserInfoKey] as! NSValue
                 height = value.cgRectValue.size.height
             }
-            self.transform = CGAffineTransform.init(translationX: 0.0, y: -height + kBottomSpace)
-            self.keyboradHeight = height
+            weakSelf.transform = CGAffineTransform.init(translationX: 0.0, y: -height + kBottomSpace)
+            weakSelf.keyboradHeight = height
         }
         
-        self.note2 = NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardWillHide, object: nil, queue: OperationQueue.main) { [unowned self] (note) in
+        self.note2 = NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardWillHide, object: nil, queue: OperationQueue.main) { [weak self] (note) in
             
-            self.transform = CGAffineTransform.identity
+            guard let weakSelf = self else { return }
+            weakSelf.transform = CGAffineTransform.identity
         }
-        self.note3 = NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextViewTextDidChange, object: nil, queue: OperationQueue.main) { [unowned self] (note) in
+        self.note3 = NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextViewTextDidChange, object: nil, queue: OperationQueue.main) { [weak self] (note) in
             
-            self.changeTextViewHeight()
+            guard let weakSelf = self else { return }
+            weakSelf.changeTextViewHeight()
         }
     }
     /// 销毁通知

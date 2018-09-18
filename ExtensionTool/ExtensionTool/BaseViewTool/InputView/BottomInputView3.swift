@@ -81,9 +81,10 @@ class BottomInputView3: UIView, UITextViewDelegate {
     /// 注册通知
     private func registerNote() {
         
-        self.note1 = NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardWillShow, object: nil, queue: OperationQueue.main) { [unowned self] (note) in
+        self.note1 = NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardWillShow, object: nil, queue: OperationQueue.main) { [weak self] (note) in
             
-            self.isClickEmoij = false
+            guard let weakSelf = self else { return }
+            weakSelf.isClickEmoij = false
             
             var height: CGFloat = 271.0
             if let dic = note.userInfo {
@@ -91,23 +92,25 @@ class BottomInputView3: UIView, UITextViewDelegate {
                 let value = dic[UIKeyboardFrameEndUserInfoKey] as! NSValue
                 height = value.cgRectValue.size.height
             }
-            self.keyboradHeight = height
-            self.transform = CGAffineTransform(translationX: 0.0, y: -self.keyboradHeight + kBottomSpace)
-            self.emoijView.alpha = 0.0
+            weakSelf.keyboradHeight = height
+            weakSelf.transform = CGAffineTransform(translationX: 0.0, y: -weakSelf.keyboradHeight + kBottomSpace)
+            weakSelf.emoijView.alpha = 0.0
             
-            self.isEditting = true
+            weakSelf.isEditting = true
         }
         
-        self.note2 = NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardWillHide, object: nil, queue: OperationQueue.main) { [unowned self] (note) in
+        self.note2 = NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardWillHide, object: nil, queue: OperationQueue.main) { [weak self] (note) in
             
-            if self.isClickEmoij { return }
-            self.transform = CGAffineTransform.identity
-            self.isEditting = false
+            guard let weakSelf = self else { return }
+            if weakSelf.isClickEmoij { return }
+            weakSelf.transform = CGAffineTransform.identity
+            weakSelf.isEditting = false
         }
         
-        self.note3 = NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextViewTextDidChange, object: nil, queue: OperationQueue.main) { [unowned self] (note) in
+        self.note3 = NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextViewTextDidChange, object: nil, queue: OperationQueue.main) { [weak self] (note) in
             
-            self.changeTextViewHeight()
+            guard let weakSelf = self else { return }
+            weakSelf.changeTextViewHeight()
         }
     }
     /// 销毁通知
