@@ -114,7 +114,7 @@ class HorizontalLabelView: UIView {
         print("###\(self)销毁了###\n")
     }
     
-    private lazy var scrollView: UIScrollView = { [unowned self] in
+    private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView.init(frame: self.bounds)
         scrollView.alwaysBounceHorizontal = true
         scrollView.contentSize = CGSize(width: self.maxWidth, height: self.bounds.height)
