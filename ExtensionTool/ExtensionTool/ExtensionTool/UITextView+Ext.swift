@@ -92,15 +92,17 @@ extension UITextView {
         
         set {
             
-            if let _ = self.k_placeholder {
+            guard let maxCount = newValue else { return }
+            NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextViewTextDidChange, object: nil, queue: OperationQueue.main) { (note) in
                 
-                if self.text.count >= newValue! { self.text = self.text.k_subText(to: newValue! - 1) }
-
-            } else {
+                guard let tv = note.object as? UITextView else { return }
+                if tv == self.viewWithTag(101) { return }
                 
-                NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextViewTextDidChange, object: nil, queue: OperationQueue.main) { (note) in
+                guard let inputText = self.text else { return }
+                if inputText.count > maxCount {
                     
-                    if self.text.count >= newValue! { self.text = self.text.k_subText(to: newValue! - 1) }
+                    if self.markedTextRange != nil { return }
+                    self.text = inputText.k_subText(to: maxCount - 1)
                 }
             }
         }
@@ -153,12 +155,15 @@ extension UITextField {
     var k_limitTextLength: Int? {
         
         set {
-            
+
+            guard let maxCount = newValue else { return }
             NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextFieldTextDidChange, object: nil, queue: OperationQueue.main) { (note) in
                 
-                if let text = self.text {
+                guard let inputText = self.text else { return }
+                if inputText.count > maxCount {
                     
-                    if text.count >= newValue! { self.text = text.k_subText(to: newValue! - 1) }
+                    if self.markedTextRange != nil { return }
+                    self.text = inputText.k_subText(to: newValue! - 1)
                 }
             }
         }
