@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		F0105B9A210AC3DC005B8661 /* MyPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0105B99210AC3DC005B8661 /* MyPageControl.swift */; };
 		F016903B2106F40D00E0C60A /* HorizontalLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F016903A2106F40D00E0C60A /* HorizontalLabelView.swift */; };
-		F01690612106F9C400E0C60A /* HUDViewTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F016905F2106F9C400E0C60A /* HUDViewTool.swift */; };
-		F01690622106F9C400E0C60A /* HUDViewTool.xib in Resources */ = {isa = PBXBuildFile; fileRef = F01690602106F9C400E0C60A /* HUDViewTool.xib */; };
 		F01690692106FB9D00E0C60A /* AlertViewTool.xib in Resources */ = {isa = PBXBuildFile; fileRef = F01690672106FB9D00E0C60A /* AlertViewTool.xib */; };
 		F016906A2106FB9D00E0C60A /* AlertViewTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01690682106FB9D00E0C60A /* AlertViewTool.swift */; };
 		F016906C2106FBDF00E0C60A /* AlertSheetTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F016906B2106FBDF00E0C60A /* AlertSheetTool.swift */; };
@@ -76,6 +74,7 @@
 		F0B5D5C120FF409600F642B1 /* UIScrollView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B5D5C020FF409600F642B1 /* UIScrollView+Ext.swift */; };
 		F0C452A42105715A00571B0A /* CameraPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C452A32105715A00571B0A /* CameraPreviewViewController.swift */; };
 		F0D32FF921537822003AE04A /* WKWebView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D32FF821537822003AE04A /* WKWebView+Ext.swift */; };
+		F0D32FFB21538261003AE04A /* LoadingTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D32FFA21538261003AE04A /* LoadingTool.swift */; };
 		F0D686672106D8360098B388 /* VerticalLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D686662106D8360098B388 /* VerticalLabelView.swift */; };
 		F0F7B7C42117EED900AD0659 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F7B7C32117EED900AD0659 /* CircleView.swift */; };
 /* End PBXBuildFile section */
@@ -83,8 +82,6 @@
 /* Begin PBXFileReference section */
 		F0105B99210AC3DC005B8661 /* MyPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageControl.swift; sourceTree = "<group>"; };
 		F016903A2106F40D00E0C60A /* HorizontalLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalLabelView.swift; sourceTree = "<group>"; };
-		F016905F2106F9C400E0C60A /* HUDViewTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDViewTool.swift; sourceTree = "<group>"; };
-		F01690602106F9C400E0C60A /* HUDViewTool.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HUDViewTool.xib; sourceTree = "<group>"; };
 		F01690672106FB9D00E0C60A /* AlertViewTool.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertViewTool.xib; sourceTree = "<group>"; };
 		F01690682106FB9D00E0C60A /* AlertViewTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewTool.swift; sourceTree = "<group>"; };
 		F016906B2106FBDF00E0C60A /* AlertSheetTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertSheetTool.swift; sourceTree = "<group>"; };
@@ -155,6 +152,7 @@
 		F0B5D5C020FF409600F642B1 /* UIScrollView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Ext.swift"; sourceTree = "<group>"; };
 		F0C452A32105715A00571B0A /* CameraPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewViewController.swift; sourceTree = "<group>"; };
 		F0D32FF821537822003AE04A /* WKWebView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WKWebView+Ext.swift"; sourceTree = "<group>"; };
+		F0D32FFA21538261003AE04A /* LoadingTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingTool.swift; sourceTree = "<group>"; };
 		F0D686662106D8360098B388 /* VerticalLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalLabelView.swift; sourceTree = "<group>"; };
 		F0F7B7C32117EED900AD0659 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -176,8 +174,7 @@
 				F016906B2106FBDF00E0C60A /* AlertSheetTool.swift */,
 				F01690682106FB9D00E0C60A /* AlertViewTool.swift */,
 				F01690672106FB9D00E0C60A /* AlertViewTool.xib */,
-				F016905F2106F9C400E0C60A /* HUDViewTool.swift */,
-				F01690602106F9C400E0C60A /* HUDViewTool.xib */,
+				F0D32FFA21538261003AE04A /* LoadingTool.swift */,
 			);
 			path = LoadingTool;
 			sourceTree = "<group>";
@@ -414,7 +411,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F01690622106F9C400E0C60A /* HUDViewTool.xib in Resources */,
 				F077773F20F2FC3A003D7BD8 /* LaunchScreen.storyboard in Resources */,
 				F02965BA2114404200EA4ADB /* EmotionPlist.plist in Resources */,
 				F0561C3A2101DC5C0007496F /* Localizable.strings in Resources */,
@@ -445,7 +441,6 @@
 				F0561C2F2101BA950007496F /* UILabel+Ext.swift in Sources */,
 				F02965BD2114404200EA4ADB /* BottomInputView4.swift in Sources */,
 				F01EC3FC210879BD00AE2D11 /* CalendarView.swift in Sources */,
-				F01690612106F9C400E0C60A /* HUDViewTool.swift in Sources */,
 				F0B5D5A720FED64F00F642B1 /* AppDelegate+Push.swift in Sources */,
 				F02965BF2114404200EA4ADB /* BottomInputView1.swift in Sources */,
 				F016906C2106FBDF00E0C60A /* AlertSheetTool.swift in Sources */,
@@ -462,6 +457,7 @@
 				F0C452A42105715A00571B0A /* CameraPreviewViewController.swift in Sources */,
 				F0B5D5AC20FED64F00F642B1 /* UIColor+Ext.swift in Sources */,
 				F02965BB2114404200EA4ADB /* BottomInputView2.swift in Sources */,
+				F0D32FFB21538261003AE04A /* LoadingTool.swift in Sources */,
 				F0B5D5AA20FED64F00F642B1 /* UIButton+Ext.swift in Sources */,
 				F016906A2106FB9D00E0C60A /* AlertViewTool.swift in Sources */,
 				F01D2C422122768800B2F848 /* SearchViewController.swift in Sources */,

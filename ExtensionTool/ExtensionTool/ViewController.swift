@@ -31,12 +31,25 @@ class ViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        var num: CGFloat = 0.01
+        
+        self.k_startTimer(timeInterval: 0.5, repeats: true) { (timer) in
+            
+            num += 0.05
+            self.showProgress("下载中", progress: num)
+            if num >= 1.0 {
+                
+                self.k_stopTimer()
+                self.showText("下载完成")
+            }
+        }
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 
-        let secondVC = SecondViewController()
-        self.navigationController?.pushViewController(secondVC, animated: true)
+        
+//        let secondVC = SecondViewController()
+//        self.navigationController?.pushViewController(secondVC, animated: true)
     }
 
     override func didReceiveMemoryWarning() {
