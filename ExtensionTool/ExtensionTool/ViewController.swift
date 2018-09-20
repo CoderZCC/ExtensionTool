@@ -31,22 +31,13 @@ class ViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.view.addSubview(self.textField)
     }
 
-//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//
-//        let secondVC = SecondViewController()
-//        self.navigationController?.pushViewController(secondVC, animated: true)
-//    }
-    lazy var textField: UITextView = {
-        let tf = UITextView.init(frame: CGRect(x: 20.0, y: 100.0, width: kWidth - 40.0, height: 35.0))
-        tf.placeholder = "输入文字"
-        tf.backgroundColor = UIColor.white
-        tf.k_limitTextLength = 5
-        
-        return tf
-    }()
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+
+        let secondVC = SecondViewController()
+        self.navigationController?.pushViewController(secondVC, animated: true)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
