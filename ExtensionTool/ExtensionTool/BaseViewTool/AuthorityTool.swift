@@ -14,7 +14,7 @@ class AuthorityTool: NSObject {
      
         kWindow.showAlertView(title: "请在iPhone的\"设置\"中允许访问此项权限", message: nil) {
             
-            let url = URL.init(string: UIApplicationOpenSettingsURLString)
+            let url = URL.init(string: UIApplication.openSettingsURLString)
             UIApplication.shared.openURL(url!)
         }
     }

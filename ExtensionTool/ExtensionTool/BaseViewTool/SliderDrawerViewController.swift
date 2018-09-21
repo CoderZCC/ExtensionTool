@@ -38,8 +38,8 @@ class SliderDrawerViewController: UIViewController {
         
         view.addSubview(leftVC.view)
         view.addSubview(mainVC.view)
-        addChildViewController(leftVC)
-        addChildViewController(mainVC)
+        addChild(leftVC)
+        addChild(mainVC)
     }
     
     override func viewDidLoad() {
@@ -47,7 +47,7 @@ class SliderDrawerViewController: UIViewController {
         
         self.leftVC.view.transform = CGAffineTransform.init(translationX: -self.maxWidth, y: 0.0)
 
-        for childVC in self.mainVC.childViewControllers {
+        for childVC in self.mainVC.children {
 
             self.addScreenEdgePanGestureRecognizerToView(view: childVC.view)
         }
@@ -140,7 +140,7 @@ extension SliderDrawerViewController {
         
         if offsetX > 0 {return}
         
-        if pan.state == UIGestureRecognizerState.changed && offsetX >= -maxWidth {
+        if pan.state == UIGestureRecognizer.State.changed && offsetX >= -maxWidth {
             
             let distace = self.maxWidth + offsetX
             

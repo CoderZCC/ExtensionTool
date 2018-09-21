@@ -56,7 +56,7 @@ extension WKWebView {
         
         if let value = (change[NSKeyValueChangeKey.newKey] as? NSNumber)?.doubleValue {
             
-            self.bringSubview(toFront: progressView)
+            self.bringSubviewToFront(progressView)
             
             progressView.isHidden = (value >= 1.0)
             progressView.setProgress( (value >= 1.0) ? (0.0) : (Float(value)), animated: !(value >= 1.0))

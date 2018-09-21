@@ -122,7 +122,7 @@ extension SpecialView: UITableViewDelegate, UITableViewDataSource {
             cell?.backgroundColor = tableView.backgroundColor
             cell?.textLabel?.textAlignment = .center
             cell?.selectionStyle = .none
-            cell?.separatorInset = UIEdgeInsetsMake(0.0, 20.0, 0.0, 20.0)
+            cell?.separatorInset = UIEdgeInsets.init(top: 0.0, left: 20.0, bottom: 0.0, right: 20.0)
         }
         cell?.textLabel?.text = self.textArr[indexPath.row]
         

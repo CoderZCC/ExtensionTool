@@ -64,7 +64,7 @@ extension UIButton {
         get { return (objc_getAssociatedObject(self, &kUIButtonDelayingKey) as? Bool) ?? false }
     }
     
-    @objc func k_myMethod(_ action: Selector, to: Any, for event: UIControlEvents) {
+    @objc func k_myMethod(_ action: Selector, to: Any, for event: UIControl.Event) {
         
         if self.isKind(of: UIButton.self) {
             
@@ -101,7 +101,7 @@ extension UIButton {
     /// - Parameters:
     ///   - events: 事件
     ///   - block: 回调
-    func k_addTarget(events: UIControlEvents = .touchUpInside, block: @escaping()->Void) {
+    func k_addTarget(events: UIControl.Event = .touchUpInside, block: @escaping()->Void) {
         
         objc_setAssociatedObject(self, &kUIButtonClickKey, block, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         self.addTarget(self, action: #selector(k_btnAction), for: events)
@@ -123,7 +123,7 @@ extension UIButton {
     ///   - titlePosition: 文字位置
     ///   - spacing: 文字和图片间隔
     ///   - state: 按钮状态
-    func k_setBtn(image: UIImage?, title: String, titlePosition: UIViewContentMode, spacing: CGFloat = 5.0, state: UIControlState = .normal) {
+    func k_setBtn(image: UIImage?, title: String, titlePosition: UIView.ContentMode, spacing: CGFloat = 5.0, state: UIControl.State = .normal) {
         
         self.imageView?.contentMode = .center
         self.setImage(image, for: state)
@@ -134,10 +134,10 @@ extension UIButton {
         self.setTitle(title, for: state)
     }
     
-    fileprivate func positionLabelRespectToImage(title: String, position: UIViewContentMode, spacing: CGFloat) {
+    fileprivate func positionLabelRespectToImage(title: String, position: UIView.ContentMode, spacing: CGFloat) {
         let imageSize = self.imageRect(forContentRect: self.frame)
         let titleFont = self.titleLabel?.font!
-        let titleSize = title.size(withAttributes: [NSAttributedStringKey.font: titleFont!])
+        let titleSize = title.size(withAttributes: [NSAttributedString.Key.font: titleFont!])
         
         var titleInsets: UIEdgeInsets!
         var imageInsets: UIEdgeInsets!

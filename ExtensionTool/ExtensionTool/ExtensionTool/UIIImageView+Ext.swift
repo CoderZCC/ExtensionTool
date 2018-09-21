@@ -18,7 +18,7 @@ extension UIImageView {
     /// - Parameters:
     ///   - model: 模式
     ///   - clips: 是否裁剪
-    func k_contenModel(model: UIViewContentMode = .scaleAspectFill, clips: Bool = true) {
+    func k_contenModel(model: UIView.ContentMode = .scaleAspectFill, clips: Bool = true) {
         
         self.contentMode = model
         self.clipsToBounds = clips

@@ -82,7 +82,7 @@ class AlertSheetTool: UIView {
         tool.tableView!.reloadData()
         
         //展示View
-        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.85, initialSpringVelocity: 0.0, options: UIViewAnimationOptions.allowAnimatedContent, animations: {
+        UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.85, initialSpringVelocity: 0.0, options: UIView.AnimationOptions.allowAnimatedContent, animations: {
             
             tool.alpha = 1.0
             tool.tableView!.transform = CGAffineTransform.identity
@@ -146,7 +146,7 @@ class AlertSheetTool: UIView {
             height += 49.0
         }
         
-        let tableView = UITableView.init(frame: CGRect(x:0.0 , y: Double(kHeight - height) ,width: Double(kWidth) , height: Double(height)), style: UITableViewStyle.plain)
+        let tableView = UITableView.init(frame: CGRect(x:0.0 , y: Double(kHeight - height) ,width: Double(kWidth) , height: Double(height)), style: UITableView.Style.plain)
         
         tableView.transform = CGAffineTransform.init(translationX: 0, y: kHeight)
         
@@ -183,12 +183,12 @@ class AlertSheetTool: UIView {
         let footView:UIView = UIView.init(frame: CGRect(x:0.0 , y: 0.0 ,width:Double(kWidth) ,height : Double(footHeight)))
         footView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.5)
         
-        let footBtn = UIButton(type: UIButtonType.custom)
+        let footBtn = UIButton(type: UIButton.ButtonType.custom)
         footBtn.frame = CGRect(x: 0.0 , y: 6.0 , width: Double(kWidth) ,height: Double(footHeight))
         footBtn.backgroundColor = UIColor.white
-        footBtn.setTitle("取消", for: UIControlState.normal)
-        footBtn.addTarget(self, action: #selector(AlertSheetTool.clickAction), for: UIControlEvents.touchUpInside)
-        footBtn.setTitleColor(UIColor.black, for: UIControlState.normal)
+        footBtn.setTitle("取消", for: UIControl.State.normal)
+        footBtn.addTarget(self, action: #selector(AlertSheetTool.clickAction), for: UIControl.Event.touchUpInside)
+        footBtn.setTitleColor(UIColor.black, for: UIControl.State.normal)
         
         footView.addSubview(footBtn)
         tableView.tableFooterView = footView
@@ -218,9 +218,9 @@ extension AlertSheetTool: UITableViewDataSource, UITableViewDelegate
         var cell = tableView.dequeueReusableCell(withIdentifier: AlertSheetTool.identifier)
         if cell == nil {
             
-            cell = UITableViewCell.init(style: UITableViewCellStyle.default, reuseIdentifier: AlertSheetTool.identifier)
+            cell = UITableViewCell.init(style: UITableViewCell.CellStyle.default, reuseIdentifier: AlertSheetTool.identifier)
             cell?.textLabel?.textAlignment = NSTextAlignment.center
-            cell?.selectionStyle = UITableViewCellSelectionStyle.none
+            cell?.selectionStyle = UITableViewCell.SelectionStyle.none
         }
         cell?.textLabel?.text = subTitleArr[indexPath.row]
         

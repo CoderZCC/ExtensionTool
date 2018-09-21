@@ -376,6 +376,7 @@
 				TargetAttributes = {
 					F077773020F2FC39003D7BD8 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 1000;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -657,7 +658,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.zcc.ExtensionTool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/ExtensionTool/BaseViewTool/ADScrollVIew/Swift-OCHeader.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -678,7 +679,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.zcc.ExtensionTool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/ExtensionTool/BaseViewTool/ADScrollVIew/Swift-OCHeader.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

@@ -83,7 +83,7 @@ class VerticalLabelView: UIView {
     
     private func textWidth(text: String, font: UIFont) -> CGFloat {
         let str = NSString.init(string: text)
-        let rect = str.boundingRect(with: CGSize.init(width: kWidth - 20.0, height: self.labelHeight), options: .usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font : font], context: nil)
+        let rect = str.boundingRect(with: CGSize.init(width: kWidth - 20.0, height: self.labelHeight), options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font : font], context: nil)
     
         return rect.size.width
     }

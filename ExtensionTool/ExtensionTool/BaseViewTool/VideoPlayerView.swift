@@ -191,8 +191,8 @@ extension VideoPlayerView {
     private func setup() {
         
         // 添加通知
-        NotificationCenter.default.addObserver(self, selector: #selector(enterForegroundNote), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(enterBackgroundNote), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(enterForegroundNote), name: UIApplication.willEnterForegroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(enterBackgroundNote), name: UIApplication.didEnterBackgroundNotification, object: nil)
         
         self.addSubview(self.launchImageView)
         self.addSubview(self.loadingView)
@@ -230,13 +230,13 @@ extension VideoPlayerView {
         case "status":
             
             let status = (changeDic[.newKey] as! NSNumber).intValue
-            if status == AVPlayerStatus.readyToPlay.rawValue {
+            if status == AVPlayer.Status.readyToPlay.rawValue {
                 
                 if self.isPlaying { return }
                 
                 self.launchImageView.isHidden = true
                 self.layer.addSublayer(self.playerLayer!)
-                self.bringSubview(toFront: self.loadingView)
+                self.bringSubviewToFront(self.loadingView)
                 
                 self.isReadyToPlay?()
                 
@@ -245,11 +245,11 @@ extension VideoPlayerView {
                 self.pauseImgV.isHidden = false
                 print("准备播放")
 
-            } else if status == AVPlayerStatus.failed.rawValue {
+            } else if status == AVPlayer.Status.failed.rawValue {
                 
                 print("播放失败")
                 
-            } else if status == AVPlayerStatus.unknown.rawValue {
+            } else if status == AVPlayer.Status.unknown.rawValue {
                 
                 print("未知错误")
             }

@@ -25,7 +25,7 @@ extension UIViewController {
     ///   - title: 文字
     ///   - style: 类型
     ///   - block: 回调
-    func k_navigationItem(position: kUIBarItemPositionType = .right, title: String, style: UIBarButtonItemStyle = .plain, block: (()->Void)?)  {
+    func k_navigationItem(position: kUIBarItemPositionType = .right, title: String, style: UIBarButtonItem.Style = .plain, block: (()->Void)?)  {
         
         if position == .right {
             
@@ -66,7 +66,7 @@ extension UIViewController {
     ///   - image: 图片
     ///   - style: 类型
     ///   - block: 回调
-    func k_navigationItemWith(position: kUIBarItemPositionType = .right, image: UIImage, style: UIBarButtonItemStyle = .plain, block: (()->Void)?)  {
+    func k_navigationItemWith(position: kUIBarItemPositionType = .right, image: UIImage, style: UIBarButtonItem.Style = .plain, block: (()->Void)?)  {
         
         if position == .right {
             

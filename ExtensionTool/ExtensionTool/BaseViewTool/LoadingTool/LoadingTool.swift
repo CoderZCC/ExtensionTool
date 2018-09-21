@@ -175,7 +175,7 @@ class LoadingTool: UIView {
     }()
     /// 大白菊花
     private lazy var activeView: UIActivityIndicatorView = {
-        let view = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
+        let view = UIActivityIndicatorView(style: .whiteLarge)
         view.hidesWhenStopped = true
         
         return view
@@ -217,7 +217,7 @@ class LoadingTool: UIView {
     static private var baseView: UIWindow {
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.isHidden = false
-        window.windowLevel = UIWindowLevelAlert
+        window.windowLevel = UIWindow.Level.alert
         window.backgroundColor = UIColor.white.withAlphaComponent(0.01)
         
         LoadingTool.sharedInstance.baseViewsArr.append(window)

@@ -71,7 +71,7 @@ class CalendarView: UIView {
         
         self.layout.minimumLineSpacing = 0.0
         self.layout.minimumInteritemSpacing = 0.0
-        self.colllectionView.contentInset = UIEdgeInsetsMake(0.0, 5.0, 0.0, 5.0)
+        self.colllectionView.contentInset = UIEdgeInsets.init(top: 0.0, left: 5.0, bottom: 0.0, right: 5.0)
         self.layout.itemSize = CGSize(width: (self.bounds.width - 10.0) / 7.0, height: 40.0)
 
         self.colllectionView.delegate = self

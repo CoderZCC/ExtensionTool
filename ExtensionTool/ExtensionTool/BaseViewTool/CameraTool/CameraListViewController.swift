@@ -55,7 +55,7 @@ class CameraListViewController: UIViewController {
         collectionView.backgroundColor = UIColor.white
         collectionView.alwaysBounceVertical = true
         
-        collectionView.contentInset = UIEdgeInsetsMake(5.0, 5.0, 5.0, 5.0)
+        collectionView.contentInset = UIEdgeInsets.init(top: 5.0, left: 5.0, bottom: 5.0, right: 5.0)
         
         layout.itemSize = CGSize(width: (kWidth - 5.0 * 5.0) / 4.0, height: (kWidth - 5.0 * 5.0) / 4.0)
         

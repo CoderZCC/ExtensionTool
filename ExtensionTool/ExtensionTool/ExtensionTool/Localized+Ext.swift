@@ -38,7 +38,7 @@ extension UIButton {
         let changedmethod = class_getInstanceMethod(UIButton.self, #selector(mySetTitle(_:for:)))
         method_exchangeImplementations(originalMethod!, changedmethod!)
     }
-    @objc func mySetTitle(_ text: String, for state: UIControlState) {
+    @objc func mySetTitle(_ text: String, for state: UIControl.State) {
         
         mySetTitle(text.localized(), for: state)
     }

@@ -106,17 +106,17 @@ class AlertViewTool: UIView {
         
         if let leftBtn = leftBtn {
             
-            tool.leftBtn.setTitle(leftBtn, for: UIControlState.normal)
+            tool.leftBtn.setTitle(leftBtn, for: UIControl.State.normal)
         }
         if let rightBtn = rightBtn {
             
-            tool.rightBtn.setTitle(rightBtn, for: UIControlState.normal)
+            tool.rightBtn.setTitle(rightBtn, for: UIControl.State.normal)
         }
         
         tool.finishInput = rightAction
         tool.leftAction = leftAction
         
-        UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.0, options: UIViewAnimationOptions.allowAnimatedContent, animations: {
+        UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.0, options: UIView.AnimationOptions.allowAnimatedContent, animations: {
             
             tool.alpha = 1.0
             tool.contentView.transform = CGAffineTransform.identity
@@ -155,17 +155,17 @@ class AlertViewTool: UIView {
         }
         if let leftBtn = leftBtn {
             
-            tool.leftBtn.setTitle(leftBtn, for: UIControlState.normal)
+            tool.leftBtn.setTitle(leftBtn, for: UIControl.State.normal)
         }
         if let rightBtn = rightBtn {
             
-            tool.rightBtn.setTitle(rightBtn, for: UIControlState.normal)
+            tool.rightBtn.setTitle(rightBtn, for: UIControl.State.normal)
         }
         
         tool.rightAction = rightBtnAction
         tool.leftAction = leftBtnAction
 
-        UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.0, options: UIViewAnimationOptions.allowAnimatedContent, animations: {
+        UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.0, options: UIView.AnimationOptions.allowAnimatedContent, animations: {
             
             tool.alpha = 1.0
             tool.contentView.transform = CGAffineTransform.identity

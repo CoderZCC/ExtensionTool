@@ -40,7 +40,7 @@ class PhotoBrowserTool: UIView {
         
         // 接收屏幕旋转通知
         tool.frameChangeNoteAction()
-        NotificationCenter.default.addObserver(tool, selector: #selector(frameChangeNoteAction), name: .UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(tool, selector: #selector(frameChangeNoteAction), name: UIDevice.orientationDidChangeNotification, object: nil)
         
         kWindow.addSubview(tool)
     }
@@ -219,7 +219,7 @@ class PhotoBrowserTool: UIView {
     }()
     /// 保存到相册
     private lazy var saveBtn: UIButton = {
-        let btn = UIButton.init(type: UIButtonType.custom)
+        let btn = UIButton.init(type: UIButton.ButtonType.custom)
         btn.frame = CGRect.init(x: (kWidth - 60.0) / 2.0, y: kHeight - 30.0 - 30.0, width: 60.0, height: 30.0)
         btn.setTitle("保存", for: .normal)
         btn.layer.cornerRadius = 4

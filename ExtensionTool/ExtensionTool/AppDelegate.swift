@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
       
         window = UIWindow.init(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let navbar = UINavigationBar.appearance()
         // 设置标题文字颜色
-        navbar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+        navbar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         // 设置导航栏的背景颜色
         navbar.barTintColor = UIColor.k_colorWith(hexInt: 0xd22330)
         // 设置导航栏是否透明

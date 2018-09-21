@@ -65,13 +65,13 @@ class BottomInputView5: UIView {
     /// 注册通知
     private func registerNote() {
         
-        self.note1 = NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardWillShow, object: nil, queue: OperationQueue.main) { [weak self] (note) in
+        self.note1 = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: OperationQueue.main) { [weak self] (note) in
 
             guard let weakSelf = self else { return }
             var height: CGFloat = 271.0
             if let dic = note.userInfo {
                 
-                let value = dic[UIKeyboardFrameEndUserInfoKey] as! NSValue
+                let value = dic[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue
                 height = value.cgRectValue.size.height
             }
             weakSelf.setEmoijEnabled(isEnabled: true)
@@ -80,7 +80,7 @@ class BottomInputView5: UIView {
             weakSelf.transform = CGAffineTransform(translationX: 0.0, y: -height + kBottomSpace)
         }
         
-        self.note2 = NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardWillHide, object: nil, queue: OperationQueue.main) { [weak self] (note) in
+        self.note2 = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: OperationQueue.main) { [weak self] (note) in
             
             guard let weakSelf = self else { return }
             if !weakSelf.isShowExtra {
@@ -138,7 +138,7 @@ class BottomInputView5: UIView {
         collectionView.delegate = self
         collectionView.k_registerCell(cls: UICollectionViewCell.self)
         collectionView.backgroundColor = self.backgroundColor
-        collectionView.contentInset = UIEdgeInsetsMake(0.0, self.leftMargin, 0.0, 0.0)
+        collectionView.contentInset = UIEdgeInsets.init(top: 0.0, left: self.leftMargin, bottom: 0.0, right: 0.0)
         
         return collectionView
     }()

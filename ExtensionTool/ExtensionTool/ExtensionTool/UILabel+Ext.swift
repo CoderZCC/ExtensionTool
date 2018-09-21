@@ -19,7 +19,7 @@ extension UILabel {
     ///   - color: 字体颜色
     func k_setTextColor(text: String, range: NSRange, color: UIColor) {
         let attStr = NSMutableAttributedString.init(string: text)
-        attStr.addAttributes([NSAttributedStringKey.foregroundColor : color], range: range)
+        attStr.addAttributes([NSAttributedString.Key.foregroundColor : color], range: range)
         
         self.attributedText = attStr
     }

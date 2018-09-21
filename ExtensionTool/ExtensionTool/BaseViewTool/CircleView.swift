@@ -77,8 +77,8 @@ class CircleView: UIView {
             self.lastValue = 0.0
         }
         let lineAni = CABasicAnimation.init(keyPath: "strokeEnd")
-        lineAni.timingFunction = CAMediaTimingFunction.init(name: kCAMediaTimingFunctionEaseInEaseOut)
-        lineAni.fillMode = kCAFillModeForwards
+        lineAni.timingFunction = CAMediaTimingFunction.init(name: CAMediaTimingFunctionName.easeInEaseOut)
+        lineAni.fillMode = CAMediaTimingFillMode.forwards
         lineAni.isRemovedOnCompletion = false
         lineAni.fromValue = NSNumber.init(value: Float((self.lastValue ?? 0.0)))
         lineAni.toValue = NSNumber.init(value: Float(value))
@@ -96,9 +96,9 @@ class CircleView: UIView {
         
         let ani = CAKeyframeAnimation.init(keyPath: "position")
         ani.path = path.cgPath
-        ani.fillMode = kCAFillModeForwards
+        ani.fillMode = CAMediaTimingFillMode.forwards
         ani.isRemovedOnCompletion = false
-        ani.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        ani.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
         ani.duration = self.aniDuration
         
         self.moveView.layer.add(ani, forKey: "ani")
@@ -113,9 +113,9 @@ class CircleView: UIView {
         
         let ani = CAKeyframeAnimation.init(keyPath: "position")
         ani.path = path.cgPath
-        ani.fillMode = kCAFillModeForwards
+        ani.fillMode = CAMediaTimingFillMode.forwards
         ani.isRemovedOnCompletion = false
-        ani.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        ani.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
         ani.duration = self.aniDuration
         
         self.shapeView.layer.add(ani, forKey: "ani")

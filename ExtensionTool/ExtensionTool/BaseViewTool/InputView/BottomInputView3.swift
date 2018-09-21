@@ -81,7 +81,7 @@ class BottomInputView3: UIView, UITextViewDelegate {
     /// 注册通知
     private func registerNote() {
         
-        self.note1 = NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardWillShow, object: nil, queue: OperationQueue.main) { [weak self] (note) in
+        self.note1 = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: OperationQueue.main) { [weak self] (note) in
             
             guard let weakSelf = self else { return }
             weakSelf.isClickEmoij = false
@@ -89,7 +89,7 @@ class BottomInputView3: UIView, UITextViewDelegate {
             var height: CGFloat = 271.0
             if let dic = note.userInfo {
                 
-                let value = dic[UIKeyboardFrameEndUserInfoKey] as! NSValue
+                let value = dic[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue
                 height = value.cgRectValue.size.height
             }
             weakSelf.keyboradHeight = height
@@ -99,7 +99,7 @@ class BottomInputView3: UIView, UITextViewDelegate {
             weakSelf.isEditting = true
         }
         
-        self.note2 = NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardWillHide, object: nil, queue: OperationQueue.main) { [weak self] (note) in
+        self.note2 = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: OperationQueue.main) { [weak self] (note) in
             
             guard let weakSelf = self else { return }
             if weakSelf.isClickEmoij { return }
@@ -107,7 +107,7 @@ class BottomInputView3: UIView, UITextViewDelegate {
             weakSelf.isEditting = false
         }
         
-        self.note3 = NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextViewTextDidChange, object: nil, queue: OperationQueue.main) { [weak self] (note) in
+        self.note3 = NotificationCenter.default.addObserver(forName: UITextView.textDidChangeNotification, object: nil, queue: OperationQueue.main) { [weak self] (note) in
             
             guard let weakSelf = self else { return }
             weakSelf.changeTextViewHeight()
@@ -347,7 +347,7 @@ class EmoijView: UIView {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(EmoijViewCell.self, forCellWithReuseIdentifier: "EmoijViewCell")
-        collectionView.contentInset = UIEdgeInsetsMake(8.0, 0.0, 20.0 + self.pClHeight, 0.0)
+        collectionView.contentInset = UIEdgeInsets.init(top: 8.0, left: 0.0, bottom: 20.0 + self.pClHeight, right: 0.0)
         collectionView.backgroundColor = self.backgroundColor
         collectionView.isPagingEnabled = true
         collectionView.showsHorizontalScrollIndicator = false

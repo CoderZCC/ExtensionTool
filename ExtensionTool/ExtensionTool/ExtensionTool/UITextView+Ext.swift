@@ -67,7 +67,7 @@ extension UITextView {
                 placeholder.isHidden = !(self.text ?? "").isEmpty
             }
             // 接收通知
-            NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextViewTextDidChange, object: nil, queue: OperationQueue.main) { (note) in
+            NotificationCenter.default.addObserver(forName: UITextView.textDidChangeNotification, object: nil, queue: OperationQueue.main) { (note) in
                 
                 if let length = self.k_limitTextLength { self.k_limitTextLength = length }
                 
@@ -93,7 +93,7 @@ extension UITextView {
         set {
             
             guard let maxCount = newValue else { return }
-            NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextViewTextDidChange, object: nil, queue: OperationQueue.main) { (note) in
+            NotificationCenter.default.addObserver(forName: UITextView.textDidChangeNotification, object: nil, queue: OperationQueue.main) { (note) in
                 
                 guard let tv = note.object as? UITextView else { return }
                 if tv == self.viewWithTag(101) { return }
@@ -157,7 +157,7 @@ extension UITextField {
         set {
 
             guard let maxCount = newValue else { return }
-            NotificationCenter.default.addObserver(forName: NSNotification.Name.UITextFieldTextDidChange, object: nil, queue: OperationQueue.main) { (note) in
+            NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: nil, queue: OperationQueue.main) { (note) in
                 
                 guard let inputText = self.text else { return }
                 if inputText.count > maxCount {

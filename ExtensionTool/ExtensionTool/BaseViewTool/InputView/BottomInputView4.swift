@@ -82,7 +82,7 @@ class BottomInputView4: UIView, UITextFieldDelegate {
     /// 注册通知
     private func registerNote() {
         
-        self.note1 = NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardWillShow, object: nil, queue: OperationQueue.main) { [weak self] (note) in
+        self.note1 = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: OperationQueue.main) { [weak self] (note) in
             
             guard let weakSelf = self else { return }
             weakSelf.isClickEmoij = false
@@ -90,7 +90,7 @@ class BottomInputView4: UIView, UITextFieldDelegate {
             var height: CGFloat = 271.0
             if let dic = note.userInfo {
                 
-                let value = dic[UIKeyboardFrameEndUserInfoKey] as! NSValue
+                let value = dic[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue
                 height = value.cgRectValue.size.height
             }
             weakSelf.keyboradHeight = height
@@ -100,7 +100,7 @@ class BottomInputView4: UIView, UITextFieldDelegate {
             weakSelf.isEditting = true
         }
         
-        self.note2 = NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardWillHide, object: nil, queue: OperationQueue.main) { [weak self] (note) in
+        self.note2 = NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: OperationQueue.main) { [weak self] (note) in
             
             guard let weakSelf = self else { return }
             if weakSelf.isClickEmoij { return }

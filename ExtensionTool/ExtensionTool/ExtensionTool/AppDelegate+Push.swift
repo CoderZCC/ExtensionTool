@@ -129,7 +129,7 @@ extension NSObject {
                 let noteContent = UNMutableNotificationContent.init()
                 noteContent.title = title
                 noteContent.body = content
-                noteContent.sound = UNNotificationSound.default()
+                noteContent.sound = UNNotificationSound.default
                 
                 noteContent.userInfo = dataDic
                 

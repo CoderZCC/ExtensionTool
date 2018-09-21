@@ -18,7 +18,7 @@ class PickerTool: NSObject {
     ///   - minimumDate: 最小时间
     ///   - maximumDate: 最大时间
     ///   - block: 选中回调
-    class func showDatePicker(with showModel: UIDatePickerMode, currentTime: Date? = Date(), minimumDate: Date? = nil, maximumDate: Date? = Date(), block: ((String)->Void)?) {
+    class func showDatePicker(with showModel: UIDatePicker.Mode, currentTime: Date? = Date(), minimumDate: Date? = nil, maximumDate: Date? = Date(), block: ((String)->Void)?) {
         
         DatePickerTool.show(with: showModel, currentTime: currentTime, minimumDate: minimumDate, maximumDate: maximumDate, block: block)
     }
@@ -47,7 +47,7 @@ class DatePickerTool: UIView {
     ///   - minimumDate: 最小时间
     ///   - maximumDate: 最大时间
     ///   - callback: 选中回调
-    class func show(with showModel: UIDatePickerMode, currentTime: Date? = Date(), minimumDate: Date? = nil, maximumDate: Date? = Date(), block: ((String)->Void)?) {
+    class func show(with showModel: UIDatePicker.Mode, currentTime: Date? = Date(), minimumDate: Date? = nil, maximumDate: Date? = Date(), block: ((String)->Void)?) {
         
         let picker = DatePickerTool(frame: CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
         if picker.isAnimating { return }
@@ -327,7 +327,7 @@ class AddressPickerTool: UIView {
     @objc private func sureAction() {
         
         self.cancleAction()
-        self.callback?(self.provinceStr + " " + self.cityStr + (self.showType == .provinceCity ? ("") : (" \(self.areaStr)")))
+        self.callback?(self.provinceStr + " " + self.cityStr + (self.showType == .provinceCity ? ("") : (String(describing: self.areaStr))))
     }
     
     required init?(coder aDecoder: NSCoder) {

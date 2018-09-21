@@ -102,7 +102,7 @@ extension UIView {
                 badgeView = BadgeView.instanced
                 badgeView.tag = 101
                 self.addSubview(badgeView)
-                self.bringSubview(toFront: badgeView)
+                self.bringSubviewToFront(badgeView)
                 
                 badgeView.transform = CGAffineTransform.init(scaleX: 0.01, y: 0.01)
                 UIView.animate(withDuration: 0.3, animations: {

@@ -163,7 +163,7 @@ class FalseNavBarView: UIView {
     
     /// 返回按钮
     lazy var leftBtn: UIButton = {
-        let btn = UIButton.init(type: UIButtonType.custom)
+        let btn = UIButton.init(type: UIButton.ButtonType.custom)
         btn.addTarget(self, action: #selector(backAction), for: .touchUpInside)
         return btn
     }()

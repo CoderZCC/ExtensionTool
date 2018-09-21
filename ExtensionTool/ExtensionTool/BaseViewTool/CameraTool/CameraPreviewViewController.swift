@@ -73,7 +73,7 @@ class CameraPreviewViewController: UIViewController {
         collectionView.isPagingEnabled = true
         
         collectionView.contentOffset = CGPoint.zero
-        collectionView.contentInset = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0)
+        collectionView.contentInset = UIEdgeInsets.init(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
         layout.itemSize = CGSize(width: collectionView.k_width, height: collectionView.k_height - 1.0)
         
         return collectionView
@@ -102,7 +102,7 @@ class CameraPreviewViewController: UIViewController {
         
         let layer = CAShapeLayer.init()
         layer.path = alphaPath.cgPath
-        layer.fillRule = kCAFillRuleEvenOdd
+        layer.fillRule = CAShapeLayerFillRule.evenOdd
         maskView.layer.mask = layer
         
         return maskView
@@ -268,7 +268,7 @@ class CameraPreviewCell: UICollectionViewCell {
         super.init(frame: frame)
         
         scrollView = UIScrollView(frame: self.contentView.bounds)
-        scrollView.contentInset = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0)
+        scrollView.contentInset = UIEdgeInsets.init(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
         self.contentView.addSubview(scrollView)
         scrollView.alwaysBounceVertical = true
         
@@ -310,7 +310,7 @@ class CameraPreviewCell: UICollectionViewCell {
             let height = kWidth / scale
             let topNum: CGFloat = (height - kWidth) / 2.0
             self.scrollView.contentSize = CGSize.init(width: 0.0, height: kHeight + topNum)
-            self.scrollView.contentInset = UIEdgeInsetsMake(topNum - 20.0, 0.0, 0.0, 0.0)
+            self.scrollView.contentInset = UIEdgeInsets.init(top: topNum - 20.0, left: 0.0, bottom: 0.0, right: 0.0)
         }
     }
     

@@ -94,7 +94,7 @@ class InputAssistView: UIView {
         
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.separatorInset = UIEdgeInsetsMake(0.0, self.tfFrame.origin.x, 0.0, 0.0)
+        tableView.separatorInset = UIEdgeInsets.init(top: 0.0, left: self.tfFrame.origin.x, bottom: 0.0, right: 0.0)
 
         self.addSubview(tableView)
         return tableView

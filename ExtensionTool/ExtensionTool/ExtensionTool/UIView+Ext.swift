@@ -258,11 +258,11 @@ extension UIView {
     func k_tapDismissKeyboard() {
         
         let tap = UITapGestureRecognizer.init(target: self, action: #selector(tapDismissAction))
-        NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardWillShow, object: nil, queue: OperationQueue.main) { (note) in
+        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: OperationQueue.main) { (note) in
             
             self.addGestureRecognizer(tap)
         }
-        NotificationCenter.default.addObserver(forName: NSNotification.Name.UIKeyboardDidHide, object: nil, queue: OperationQueue.main) { (note) in
+        NotificationCenter.default.addObserver(forName: UIResponder.keyboardDidHideNotification, object: nil, queue: OperationQueue.main) { (note) in
             
             self.removeGestureRecognizer(tap)
         }
