@@ -11,7 +11,6 @@
 		F016903B2106F40D00E0C60A /* HorizontalLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F016903A2106F40D00E0C60A /* HorizontalLabelView.swift */; };
 		F01690692106FB9D00E0C60A /* AlertViewTool.xib in Resources */ = {isa = PBXBuildFile; fileRef = F01690672106FB9D00E0C60A /* AlertViewTool.xib */; };
 		F016906A2106FB9D00E0C60A /* AlertViewTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01690682106FB9D00E0C60A /* AlertViewTool.swift */; };
-		F016906C2106FBDF00E0C60A /* AlertSheetTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F016906B2106FBDF00E0C60A /* AlertSheetTool.swift */; };
 		F016906E210704FA00E0C60A /* Badge+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F016906D210704FA00E0C60A /* Badge+Ext.swift */; };
 		F01690712107232600E0C60A /* VerticalADView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01690702107232600E0C60A /* VerticalADView.swift */; };
 		F016907321072A1D00E0C60A /* HorizontalADView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F016907221072A1D00E0C60A /* HorizontalADView.swift */; };
@@ -22,6 +21,7 @@
 		F01EC3FC210879BD00AE2D11 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01EC3FB210879BD00AE2D11 /* CalendarView.swift */; };
 		F0209BDB2154CB93006B417F /* MyNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0209BDA2154CB93006B417F /* MyNavigationBar.swift */; };
 		F0209BE32154D071006B417F /* MyNavbarTool.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F0209BE22154D071006B417F /* MyNavbarTool.bundle */; };
+		F0209BE52154E0C0006B417F /* AlertTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0209BE42154E0C0006B417F /* AlertTool.swift */; };
 		F021414621056CC40067D1E5 /* CameraListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F021414521056CC40067D1E5 /* CameraListViewController.swift */; };
 		F023CCE9212CF72400ABAD96 /* Address.plist in Resources */ = {isa = PBXBuildFile; fileRef = F023CCE8212CF72400ABAD96 /* Address.plist */; };
 		F02965BA2114404200EA4ADB /* EmotionPlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = F02965B32114404200EA4ADB /* EmotionPlist.plist */; };
@@ -86,7 +86,6 @@
 		F016903A2106F40D00E0C60A /* HorizontalLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalLabelView.swift; sourceTree = "<group>"; };
 		F01690672106FB9D00E0C60A /* AlertViewTool.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlertViewTool.xib; sourceTree = "<group>"; };
 		F01690682106FB9D00E0C60A /* AlertViewTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertViewTool.swift; sourceTree = "<group>"; };
-		F016906B2106FBDF00E0C60A /* AlertSheetTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertSheetTool.swift; sourceTree = "<group>"; };
 		F016906D210704FA00E0C60A /* Badge+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Badge+Ext.swift"; sourceTree = "<group>"; };
 		F01690702107232600E0C60A /* VerticalADView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalADView.swift; sourceTree = "<group>"; };
 		F016907221072A1D00E0C60A /* HorizontalADView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalADView.swift; sourceTree = "<group>"; };
@@ -98,6 +97,7 @@
 		F01EC3FB210879BD00AE2D11 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		F0209BDA2154CB93006B417F /* MyNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNavigationBar.swift; sourceTree = "<group>"; };
 		F0209BE22154D071006B417F /* MyNavbarTool.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MyNavbarTool.bundle; sourceTree = "<group>"; };
+		F0209BE42154E0C0006B417F /* AlertTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTool.swift; sourceTree = "<group>"; };
 		F021414521056CC40067D1E5 /* CameraListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraListViewController.swift; sourceTree = "<group>"; };
 		F023CCE8212CF72400ABAD96 /* Address.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Address.plist; sourceTree = "<group>"; };
 		F02965B32114404200EA4ADB /* EmotionPlist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EmotionPlist.plist; sourceTree = "<group>"; };
@@ -175,10 +175,10 @@
 		F016905E2106F9C400E0C60A /* LoadingTool */ = {
 			isa = PBXGroup;
 			children = (
-				F016906B2106FBDF00E0C60A /* AlertSheetTool.swift */,
 				F01690682106FB9D00E0C60A /* AlertViewTool.swift */,
 				F01690672106FB9D00E0C60A /* AlertViewTool.xib */,
 				F06F13E32154BBD100A5358D /* LoadingTool.swift */,
+				F0209BE42154E0C0006B417F /* AlertTool.swift */,
 			);
 			path = LoadingTool;
 			sourceTree = "<group>";
@@ -457,9 +457,9 @@
 				F0561C2F2101BA950007496F /* UILabel+Ext.swift in Sources */,
 				F02965BD2114404200EA4ADB /* BottomInputView4.swift in Sources */,
 				F01EC3FC210879BD00AE2D11 /* CalendarView.swift in Sources */,
+				F0209BE52154E0C0006B417F /* AlertTool.swift in Sources */,
 				F0B5D5A720FED64F00F642B1 /* AppDelegate+Push.swift in Sources */,
 				F02965BF2114404200EA4ADB /* BottomInputView1.swift in Sources */,
-				F016906C2106FBDF00E0C60A /* AlertSheetTool.swift in Sources */,
 				F01DCEDF2135565100512599 /* PhotoBrowserTool.swift in Sources */,
 				F02EF3442119955B0086C98A /* DownLoadViewTool.swift in Sources */,
 				F0561C312101CFED0007496F /* Localized+Ext.swift in Sources */,
