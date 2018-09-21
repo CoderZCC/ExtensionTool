@@ -10,7 +10,7 @@ import UIKit
 
 extension UIResponder {
     
-    /// 加载框 带文字
+    /// 进度框 带文字
     ///
     /// - Parameters:
     ///   - text: 文字
@@ -31,7 +31,7 @@ extension UIResponder {
     }
     
     /// 加载不带文字 支持点击取消
-    func showLoadingCanCancle() {
+    @objc func showLoadingCanCancle() {
         
         if Thread.isMainThread {
             
@@ -49,7 +49,7 @@ extension UIResponder {
     /// 加载框带文字 无法点击取消
     ///
     /// - Parameter text: 文字
-    func showLoading(_ text: String? = nil) {
+    @objc func showLoading(_ text: String? = nil) {
         
         if Thread.isMainThread {
             
@@ -64,10 +64,19 @@ extension UIResponder {
         }
     }
     
+    /// 可以翻转
+    ///
+    /// - Parameter text:
+    func showTextWithHorizontal(_ text: String) {
+        
+        LoadingTool.sharedInstance.isTurn = true
+        self.showText(text)
+    }
+    
     /// 提示信息 带文字
     ///
     /// - Parameter text: 文字
-    func showText(_ text: String?) {
+    @objc func showText(_ text: String?) {
         
         if Thread.isMainThread {
             
@@ -83,12 +92,12 @@ extension UIResponder {
     }
     
     /// 隐藏试图
-    func hideHUD() {
+    @objc func hideHUD() {
         
         if Thread.isMainThread {
             
             LoadingTool.sharedInstance.hiddenAllHUD()
-            
+
         } else {
             
             DispatchQueue.main.async {
@@ -102,12 +111,14 @@ extension UIResponder {
 class LoadingTool: UIView {
     
     /// 全局对象
-    static let sharedInstance: LoadingTool = LoadingTool.init(frame: UIScreen.main.bounds)
-    /// 自动消失时间
-    static private let hiddenDuarion: TimeInterval = 2.0
+    static let sharedInstance: LoadingTool = LoadingTool(frame: UIScreen.main.bounds)
+    /// 是否可以翻转屏幕
+    var isTurn: Bool = false
     
+    /// 自动消失时间
+    static private let hiddenDuarion: TimeInterval = 1.2
     //MARK: -文字框
-    private let textFont: UIFont = UIFont.systemFont(ofSize: 16.0)
+    private let textFont: UIFont = UIFont.systemFont(ofSize: 14.0)
     /// 文字框的圆角大小
     private let textCornerRadius: CGFloat = 4.0
     /// 文字框的最大宽度
@@ -228,25 +239,45 @@ extension LoadingTool {
         // 防止重复添加
         if self.blackView.superview == nil {
             
-            self.blackView.alpha = 1.0
+            if self.textL.superview != nil {
+                
+                self.textL.text = nil
+                self.textL.frame = CGRect.zero
+                self.textL.transform = CGAffineTransform.identity
+                self.textL.removeFromSuperview()
+            }
+            
             LoadingTool.baseView.addSubview(self)
+            self.blackView.alpha = 1.0
             self.addSubview(self.blackView)
             
-            self.blackView.frame = CGRect(origin: CGPoint.zero, size: self.blackSizeWithT)
-            self.blackView.addSubview(self.progressView)
-            self.progressView.center = CGPoint(x: self.blackView.center.x, y: self.blackView.center.y - 10.0)
+            self.showProgressWith(text)
+
+        } else {
             
-            self.blackView.center = self.center
-            
-            self.textL.alpha = 1.0
-            self.textL.text = text
-            self.textL.frame = CGRect(x: 0.0, y: self.progressView.frame.maxY + 8.0, width: self.blackView.bounds.width, height: 20.0)
-            self.blackView.addSubview(self.textL)
+            UIView.animate(withDuration: 0.25) {
+                
+                self.activeView.stopAnimating()
+                self.activeView.removeFromSuperview()
+                
+                self.showProgressWith(text)
+            }
         }
         self.progressLayer?.strokeEnd = progress
         if progress >= 1.0 {
             
-            debugPrint("完成")
+            self.progressView.alpha = 0.0
+            self.progressLayer?.strokeEnd = 0.0
+            self.progressView.removeFromSuperview()
+            
+            self.textL.text = nil
+            self.textL.alpha = 0.0
+            self.textL.frame = CGRect.zero
+            self.textL.removeFromSuperview()
+            
+            self.blackView.removeFromSuperview()
+            self.removeFromSuperview()
+            
             block?()
         }
     }
@@ -264,8 +295,16 @@ extension LoadingTool {
         // 防止重复添加
         if self.blackView.superview == nil {
             
-            self.blackView.alpha = 1.0
+            if self.textL.superview != nil {
+                
+                self.textL.text = nil
+                self.textL.frame = CGRect.zero
+                self.textL.transform = CGAffineTransform.identity
+                self.textL.removeFromSuperview()
+            }
+            
             LoadingTool.baseView.addSubview(self)
+            self.blackView.alpha = 1.0
             self.addSubview(self.blackView)
             
             if isClickCancle {
@@ -316,7 +355,7 @@ extension LoadingTool {
             } else {
                 
                 // (菊花 + 文字) 变为 菊花
-                if self.textL.alpha != 0.0 {
+                if self.textL.superview != nil {
                     
                     UIView.animate(withDuration: 0.25, animations: {
                         
@@ -384,7 +423,7 @@ extension LoadingTool {
             self.activeView.stopAnimating()
             self.blackView.removeFromSuperview()
             self.activeView.removeFromSuperview()
-            
+
             if self.textL.superview != nil {
                 
                 self.textL.text = nil
@@ -400,10 +439,7 @@ extension LoadingTool {
             
             LoadingTool.baseView.addSubview(self)
             self.addSubview(self.textL)
-            UIView.animate(withDuration: 0.25) {
-                
-                self.textL.alpha = 1.0
-            }
+            self.textL.alpha = 1.0
         }
         // 赋值文字
         self.textL.text = text
@@ -417,6 +453,33 @@ extension LoadingTool {
             self.textL.frame = CGRect.init(origin: CGPoint.zero, size: CGSize(width: self.textMaxWidth, height: self.textSize(text, font: self.textFont) + 15.0))
         }
         self.textL.center = self.center
+        
+        if self.isTurn {
+            
+            let orient = UIDevice.current.orientation
+            switch orient {
+            case .portrait :
+                
+                // 竖屏
+                self.textL.transform = CGAffineTransform.identity
+                
+            case .landscapeLeft:
+                
+                // 左翻转
+                self.textL.transform = CGAffineTransform(rotationAngle: CGFloat.pi / 2.0)
+                
+            case .landscapeRight:
+                
+                // 右翻转
+                self.textL.transform = CGAffineTransform(rotationAngle: -CGFloat.pi / 2.0)
+                
+            default:
+                
+                break
+            }
+            self.isTurn = false
+        }
+        
         // 自动移除
         self.perform(#selector(hiddenTextHUD), with: nil, afterDelay: LoadingTool.hiddenDuarion)
     }
@@ -431,10 +494,10 @@ extension LoadingTool {
         }) { (isOk) in
             
             self.textL.text = nil
-            self.textL.alpha = 0.0
             self.textL.frame = CGRect.zero
+            self.textL.transform = CGAffineTransform.identity
             self.textL.removeFromSuperview()
-            
+
             self.removeFromSuperview()
             self.baseViewsArr.removeAll(keepingCapacity: false)
         }
@@ -449,17 +512,26 @@ extension LoadingTool {
             
         }) { (isOk) in
             
-            self.activeView.stopAnimating()
-            self.activeView.removeFromSuperview()
+            if self.activeView.superview != nil {
+                
+                self.activeView.stopAnimating()
+                self.activeView.removeFromSuperview()
+            }
             
-            self.blackView.alpha = 0.0
-            self.blackView.removeFromSuperview()
+            if self.textL.superview != nil {
+                
+                self.textL.text = nil
+                self.textL.alpha = 0.0
+                self.textL.frame = CGRect.zero
+                self.textL.removeFromSuperview()
+            }
             
-            self.textL.text = nil
-            self.textL.alpha = 0.0
-            self.textL.frame = CGRect.zero
-            self.textL.removeFromSuperview()
+            if self.blackView.superview != nil {
+                
+                self.blackView.removeFromSuperview()
+            }
             
+            self.alpha = 1.0
             self.removeFromSuperview()
             self.baseViewsArr.removeAll(keepingCapacity: false)
         }
@@ -474,6 +546,22 @@ extension LoadingTool {
         self.hiddenLoadingHUD()
     }
     
+    /// 展示 进度
+    private func showProgressWith(_ text: String) {
+        
+        self.blackView.frame = CGRect(origin: CGPoint.zero, size: self.blackSizeWithT)
+        self.progressView.alpha = 1.0
+        self.blackView.addSubview(self.progressView)
+        self.progressView.center = CGPoint(x: self.blackView.center.x, y: self.blackView.center.y - 10.0)
+        
+        self.blackView.center = self.center
+        
+        self.textL.alpha = 1.0
+        self.textL.text = text
+        self.textL.frame = CGRect(x: 0.0, y: self.progressView.frame.maxY + 8.0, width: self.blackView.bounds.width, height: 20.0)
+        self.blackView.addSubview(self.textL)
+    }
+    
     /// 展示 (菊花 + 文字)
     private func showHUDWithText(_ text: String) {
         
@@ -484,6 +572,7 @@ extension LoadingTool {
         
         self.activeView.startAnimating()
         
+        self.textL.removeFromSuperview()
         self.textL.alpha = 1.0
         self.textL.text = text
         self.textL.frame = CGRect(x: 0.0, y: self.activeView.frame.maxY + 8.0, width: self.blackView.bounds.width, height: 20.0)

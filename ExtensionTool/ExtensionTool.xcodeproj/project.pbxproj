@@ -39,6 +39,7 @@
 		F0561C3F2101DEF50007496F /* CameraTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0561C3E2101DEF50007496F /* CameraTool.swift */; };
 		F0561C412101E6590007496F /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0561C402101E6590007496F /* CameraViewController.swift */; };
 		F05D566E2148C515002DC1B8 /* PickerTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05D566D2148C514002DC1B8 /* PickerTool.swift */; };
+		F06F13E42154BBD100A5358D /* LoadingTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06F13E32154BBD100A5358D /* LoadingTool.swift */; };
 		F077773520F2FC39003D7BD8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F077773420F2FC39003D7BD8 /* AppDelegate.swift */; };
 		F077773720F2FC39003D7BD8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F077773620F2FC39003D7BD8 /* ViewController.swift */; };
 		F077773A20F2FC39003D7BD8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F077773820F2FC39003D7BD8 /* Main.storyboard */; };
@@ -74,7 +75,6 @@
 		F0B5D5C120FF409600F642B1 /* UIScrollView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B5D5C020FF409600F642B1 /* UIScrollView+Ext.swift */; };
 		F0C452A42105715A00571B0A /* CameraPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0C452A32105715A00571B0A /* CameraPreviewViewController.swift */; };
 		F0D32FF921537822003AE04A /* WKWebView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D32FF821537822003AE04A /* WKWebView+Ext.swift */; };
-		F0D32FFB21538261003AE04A /* LoadingTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D32FFA21538261003AE04A /* LoadingTool.swift */; };
 		F0D686672106D8360098B388 /* VerticalLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0D686662106D8360098B388 /* VerticalLabelView.swift */; };
 		F0F7B7C42117EED900AD0659 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0F7B7C32117EED900AD0659 /* CircleView.swift */; };
 /* End PBXBuildFile section */
@@ -115,6 +115,7 @@
 		F0561C3E2101DEF50007496F /* CameraTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraTool.swift; sourceTree = "<group>"; };
 		F0561C402101E6590007496F /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		F05D566D2148C514002DC1B8 /* PickerTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTool.swift; sourceTree = "<group>"; };
+		F06F13E32154BBD100A5358D /* LoadingTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingTool.swift; sourceTree = "<group>"; };
 		F077773120F2FC39003D7BD8 /* ExtensionTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExtensionTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F077773420F2FC39003D7BD8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F077773620F2FC39003D7BD8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -152,7 +153,6 @@
 		F0B5D5C020FF409600F642B1 /* UIScrollView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Ext.swift"; sourceTree = "<group>"; };
 		F0C452A32105715A00571B0A /* CameraPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewViewController.swift; sourceTree = "<group>"; };
 		F0D32FF821537822003AE04A /* WKWebView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WKWebView+Ext.swift"; sourceTree = "<group>"; };
-		F0D32FFA21538261003AE04A /* LoadingTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingTool.swift; sourceTree = "<group>"; };
 		F0D686662106D8360098B388 /* VerticalLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalLabelView.swift; sourceTree = "<group>"; };
 		F0F7B7C32117EED900AD0659 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -174,7 +174,7 @@
 				F016906B2106FBDF00E0C60A /* AlertSheetTool.swift */,
 				F01690682106FB9D00E0C60A /* AlertViewTool.swift */,
 				F01690672106FB9D00E0C60A /* AlertViewTool.xib */,
-				F0D32FFA21538261003AE04A /* LoadingTool.swift */,
+				F06F13E32154BBD100A5358D /* LoadingTool.swift */,
 			);
 			path = LoadingTool;
 			sourceTree = "<group>";
@@ -455,9 +455,9 @@
 				F0B5D5B020FED64F00F642B1 /* UIViewController+Ext.swift in Sources */,
 				F05D566E2148C515002DC1B8 /* PickerTool.swift in Sources */,
 				F0C452A42105715A00571B0A /* CameraPreviewViewController.swift in Sources */,
+				F06F13E42154BBD100A5358D /* LoadingTool.swift in Sources */,
 				F0B5D5AC20FED64F00F642B1 /* UIColor+Ext.swift in Sources */,
 				F02965BB2114404200EA4ADB /* BottomInputView2.swift in Sources */,
-				F0D32FFB21538261003AE04A /* LoadingTool.swift in Sources */,
 				F0B5D5AA20FED64F00F642B1 /* UIButton+Ext.swift in Sources */,
 				F016906A2106FB9D00E0C60A /* AlertViewTool.swift in Sources */,
 				F01D2C422122768800B2F848 /* SearchViewController.swift in Sources */,
