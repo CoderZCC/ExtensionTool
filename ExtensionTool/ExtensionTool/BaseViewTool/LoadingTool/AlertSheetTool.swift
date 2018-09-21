@@ -63,13 +63,15 @@ class AlertSheetTool: UIView {
     /// 取消按钮大小 颜色
     private let cancleFont: UIFont = UIFont.systemFont(ofSize: 14.0)
     private let cancleColor: UIColor = UIColor.darkGray
+    /// 蒙版颜色
+    private let maskColor: UIColor = UIColor.black.withAlphaComponent(0.4)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         self.tag = 940425
         self.alpha = 0.0
-        self.backgroundColor = UIColor.black.withAlphaComponent(0.4)
+        self.backgroundColor = self.maskColor
     }
     
     required init?(coder aDecoder: NSCoder) {
