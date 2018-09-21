@@ -14,6 +14,7 @@ class SecondViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
      
+        self.k_setNavigationBarHidden(true, animated: false)
         //self.view.addSubview(self.webView)
         
 //        LoadingTool.sharedInstance.showText1("您的验证码已发送,请注意查收")

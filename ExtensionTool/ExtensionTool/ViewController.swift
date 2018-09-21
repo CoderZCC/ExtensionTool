@@ -12,11 +12,14 @@ class BaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        /*
         let backItem = UIBarButtonItem.init()
         backItem.title = ""
         self.navigationItem.backBarButtonItem = backItem
+        */
         
         self.view.backgroundColor = UIColor.k_colorWith(rgb: 216.0)
+        self.k_setupMyNavBar()
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

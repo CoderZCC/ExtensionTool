@@ -20,6 +20,8 @@
 		F01DCEDF2135565100512599 /* PhotoBrowserTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01DCEDE2135565100512599 /* PhotoBrowserTool.swift */; };
 		F01EC3F821083FC000AE2D11 /* BarrageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01EC3F721083FC000AE2D11 /* BarrageView.swift */; };
 		F01EC3FC210879BD00AE2D11 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F01EC3FB210879BD00AE2D11 /* CalendarView.swift */; };
+		F0209BDB2154CB93006B417F /* MyNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0209BDA2154CB93006B417F /* MyNavigationBar.swift */; };
+		F0209BE32154D071006B417F /* MyNavbarTool.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F0209BE22154D071006B417F /* MyNavbarTool.bundle */; };
 		F021414621056CC40067D1E5 /* CameraListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F021414521056CC40067D1E5 /* CameraListViewController.swift */; };
 		F023CCE9212CF72400ABAD96 /* Address.plist in Resources */ = {isa = PBXBuildFile; fileRef = F023CCE8212CF72400ABAD96 /* Address.plist */; };
 		F02965BA2114404200EA4ADB /* EmotionPlist.plist in Resources */ = {isa = PBXBuildFile; fileRef = F02965B32114404200EA4ADB /* EmotionPlist.plist */; };
@@ -94,6 +96,8 @@
 		F01EC3EC21081C2200AE2D11 /* Swift-OCHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Swift-OCHeader.h"; sourceTree = "<group>"; };
 		F01EC3F721083FC000AE2D11 /* BarrageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarrageView.swift; sourceTree = "<group>"; };
 		F01EC3FB210879BD00AE2D11 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		F0209BDA2154CB93006B417F /* MyNavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNavigationBar.swift; sourceTree = "<group>"; };
+		F0209BE22154D071006B417F /* MyNavbarTool.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MyNavbarTool.bundle; sourceTree = "<group>"; };
 		F021414521056CC40067D1E5 /* CameraListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraListViewController.swift; sourceTree = "<group>"; };
 		F023CCE8212CF72400ABAD96 /* Address.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Address.plist; sourceTree = "<group>"; };
 		F02965B32114404200EA4ADB /* EmotionPlist.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EmotionPlist.plist; sourceTree = "<group>"; };
@@ -199,6 +203,15 @@
 			path = LabelTool;
 			sourceTree = "<group>";
 		};
+		F0209BD92154CB74006B417F /* UINavBarTool */ = {
+			isa = PBXGroup;
+			children = (
+				F0209BDA2154CB93006B417F /* MyNavigationBar.swift */,
+				F0209BE22154D071006B417F /* MyNavbarTool.bundle */,
+			);
+			path = UINavBarTool;
+			sourceTree = "<group>";
+		};
 		F02965B22114404200EA4ADB /* InputView */ = {
 			isa = PBXGroup;
 			children = (
@@ -290,26 +303,27 @@
 		F0B5D58420FED64F00F642B1 /* BaseViewTool */ = {
 			isa = PBXGroup;
 			children = (
-				F02EF3402119955B0086C98A /* PhotoBrowerTool */,
-				F02965B22114404200EA4ADB /* InputView */,
-				F085C4802109576B00CB0D2B /* BottomView */,
-				F01EC3F321082AD800AE2D11 /* LabelTool */,
-				F016906F2107231300E0C60A /* ADScrollView */,
-				F016905E2106F9C400E0C60A /* LoadingTool */,
-				F0412040210091A20003F7A2 /* CameraTool */,
 				F0B5D58520FED64F00F642B1 /* AuthorityTool.swift */,
-				F091FBC9212BFBE200F347C3 /* PickerTool */,
-				F0B5D58620FED64F00F642B1 /* VideoPlayerView.swift */,
-				F0B5D58720FED64F00F642B1 /* kSaveDataTool.swift */,
-				F0B5D58820FED64F00F642B1 /* SliderDrawerViewController.swift */,
-				F0B5D58A20FED64F00F642B1 /* CircleImageView.swift */,
-				F0B5D58B20FED64F00F642B1 /* FalseNavBarView.swift */,
-				F0561C362101DBCA0007496F /* LanguageTool.swift */,
 				F01EC3F721083FC000AE2D11 /* BarrageView.swift */,
 				F01EC3FB210879BD00AE2D11 /* CalendarView.swift */,
-				F085C48921096E6F00CB0D2B /* CalendarView.xib */,
+				F0B5D58A20FED64F00F642B1 /* CircleImageView.swift */,
 				F0F7B7C32117EED900AD0659 /* CircleView.swift */,
+				F0B5D58B20FED64F00F642B1 /* FalseNavBarView.swift */,
+				F0B5D58720FED64F00F642B1 /* kSaveDataTool.swift */,
+				F0561C362101DBCA0007496F /* LanguageTool.swift */,
 				F01D2C412122768800B2F848 /* SearchViewController.swift */,
+				F0B5D58820FED64F00F642B1 /* SliderDrawerViewController.swift */,
+				F0B5D58620FED64F00F642B1 /* VideoPlayerView.swift */,
+				F085C48921096E6F00CB0D2B /* CalendarView.xib */,
+				F016906F2107231300E0C60A /* ADScrollView */,
+				F085C4802109576B00CB0D2B /* BottomView */,
+				F0412040210091A20003F7A2 /* CameraTool */,
+				F02965B22114404200EA4ADB /* InputView */,
+				F01EC3F321082AD800AE2D11 /* LabelTool */,
+				F016905E2106F9C400E0C60A /* LoadingTool */,
+				F02EF3402119955B0086C98A /* PhotoBrowerTool */,
+				F091FBC9212BFBE200F347C3 /* PickerTool */,
+				F0209BD92154CB74006B417F /* UINavBarTool */,
 			);
 			path = BaseViewTool;
 			sourceTree = "<group>";
@@ -419,6 +433,7 @@
 				F077773C20F2FC3A003D7BD8 /* Assets.xcassets in Resources */,
 				F085C4872109606E00CB0D2B /* SpecialView.xib in Resources */,
 				F01690692106FB9D00E0C60A /* AlertViewTool.xib in Resources */,
+				F0209BE32154D071006B417F /* MyNavbarTool.bundle in Resources */,
 				F085C4842109577D00CB0D2B /* BottomView.xib in Resources */,
 				F077773A20F2FC39003D7BD8 /* Main.storyboard in Resources */,
 				F023CCE9212CF72400ABAD96 /* Address.plist in Resources */,
@@ -487,6 +502,7 @@
 				F0B5D5AD20FED64F00F642B1 /* DispatchQueue+Ext.swift in Sources */,
 				F0D32FF921537822003AE04A /* WKWebView+Ext.swift in Sources */,
 				F0B5D5AF20FED64F00F642B1 /* ExtensionTool.swift in Sources */,
+				F0209BDB2154CB93006B417F /* MyNavigationBar.swift in Sources */,
 				F0B5D5A320FED64F00F642B1 /* UITextView+Ext.swift in Sources */,
 				F0B5D5A920FED64F00F642B1 /* UIBarButtonItem+Ext.swift in Sources */,
 				F0561C412101E6590007496F /* CameraViewController.swift in Sources */,
