@@ -44,7 +44,7 @@ extension NSObject {
     ///   - rightText: 右按钮文字
     ///   - leftAction: 左按钮事件
     ///   - rightAction: 右按钮事件
-    func showAlert(title: String? = nil, content: String? = nil, leftText: String = "取消", rightText: String = "确定", leftAction: (()->Void)? = nil, rightAction: (()->Void)? = nil) {
+    func showAlert(title: String? = nil, content: String? = nil, leftText: String = "取消", rightText: String = "确定", leftAction: (()->Void)? = nil, rightAction: (()->Void)?) {
         
         if Thread.isMainThread {
             
@@ -62,6 +62,60 @@ extension NSObject {
             }
         }
     }
+    
+    /// 展示确定框
+    ///
+    /// - Parameters:
+    ///   - title: 标题
+    ///   - content: 内容
+    ///   - text: 按钮文字
+    ///   - action: 按钮事件
+    func showAlert(title: String? = nil, content: String? = nil, text: String = "确定", action: (()->Void)?) {
+        
+        if Thread.isMainThread {
+            
+            if !AlertViewTool.isShowAlearly {
+                
+                let tool: AlertViewTool = AlertViewTool(frame: UIScreen.main.bounds)
+                tool.showAlet(title: title, content: content, text: text, block: action)
+            }
+            
+        } else {
+            
+            DispatchQueue.main.async {
+                
+                self.showAlert(title: title, content: content, text: text, action: action)
+            }
+        }
+    }
+    
+    /// 展示输入框
+    ///
+    /// - Parameters:
+    ///   - title: 标题
+    ///   - placeholder: 占位文字
+    ///   - leftText: 左按钮文字
+    ///   - rightText: 右按钮文字
+    ///   - leftAction: 左按钮事件
+    ///   - rightAction: 右按钮事件
+    func showInput(title: String? = nil, placeholder: String? = nil, leftText: String = "取消", rightText: String = "确定", leftAction: (()->Void)? = nil, rightAction: ((String)->Void)?) {
+        
+        if Thread.isMainThread {
+            
+            if !AlertViewTool.isShowAlearly {
+                
+                let tool: AlertViewTool = AlertViewTool(frame: UIScreen.main.bounds)
+                tool.showInputView(title: title, placeholder: placeholder, leftText: leftText, rightText: rightText, leftAction: leftAction, rightAction: rightAction)
+            }
+            
+        } else {
+            
+            DispatchQueue.main.async {
+                
+                self.showInput(title: title, placeholder: placeholder, leftText: leftText, rightText: rightText, leftAction: leftAction, rightAction: rightAction)
+            }
+        }
+    }
 }
 
 class AlertSheetTool: UIView {
@@ -71,7 +125,10 @@ class AlertSheetTool: UIView {
         
         return UIApplication.shared.keyWindow!.viewWithTag(940425) != nil
     }
-    
+    /// 显示动画时长
+    private let showDuration: TimeInterval = 0.25
+    /// 结束动画时长
+    private let hideDuration: TimeInterval = 0.25
     /// 一行文字的高度
     private let signleHeight: CGFloat = 44.0
     /// 取消按钮高度
@@ -79,7 +136,7 @@ class AlertSheetTool: UIView {
     /// 间隔高度
     private let spaceHeight: CGFloat = 6.0
     /// iPhoneX底部高度
-    private let bottomHeight: CGFloat = kBottomSpace
+    private let bottomHeight: CGFloat = UIScreen.main.bounds.height >= 812.0 ? 34.0 : 0.0
     /// 间隔背景颜色
     private let spaceColor: UIColor = UIColor.lightGray
     /// 标题大小 颜色
@@ -135,7 +192,7 @@ class AlertSheetTool: UIView {
         UIApplication.shared.keyWindow?.addSubview(self)
         
         self.showView.transform = CGAffineTransform(translationX: 0.0, y: self.bounds.height)
-        UIView.animate(withDuration: 0.25, animations: {
+        UIView.animate(withDuration: self.showDuration, animations: {
             
             self.alpha = 1.0
             self.showView.transform = CGAffineTransform.identity
@@ -144,18 +201,17 @@ class AlertSheetTool: UIView {
     
     func hideSheet() {
         
-        UIView.animate(withDuration: 0.25, animations: {
+        UIView.animate(withDuration: self.hideDuration, animations: {
             
             self.alpha = 0.0
             self.showView.transform = CGAffineTransform(translationX: 0.0, y: self.bounds.height)
             
         }) { (isOk) in
             
+            for subView in self.showView.subviews {
+                subView.removeFromSuperview()
+            }
             self.showView.removeFromSuperview()
-            self.tableView.removeFromSuperview()
-            self.cancleView.removeFromSuperview()
-            self.safeAreaView.removeFromSuperview()
-            
             self.removeFromSuperview()
         }
     }
@@ -275,16 +331,13 @@ class AlertViewTool: UIView {
         
         return UIApplication.shared.keyWindow!.viewWithTag(950412) != nil
     }
-    /// 控件宽度
-    private let showWidth: CGFloat = UIScreen.main.bounds.width - 100.0
-    /// 两个按钮间的距离
-    private let btnSpace: CGFloat = 30.0
-    /// 按钮距离左右两边的距离
-    private let btnMarginAtLeft: CGFloat = 15.0
-    /// 按钮高度
-    private let btnHeight: CGFloat = 35.0
-    /// 按钮距离底部的间隔
-    private let btnMarginAtBottom: CGFloat = 15.0
+    //MARK: -其他
+    /// 蒙版颜色
+    private let maskColor: UIColor = UIColor.black.withAlphaComponent(0.4)
+    /// 显示动画时长
+    private let showDuration: TimeInterval = 0.25
+    /// 结束动画时长
+    private let hideDuration: TimeInterval = 0.25
     
     //MARK: -标题内容
     /// 标题字体
@@ -299,8 +352,26 @@ class AlertViewTool: UIView {
     private let contentSpaceWithTitle: CGFloat = 8.0
     /// 内容和按钮的间隔
     private let contentSpaceWithBtn: CGFloat = 10.0
-    /// 蒙版颜色
-    private let maskColor: UIColor = UIColor.black.withAlphaComponent(0.4)
+    
+    //MARK: -按钮
+    /// 控件宽度
+    private let showWidth: CGFloat = UIScreen.main.bounds.width - 100.0
+    /// 两个按钮间的距离
+    private let btnSpace: CGFloat = 30.0
+    /// 按钮距离左右两边的距离
+    private let btnMarginAtLeft: CGFloat = 15.0
+    /// 按钮高度
+    private let btnHeight: CGFloat = 35.0
+    /// 按钮距离底部的间隔
+    private let btnMarginAtBottom: CGFloat = 15.0
+    
+    //MARK: -输入框
+    /// 文字大小
+    private let textFont: UIFont = UIFont.systemFont(ofSize: 15.0)
+    /// 文字颜色
+    private let textColor: UIColor = UIColor.black
+    /// 光标颜色
+    private let tinColor: UIColor = UIColor.darkGray
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -314,8 +385,8 @@ class AlertViewTool: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    /// 展示
-    func showAlet(title: String? = nil, content: String? = nil, leftText: String = "取消", rightText: String = "确定", leftAction: (()->Void)? = nil, rightAction: (()->Void)? = nil) {
+    /// 展示 两个按钮
+    func showAlet(title: String? = nil, content: String? = nil, leftText: String = "取消", rightText: String = "确定", leftAction: (()->Void)? = nil, rightAction: (()->Void)?) {
         
         self.addSubview(self.showView)
         // 标题高度
@@ -342,7 +413,7 @@ class AlertViewTool: UIView {
         self.leftBtn.setTitle(leftText, for: .normal)
         self.rightBtn.setTitle(rightText, for: .normal)
         self.leftAction = leftAction
-        self.leftAction = rightAction
+        self.rightAction = rightAction
         self.showView.addSubview(self.leftBtn)
         self.showView.addSubview(self.rightBtn)
         // 父视图尺寸计算
@@ -351,35 +422,122 @@ class AlertViewTool: UIView {
         // 执行动画
         self.showView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
         UIApplication.shared.keyWindow?.addSubview(self)
-        UIView.animate(withDuration: 0.25, delay: 0/0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options: .allowAnimatedContent, animations: {
+        UIView.animate(withDuration: self.showDuration, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options: .allowAnimatedContent, animations: {
             
             self.alpha = 1.0
             self.showView.transform = CGAffineTransform.identity
         })
     }
     
+    /// 一个按钮
+    func showAlet(title: String? = nil, content: String? = nil, text: String = "确定", block: (()->Void)?) {
+        
+        self.addSubview(self.showView)
+        // 标题高度
+        if let title = title {
+            
+            self.titleL.text = title
+            var newFrame = self.titleL.frame
+            newFrame.size.height = self.textHeight(text: title, font: self.titleFont)
+            self.titleL.frame = newFrame
+            
+            self.showView.addSubview(self.titleL)
+        }
+        // 内容高度
+        if let content = content {
+            
+            let contentTopMargin = title == nil ? (0.0) : (self.titleL.frame.maxY)
+            self.contentL.frame = CGRect(x: self.textMarginAtLeft, y: contentTopMargin + self.contentSpaceWithTitle, width: self.showWidth - self.textMarginAtLeft * 2.0, height: self.textHeight(text: content, font: self.contentFont))
+            self.contentL.text = content
+            self.showView.addSubview(self.contentL)
+        }
+        // 按钮位置计算
+        let btnTopMargin = content == nil ? (self.titleL.frame.maxY) : (self.contentL.frame.maxY)
+        self.leftBtn.frame = CGRect(x: (self.showWidth - self.btnWidth ) / 2.0, y: btnTopMargin + self.contentSpaceWithBtn, width: self.btnWidth, height: self.btnHeight)
+        self.leftBtn.setTitle(text, for: .normal)
+        self.leftAction = block
+        self.showView.addSubview(self.leftBtn)
+        // 父视图尺寸计算
+        self.showView.frame = CGRect(x: 0.0, y: 0.0, width: self.showWidth, height: self.leftBtn.frame.maxY + self.btnMarginAtBottom)
+        self.showView.center = self.center
+        // 执行动画
+        self.showView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+        UIApplication.shared.keyWindow?.addSubview(self)
+        UIView.animate(withDuration: self.showDuration, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options: .allowAnimatedContent, animations: {
+            
+            self.alpha = 1.0
+            self.showView.transform = CGAffineTransform.identity
+        })
+    }
+    
+    /// 输入框
+    func showInputView(title: String? = nil, placeholder: String? = nil, leftText: String = "取消", rightText: String = "确定", leftAction: (()->Void)? = nil, rightAction: ((String)->Void)?) {
+    
+        self.addSubview(self.showView)
+        // 标题高度
+        if let title = title {
+            
+            self.titleL.text = title
+            var newFrame = self.titleL.frame
+            newFrame.size.height = self.textHeight(text: title, font: self.titleFont)
+            self.titleL.frame = newFrame
+            
+            self.showView.addSubview(self.titleL)
+        }
+        // 输入框
+        let topMargin = title == nil ? (self.titleMarginAtTop) : (self.titleL.frame.maxY + self.contentSpaceWithTitle)
+        self.textField.frame = CGRect(x: self.textMarginAtLeft, y: topMargin, width: self.showWidth - self.textMarginAtLeft * 2.0, height: 35.0)
+        self.textField.placeholder = placeholder
+        self.showView.addSubview(self.textField)
+
+        // 按钮位置计算
+        self.leftBtn.frame = CGRect(x: self.btnMarginAtLeft, y: self.textField.frame.maxY + self.contentSpaceWithBtn, width: self.btnWidth, height: self.btnHeight)
+        self.leftBtn.setTitle(leftText, for: .normal)
+        self.rightBtn.setTitle(rightText, for: .normal)
+        self.leftAction = leftAction
+        self.textAction = rightAction
+        self.showView.addSubview(self.leftBtn)
+        self.showView.addSubview(self.rightBtn)
+        // 父视图尺寸计算
+        self.showView.frame = CGRect(x: 0.0, y: 0.0, width: self.showWidth, height: self.leftBtn.frame.maxY + self.btnMarginAtBottom)
+        self.showView.center = self.center
+        // 执行动画
+        self.showView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
+        UIApplication.shared.keyWindow?.addSubview(self)
+        UIView.animate(withDuration: self.showDuration, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.0, options: .allowAnimatedContent, animations: {
+            
+            self.alpha = 1.0
+            self.showView.transform = CGAffineTransform.identity
+            
+        }, completion: { (isOk) in
+        
+            self.textField.becomeFirstResponder()
+        })
+    }
+    
     /// 隐藏
     func hidenAlert() {
         
-        UIView.animate(withDuration: 0.25, animations: {
+        UIView.animate(withDuration: self.hideDuration, animations: {
             
             self.alpha = 0.0
             self.showView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
             
         }) { (isOk) in
             
-            self.titleL.removeFromSuperview()
-            self.contentL.removeFromSuperview()
-            self.leftBtn.removeFromSuperview()
-            self.rightBtn.removeFromSuperview()
-            
+            for subView in self.showView.subviews {
+                
+                subView.removeFromSuperview()
+            }
+            self.showView.removeFromSuperview()
             self.removeFromSuperview()
         }
     }
     
     private var leftAction: (()->Void)?
     private var rightAction: (()->Void)?
-    
+    private var textAction: ((String)->Void)?
+
     /// 计算文字高度
     private func textHeight(text: String, font: UIFont) -> CGFloat {
         let rect = NSString(string: text).boundingRect(with: CGSize(width: self.showWidth - self.textMarginAtLeft * 2.0, height: 100.0), options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font : font], context: nil)
@@ -418,6 +576,15 @@ class AlertViewTool: UIView {
         
         return label
     }()
+    private lazy var textField: UITextField = {
+        let tf = UITextField(frame: CGRect.zero)
+        tf.borderStyle = .roundedRect
+        tf.font = self.textFont
+        tf.textColor = self.textColor
+        tf.tintColor = self.tinColor
+        
+        return tf
+    }()
     
     private lazy var leftBtn: UIButton = {
         let btn = UIButton(type: .system)
@@ -442,6 +609,7 @@ class AlertViewTool: UIView {
         btn.clipsToBounds = true
         btn.k_addTarget { [unowned self] in
             
+            self.textAction?(self.textField.text ?? "")
             self.rightAction?()
             self.hidenAlert()
         }
