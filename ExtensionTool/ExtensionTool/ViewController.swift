@@ -34,13 +34,20 @@ class ViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        self.showAlert(title: "提示", content: "哈哈哈") {
+            
+            
+        }
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 
-        let secondVC = SecondViewController()
-        self.navigationController?.pushViewController(secondVC, animated: true)
+        self.showAlert(title: "确定要清理缓存吗?", content: nil) {
+            
+            
+        }
+//        let secondVC = SecondViewController()
+//        self.navigationController?.pushViewController(secondVC, animated: true)
     }
 
     override func didReceiveMemoryWarning() {

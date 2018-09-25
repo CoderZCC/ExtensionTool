@@ -19,10 +19,7 @@ class SecondViewController: BaseViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 
-        self.showAlertView(title: "提示", message: "王双是XXX") {
-            
-            
-        }
+
     }
     
     override func didReceiveMemoryWarning() {
