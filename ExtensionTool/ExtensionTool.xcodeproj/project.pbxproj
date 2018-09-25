@@ -29,6 +29,7 @@
 		F02965BF2114404200EA4ADB /* BottomInputView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02965B82114404200EA4ADB /* BottomInputView1.swift */; };
 		F02965C02114404200EA4ADB /* BottomInputView5.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02965B92114404200EA4ADB /* BottomInputView5.swift */; };
 		F02EF3442119955B0086C98A /* DownLoadViewTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02EF3422119955B0086C98A /* DownLoadViewTool.swift */; };
+		F03ECBB22159FD78005ACAC8 /* FPSLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03ECBB12159FD78005ACAC8 /* FPSLabel.swift */; };
 		F0412021210079BB0003F7A2 /* Timer+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0412020210079BB0003F7A2 /* Timer+Ext.swift */; };
 		F054045321002C9600E3EF87 /* PushFromStr+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F054045221002C9600E3EF87 /* PushFromStr+Ext.swift */; };
 		F0561C2F2101BA950007496F /* UILabel+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0561C2E2101BA950007496F /* UILabel+Ext.swift */; };
@@ -103,6 +104,7 @@
 		F02965B82114404200EA4ADB /* BottomInputView1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomInputView1.swift; sourceTree = "<group>"; };
 		F02965B92114404200EA4ADB /* BottomInputView5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomInputView5.swift; sourceTree = "<group>"; };
 		F02EF3422119955B0086C98A /* DownLoadViewTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownLoadViewTool.swift; sourceTree = "<group>"; };
+		F03ECBB12159FD78005ACAC8 /* FPSLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FPSLabel.swift; sourceTree = "<group>"; };
 		F0412020210079BB0003F7A2 /* Timer+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timer+Ext.swift"; sourceTree = "<group>"; };
 		F04930F920F4A08700787CC8 /* ExtensionTool.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ExtensionTool.entitlements; sourceTree = "<group>"; };
 		F054045221002C9600E3EF87 /* PushFromStr+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PushFromStr+Ext.swift"; sourceTree = "<group>"; };
@@ -229,6 +231,15 @@
 			path = PhotoBrowerTool;
 			sourceTree = "<group>";
 		};
+		F03ECBB02159FD78005ACAC8 /* FPSCheck */ = {
+			isa = PBXGroup;
+			children = (
+				F03ECBB12159FD78005ACAC8 /* FPSLabel.swift */,
+			);
+			name = FPSCheck;
+			path = "../../../../../项目/SVB_2018-03-13/SuperVolley/SuperVolley/Class/Tools/FPSCheck";
+			sourceTree = "<group>";
+		};
 		F0412040210091A20003F7A2 /* CameraTool */ = {
 			isa = PBXGroup;
 			children = (
@@ -307,6 +318,7 @@
 				F0B5D58A20FED64F00F642B1 /* CircleImageView.swift */,
 				F0F7B7C32117EED900AD0659 /* CircleView.swift */,
 				F0B5D58B20FED64F00F642B1 /* FalseNavBarView.swift */,
+				F03ECBB02159FD78005ACAC8 /* FPSCheck */,
 				F02965B22114404200EA4ADB /* InputView */,
 				F0B5D58720FED64F00F642B1 /* kSaveDataTool.swift */,
 				F01EC3F321082AD800AE2D11 /* LabelTool */,
@@ -470,6 +482,7 @@
 				F0B5D5AA20FED64F00F642B1 /* UIButton+Ext.swift in Sources */,
 				F01D2C422122768800B2F848 /* SearchViewController.swift in Sources */,
 				F091FBC8212BC47D00F347C3 /* NotificationCenter+Ext.swift in Sources */,
+				F03ECBB22159FD78005ACAC8 /* FPSLabel.swift in Sources */,
 				F0B5D5B120FED64F00F642B1 /* UIView+Ext.swift in Sources */,
 				F0B5D5C120FF409600F642B1 /* UIScrollView+Ext.swift in Sources */,
 				F02965C02114404200EA4ADB /* BottomInputView5.swift in Sources */,

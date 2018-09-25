@@ -100,7 +100,6 @@ class AlertSheetTool: UIView {
         self.tag = 940425
         self.alpha = 0.0
         self.backgroundColor = self.maskColor
-        self.showView.transform = CGAffineTransform(translationX: 0.0, y: self.bounds.height)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -125,8 +124,8 @@ class AlertSheetTool: UIView {
         }
         // 添加控件
         let tabHeight = CGFloat(self.textArr.count) * self.signleHeight
-        let allHeight = tabHeight + self.bottomHeight + self.spaceHeight
-        self.showView.frame = CGRect(x: 0.0, y: self.frame.maxY - allHeight - self.bottomHeight, width: self.bounds.width, height: allHeight)
+        let allHeight = tabHeight + self.cancleHeight + self.bottomHeight + self.spaceHeight
+        self.showView.frame = CGRect(x: 0.0, y: self.frame.maxY - allHeight, width: self.bounds.width, height: allHeight)
         
         self.addSubview(self.showView)
         self.tableView.frame = CGRect(x: 0.0, y: 0.0, width: self.bounds.width, height: tabHeight)
@@ -135,6 +134,7 @@ class AlertSheetTool: UIView {
         self.showView.addSubview(self.safeAreaView)
         UIApplication.shared.keyWindow?.addSubview(self)
         
+        self.showView.transform = CGAffineTransform(translationX: 0.0, y: self.bounds.height)
         UIView.animate(withDuration: 0.25, animations: {
             
             self.alpha = 1.0
