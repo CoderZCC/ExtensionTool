@@ -297,27 +297,27 @@
 		F0B5D58420FED64F00F642B1 /* BaseViewTool */ = {
 			isa = PBXGroup;
 			children = (
+				F016906F2107231300E0C60A /* ADScrollView */,
 				F0B5D58520FED64F00F642B1 /* AuthorityTool.swift */,
 				F01EC3F721083FC000AE2D11 /* BarrageView.swift */,
+				F085C4802109576B00CB0D2B /* BottomView */,
 				F01EC3FB210879BD00AE2D11 /* CalendarView.swift */,
+				F085C48921096E6F00CB0D2B /* CalendarView.xib */,
+				F0412040210091A20003F7A2 /* CameraTool */,
 				F0B5D58A20FED64F00F642B1 /* CircleImageView.swift */,
 				F0F7B7C32117EED900AD0659 /* CircleView.swift */,
 				F0B5D58B20FED64F00F642B1 /* FalseNavBarView.swift */,
-				F0B5D58720FED64F00F642B1 /* kSaveDataTool.swift */,
-				F0561C362101DBCA0007496F /* LanguageTool.swift */,
-				F01D2C412122768800B2F848 /* SearchViewController.swift */,
-				F0B5D58820FED64F00F642B1 /* SliderDrawerViewController.swift */,
-				F0B5D58620FED64F00F642B1 /* VideoPlayerView.swift */,
-				F085C48921096E6F00CB0D2B /* CalendarView.xib */,
-				F016906F2107231300E0C60A /* ADScrollView */,
-				F085C4802109576B00CB0D2B /* BottomView */,
-				F0412040210091A20003F7A2 /* CameraTool */,
 				F02965B22114404200EA4ADB /* InputView */,
+				F0B5D58720FED64F00F642B1 /* kSaveDataTool.swift */,
 				F01EC3F321082AD800AE2D11 /* LabelTool */,
+				F0561C362101DBCA0007496F /* LanguageTool.swift */,
 				F016905E2106F9C400E0C60A /* LoadingTool */,
 				F02EF3402119955B0086C98A /* PhotoBrowerTool */,
 				F091FBC9212BFBE200F347C3 /* PickerTool */,
+				F01D2C412122768800B2F848 /* SearchViewController.swift */,
+				F0B5D58820FED64F00F642B1 /* SliderDrawerViewController.swift */,
 				F0209BD92154CB74006B417F /* UINavBarTool */,
+				F0B5D58620FED64F00F642B1 /* VideoPlayerView.swift */,
 			);
 			path = BaseViewTool;
 			sourceTree = "<group>";
