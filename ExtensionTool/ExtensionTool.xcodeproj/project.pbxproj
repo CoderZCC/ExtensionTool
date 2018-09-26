@@ -28,8 +28,8 @@
 		F02965BE2114404200EA4ADB /* BottomInputView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02965B72114404200EA4ADB /* BottomInputView3.swift */; };
 		F02965BF2114404200EA4ADB /* BottomInputView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02965B82114404200EA4ADB /* BottomInputView1.swift */; };
 		F02965C02114404200EA4ADB /* BottomInputView5.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02965B92114404200EA4ADB /* BottomInputView5.swift */; };
+		F02E55BB215A3BEE00656FD8 /* LoadingTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02E55BA215A3BEE00656FD8 /* LoadingTool.swift */; };
 		F02EF3442119955B0086C98A /* DownLoadViewTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02EF3422119955B0086C98A /* DownLoadViewTool.swift */; };
-		F03ECBB22159FD78005ACAC8 /* FPSLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03ECBB12159FD78005ACAC8 /* FPSLabel.swift */; };
 		F0412021210079BB0003F7A2 /* Timer+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0412020210079BB0003F7A2 /* Timer+Ext.swift */; };
 		F054045321002C9600E3EF87 /* PushFromStr+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F054045221002C9600E3EF87 /* PushFromStr+Ext.swift */; };
 		F0561C2F2101BA950007496F /* UILabel+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0561C2E2101BA950007496F /* UILabel+Ext.swift */; };
@@ -39,7 +39,6 @@
 		F0561C3F2101DEF50007496F /* CameraTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0561C3E2101DEF50007496F /* CameraTool.swift */; };
 		F0561C412101E6590007496F /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0561C402101E6590007496F /* CameraViewController.swift */; };
 		F05D566E2148C515002DC1B8 /* PickerTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05D566D2148C514002DC1B8 /* PickerTool.swift */; };
-		F06F13E42154BBD100A5358D /* LoadingTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F06F13E32154BBD100A5358D /* LoadingTool.swift */; };
 		F077773520F2FC39003D7BD8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F077773420F2FC39003D7BD8 /* AppDelegate.swift */; };
 		F077773720F2FC39003D7BD8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F077773620F2FC39003D7BD8 /* ViewController.swift */; };
 		F077773A20F2FC39003D7BD8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F077773820F2FC39003D7BD8 /* Main.storyboard */; };
@@ -103,8 +102,8 @@
 		F02965B72114404200EA4ADB /* BottomInputView3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomInputView3.swift; sourceTree = "<group>"; };
 		F02965B82114404200EA4ADB /* BottomInputView1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomInputView1.swift; sourceTree = "<group>"; };
 		F02965B92114404200EA4ADB /* BottomInputView5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomInputView5.swift; sourceTree = "<group>"; };
+		F02E55BA215A3BEE00656FD8 /* LoadingTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingTool.swift; sourceTree = "<group>"; };
 		F02EF3422119955B0086C98A /* DownLoadViewTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownLoadViewTool.swift; sourceTree = "<group>"; };
-		F03ECBB12159FD78005ACAC8 /* FPSLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FPSLabel.swift; sourceTree = "<group>"; };
 		F0412020210079BB0003F7A2 /* Timer+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timer+Ext.swift"; sourceTree = "<group>"; };
 		F04930F920F4A08700787CC8 /* ExtensionTool.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ExtensionTool.entitlements; sourceTree = "<group>"; };
 		F054045221002C9600E3EF87 /* PushFromStr+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PushFromStr+Ext.swift"; sourceTree = "<group>"; };
@@ -116,7 +115,6 @@
 		F0561C3E2101DEF50007496F /* CameraTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraTool.swift; sourceTree = "<group>"; };
 		F0561C402101E6590007496F /* CameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
 		F05D566D2148C514002DC1B8 /* PickerTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTool.swift; sourceTree = "<group>"; };
-		F06F13E32154BBD100A5358D /* LoadingTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingTool.swift; sourceTree = "<group>"; };
 		F077773120F2FC39003D7BD8 /* ExtensionTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExtensionTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F077773420F2FC39003D7BD8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F077773620F2FC39003D7BD8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -173,7 +171,7 @@
 		F016905E2106F9C400E0C60A /* LoadingTool */ = {
 			isa = PBXGroup;
 			children = (
-				F06F13E32154BBD100A5358D /* LoadingTool.swift */,
+				F02E55BA215A3BEE00656FD8 /* LoadingTool.swift */,
 				F0963FAF2159D1FC00C1EE5E /* AlertTool.swift */,
 			);
 			path = LoadingTool;
@@ -229,15 +227,6 @@
 				F01DCEDE2135565100512599 /* PhotoBrowserTool.swift */,
 			);
 			path = PhotoBrowerTool;
-			sourceTree = "<group>";
-		};
-		F03ECBB02159FD78005ACAC8 /* FPSCheck */ = {
-			isa = PBXGroup;
-			children = (
-				F03ECBB12159FD78005ACAC8 /* FPSLabel.swift */,
-			);
-			name = FPSCheck;
-			path = "../../../../../项目/SVB_2018-03-13/SuperVolley/SuperVolley/Class/Tools/FPSCheck";
 			sourceTree = "<group>";
 		};
 		F0412040210091A20003F7A2 /* CameraTool */ = {
@@ -318,7 +307,6 @@
 				F0B5D58A20FED64F00F642B1 /* CircleImageView.swift */,
 				F0F7B7C32117EED900AD0659 /* CircleView.swift */,
 				F0B5D58B20FED64F00F642B1 /* FalseNavBarView.swift */,
-				F03ECBB02159FD78005ACAC8 /* FPSCheck */,
 				F02965B22114404200EA4ADB /* InputView */,
 				F0B5D58720FED64F00F642B1 /* kSaveDataTool.swift */,
 				F01EC3F321082AD800AE2D11 /* LabelTool */,
@@ -476,13 +464,12 @@
 				F0B5D5B020FED64F00F642B1 /* UIViewController+Ext.swift in Sources */,
 				F05D566E2148C515002DC1B8 /* PickerTool.swift in Sources */,
 				F0C452A42105715A00571B0A /* CameraPreviewViewController.swift in Sources */,
-				F06F13E42154BBD100A5358D /* LoadingTool.swift in Sources */,
 				F0B5D5AC20FED64F00F642B1 /* UIColor+Ext.swift in Sources */,
 				F02965BB2114404200EA4ADB /* BottomInputView2.swift in Sources */,
 				F0B5D5AA20FED64F00F642B1 /* UIButton+Ext.swift in Sources */,
+				F02E55BB215A3BEE00656FD8 /* LoadingTool.swift in Sources */,
 				F01D2C422122768800B2F848 /* SearchViewController.swift in Sources */,
 				F091FBC8212BC47D00F347C3 /* NotificationCenter+Ext.swift in Sources */,
-				F03ECBB22159FD78005ACAC8 /* FPSLabel.swift in Sources */,
 				F0B5D5B120FED64F00F642B1 /* UIView+Ext.swift in Sources */,
 				F0B5D5C120FF409600F642B1 /* UIScrollView+Ext.swift in Sources */,
 				F02965C02114404200EA4ADB /* BottomInputView5.swift in Sources */,

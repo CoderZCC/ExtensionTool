@@ -96,7 +96,7 @@ extension UIResponder {
         
         if Thread.isMainThread {
             
-            LoadingTool.sharedInstance.hiddenAllHUD()
+            LoadingTool.sharedInstance.hiddenLoadingHUD()
 
         } else {
             
@@ -139,6 +139,8 @@ class LoadingTool: UIView {
     
     /// 父视图数组
     private var baseViewsArr: [UIWindow] = []
+    /// 正在执行隐藏text
+    private var isHiddening: Bool = false
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -243,7 +245,6 @@ extension LoadingTool {
                 
                 self.textL.text = nil
                 self.textL.frame = CGRect.zero
-                self.textL.transform = CGAffineTransform.identity
                 self.textL.removeFromSuperview()
             }
             
@@ -299,7 +300,6 @@ extension LoadingTool {
                 
                 self.textL.text = nil
                 self.textL.frame = CGRect.zero
-                self.textL.transform = CGAffineTransform.identity
                 self.textL.removeFromSuperview()
             }
             
@@ -388,18 +388,21 @@ extension LoadingTool {
             self.activeView.stopAnimating()
             self.activeView.removeFromSuperview()
             
-            if self.textL.superview != nil {
+            if !self.isHiddening {
                 
-                self.textL.text = nil
-                self.textL.alpha = 0.0
-                self.textL.frame = CGRect.zero
-                self.textL.removeFromSuperview()
+                if self.textL.superview != nil {
+                    
+                    self.textL.text = nil
+                    self.textL.alpha = 0.0
+                    self.textL.frame = CGRect.zero
+                    self.textL.removeFromSuperview()
+                }
+                
+                self.blackView.removeFromSuperview()
+                
+                self.removeFromSuperview()
+                self.baseViewsArr.removeAll(keepingCapacity: false)
             }
-            
-            self.blackView.removeFromSuperview()
-            
-            self.removeFromSuperview()
-            self.baseViewsArr.removeAll(keepingCapacity: false)
         }
     }
     
@@ -410,9 +413,11 @@ extension LoadingTool {
         
         guard let text = text else {
             
-            self.hiddenAllHUD()
+            self.hiddenLoadingHUD()
             return
         }
+        // 取消延迟操作
+        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(hiddenTextHUD), object: nil)
         // 移除loading
         if self.blackView.superview != nil {
             
@@ -432,16 +437,18 @@ extension LoadingTool {
                 self.textL.removeFromSuperview()
             }
         }
-        // 取消延迟操作
-        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(hiddenTextHUD), object: nil)
         // 防止重复添加
         if self.textL.superview == nil {
             
+            self.textL.transform = CGAffineTransform.identity
             LoadingTool.baseView.addSubview(self)
             self.addSubview(self.textL)
             self.textL.alpha = 1.0
         }
         // 赋值文字
+        if self.textL.frame != CGRect.zero {
+            self.textL.frame = CGRect.zero
+        }
         self.textL.text = text
         self.textL.sizeToFit()
         if self.textMaxWidth >= self.textL.bounds.width + 15.0 {
@@ -481,6 +488,7 @@ extension LoadingTool {
         }
         
         // 自动移除
+        self.isHiddening = true
         self.perform(#selector(hiddenTextHUD), with: nil, afterDelay: LoadingTool.hiddenDuarion)
     }
     
@@ -493,45 +501,12 @@ extension LoadingTool {
 
         }) { (isOk) in
             
+            self.isHiddening = false
+            
             self.textL.text = nil
             self.textL.frame = CGRect.zero
-            self.textL.transform = CGAffineTransform.identity
             self.textL.removeFromSuperview()
 
-            self.removeFromSuperview()
-            self.baseViewsArr.removeAll(keepingCapacity: false)
-        }
-    }
-    
-    /// 移除所有HUD
-    @objc func hiddenAllHUD() {
-        
-        UIView.animate(withDuration: 0.25, animations: {
-            
-            self.alpha = 0.0
-            
-        }) { (isOk) in
-            
-            if self.activeView.superview != nil {
-                
-                self.activeView.stopAnimating()
-                self.activeView.removeFromSuperview()
-            }
-            
-            if self.textL.superview != nil {
-                
-                self.textL.text = nil
-                self.textL.alpha = 0.0
-                self.textL.frame = CGRect.zero
-                self.textL.removeFromSuperview()
-            }
-            
-            if self.blackView.superview != nil {
-                
-                self.blackView.removeFromSuperview()
-            }
-            
-            self.alpha = 1.0
             self.removeFromSuperview()
             self.baseViewsArr.removeAll(keepingCapacity: false)
         }
@@ -556,6 +531,7 @@ extension LoadingTool {
         
         self.blackView.center = self.center
         
+        self.textL.transform = CGAffineTransform.identity
         self.textL.alpha = 1.0
         self.textL.text = text
         self.textL.frame = CGRect(x: 0.0, y: self.progressView.frame.maxY + 8.0, width: self.blackView.bounds.width, height: 20.0)
