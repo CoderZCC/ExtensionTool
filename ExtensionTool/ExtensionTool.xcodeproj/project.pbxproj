@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F0102BC9215B1FE400C9537C /* LoadingAniView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0102BC8215B1FE400C9537C /* LoadingAniView.swift */; };
 		F0105B9A210AC3DC005B8661 /* MyPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0105B99210AC3DC005B8661 /* MyPageControl.swift */; };
 		F016903B2106F40D00E0C60A /* HorizontalLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F016903A2106F40D00E0C60A /* HorizontalLabelView.swift */; };
 		F016906E210704FA00E0C60A /* Badge+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F016906D210704FA00E0C60A /* Badge+Ext.swift */; };
@@ -80,6 +81,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F0102BC8215B1FE400C9537C /* LoadingAniView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAniView.swift; sourceTree = "<group>"; };
 		F0105B99210AC3DC005B8661 /* MyPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageControl.swift; sourceTree = "<group>"; };
 		F016903A2106F40D00E0C60A /* HorizontalLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalLabelView.swift; sourceTree = "<group>"; };
 		F016906D210704FA00E0C60A /* Badge+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Badge+Ext.swift"; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 				F0B5D58720FED64F00F642B1 /* kSaveDataTool.swift */,
 				F01EC3F321082AD800AE2D11 /* LabelTool */,
 				F0561C362101DBCA0007496F /* LanguageTool.swift */,
+				F0102BC8215B1FE400C9537C /* LoadingAniView.swift */,
 				F016905E2106F9C400E0C60A /* LoadingTool */,
 				F02EF3402119955B0086C98A /* PhotoBrowerTool */,
 				F091FBC9212BFBE200F347C3 /* PickerTool */,
@@ -447,6 +450,7 @@
 				F0B5D59E20FED64F00F642B1 /* kSaveDataTool.swift in Sources */,
 				F0F7B7C42117EED900AD0659 /* CircleView.swift in Sources */,
 				F01DCECF2134F1F400512599 /* SecondViewController.swift in Sources */,
+				F0102BC9215B1FE400C9537C /* LoadingAniView.swift in Sources */,
 				F0561C2F2101BA950007496F /* UILabel+Ext.swift in Sources */,
 				F02965BD2114404200EA4ADB /* BottomInputView4.swift in Sources */,
 				F01EC3FC210879BD00AE2D11 /* CalendarView.swift in Sources */,
