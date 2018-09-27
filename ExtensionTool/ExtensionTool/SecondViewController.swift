@@ -13,13 +13,14 @@ class SecondViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
      
+       
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-    }
-    
+ 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+
+
 }
+

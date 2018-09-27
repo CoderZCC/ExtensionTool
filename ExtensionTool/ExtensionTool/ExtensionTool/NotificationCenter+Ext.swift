@@ -8,108 +8,115 @@
 
 import UIKit
 
-enum NotificationName: Int {
+enum NotificationName: String {
     
     case loginSuccess, loginFail, loginError
 }
 
-var kNotificationCenterKey: Int = 0
+private var kNotificationActionKey: Int = 0
 
 extension NSObject {
-
-    /// 通知对象,用于移除通知
-    var k_observer: [String: NSObjectProtocol]? {
-
+    
+    /// 别名
+    typealias kNoteActionBlock = (Notification)->Void
+    /// 存储一个对象的多个通知事件
+    private var kNoteActionDic: [String: kNoteActionBlock]? {
         set {
-            objc_setAssociatedObject(self, &kNotificationCenterKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            
+            objc_setAssociatedObject(self, &kNotificationActionKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
-        get { return objc_getAssociatedObject(self, &kNotificationCenterKey) as? [String: NSObjectProtocol] }
+        get { return objc_getAssociatedObject(self, &kNotificationActionKey) as? [String: kNoteActionBlock] }
     }
+    
+    /// 为当前对象注册系统通知
+    ///
+    /// - Parameters:
+    ///   - name: NSNotification.Name
+    ///   - object: object
+    ///   - block: 事件回调
+    func k_addObserverSystem(name: NSNotification.Name, object: Any? = nil, block:  @escaping kNoteActionBlock) {
+        
+        var dic: [String: kNoteActionBlock] = self.kNoteActionDic ?? [:]
+        dic[name.rawValue] = block
+        self.kNoteActionDic = dic
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(k_noteAction), name: name, object: nil)
+    }
+    
+    /// 移除当前对象的系统注册 name为nil 移除当前对象 所有的监听
+    ///
+    /// - Parameter name: NSNotification.Name
+    func k_removeObserverSystem(name: NSNotification.Name? = nil) {
+        
+        if let name = name {
 
+            NotificationCenter.default.removeObserver(self, name: name, object: nil)
+            self.kNoteActionDic?.removeValue(forKey: name.rawValue)
+            
+            if (self.kNoteActionDic ?? [:]).isEmpty {
+                
+                self.kNoteActionDic = nil
+            }
+            
+        } else {
+            
+            self.k_removeObserver()
+        }
+    }
+    
     /// 发送通知
     ///
     /// - Parameters:
-    ///   - noteName: 通知枚举
-    ///   - object: 传递的对象
-    ///   - userInfo: 传递的字典
+    ///   - name: NotificationName
+    ///   - object: object
+    ///   - userInfo: userInfo
     func k_post(name: NotificationName, object: Any? = nil, userInfo: [AnyHashable: Any]? = nil) {
-
-        NotificationCenter.default.post(name: NSNotification.Name.init("\(name)"), object: object, userInfo: userInfo)
+        
+        NotificationCenter.default.post(name: NSNotification.Name.init(name.rawValue), object: object, userInfo: userInfo)
     }
-
-    /// 接收通知
+    
+    /// 为当前对象注册自定义通知
     ///
     /// - Parameters:
-    ///   - forName: 通知枚举
-    ///   - object: 传递的对象
-    ///   - queue: 操作的线程 默认主线程
-    ///   - using: 回调
-    @discardableResult
-    func k_addObserver(forName: NotificationName, object: Any? = nil, queue: OperationQueue? = OperationQueue.main, using: @escaping (Notification) -> Void) -> NSObjectProtocol {
-
-        var noteDic: [String: NSObjectProtocol] = self.k_observer ?? [:]
-        let value = NotificationCenter.default.addObserver(forName: NSNotification.Name.init("\(forName)"), object: object, queue: queue, using: using)
-        noteDic["\(forName)"] = value
-        self.k_observer = noteDic
-
-        return value
+    ///   - name: NotificationName
+    ///   - object: object
+    ///   - block: 事件回调
+    func k_addObserver(name: NotificationName, object: Any? = nil, block: @escaping kNoteActionBlock) {
+        
+        var dic: [String: kNoteActionBlock] = self.kNoteActionDic ?? [:]
+        dic[name.rawValue] = block
+        self.kNoteActionDic = dic
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(k_noteAction), name: NSNotification.Name.init(name.rawValue), object: object)
     }
-
-    /// 移除通知
+    
+    /// 移除当前对象的注册 name为nil 移除当前对象 所有的监听
     ///
-    /// - Parameters:
-    ///   - name: 通知枚举
-    ///   - object: 传递的对象
-    func k_removeObserver(name: NotificationName? = nil, object: Any? = nil) {
-
-        self.k_selfRemoveMethod(name: name == nil ? (nil) : ("\(name!)"), object: object)
-    }
-
-    /// 接收系统通知
-    ///
-    /// - Parameters:
-    ///   - forName: 通知枚举
-    ///   - object: 传递的对象
-    ///   - queue: 操作的线程 默认主线程
-    ///   - using: 回调
-    @discardableResult
-    func k_addObserverSystem(forName: NSNotification.Name, object: Any? = nil, queue: OperationQueue? = OperationQueue.main, using: @escaping (Notification) -> Void) -> NSObjectProtocol {
-
-        var noteDic: [String: NSObjectProtocol] = self.k_observer ?? [:]
-        let value = NotificationCenter.default.addObserver(forName: forName, object: object, queue: queue, using: using)
-        noteDic["\(forName)"] = value
-        self.k_observer = noteDic
-
-        return value
-    }
-    /// 移除系统通知
-    ///
-    /// - Parameters:
-    ///   - name: 通知枚举
-    ///   - object: 传递的对象
-    func k_removeObserverSystem(name: NSNotification.Name? = nil, object: Any? = nil) {
-
-        self.k_selfRemoveMethod(name: name == nil ? (nil) : ("\(name!)"), object: object)
-    }
-
-    /// 移除通知
-    private func k_selfRemoveMethod(name: String? = nil, object: Any? = nil) {
-
+    /// - Parameter name: NotificationName
+    func k_removeObserver(name: NotificationName? = nil) {
+        
         if let name = name {
-
-            if let value = (self.k_observer ?? [:])["\(name)"] {
-
-                NotificationCenter.default.removeObserver(value, name: .init(name), object: object)
-            }
-            self.k_observer?.removeValue(forKey: name)
-
-        } else {
-
-            for value in (self.k_observer ?? [:]).values {
+            
+            NotificationCenter.default.removeObserver(self, name: NSNotification.Name.init(name.rawValue), object: nil)
+            self.kNoteActionDic?.removeValue(forKey: name.rawValue)
+            
+            if (self.kNoteActionDic ?? [:]).isEmpty {
                 
-                NotificationCenter.default.removeObserver(value)
+                self.kNoteActionDic = nil
             }
-            self.k_observer = nil
+            
+        } else {
+            
+            NotificationCenter.default.removeObserver(self)
+            self.kNoteActionDic?.removeAll()
+            self.kNoteActionDic = nil
         }
+    }
+    
+    // 通知事件
+    @objc private func k_noteAction(note: Notification) {
+        
+        let dic: [String: kNoteActionBlock] = self.kNoteActionDic ?? [:]
+        dic[note.name.rawValue]?(note)
     }
 }
