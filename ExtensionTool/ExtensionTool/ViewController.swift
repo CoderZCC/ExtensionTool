@@ -25,7 +25,7 @@ class BaseViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     deinit {
-        print("###\(self)销毁了###\n")
+        debugPrint("###\(self)销毁了###\n")
     }
 }
 
@@ -36,8 +36,9 @@ class ViewController: BaseViewController {
 
     }
 
+    var str: String = ""
     @IBAction func btnAction() {
-        
+
         let secondVC = SecondViewController()
         self.navigationController?.pushViewController(secondVC, animated: true)
     }

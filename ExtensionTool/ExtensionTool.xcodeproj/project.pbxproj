@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F00C84F2215DBB4400907C20 /* HudTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00C84F1215DBB4400907C20 /* HudTool.swift */; };
 		F0102BC9215B1FE400C9537C /* LoadingAniView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0102BC8215B1FE400C9537C /* LoadingAniView.swift */; };
 		F0105B9A210AC3DC005B8661 /* MyPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0105B99210AC3DC005B8661 /* MyPageControl.swift */; };
 		F016903B2106F40D00E0C60A /* HorizontalLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F016903A2106F40D00E0C60A /* HorizontalLabelView.swift */; };
@@ -81,6 +82,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F00C84F1215DBB4400907C20 /* HudTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HudTool.swift; sourceTree = "<group>"; };
 		F0102BC8215B1FE400C9537C /* LoadingAniView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAniView.swift; sourceTree = "<group>"; };
 		F0105B99210AC3DC005B8661 /* MyPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageControl.swift; sourceTree = "<group>"; };
 		F016903A2106F40D00E0C60A /* HorizontalLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalLabelView.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 			children = (
 				F02E55BA215A3BEE00656FD8 /* LoadingTool.swift */,
 				F0963FAF2159D1FC00C1EE5E /* AlertTool.swift */,
+				F00C84F1215DBB4400907C20 /* HudTool.swift */,
 			);
 			path = LoadingTool;
 			sourceTree = "<group>";
@@ -484,6 +487,7 @@
 				F02965BE2114404200EA4ADB /* BottomInputView3.swift in Sources */,
 				F01690712107232600E0C60A /* VerticalADView.swift in Sources */,
 				F016906E210704FA00E0C60A /* Badge+Ext.swift in Sources */,
+				F00C84F2215DBB4400907C20 /* HudTool.swift in Sources */,
 				F0B5D5A820FED64F00F642B1 /* UIIImageView+Ext.swift in Sources */,
 				F077773720F2FC39003D7BD8 /* ViewController.swift in Sources */,
 				F085C4882109606E00CB0D2B /* SpecialView.swift in Sources */,

@@ -9,99 +9,99 @@
 import UIKit
 
 extension UIResponder {
-    
+
     /// 进度框 带文字
     ///
     /// - Parameters:
     ///   - text: 文字
     ///   - progress: 进度
     func showProgress(_ text: String, progress: CGFloat) {
-        
+
         if Thread.isMainThread {
-            
+
             LoadingTool.sharedInstance.showProgressHUD(text, progress: progress)
-            
+
         } else {
-            
+
             DispatchQueue.main.async {
-                
+
                 self.showProgress(text, progress: progress)
             }
         }
     }
-    
+
     /// 加载不带文字 支持点击取消
     @objc func showLoadingCanCancle() {
-        
+
         if Thread.isMainThread {
-            
+
             LoadingTool.sharedInstance.showLoading(nil, isClickCancle: true)
-            
+
         } else {
-            
+
             DispatchQueue.main.async {
-                
+
                 self.showLoadingCanCancle()
             }
         }
     }
-    
+
     /// 加载框带文字 无法点击取消
     ///
     /// - Parameter text: 文字
     @objc func showLoading(_ text: String? = nil) {
-        
+
         if Thread.isMainThread {
-            
+
             LoadingTool.sharedInstance.showLoading(text, isClickCancle: false)
-            
+
         } else {
-            
+
             DispatchQueue.main.async {
-                
+
                 self.showLoading(text)
             }
         }
     }
-    
+
     /// 可以翻转
     ///
     /// - Parameter text:
     func showTextWithHorizontal(_ text: String) {
-        
+
         LoadingTool.sharedInstance.isTurn = true
         self.showText(text)
     }
-    
+
     /// 提示信息 带文字
     ///
     /// - Parameter text: 文字
     @objc func showText(_ text: String?) {
-        
+
         if Thread.isMainThread {
-            
+
             LoadingTool.sharedInstance.showTextAutoHidden(text)
-            
+
         } else {
-            
+
             DispatchQueue.main.async {
-                
+
                 self.showText(text)
             }
         }
     }
-    
+
     /// 隐藏试图
     @objc func hideHUD() {
-        
+
         if Thread.isMainThread {
-            
+
             LoadingTool.sharedInstance.hiddenLoadingHUD()
 
         } else {
-            
+
             DispatchQueue.main.async {
-                
+
                 self.hideHUD()
             }
         }
