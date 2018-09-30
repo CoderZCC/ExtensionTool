@@ -63,9 +63,6 @@ class ShareTool: UIView {
         
         return UIApplication.shared.keyWindow?.viewWithTag(1001) != nil
     }
-    
-    /// 事件回调
-    private var block: ((ShareResultType)->Void)?
     // MARK: -数据源
     static var tupleArr:[(img: String, text: String, type: UMSocialPlatformType)] = [
         ("share_sina", "微博", UMSocialPlatformType.sina),
@@ -76,6 +73,9 @@ class ShareTool: UIView {
         ("share_collection", "收藏", UMSocialPlatformType.unKnown),
         ("share_download", "保存本地", UMSocialPlatformType.unKnown),
         ("share_report", "举报", UMSocialPlatformType.unKnown)]
+    
+    /// 事件回调
+    private var block: ((ShareResultType)->Void)?
     /// 真正展示的数据源
     private var dataList: [(img: String, text: String, type: UMSocialPlatformType)]!
     /// 传递的数据
