@@ -30,6 +30,7 @@
 		F02965BF2114404200EA4ADB /* BottomInputView1.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02965B82114404200EA4ADB /* BottomInputView1.swift */; };
 		F02965C02114404200EA4ADB /* BottomInputView5.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02965B92114404200EA4ADB /* BottomInputView5.swift */; };
 		F02EF3442119955B0086C98A /* DownLoadViewTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02EF3422119955B0086C98A /* DownLoadViewTool.swift */; };
+		F038CED42160A425006E0FD7 /* ShareTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F038CED32160A425006E0FD7 /* ShareTool.swift */; };
 		F0412021210079BB0003F7A2 /* Timer+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0412020210079BB0003F7A2 /* Timer+Ext.swift */; };
 		F054045321002C9600E3EF87 /* PushFromStr+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F054045221002C9600E3EF87 /* PushFromStr+Ext.swift */; };
 		F0561C2F2101BA950007496F /* UILabel+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0561C2E2101BA950007496F /* UILabel+Ext.swift */; };
@@ -44,10 +45,6 @@
 		F077773A20F2FC39003D7BD8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F077773820F2FC39003D7BD8 /* Main.storyboard */; };
 		F077773C20F2FC3A003D7BD8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F077773B20F2FC3A003D7BD8 /* Assets.xcassets */; };
 		F077773F20F2FC3A003D7BD8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F077773D20F2FC3A003D7BD8 /* LaunchScreen.storyboard */; };
-		F085C4822109576B00CB0D2B /* BottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F085C4812109576B00CB0D2B /* BottomView.swift */; };
-		F085C4842109577D00CB0D2B /* BottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F085C4832109577D00CB0D2B /* BottomView.xib */; };
-		F085C4872109606E00CB0D2B /* SpecialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F085C4852109606D00CB0D2B /* SpecialView.xib */; };
-		F085C4882109606E00CB0D2B /* SpecialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F085C4862109606D00CB0D2B /* SpecialView.swift */; };
 		F085C48A21096E6F00CB0D2B /* CalendarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F085C48921096E6F00CB0D2B /* CalendarView.xib */; };
 		F08AF251215F123B00AEAE53 /* HUDTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F08AF250215F123B00AEAE53 /* HUDTool.swift */; };
 		F091FBC8212BC47D00F347C3 /* NotificationCenter+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F091FBC7212BC47D00F347C3 /* NotificationCenter+Ext.swift */; };
@@ -105,6 +102,7 @@
 		F02965B82114404200EA4ADB /* BottomInputView1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomInputView1.swift; sourceTree = "<group>"; };
 		F02965B92114404200EA4ADB /* BottomInputView5.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomInputView5.swift; sourceTree = "<group>"; };
 		F02EF3422119955B0086C98A /* DownLoadViewTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownLoadViewTool.swift; sourceTree = "<group>"; };
+		F038CED32160A425006E0FD7 /* ShareTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareTool.swift; sourceTree = "<group>"; };
 		F0412020210079BB0003F7A2 /* Timer+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Timer+Ext.swift"; sourceTree = "<group>"; };
 		F04930F920F4A08700787CC8 /* ExtensionTool.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ExtensionTool.entitlements; sourceTree = "<group>"; };
 		F054045221002C9600E3EF87 /* PushFromStr+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PushFromStr+Ext.swift"; sourceTree = "<group>"; };
@@ -123,10 +121,6 @@
 		F077773B20F2FC3A003D7BD8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F077773E20F2FC3A003D7BD8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F077774020F2FC3A003D7BD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F085C4812109576B00CB0D2B /* BottomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomView.swift; sourceTree = "<group>"; };
-		F085C4832109577D00CB0D2B /* BottomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomView.xib; sourceTree = "<group>"; };
-		F085C4852109606D00CB0D2B /* SpecialView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SpecialView.xib; sourceTree = "<group>"; };
-		F085C4862109606D00CB0D2B /* SpecialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpecialView.swift; sourceTree = "<group>"; };
 		F085C48921096E6F00CB0D2B /* CalendarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarView.xib; sourceTree = "<group>"; };
 		F08AF250215F123B00AEAE53 /* HUDTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HUDTool.swift; sourceTree = "<group>"; };
 		F091FBC7212BC47D00F347C3 /* NotificationCenter+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NotificationCenter+Ext.swift"; sourceTree = "<group>"; };
@@ -231,6 +225,14 @@
 			path = PhotoBrowerTool;
 			sourceTree = "<group>";
 		};
+		F038CEFB2160AB0E006E0FD7 /* ShareTool */ = {
+			isa = PBXGroup;
+			children = (
+				F038CED32160A425006E0FD7 /* ShareTool.swift */,
+			);
+			path = ShareTool;
+			sourceTree = "<group>";
+		};
 		F0412040210091A20003F7A2 /* CameraTool */ = {
 			isa = PBXGroup;
 			children = (
@@ -276,17 +278,6 @@
 			path = ExtensionTool;
 			sourceTree = "<group>";
 		};
-		F085C4802109576B00CB0D2B /* BottomView */ = {
-			isa = PBXGroup;
-			children = (
-				F085C4812109576B00CB0D2B /* BottomView.swift */,
-				F085C4832109577D00CB0D2B /* BottomView.xib */,
-				F085C4862109606D00CB0D2B /* SpecialView.swift */,
-				F085C4852109606D00CB0D2B /* SpecialView.xib */,
-			);
-			path = BottomView;
-			sourceTree = "<group>";
-		};
 		F091FBC9212BFBE200F347C3 /* PickerTool */ = {
 			isa = PBXGroup;
 			children = (
@@ -302,7 +293,6 @@
 				F016906F2107231300E0C60A /* ADScrollView */,
 				F0B5D58520FED64F00F642B1 /* AuthorityTool.swift */,
 				F01EC3F721083FC000AE2D11 /* BarrageView.swift */,
-				F085C4802109576B00CB0D2B /* BottomView */,
 				F01EC3FB210879BD00AE2D11 /* CalendarView.swift */,
 				F085C48921096E6F00CB0D2B /* CalendarView.xib */,
 				F0412040210091A20003F7A2 /* CameraTool */,
@@ -318,6 +308,7 @@
 				F02EF3402119955B0086C98A /* PhotoBrowerTool */,
 				F091FBC9212BFBE200F347C3 /* PickerTool */,
 				F01D2C412122768800B2F848 /* SearchViewController.swift */,
+				F038CEFB2160AB0E006E0FD7 /* ShareTool */,
 				F0B5D58820FED64F00F642B1 /* SliderDrawerViewController.swift */,
 				F0209BD92154CB74006B417F /* UINavBarTool */,
 				F0B5D58620FED64F00F642B1 /* VideoPlayerView.swift */,
@@ -428,9 +419,7 @@
 				F0561C3A2101DC5C0007496F /* Localizable.strings in Resources */,
 				F085C48A21096E6F00CB0D2B /* CalendarView.xib in Resources */,
 				F077773C20F2FC3A003D7BD8 /* Assets.xcassets in Resources */,
-				F085C4872109606E00CB0D2B /* SpecialView.xib in Resources */,
 				F0209BE32154D071006B417F /* MyNavbarTool.bundle in Resources */,
-				F085C4842109577D00CB0D2B /* BottomView.xib in Resources */,
 				F077773A20F2FC39003D7BD8 /* Main.storyboard in Resources */,
 				F023CCE9212CF72400ABAD96 /* Address.plist in Resources */,
 			);
@@ -444,6 +433,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F0B5D5AB20FED64F00F642B1 /* String+Ext.swift in Sources */,
+				F038CED42160A425006E0FD7 /* ShareTool.swift in Sources */,
 				F016907321072A1D00E0C60A /* HorizontalADView.swift in Sources */,
 				F0B5D5A120FED64F00F642B1 /* CircleImageView.swift in Sources */,
 				F0561C3F2101DEF50007496F /* CameraTool.swift in Sources */,
@@ -486,14 +476,12 @@
 				F016906E210704FA00E0C60A /* Badge+Ext.swift in Sources */,
 				F0B5D5A820FED64F00F642B1 /* UIIImageView+Ext.swift in Sources */,
 				F077773720F2FC39003D7BD8 /* ViewController.swift in Sources */,
-				F085C4882109606E00CB0D2B /* SpecialView.swift in Sources */,
 				F0105B9A210AC3DC005B8661 /* MyPageControl.swift in Sources */,
 				F0B5D5A620FED64F00F642B1 /* UITableView+Ext.swift in Sources */,
 				F0B5D59C20FED64F00F642B1 /* AuthorityTool.swift in Sources */,
 				F02965BC2114404200EA4ADB /* InputAssistView.swift in Sources */,
 				F0B5D59F20FED64F00F642B1 /* SliderDrawerViewController.swift in Sources */,
 				F077773520F2FC39003D7BD8 /* AppDelegate.swift in Sources */,
-				F085C4822109576B00CB0D2B /* BottomView.swift in Sources */,
 				F0B5D5A220FED64F00F642B1 /* FalseNavBarView.swift in Sources */,
 				F0B5D5AD20FED64F00F642B1 /* DispatchQueue+Ext.swift in Sources */,
 				F0D32FF921537822003AE04A /* WKWebView+Ext.swift in Sources */,

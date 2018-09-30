@@ -18,7 +18,6 @@ class SecondViewController: BaseViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-      
     }
  
     override func didReceiveMemoryWarning() {
