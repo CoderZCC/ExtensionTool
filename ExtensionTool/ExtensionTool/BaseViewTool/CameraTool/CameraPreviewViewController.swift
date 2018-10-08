@@ -202,7 +202,7 @@ extension CameraPreviewViewController: UICollectionViewDataSource, UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.k_dequeueReusableCell(cls: CameraPreviewCell.self, indexPath: indexPath) as! CameraPreviewCell
+        let cell = collectionView.k_dequeueReusableCell(cls: CameraPreviewCell.self, indexPath: indexPath)
         cell.isCrop = self.isCrop
         // 缩略图
         if self.thumbImg != nil { cell.imageView.image = self.thumbImg }

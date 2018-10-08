@@ -38,9 +38,9 @@ extension UITableView {
     /// - Parameters:
     ///   - cls: 类名
     ///   - indexPath: indexPath
-    func k_dequeueReusableCell(cls: AnyClass, indexPath: IndexPath) -> UITableViewCell {
+    func k_dequeueReusableCell <T> (cls: T.Type, indexPath: IndexPath) -> T {
         
-        return self.dequeueReusableCell(withIdentifier: self.k_StrFrom(cls), for: indexPath)
+        return self.dequeueReusableCell(withIdentifier: "\(cls)".components(separatedBy: ".").last!, for: indexPath) as! T
     }
 }
 
@@ -80,8 +80,8 @@ extension UICollectionView {
     /// - Parameters:
     ///   - cls: 类名
     ///   - indexPath: indexPath
-    func k_dequeueReusableCell(cls: AnyClass, indexPath: IndexPath) -> UICollectionViewCell {
+    func k_dequeueReusableCell <T> (cls: T.Type, indexPath: IndexPath) -> T {
         
-        return self.dequeueReusableCell(withReuseIdentifier: self.k_StrFrom(cls), for: indexPath)
+        return self.dequeueReusableCell(withReuseIdentifier: "\(cls)".components(separatedBy: ".").last!, for: indexPath) as! T
     }
 }

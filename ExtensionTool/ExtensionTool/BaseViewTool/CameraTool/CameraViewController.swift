@@ -104,7 +104,7 @@ extension CameraViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.k_dequeueReusableCell(cls: CameraCell.self, indexPath: indexPath) as! CameraCell
+        let cell = tableView.k_dequeueReusableCell(cls: CameraCell.self, indexPath: indexPath)
         let model = self.cameraTool.dataList[indexPath.row]
         cell.model = model
         

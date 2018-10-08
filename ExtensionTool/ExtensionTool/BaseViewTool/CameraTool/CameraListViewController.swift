@@ -94,7 +94,7 @@ extension CameraListViewController: UICollectionViewDataSource, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.k_dequeueReusableCell(cls: CameraListCell.self, indexPath: indexPath) as! CameraListCell
+        let cell = collectionView.k_dequeueReusableCell(cls: CameraListCell.self, indexPath: indexPath)
         let asset = self.dataList[indexPath.row]
         cell.imgAsset = asset
         
