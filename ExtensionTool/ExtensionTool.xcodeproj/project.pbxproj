@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F00067E1216B52790033263B /* StatusBar+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00067E0216B52790033263B /* StatusBar+Ext.swift */; };
 		F0102BC9215B1FE400C9537C /* LoadingAniView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0102BC8215B1FE400C9537C /* LoadingAniView.swift */; };
 		F0105B9A210AC3DC005B8661 /* MyPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0105B99210AC3DC005B8661 /* MyPageControl.swift */; };
 		F016903B2106F40D00E0C60A /* HorizontalLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F016903A2106F40D00E0C60A /* HorizontalLabelView.swift */; };
@@ -78,6 +79,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F00067E0216B52790033263B /* StatusBar+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StatusBar+Ext.swift"; sourceTree = "<group>"; };
 		F0102BC8215B1FE400C9537C /* LoadingAniView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAniView.swift; sourceTree = "<group>"; };
 		F0105B99210AC3DC005B8661 /* MyPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageControl.swift; sourceTree = "<group>"; };
 		F016903A2106F40D00E0C60A /* HorizontalLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalLabelView.swift; sourceTree = "<group>"; };
@@ -342,6 +344,7 @@
 				F0B5D59B20FED64F00F642B1 /* UIView+Ext.swift */,
 				F0B5D59A20FED64F00F642B1 /* UIViewController+Ext.swift */,
 				F0D32FF821537822003AE04A /* WKWebView+Ext.swift */,
+				F00067E0216B52790033263B /* StatusBar+Ext.swift */,
 			);
 			path = ExtensionTool;
 			sourceTree = "<group>";
@@ -488,6 +491,7 @@
 				F0B5D5AF20FED64F00F642B1 /* ExtensionTool.swift in Sources */,
 				F0209BDB2154CB93006B417F /* MyNavigationBar.swift in Sources */,
 				F0B5D5A320FED64F00F642B1 /* UITextView+Ext.swift in Sources */,
+				F00067E1216B52790033263B /* StatusBar+Ext.swift in Sources */,
 				F0B5D5A920FED64F00F642B1 /* UIBarButtonItem+Ext.swift in Sources */,
 				F0561C412101E6590007496F /* CameraViewController.swift in Sources */,
 				F0B5D5A420FED64F00F642B1 /* UIImage+Ext.swift in Sources */,
