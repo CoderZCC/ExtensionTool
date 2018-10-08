@@ -35,8 +35,9 @@ class ViewController: BaseViewController {
         super.viewDidLoad()
 
     }
-
+    
     var str: String = ""
+    
     @IBAction func btnAction() {
 
         let secondVC = SecondViewController()

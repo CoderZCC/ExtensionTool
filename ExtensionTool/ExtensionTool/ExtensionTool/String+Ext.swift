@@ -239,5 +239,100 @@ extension String {
         
         return CGFloat(Double(self) ?? 0.0)
     }
+}
+
+extension String {
     
+    /// 是否包含Emoij
+    ///
+    /// - Returns: 是/否
+    func k_containsEmoij() -> Bool {
+        
+        if let regex = try? NSRegularExpression(pattern: "[^\\u0020-\\u007E\\u00A0-\\u00BE\\u2E80-\\uA4CF\\uF900-\\uFAFF\\uFE30-\\uFE4F\\uFF00-\\uFFEF\\u0080-\\u009F\\u2000-\\u201f\r\n]", options: .caseInsensitive) {
+            
+            let arr = regex.matches(in: self, options: .reportProgress, range: NSRange(location: 0, length: self.count))
+            
+            return arr.isEmpty
+        }
+        return false
+    }
+    
+    /// 移除字符串中的Emoij
+    ///
+    /// - Returns: 新字符串
+    func k_deleteEmoij() -> String {
+        
+        if self.k_containsEmoij() {
+            
+            let regex = try! NSRegularExpression.init(pattern: "[^\\u0020-\\u007E\\u00A0-\\u00BE\\u2E80-\\uA4CF\\uF900-\\uFAFF\\uFE30-\\uFE4F\\uFF00-\\uFFEF\\u0080-\\u009F\\u2000-\\u201f\r\n]", options: .caseInsensitive)
+            let changeStr = regex.stringByReplacingMatches(in: self, options: NSRegularExpression.MatchingOptions.reportProgress, range: NSRange(location: 0, length: self.count), withTemplate: "")
+            
+            return changeStr
+        }
+        return self
+    }
+    
+    /// 是否符合邮箱规则
+    var k_isEmail: Bool {
+        
+        return self.k_isCorrect("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}")
+    }
+    
+    /// 是否符合手机号码规则
+    var k_isPhoneNUm: Bool {
+        
+        if self.count != 11 {
+            return false
+        }
+        return self.k_isCorrect("^[1][358][0-9]{9}$")
+    }
+    
+    /// 是否符合身份证规则
+    var k_isIdCard: Bool {
+        
+        return self.k_isCorrect("^(\\d{14}|\\d{17})(\\d|[xX])$")
+    }
+    
+    /// 格式是否正确
+    private func k_isCorrect(_ str: String) -> Bool {
+        let correct = NSPredicate(format: "SELF MATCHES %@", str)
+       
+        return correct.evaluate(with: self)
+    }
+}
+
+extension String {
+    
+    /// json串转为任意类型
+    ///
+    /// - Returns: 任意类型
+    func k_jsonStrToObject() -> Any? {
+        
+        if self.k_isEmpty() {
+            
+            return nil
+        }
+        if let data = self.data(using: String.Encoding.utf8) {
+            
+            let arr = try? JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers)
+            
+            return arr
+        }
+        return nil
+    }
+}
+
+extension Collection {
+    
+    /// 转为Json字符串
+    ///
+    /// - Returns: json串
+    func k_toJsonStr() -> String? {
+        
+        if let data = try? JSONSerialization.data(withJSONObject: self, options: JSONSerialization.WritingOptions.prettyPrinted) {
+            
+            return String.init(data: data, encoding: String.Encoding.utf8)
+        }
+        return nil
+    }
 }
