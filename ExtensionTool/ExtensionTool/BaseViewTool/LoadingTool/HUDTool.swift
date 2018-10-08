@@ -45,7 +45,7 @@ import UIKit
             
             DispatchQueue.main.async {
                 
-                self.showLoading(text)
+                self.showLoading(text, canCancle: canCancle)
             }
         }
     }
