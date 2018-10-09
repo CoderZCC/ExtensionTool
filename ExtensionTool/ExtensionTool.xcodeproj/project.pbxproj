@@ -50,6 +50,7 @@
 		F091FBC8212BC47D00F347C3 /* NotificationCenter+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F091FBC7212BC47D00F347C3 /* NotificationCenter+Ext.swift */; };
 		F0963FB02159D1FC00C1EE5E /* AlertTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0963FAF2159D1FC00C1EE5E /* AlertTool.swift */; };
 		F0A301A9216C437E00D71D58 /* HUDTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A301A8216C437E00D71D58 /* HUDTool.swift */; };
+		F0A301CE216CAFA600D71D58 /* Main1.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0A301CD216CAFA600D71D58 /* Main1.storyboard */; };
 		F0B5D59C20FED64F00F642B1 /* AuthorityTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B5D58520FED64F00F642B1 /* AuthorityTool.swift */; };
 		F0B5D59D20FED64F00F642B1 /* VideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B5D58620FED64F00F642B1 /* VideoPlayerView.swift */; };
 		F0B5D59E20FED64F00F642B1 /* kSaveDataTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B5D58720FED64F00F642B1 /* kSaveDataTool.swift */; };
@@ -127,6 +128,7 @@
 		F091FBC7212BC47D00F347C3 /* NotificationCenter+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NotificationCenter+Ext.swift"; sourceTree = "<group>"; };
 		F0963FAF2159D1FC00C1EE5E /* AlertTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTool.swift; sourceTree = "<group>"; };
 		F0A301A8216C437E00D71D58 /* HUDTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDTool.swift; sourceTree = "<group>"; };
+		F0A301CD216CAFA600D71D58 /* Main1.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main1.storyboard; sourceTree = "<group>"; };
 		F0B5D58520FED64F00F642B1 /* AuthorityTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorityTool.swift; sourceTree = "<group>"; };
 		F0B5D58620FED64F00F642B1 /* VideoPlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerView.swift; sourceTree = "<group>"; };
 		F0B5D58720FED64F00F642B1 /* kSaveDataTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = kSaveDataTool.swift; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 				F077773420F2FC39003D7BD8 /* AppDelegate.swift */,
 				F077773620F2FC39003D7BD8 /* ViewController.swift */,
 				F077773820F2FC39003D7BD8 /* Main.storyboard */,
+				F0A301CD216CAFA600D71D58 /* Main1.storyboard */,
 				F01DCECE2134F1F400512599 /* SecondViewController.swift */,
 				F077773B20F2FC3A003D7BD8 /* Assets.xcassets */,
 				F077773D20F2FC3A003D7BD8 /* LaunchScreen.storyboard */,
@@ -419,6 +422,7 @@
 			files = (
 				F077773F20F2FC3A003D7BD8 /* LaunchScreen.storyboard in Resources */,
 				F02965BA2114404200EA4ADB /* EmotionPlist.plist in Resources */,
+				F0A301CE216CAFA600D71D58 /* Main1.storyboard in Resources */,
 				F0561C3A2101DC5C0007496F /* Localizable.strings in Resources */,
 				F085C48A21096E6F00CB0D2B /* CalendarView.xib in Resources */,
 				F077773C20F2FC3A003D7BD8 /* Assets.xcassets in Resources */,

@@ -19,10 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow.init(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
-        let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateInitialViewController()!
-        let nav = UINavigationController.init(rootViewController: vc)
-        
-        window?.rootViewController = nav
+        let rootVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateInitialViewController()!
+        window?.rootViewController = rootVC
         self.setNavigation()
         self.setCommonData()
         

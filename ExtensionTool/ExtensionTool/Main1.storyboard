@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="O9X-mt-zFm">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="p8R-AK-AQK">
+            <objects>
+                <viewController id="O9X-mt-zFm" customClass="ViewController" customModule="ExtensionTool" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rTq-6A-ZZ2">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DiH-R3-jc2">
+                                <rect key="frame" x="164.5" y="318.5" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="btnAction" destination="O9X-mt-zFm" eventType="touchUpInside" id="QpV-7U-sRH"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="DiH-R3-jc2" firstAttribute="centerY" secondItem="rTq-6A-ZZ2" secondAttribute="centerY" id="GMd-QM-FeT"/>
+                            <constraint firstItem="DiH-R3-jc2" firstAttribute="centerX" secondItem="rTq-6A-ZZ2" secondAttribute="centerX" id="GYL-lC-ZW0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dSX-Ck-bZ7"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="59H-wA-uSR"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KJD-02-OxG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="190" y="-30"/>
+        </scene>
+    </scenes>
+</document>
