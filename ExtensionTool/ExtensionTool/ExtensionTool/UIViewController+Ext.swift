@@ -37,7 +37,7 @@ extension NSObject {
     }
     /// 当前活跃的控制器
     var k_currentVC: UIViewController {
-        return self.currentVC()
+        return self.getCurrentVC()
     }
     /// 当前活跃的导航栏
     ///
@@ -61,10 +61,6 @@ extension NSObject {
     /// 当前活跃的控制器
     ///
     /// - Returns: 控制器
-    fileprivate func currentVC() -> UIViewController {
-        
-        return self.getCurrentVC()
-    }
     fileprivate func getCurrentVC(checkVC: UIViewController? = nil) -> UIViewController {
         
         var rVC: UIViewController = checkVC == nil ? (kRootVC) : (checkVC!)

@@ -8,38 +8,25 @@
 
 import UIKit
 
-/// 是否是iphoneX
-var kIsIphoneX: Bool {
-    var systemInfo = utsname()
-    uname(&systemInfo)
-    let machineMirror = Mirror(reflecting: systemInfo.machine)
-    
-    let identifier = machineMirror.children.reduce("") { identifier, element in
-        guard let value = element.value as? Int8, value != 0 else { return identifier }
-        return identifier + String(UnicodeScalar(UInt8(value)))
-    }
-    let arr = identifier.components(separatedBy: ",")
-    if (arr.first ?? "") == "x86_64" {
-        
-        return kHeight > 736.0
-    }
-    return ((arr.first ?? "") == "iPhone10") && ((arr.last ?? "") == "3" || (arr.last ?? "") == "6")
-}
+/// 是否是iphoneX 是否有安全区域
+var kIsIphoneX: Bool!
+/// 主窗口
+var kWindow: UIWindow!
+/// 根试图控制器
+var kRootVC: UIViewController!
+
+/// AppDeleagte
+let kAppDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
 /// 标签栏高度
-let kTabBarHeight: CGFloat = 49.0
+let kTabBarHeight: CGFloat = kIsIphoneX ? (49.0 + 34.0) : (49.0)
 /// 导航栏高度
-let kNavBarHeight: CGFloat = kIsIphoneX ? (88.0) : (64.0)
+let kNavBarHeight: CGFloat = kIsIphoneX ? (64.0 + 20.0) : (64.0)
 /// 底部不可控区域
 let kBottomSpace: CGFloat = kIsIphoneX ? (34.0) : (0.0)
 /// 屏幕宽
 let kWidth: CGFloat = UIScreen.main.bounds.size.width
 /// 屏幕高
 let kHeight: CGFloat = UIScreen.main.bounds.size.height
-/// 主窗口
-let kWindow: UIWindow = UIApplication.shared.keyWindow!
-/// 根试图控制器
-let kRootVC: UIViewController = kWindow.rootViewController!
-/// AppDeleagte
-let kAppDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+
 /// 系统版本
 let kVersion: CGFloat = UIDevice.current.systemVersion.k_toCGFloat()

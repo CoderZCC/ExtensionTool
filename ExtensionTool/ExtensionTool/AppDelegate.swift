@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.rootViewController = nav
         self.setNavigation()
+        self.setCommonData()
         
         return true
     }
@@ -40,6 +41,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navbar.isTranslucent = false
         // 设置导航栏上按钮的颜色
         navbar.tintColor = UIColor.white
+    }
+    
+    func setCommonData() {
+        
+        kWindow = self.window!
+        kRootVC = self.window!.rootViewController
+        
+        var systemInfo = utsname()
+        uname(&systemInfo)
+        let machineMirror = Mirror(reflecting: systemInfo.machine)
+    
+        let identifier = machineMirror.children.reduce("") { identifier, element in
+            guard let value = element.value as? Int8, value != 0 else { return identifier }
+            return identifier + String(UnicodeScalar(UInt8(value)))
+        }
+        let arr = identifier.components(separatedBy: ",")
+        if (arr.first ?? "") == "x86_64" {
+    
+            kIsIphoneX = kHeight > 736.0
+            
+        } else {
+            
+            kIsIphoneX = (((arr.first ?? "") == "iPhone10") && ((arr.last ?? "") == "3" || (arr.last ?? "") == "6")) || (arr.first ?? "") >= "iPhone11"
+        }
+        
+        if #available(iOS 11.0, *) {
+            
+            kIsIphoneX = self.window!.safeAreaInsets.bottom > 0.0
+            
+        } else {
+            
+            kIsIphoneX = false
+        }
     }
 }
 
