@@ -30,6 +30,22 @@ import UIKit
         }
     }
     
+    /// 加载框 可取消
+    func showLoadingCanCancle() {
+        
+        if Thread.isMainThread {
+            
+            HUDTool.initSelf.showLoadingHUD(nil, canCanle: true)
+            
+        } else {
+            
+            DispatchQueue.main.async {
+                
+                self.showLoadingCanCancle()
+            }
+        }
+    }
+    
     /// 加载框 // 加载框 + 文字
     ///
     /// - Parameters:
@@ -65,12 +81,6 @@ import UIKit
     ///   - text: 文字
     func showText(_ text: String?) {
         
-        guard let text = text else {
-            
-            self.hideHUD()
-            return
-        }
-        
         if Thread.isMainThread {
             
             HUDTool.initSelf.showTextHUD(text)
@@ -102,6 +112,7 @@ import UIKit
 }
 
 enum HUDType {
+    /// 闲置, 文字, 菊花, 菊花 + 文字, 下载 + 文字
     case none, text, loading, loadingWithText, progress
 }
 
@@ -173,6 +184,7 @@ class HUDTool: UIView {
         }
     }
     
+    /// 定时器启动
     private func startTimer() {
         
         if self.timer == nil {
@@ -193,12 +205,14 @@ class HUDTool: UIView {
         }
     }
     
+    /// 销毁定时器
     private func stopTimer() {
         
         self.timer?.cancel()
         self.timer = nil
     }
     
+    /// 获取文字宽高
     private func getTextSize(_ text: String?, maxSize: CGSize) -> CGSize {
         
         guard let text = text else { return CGSize.zero }
@@ -207,8 +221,12 @@ class HUDTool: UIView {
         return CGSize(width: min(rect.size.width + 15.0, self.textMaxWidth), height: max(rect.size.height + 15.0, self.textMinHeight))
     }
     
+    /// 根据展示类型 控制控件显隐
+    ///
+    /// - Parameter type: 类型
     private func showSubView(_ type: HUDType = .none) {
         
+        self.showType = type
         self.stopTimer()
         self.blackView.isHidden = type == .none
         switch type {
@@ -250,7 +268,7 @@ class HUDTool: UIView {
         let label = UILabel(frame: CGRect.zero)
         label.backgroundColor = UIColor.black
         label.textColor = UIColor.white
-        label.font = UIFont.systemFont(ofSize: 16.0)
+        label.font = self.textFont
         label.textAlignment = .center
         label.text = "提示文字"
         label.cornerRadius = self.textCornerRadius
@@ -261,7 +279,7 @@ class HUDTool: UIView {
     }()
     /// 黑色的背景
     private lazy var blackView: UIView = {
-        let view = UIView.init(frame: CGRect.zero)
+        let view = UIView(frame: CGRect.zero)
         view.backgroundColor = UIColor.black
         view.cornerRadius = self.blackCornerRadius
         view.clipsToBounds = true
@@ -277,13 +295,12 @@ class HUDTool: UIView {
     }()
     /// 进度条View
     private lazy var progressView: UIView = {
-        
         let width: CGFloat = 45.0
         let progressView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: width, height: width))
         progressView.backgroundColor = UIColor.white.withAlphaComponent(0.0)
         progressView.transform = CGAffineTransform(rotationAngle: -CGFloat.pi / 2.0)
         
-        let circle = UIBezierPath(ovalIn: CGRect.init(x: 0.0, y: 0.0, width: width, height: width))
+        let circle = UIBezierPath(ovalIn: CGRect(x: 0.0, y: 0.0, width: width, height: width))
         
         // 圆环
         let shapeLayer = CAShapeLayer()
@@ -303,6 +320,7 @@ class HUDTool: UIView {
         return progressView
     }()
     
+    /// 父视图
     static private var baseView: UIWindow {
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.isHidden = false
@@ -313,13 +331,16 @@ class HUDTool: UIView {
 
         return window
     }
-    
 }
 
 extension HUDTool {
     
+    /// 展示 文字
+    ///
+    /// - Parameter text: 文字
     func showTextHUD(_ text: String?) {
         
+        if (text ?? "").k_isEmpty() { self.hidenLoadingHUD(); return }
         self.showSubView(.text)
         self.stopTimer()
         if self.superview == nil {
@@ -329,7 +350,7 @@ extension HUDTool {
         
         self.textL.text = text
         self.blackView.frame = CGRect(origin: CGPoint.zero, size: self.getTextSize(text, maxSize: CGSize(width: self.textMaxWidth, height: 200.0)))
-        self.textL.frame = self.blackView.bounds
+        self.textL.frame = CGRect(origin: CGPoint.zero, size: self.getTextSize(text, maxSize: CGSize(width: self.textMaxWidth, height: 200.0)))
         self.blackView.center = self.center
         
         if self.isTurn {
@@ -360,6 +381,7 @@ extension HUDTool {
         self.startTimer()
     }
     
+    /// 展示完毕
     @objc func hidenTextHUD(_ isAnimated: Bool = true) {
         
         if isAnimated {
@@ -378,6 +400,8 @@ extension HUDTool {
                 
                 self.removeFromSuperview()
                 self.baseViewsArr.removeAll(keepingCapacity: false)
+                
+                self.showType = .none
             }
             
         } else {
@@ -389,6 +413,11 @@ extension HUDTool {
 
 extension HUDTool {
     
+    /// 展示 菊花 + 文字 // 菊花
+    ///
+    /// - Parameters:
+    ///   - text: 文字
+    ///   - canCanle: 是否可以点击取消
     func showLoadingHUD(_ text: String? = nil, canCanle: Bool = false) {
         
         self.showSubView(text == nil ? (.loading) : (.loadingWithText))
@@ -407,32 +436,22 @@ extension HUDTool {
         self.textL.frame = CGRect(origin: CGPoint(x: 0.0, y: self.activeView.frame.maxY + 8.0), size: CGSize(width: self.blackSizeWithT.width, height: 20.0))
     }
     
+    /// 展示完毕
     func hidenLoadingHUD(_ isAnimated: Bool = true) {
         
         if isAnimated {
-
-            self.blackView.isHidden = true
-            self.textL.isHidden = true
-            self.activeView.stopAnimating()
             
-            self.removeFromSuperview()
-            self.baseViewsArr.removeAll(keepingCapacity: false)
-//            UIView.animate(withDuration: 0.2, animations: {
-//
-//                self.blackView.alpha = 0.0
-//                self.blackView.transform = CGAffineTransform(scaleX: 0.01, y: 0.01)
-//
-//            }) { (isOk) in
-//
-//                self.blackView.alpha = 1.0
-//                self.blackView.transform = CGAffineTransform.identity
-//                self.blackView.isHidden = true
-//                self.textL.isHidden = true
-//                self.activeView.stopAnimating()
-//
-//                self.removeFromSuperview()
-//                self.baseViewsArr.removeAll(keepingCapacity: false)
-//            }
+            if self.showType != .text {
+                
+                self.blackView.isHidden = true
+                self.textL.isHidden = true
+                self.activeView.stopAnimating()
+                
+                self.removeFromSuperview()
+                self.baseViewsArr.removeAll(keepingCapacity: false)
+                
+                self.showType = .none
+            }
             
         } else {
             
@@ -445,6 +464,12 @@ extension HUDTool {
 
 extension HUDTool {
     
+    /// 展示 进度 + 文字
+    ///
+    /// - Parameters:
+    ///   - text: 文字
+    ///   - progress: 进度 0.0~1.0
+    ///   - block: 完成回调
     func showProgressHUD(_ text: String, progress: CGFloat, block: (()->Void)? = nil) {
         
         self.showSubView(.progress)
@@ -452,7 +477,7 @@ extension HUDTool {
             
             HUDTool.baseView.addSubview(self)
         }
-        if self.progressLayer?.strokeEnd == 0.0 {
+        if self.blackView.frame != CGRect(origin: CGPoint.zero, size: self.blackSizeWithT) {
             
             self.blackView.frame = CGRect(origin: CGPoint.zero, size: self.blackSizeWithT)
             self.progressView.center = CGPoint(x: self.blackView.center.x, y: self.blackView.center.y - 10.0)
@@ -469,6 +494,7 @@ extension HUDTool {
         }
     }
     
+    /// 展示完毕
     func hidenProgressHUD(_ isAnimated: Bool = true) {
         
         if isAnimated {
@@ -487,6 +513,8 @@ extension HUDTool {
                 self.progressView.isHidden = true
                 self.progressLayer?.strokeEnd = 0.0
 
+                self.showType = .none
+
                 self.removeFromSuperview()
                 self.baseViewsArr.removeAll(keepingCapacity: false)
             }
@@ -499,5 +527,4 @@ extension HUDTool {
             self.progressLayer?.strokeEnd = 0.0
         }
     }
-    
 }
