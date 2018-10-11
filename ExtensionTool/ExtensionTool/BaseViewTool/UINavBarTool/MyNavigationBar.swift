@@ -85,7 +85,13 @@ extension UIViewController: UIGestureRecognizerDelegate {
             [.foregroundColor: UIColor.white]
         
         navBar.pushItem(self.k_setupNavitionItem()!, animated: false)
-        navController.interactivePopGestureRecognizer?.delegate = self
+        
+        weak var weakSelf = self
+        if navController.responds(to: #selector(getter: UINavigationController.interactivePopGestureRecognizer)) {
+            
+            navController.interactivePopGestureRecognizer?.delegate = weakSelf
+        }
+
         self.k_navigationBar = navBar
     }
     
@@ -149,7 +155,7 @@ extension UIViewController: UIGestureRecognizerDelegate {
     }
     
     /// 是否允许手势
-    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+    public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         
         guard let navController = self.navigationController else { return true }
         if gestureRecognizer.isEqual(navController.interactivePopGestureRecognizer) {
