@@ -65,16 +65,20 @@ extension UIViewController: UIGestureRecognizerDelegate {
         
         guard let navController = self.navigationController else { return }
         // 隐藏系统的
+        navController.navigationBar.isTranslucent = false
         navController.navigationBar.isHidden = true
         // 创建自己的
         let navBar = MyNavigationBar.init()
         let size = UIApplication.shared.statusBarFrame.size
         
-        navBar.frame = CGRect(x: 0, y: size.height, width: size.width, height: 44)
+        let y = kVersion < 10.0 ? (0.0) : (size.height)
+        let height: CGFloat = kVersion < 10.0 ? (64.0) : (44.0)
+        navBar.frame = CGRect(x: 0, y: y, width: size.width, height: height)
+        
         self.view.clipsToBounds = true
         self.view.addSubview(navBar)
-        
-        navBar.barTintColor = UIColor.red
+
+        navBar.barTintColor = UIColor.k_colorWith(r: 30.0, g: 59.0, b: 145.0, alpha: 1.0)
         navBar.isTranslucent = false
         navBar.tintColor = UIColor.white
         navBar.titleTextAttributes =
@@ -109,12 +113,12 @@ extension UIViewController: UIGestureRecognizerDelegate {
             
             UIView.animate(withDuration: 0.25) {
                 
-                self.k_navigationBar?.transform = hidden ? (CGAffineTransform(translationX: 0.0, y: -kNavBarHeight)) : (CGAffineTransform.identity)
+                self.k_navigationBar?.transform = hidden ? (CGAffineTransform(translationX: 0.0, y: -kNavBarHeight - 10.0)) : (CGAffineTransform.identity)
             }
             
         } else {
             
-            self.k_navigationBar?.transform = hidden ? (CGAffineTransform(translationX: 0.0, y: -kNavBarHeight)) : (CGAffineTransform.identity)
+            self.k_navigationBar?.transform = hidden ? (CGAffineTransform(translationX: 0.0, y: -kNavBarHeight - 10.0)) : (CGAffineTransform.identity)
         }
     }
     
@@ -145,8 +149,8 @@ extension UIViewController: UIGestureRecognizerDelegate {
     }
     
     /// 是否允许手势
-    private func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive press: UIPress) -> Bool {
-
+    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        
         guard let navController = self.navigationController else { return true }
         if gestureRecognizer.isEqual(navController.interactivePopGestureRecognizer) {
             
