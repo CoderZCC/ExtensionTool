@@ -10,10 +10,22 @@ import UIKit
 
 extension UIViewController {
     
+    /// 设置导航栏透明度
+    ///
+    /// - Parameter alpha: 0.0~1.0
+    func k_setNavBarAlpha(_ alpha: CGFloat) {
+        
+        let color = UIColor.k_colorWith(r: 30.0, g: 59.0, b: 145.0, alpha: alpha)
+        self.k_navigationBar?.isTranslucent = true
+        self.k_navigationBar?.setBackgroundImage(UIImage.k_imageWithColor(color), for: UIBarMetrics.default)
+        self.k_navigationBar?.shadowImage = UIImage()
+    }
+    
     /// 设置导航栏透明
     func k_setNavBarTranslucent() {
         
-        let navBar = self.navigationController?.navigationBar
+//        let navBar = self.navigationController?.navigationBar
+        let navBar = self.k_navigationBar
         navBar?.isTranslucent = true
         navBar?.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
         navBar?.shadowImage = UIImage()
@@ -22,7 +34,9 @@ extension UIViewController {
     /// 恢复导航栏透明
     func k_resetNavBarTranslucent() {
         
-        let navBar = self.navigationController?.navigationBar
+//        let navBar = self.navigationController?.navigationBar
+        
+        let navBar = self.k_navigationBar
         navBar?.isTranslucent = false
         navBar?.setBackgroundImage(nil, for: UIBarMetrics.default)
         navBar?.shadowImage = nil

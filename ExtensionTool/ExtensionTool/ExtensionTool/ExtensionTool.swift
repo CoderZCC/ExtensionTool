@@ -23,10 +23,13 @@ let kTabBarHeight: CGFloat = kIsIphoneX ? (49.0 + 34.0) : (49.0)
 let kNavBarHeight: CGFloat = kIsIphoneX ? (64.0 + 20.0) : (64.0)
 /// 底部不可控区域
 let kBottomSpace: CGFloat = kIsIphoneX ? (34.0) : (0.0)
+/// 顶部不可控区域
+let kTopSpace: CGFloat = kIsIphoneX ? (44.0) : (0.0)
 /// 屏幕宽
 let kWidth: CGFloat = UIScreen.main.bounds.size.width
 /// 屏幕高
 let kHeight: CGFloat = UIScreen.main.bounds.size.height
 
 /// 系统版本
-let kVersion: CGFloat = UIDevice.current.systemVersion.k_toCGFloat()
+let kVersion: Double = Double(UIDevice.current.systemVersion.components(separatedBy: ".").first ?? "0") ?? 0.0
+

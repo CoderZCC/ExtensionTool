@@ -29,6 +29,26 @@ enum PlaceholderImg: String {
 
 extension UIImage {
     
+    /// 根据颜色创建一个图片
+    ///
+    /// - Parameter color: 颜色
+    /// - Returns: 图片
+    static func k_imageWithColor(_ color: UIColor) -> UIImage? {
+        
+        let rect = CGRect(x: 0.0, y: 0.0, width: 1.0, height: 1.0)
+        UIGraphicsBeginImageContext(rect.size)
+        
+        let ref = UIGraphicsGetCurrentContext()
+        ref?.setFillColor(color.cgColor)
+        ref?.fill(rect)
+        
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
+        return img
+    }
+    
     static func k_init(type: PlaceholderImg) -> UIImage? {
         
         return type.k_toImage

@@ -65,7 +65,6 @@ extension UIViewController: UIGestureRecognizerDelegate {
         
         guard let navController = self.navigationController else { return }
         // 隐藏系统的
-        navController.navigationBar.isTranslucent = false
         navController.navigationBar.isHidden = true
         // 创建自己的
         let navBar = MyNavigationBar.init()
@@ -75,7 +74,6 @@ extension UIViewController: UIGestureRecognizerDelegate {
         let height: CGFloat = kVersion < 10.0 ? (64.0) : (44.0)
         navBar.frame = CGRect(x: 0, y: y, width: size.width, height: height)
         
-        self.view.clipsToBounds = true
         self.view.addSubview(navBar)
 
         navBar.barTintColor = UIColor.k_colorWith(r: 30.0, g: 59.0, b: 145.0, alpha: 1.0)
