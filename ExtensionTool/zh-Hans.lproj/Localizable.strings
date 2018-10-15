@@ -6,4 +6,20 @@
   Copyright © 2018年 ZCC. All rights reserved.
 */
 
-"登录" = "登录";
+"k首页" = "首页";
+"kHome" = "首页";
+
+"k第二个" = "第二个";
+"kSecond" = "第二个";
+
+"k登录" = "登录";
+"kLogin" = "登录";
+
+"k注册" = "注册";
+"kRegister" = "注册";
+
+"k点我" = "点我";
+"kClick Me" = "点我";
+
+"k切换" = "切换";
+"kChangeLanguage" = "切换";

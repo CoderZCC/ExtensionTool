@@ -24,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.setNavigation()
         self.setCommonData()
         
+        LanguageTool.initUserLanguage()
+        
         return true
     }
     

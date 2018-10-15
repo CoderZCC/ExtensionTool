@@ -13,7 +13,7 @@ class SecondViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
      
-       
+        self.title_locailedStr = "第二个"
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

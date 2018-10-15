@@ -8,66 +8,170 @@
 
 import UIKit
 
-extension String {
+enum LanguageType {
+    case en, ch
+}
+
+private let kLocalLanguageKey: String = "kLocalLanguageKey"
+
+class LanguageTool: NSObject {
     
-    /// 国际化文字
-    func localized() -> String {
+    static let tool: LanguageTool = LanguageTool()
+    
+    /// 文件加载路径
+    static var bundle: Bundle?
+    /// 当前语言
+    static var currentLanguage: LanguageType {
         
-        return NSLocalizedString(self, comment: "")
-        //return LanguageTool.getString(key: self)
+        return ((UserDefaults.standard.value(forKey: kLocalLanguageKey) as? String) ?? "en") == "en" ? (.en) : (.ch)
+    }
+    
+    /// 初始化本地语言
+    class func initUserLanguage() {
+        
+        UIButton.initLocalized()
+        UILabel.initLocalized()
+        UITextField.initLocalized()
+
+        var currentLanguage = UserDefaults.standard.value(forKey: kLocalLanguageKey) as? String
+        if currentLanguage == nil {
+            
+            currentLanguage = Locale.preferredLanguages.first ?? "en"
+            currentLanguage = currentLanguage!.hasPrefix("zh") ? ("zh-Hans") : ("en")
+            UserDefaults.standard.setValue(currentLanguage, forKey: kLocalLanguageKey)
+            UserDefaults.standard.synchronize()
+        }
+        let path = Bundle.main.path(forResource: currentLanguage, ofType: "lproj")!
+        LanguageTool.bundle = Bundle.init(path: path)
+    }
+    
+    /// 设置语言类型
+    ///
+    /// - Parameter type: 类型
+    class func setUserLanguage(_ type: LanguageType) {
+        
+        let typeStr: String = type == .en ? ("en") : ("zh-Hans")
+        let currentLanguage: String = (UserDefaults.standard.value(forKey: kLocalLanguageKey) as? String) ?? "en"
+        
+        if currentLanguage == typeStr {
+            
+            debugPrint("语言切换为:\(typeStr == "en" ? ("英文") : ("中文"))")
+            kWindow?.k_post(name: .userLanguageChanged)
+            return
+        }
+        UserDefaults.standard.setValue(typeStr, forKey: kLocalLanguageKey)
+        UserDefaults.standard.synchronize()
+        
+        let path = Bundle.main.path(forResource: typeStr, ofType: "lproj")!
+        LanguageTool.bundle = Bundle.init(path: path)
+        
+        debugPrint("语言切换为:\(typeStr == "en" ? ("英文") : ("中文"))")
+        kWindow?.k_post(name: .userLanguageChanged)
     }
 }
 
-let UserLanguage = "UserLanguage"
-let AppleLanguages = "AppleLanguages"
-
-class LanguageTool: NSObject {
-   
-    static let shareInstance = LanguageTool()
+extension String {
     
-    /// 偏好设置
-    let def = UserDefaults.standard
-    var bundle : Bundle?
-    
-    /// 获取key对应的字符串
-    class func getString(key: String) -> String{
-        let bundle = LanguageTool.shareInstance.bundle
-        let str = bundle?.localizedString(forKey: key, value: nil, table: nil)
+    var localiedStr: String {
         
-        return str ?? key
-    }
-    
-    /// 初始化语言
-    func initUserLanguage() {
-        
-        var string: String = def.value(forKey: UserLanguage) as? String ?? ""
-        if string == "" {
+        let changedStr: String = LanguageTool.bundle?.localizedString(forKey: "k\(self)", value: nil, table: "Localizable") ?? self
+        if changedStr != "k\(self)" {
             
-            let languages = def.object(forKey: AppleLanguages) as? NSArray
-            if languages?.count != 0 {
-                let current = languages?.object(at: 0) as? String
-                if current != nil {
-                    string = current!
-                    def.set(current, forKey: UserLanguage)
-                    def.synchronize()
-                }
-            }
+            return changedStr
         }
-        string = string.replacingOccurrences(of: "-CN", with: "")
-        string = string.replacingOccurrences(of: "-US", with: "")
-        var path = Bundle.main.path(forResource:string , ofType: "lproj")
-        if path == nil {
-             path = Bundle.main.path(forResource:"en" , ofType: "lproj")
-        }
-        bundle = Bundle(path: path!)
+        return self
+    }
+}
+
+extension UIButton {
+    
+    /// 实现国际化
+    static func initLocalized() {
+        
+        let originalMethod = class_getInstanceMethod(UIButton.self, #selector(UIButton.setTitle(_:for:)))
+        let changedmethod = class_getInstanceMethod(UIButton.self, #selector(mySetTitle(_:for:)))
+        method_exchangeImplementations(originalMethod!, changedmethod!)
+    }
+    @objc func mySetTitle(_ text: String, for state: UIControl.State) {
+        
+        mySetTitle(text.localiedStr, for: state)
     }
     
-    /// 设置语言
-    func setLanguage(langeuage: String) {
+    open override func didMoveToSuperview() {
+        super.didMoveToSuperview()
         
-        let path = Bundle.main.path(forResource:langeuage , ofType: "lproj")
-        bundle = Bundle(path: path!)
-        def.set(langeuage, forKey: UserLanguage)
-        def.synchronize()
+        if self.superview != nil {
+            
+            self.k_addObserver(name: .userLanguageChanged) { [weak self] (note) in
+                
+                self?.setTitle(self?.currentTitle, for: self?.state ?? .normal)
+            }
+            
+        } else {
+            
+            self.k_removeObserver(name: .userLanguageChanged)
+        }
+    }
+}
+
+extension UILabel {
+    
+    /// 实现国际化
+    static func initLocalized() {
+        
+        let originalMethod = class_getInstanceMethod(UILabel.self, #selector(setter: UILabel.text))
+        let swizzledMethod = class_getInstanceMethod(UILabel.self, #selector(UILabel.mySetText(_:)))
+        method_exchangeImplementations(originalMethod!, swizzledMethod!)
+    }
+    @objc func mySetText( _ text: String) {
+        
+        mySetText(text.localiedStr)
+    }
+    
+    open override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        
+        if self.superview != nil {
+            
+            self.k_addObserver(name: .userLanguageChanged) { [weak self] (note) in
+                
+                self?.text = self?.text
+            }
+            
+        } else {
+            
+            self.k_removeObserver(name: .userLanguageChanged)
+        }
+    }
+}
+
+extension UITextField {
+    
+    /// 实现国际化
+    static func initLocalized() {
+        
+        let originalMethod = class_getInstanceMethod(UITextField.self, #selector(setter: UITextField.placeholder))
+        let changedmethod = class_getInstanceMethod(UITextField.self, #selector(mySetText(_:)))
+        method_exchangeImplementations(originalMethod!, changedmethod!)
+    }
+    @objc func mySetText( _ text: String) {
+        
+        mySetText(text.localiedStr)
+    }
+    
+    open override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        
+        if self.superview != nil {
+            
+            self.k_addObserver(name: .userLanguageChanged) { [weak self] (note) in
+                
+                self?.placeholder = self?.placeholder
+            }
+            
+        } else {
+            
+            self.k_removeObserver(name: .userLanguageChanged)
+        }
     }
 }

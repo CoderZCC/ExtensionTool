@@ -11,6 +11,7 @@ import UIKit
 enum NotificationName: String {
     
     case loginSuccess, loginFail, loginError
+    case userLanguageChanged
 }
 
 private var kNotificationActionKey: Int = 0
