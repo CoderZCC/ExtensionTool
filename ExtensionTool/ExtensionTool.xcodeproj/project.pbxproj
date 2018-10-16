@@ -48,6 +48,7 @@
 		F085C48A21096E6F00CB0D2B /* CalendarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F085C48921096E6F00CB0D2B /* CalendarView.xib */; };
 		F091FBC8212BC47D00F347C3 /* NotificationCenter+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F091FBC7212BC47D00F347C3 /* NotificationCenter+Ext.swift */; };
 		F0963FB02159D1FC00C1EE5E /* AlertTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0963FAF2159D1FC00C1EE5E /* AlertTool.swift */; };
+		F09CEDF2217493C40065438E /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09CEDF1217493C40065438E /* MyTabBarController.swift */; };
 		F0A301A9216C437E00D71D58 /* HUDTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0A301A8216C437E00D71D58 /* HUDTool.swift */; };
 		F0A301CE216CAFA600D71D58 /* Main1.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F0A301CD216CAFA600D71D58 /* Main1.storyboard */; };
 		F0B5D59C20FED64F00F642B1 /* AuthorityTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0B5D58520FED64F00F642B1 /* AuthorityTool.swift */; };
@@ -125,6 +126,7 @@
 		F085C48921096E6F00CB0D2B /* CalendarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalendarView.xib; sourceTree = "<group>"; };
 		F091FBC7212BC47D00F347C3 /* NotificationCenter+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NotificationCenter+Ext.swift"; sourceTree = "<group>"; };
 		F0963FAF2159D1FC00C1EE5E /* AlertTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTool.swift; sourceTree = "<group>"; };
+		F09CEDF1217493C40065438E /* MyTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyTabBarController.swift; sourceTree = "<group>"; };
 		F0A301A8216C437E00D71D58 /* HUDTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUDTool.swift; sourceTree = "<group>"; };
 		F0A301CD216CAFA600D71D58 /* Main1.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main1.storyboard; sourceTree = "<group>"; };
 		F0B5D58520FED64F00F642B1 /* AuthorityTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthorityTool.swift; sourceTree = "<group>"; };
@@ -290,9 +292,18 @@
 			path = PickerTool;
 			sourceTree = "<group>";
 		};
+		F09CEDF0217493A90065438E /* MyTabBarVC */ = {
+			isa = PBXGroup;
+			children = (
+				F09CEDF1217493C40065438E /* MyTabBarController.swift */,
+			);
+			path = MyTabBarVC;
+			sourceTree = "<group>";
+		};
 		F0B5D58420FED64F00F642B1 /* BaseViewTool */ = {
 			isa = PBXGroup;
 			children = (
+				F09CEDF0217493A90065438E /* MyTabBarVC */,
 				F016906F2107231300E0C60A /* ADScrollView */,
 				F0B5D58520FED64F00F642B1 /* AuthorityTool.swift */,
 				F01EC3F721083FC000AE2D11 /* BarrageView.swift */,
@@ -480,6 +491,7 @@
 				F0B5D5A820FED64F00F642B1 /* UIIImageView+Ext.swift in Sources */,
 				F077773720F2FC39003D7BD8 /* ViewController.swift in Sources */,
 				F0105B9A210AC3DC005B8661 /* MyPageControl.swift in Sources */,
+				F09CEDF2217493C40065438E /* MyTabBarController.swift in Sources */,
 				F0B5D5A620FED64F00F642B1 /* UITableView+Ext.swift in Sources */,
 				F0B5D59C20FED64F00F642B1 /* AuthorityTool.swift in Sources */,
 				F02965BC2114404200EA4ADB /* InputAssistView.swift in Sources */,

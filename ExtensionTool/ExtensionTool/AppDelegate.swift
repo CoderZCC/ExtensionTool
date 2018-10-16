@@ -19,12 +19,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow.init(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         
-        let rootVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateInitialViewController()!
-        window?.rootViewController = rootVC
         self.setNavigation()
         self.setCommonData()
-        
         LanguageTool.initUserLanguage()
+
+        let tabBarVC = MyTabBarController.init()
+        
+        let rootVC = UIStoryboard.init(name: "Main", bundle: nil).instantiateInitialViewController()!
+        rootVC.title = "首页"
+        rootVC.tabBarItem.image = UIImage.init(named: "home_normal")
+        rootVC.tabBarItem.selectedImage = UIImage.init(named: "home_selected")
+
+        let secondVC = BaseViewController()
+        secondVC.title = "第二个"
+        secondVC.tabBarItem.image = UIImage.init(named: "nationteam_normal")
+        secondVC.tabBarItem.selectedImage = UIImage.init(named: "nationTeam_selected")
+
+        let thirdVC = BaseViewController()
+        thirdVC.title = "第三个"
+        thirdVC.tabBarItem.image = UIImage.init(named: "events_normal")
+        thirdVC.tabBarItem.selectedImage = UIImage.init(named: "events_selected")
+
+        tabBarVC.viewControllers = [rootVC, secondVC, thirdVC]
+
+        window?.rootViewController = tabBarVC
         
         return true
     }
