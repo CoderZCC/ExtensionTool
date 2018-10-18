@@ -39,8 +39,11 @@ extension AuthorityTool {
                 if isOK {
                 
                    block?()
+                    
+                } else {
+                    
+                    self.requestContactAuthor(block: block)
                 }
-                self.requestContactAuthor()
             }
             return false
 
@@ -103,22 +106,46 @@ extension AuthorityTool {
     //MARK: 请求摄像头权限
     /// 请求摄像头权限
     ///
+    /// - Parameter block: 回调
     /// - Returns: true/false
     @discardableResult
-    class func requestCameraAuthor(block:(()->Void)? = nil) -> Bool {
+    class func requestCameraAuthor(block: (()->Void)? = nil) -> Bool {
         
         if !UIImagePickerController.isSourceTypeAvailable(.camera) {
             
             print("设备不支持摄像头")
             return false
         }
-        let status = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
+        return AuthorityTool.requestAuthor(type: .video, block: block)
+    }
+    
+    /// 请求麦克风权限
+    ///
+    /// - Parameter block: 回调
+    /// - Returns: true/false
+    @discardableResult
+    class func requestAudioAuthor(block: (()->Void)? = nil) -> Bool {
+        
+        return AuthorityTool.requestAuthor(type: .audio, block: block)
+    }
+    
+    /// 请求权限
+    private class func requestAuthor(type: AVMediaType, block: (()->Void)? = nil) -> Bool {
+        
+        let status = AVCaptureDevice.authorizationStatus(for: type)
         if status == .notDetermined {
             
-            AVCaptureDevice.requestAccess(for: .video) { (isOK) in
+            AVCaptureDevice.requestAccess(for: type) { (isOK) in
                 
-                if isOK { block?() }
-                self.requestCameraAuthor()
+                if isOK {
+                    
+                    block?()
+                    
+                } else {
+                    
+                    self.requestAlbumAuthor(block: block)
+                }
+                
             }
             return true
             
